@@ -13,6 +13,8 @@ class EspamacsUser implements Serializable {
 
 	String username
 	String password
+	Centro centro
+
 	boolean enabled = true
 	boolean accountExpired = false
 	boolean accountLocked = false
