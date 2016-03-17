@@ -31,3 +31,9 @@
 
 # "temporary" build files
 /target
+
+#intellij
+*.iml
+
+#Build
+/build
