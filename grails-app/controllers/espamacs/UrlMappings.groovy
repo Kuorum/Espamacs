@@ -4,7 +4,10 @@ class UrlMappings {
 
     static mappings = {
 
-        home: "/" (controller: "paciente")
+        name home: "/" (controller: "paciente")
+
+        name centros: "/centros" (controller:"centro")
+        name usuarios: "/usuarios" (controller:"espamacsUser")
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
