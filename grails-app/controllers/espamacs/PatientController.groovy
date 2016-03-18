@@ -31,7 +31,7 @@ class PatientController {
 
         if (paciente.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond paciente, view:'create'
+            respond paciente.errors, view:'create'
             return
         }
 

@@ -3,7 +3,7 @@
 
 <div class="fieldcontain ${error?'error':''} col-lg-6">
 
-    <label for="${property}">${label}</label>
+    <label for="${property}"><g:message code="${bean.class.name}.${property}" default="${label}"/></label>
     <g:select
             from="${persistentProperty.type.list()}"
             optionKey="code"

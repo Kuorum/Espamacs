@@ -222,10 +222,14 @@ fieldset,
 .fieldcontain.error .field-errors{
     color:#cc0000;
     width: 15em; /*Label width*/
+    padding-left:0.4em;
 }
 .fieldcontain.error .field-errors ul{
     padding:0;
     margin: 0;
+}
+.fieldcontain.error .field-errors ul li{
+    list-style: none;
 }
 
 label {
