@@ -1,7 +1,7 @@
 
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'paciente.label', default: 'Paciente')}" />
+    <g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <content tag="mainContent">
@@ -17,7 +17,7 @@
         <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <f:display bean="paciente" />
+        <f:display bean="patient" />
         <g:form resource="${this.paciente}" method="DELETE">
             <fieldset class="buttons">
                 <g:link class="edit" action="edit" resource="${this.paciente}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

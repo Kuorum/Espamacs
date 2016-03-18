@@ -1,4 +1,4 @@
-import espamacs.Centro
+import espamacs.Centre
 import espamacs.EspamacsUser
 import espamacs.EspamacsUserRole
 import espamacs.Role
@@ -9,19 +9,19 @@ class BootStrap {
         Role roleUser = new Role("ROLE_USER").save()
         Role roleAdmin = new Role("ROLE_ADMIN").save()
 
-        Centro ph = new Centro(name:"Puerta de hierro").save()
-        Centro paz= new Centro(name: "La paz").save()
+        Centre ph = new Centre(name:"Puerta de hierro").save()
+        Centre paz= new Centre(name: "La paz").save()
 
         EspamacsUser user = new EspamacsUser("user", "test")
-        user.centro = ph
+        user.centre = ph
         user.save()
         EspamacsUser admin = new EspamacsUser("admin", "admin")
-        admin.centro = paz
+        admin.centre = paz
         admin.save()
 
-        new EspamacsUserRole(user, roleUser).save()
-        new EspamacsUserRole(admin, roleUser).save()
-        new EspamacsUserRole(admin, roleAdmin).save()
+        EspamacsUserRole.create(user, roleUser, true)
+        EspamacsUserRole.create(admin, roleUser, true)
+        EspamacsUserRole.create(admin, roleAdmin, true)
 
 
     }

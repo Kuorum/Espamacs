@@ -4,25 +4,25 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class PacienteController {
+class PatientController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Paciente.list(params), model:[pacienteCount: Paciente.count()]
+        respond Patient.list(params), model:[pacienteCount: Patient.count()]
     }
 
-    def show(Paciente paciente) {
+    def show(Patient paciente) {
         respond paciente
     }
 
     def create() {
-        respond new Paciente(params)
+        respond new Patient(params)
     }
 
     @Transactional
-    def save(Paciente paciente) {
+    def save(Patient paciente) {
         if (paciente == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -39,19 +39,19 @@ class PacienteController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'paciente.label', default: 'Paciente'), paciente.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
                 redirect paciente
             }
             '*' { respond paciente, [status: CREATED] }
         }
     }
 
-    def edit(Paciente paciente) {
+    def edit(Patient paciente) {
         respond paciente
     }
 
     @Transactional
-    def update(Paciente paciente) {
+    def update(Patient paciente) {
         if (paciente == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -68,7 +68,7 @@ class PacienteController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'paciente.label', default: 'Paciente'), paciente.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
                 redirect paciente
             }
             '*'{ respond paciente, [status: OK] }
@@ -76,7 +76,7 @@ class PacienteController {
     }
 
     @Transactional
-    def delete(Paciente paciente) {
+    def delete(Patient paciente) {
 
         if (paciente == null) {
             transactionStatus.setRollbackOnly()
@@ -88,7 +88,7 @@ class PacienteController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'paciente.label', default: 'Paciente'), paciente.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class PacienteController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'paciente.label', default: 'Paciente'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'patient.label', default: 'Patient'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

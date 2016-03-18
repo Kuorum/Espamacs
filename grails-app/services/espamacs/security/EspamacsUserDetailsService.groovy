@@ -37,7 +37,7 @@ class EspamacsUserDetailsService extends GormUserDetailsService {
         return new EspamacsSessionUser(user.username, user.password, user.enabled,
                 !user.accountExpired, !user.passwordExpired,
                 !user.accountLocked, authorities ?: NO_ROLES, user.id,
-                user.centro.name,
-                user.centro.id)
+                user.centre.name,
+                user.centre.id)
     }
 }

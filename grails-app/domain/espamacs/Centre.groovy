@@ -1,6 +1,6 @@
 package espamacs
 
-class Centro {
+class Centre {
 
     String name
 

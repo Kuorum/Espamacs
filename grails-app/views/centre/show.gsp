@@ -1,6 +1,6 @@
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'centro.label', default: 'Centro')}" />
+    <g:set var="entityName" value="${message(code: 'centre.label', default: 'Centre')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <content tag="mainContent">
@@ -16,7 +16,7 @@
         <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <f:display bean="centro" />
+        <f:display bean="centre" />
         <g:form resource="${this.centro}" method="DELETE">
             <fieldset class="buttons">
                 <g:link class="edit" action="edit" resource="${this.centro}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

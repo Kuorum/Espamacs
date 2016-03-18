@@ -1,6 +1,6 @@
 <li>
     <g:link mapping="profile">
-        <sec:loggedInUserInfo field='username'/> - <span><sec:loggedInUserInfo field='centroName'/></span>
+        <sec:loggedInUserInfo field='username'/> - <span><sec:loggedInUserInfo field='centreName'/></span>
     </g:link>
 </li>
 

@@ -51,7 +51,7 @@ class EspamacsUserRole implements Serializable {
 	}
 
 	static EspamacsUserRole create(EspamacsUser espamacsUser, Role role, boolean flush = false) {
-		def instance = new EspamacsUserRole(espamacsUser: espamacsUser, role: role)
+		def instance = new EspamacsUserRole(espamacsUser, role)
 		instance.save(flush: flush, insert: true)
 		instance
 	}

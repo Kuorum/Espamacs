@@ -1,7 +1,7 @@
 
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'centro.label', default: 'Centro')}" />
+    <g:set var="entityName" value="${message(code: 'centre.label', default: 'Centre')}" />
     <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <content tag="mainContent">

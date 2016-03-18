@@ -4,25 +4,25 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class CentroController {
+class CentreController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Centro.list(params), model:[centroCount: Centro.count()]
+        respond Centre.list(params), model:[centroCount: Centre.count()]
     }
 
-    def show(Centro centro) {
+    def show(Centre centro) {
         respond centro
     }
 
     def create() {
-        respond new Centro(params)
+        respond new Centre(params)
     }
 
     @Transactional
-    def save(Centro centro) {
+    def save(Centre centro) {
         if (centro == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -39,19 +39,19 @@ class CentroController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'centro.label', default: 'Centro'), centro.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
                 redirect centro
             }
             '*' { respond centro, [status: CREATED] }
         }
     }
 
-    def edit(Centro centro) {
+    def edit(Centre centro) {
         respond centro
     }
 
     @Transactional
-    def update(Centro centro) {
+    def update(Centre centro) {
         if (centro == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -68,7 +68,7 @@ class CentroController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'centro.label', default: 'Centro'), centro.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
                 redirect centro
             }
             '*'{ respond centro, [status: OK] }
@@ -76,7 +76,7 @@ class CentroController {
     }
 
     @Transactional
-    def delete(Centro centro) {
+    def delete(Centre centro) {
 
         if (centro == null) {
             transactionStatus.setRollbackOnly()
@@ -88,7 +88,7 @@ class CentroController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'centro.label', default: 'Centro'), centro.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class CentroController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'centro.label', default: 'Centro'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'centre.label', default: 'Centre'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

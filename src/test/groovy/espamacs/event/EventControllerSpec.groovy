@@ -1,11 +1,11 @@
-package espamacs
+package espamacs.event
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(PacienteController)
-@Mock(Paciente)
-class PacienteControllerSpec extends Specification {
+@TestFor(EventController)
+@Mock(Event)
+class EventControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class PacienteControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.pacienteList
-            model.pacienteCount == 0
+            !model.eventoList
+            model.eventoCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class PacienteControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.paciente!= null
+            model.evento!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class PacienteControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def paciente = new Paciente()
-            paciente.validate()
-            controller.save(paciente)
+            def evento = new Event()
+            evento.validate()
+            controller.save(evento)
 
         then:"The create view is rendered again with the correct model"
-            model.paciente!= null
+            model.evento!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            paciente = new Paciente(params)
+            evento = new Event(params)
 
-            controller.save(paciente)
+            controller.save(evento)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/paciente/show/1'
+            response.redirectedUrl == '/event/show/1'
             controller.flash.message != null
-            Paciente.count() == 1
+            Event.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class PacienteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def paciente = new Paciente(params)
-            controller.show(paciente)
+            def evento = new Event(params)
+            controller.show(evento)
 
         then:"A model is populated containing the domain instance"
-            model.paciente == paciente
+            model.evento == evento
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class PacienteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def paciente = new Paciente(params)
-            controller.edit(paciente)
+            def evento = new Event(params)
+            controller.edit(evento)
 
         then:"A model is populated containing the domain instance"
-            model.paciente == paciente
+            model.evento == evento
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class PacienteControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/paciente/index'
+            response.redirectedUrl == '/event/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def paciente = new Paciente()
-            paciente.validate()
-            controller.update(paciente)
+            def evento = new Event()
+            evento.validate()
+            controller.update(evento)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.paciente == paciente
+            model.evento == evento
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            paciente = new Paciente(params).save(flush: true)
-            controller.update(paciente)
+            evento = new Event(params).save(flush: true)
+            controller.update(evento)
 
         then:"A redirect is issued to the show action"
-            paciente != null
-            response.redirectedUrl == "/paciente/show/$paciente.id"
+            evento != null
+            response.redirectedUrl == "/event/show/$evento.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class PacienteControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/paciente/index'
+            response.redirectedUrl == '/event/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def paciente = new Paciente(params).save(flush: true)
+            def evento = new Event(params).save(flush: true)
 
         then:"It exists"
-            Paciente.count() == 1
+            Event.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(paciente)
+            controller.delete(evento)
 
         then:"The instance is deleted"
-            Paciente.count() == 0
-            response.redirectedUrl == '/paciente/index'
+            Event.count() == 0
+            response.redirectedUrl == '/event/index'
             flash.message != null
     }
 }
