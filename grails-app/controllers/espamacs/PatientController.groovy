@@ -1,5 +1,7 @@
 package espamacs
 
+import espamacs.type.PatientStatus
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -10,11 +12,11 @@ class PatientController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Patient.list(params), model:[pacienteCount: Patient.count()]
+        respond Patient.list(params), model:[patientCount: Patient.count()]
     }
 
-    def show(Patient paciente) {
-        respond paciente
+    def show(Patient patient) {
+        respond patient
     }
 
     def create() {
@@ -22,73 +24,74 @@ class PatientController {
     }
 
     @Transactional
-    def save(Patient paciente) {
-        if (paciente == null) {
+    def save(Patient patient) {
+        if (patient == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
-
-        if (paciente.hasErrors()) {
+        patient.patientStatus = PatientStatus.findByCode("INCOMPLETE")
+        patient.validate()
+        if (patient.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond paciente.errors, view:'create'
+            respond patient.errors, view:'create'
             return
         }
 
-        paciente.save flush:true
+        patient.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
-                redirect paciente
+                flash.message = message(code: 'default.created.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+                redirect patient
             }
-            '*' { respond paciente, [status: CREATED] }
+            '*' { respond patient, [status: CREATED] }
         }
     }
 
-    def edit(Patient paciente) {
-        respond paciente
+    def edit(Patient patient) {
+        respond patient
     }
 
     @Transactional
-    def update(Patient paciente) {
-        if (paciente == null) {
+    def update(Patient patient) {
+        if (patient == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (paciente.hasErrors()) {
+        if (patient.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond paciente.errors, view:'edit'
+            respond patient.errors, view:'edit'
             return
         }
 
-        paciente.save flush:true
+        patient.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
-                redirect paciente
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+                redirect patient
             }
-            '*'{ respond paciente, [status: OK] }
+            '*'{ respond patient, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Patient paciente) {
+    def delete(Patient patient) {
 
-        if (paciente == null) {
+        if (patient == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        paciente.delete flush:true
+        patient.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'patient.label', default: 'Patient'), paciente.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

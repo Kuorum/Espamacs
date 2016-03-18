@@ -4,6 +4,7 @@ import espamacs.EspamacsUserRole
 import espamacs.Role
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
+import espamacs.type.PatientStatus
 
 class BootStrap {
 
@@ -13,6 +14,10 @@ class BootStrap {
 
         Centre ph = new Centre(name:"Puerta de hierro").save()
         Centre paz= new Centre(name: "La paz").save()
+
+        new PatientStatus(code:"INCOMPLETE").save()
+        new PatientStatus(code:"ACTIVE").save()
+        new PatientStatus(code:"INACTIVE").save()
 
         EspamacsUser user = new EspamacsUser("user", "test")
         user.centre = ph
@@ -30,6 +35,7 @@ class BootStrap {
 
         new CardiacCareType(code: "LONG").save()
         new CardiacCareType(code: "SHORT").save()
+
 
     }
     def destroy = {

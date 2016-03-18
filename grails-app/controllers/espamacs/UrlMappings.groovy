@@ -10,6 +10,7 @@ class UrlMappings {
         name usuarios: "/usuarios" (controller:"espamacsUser")
 
         name patientCreate: "/patient/create" (controller:"patient") {action=[GET:"create", POST:"save"]}
+        name patientEdit: "/patient/edit/$id" (controller:"patient") {action=[GET:"edit", POST:"update"]}
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
