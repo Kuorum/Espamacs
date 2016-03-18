@@ -24,5 +24,10 @@ if (typeof jQuery !== 'undefined') {
 
 $(function(){
 
-    $('.date-picker-popup').datepicker()
+    $('.date-picker-popup').datepicker({
+        format: 'dd/mm/yyyy',
+        language: "es",
+        autoclose: true,
+        todayHighlight: true
+    })
 })

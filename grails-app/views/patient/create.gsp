@@ -23,7 +23,7 @@
             </g:eachError>
         </ul>
         </g:hasErrors>
-        <g:form action="save">
+        <g:form mapping="patientCreate">
             <fieldset class="form-group">
                 <h4><g:message code="patient.create.step1.basicData"/> </h4>
                 <f:field bean="patient" property="initials"/>
