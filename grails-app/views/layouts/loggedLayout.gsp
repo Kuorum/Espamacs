@@ -44,6 +44,9 @@
                     </g:each>
                 </ul>
             </li>
+            <li>
+                <a href="/logoff"> Salir</a>
+            </li>
         </content>
 
         <div id="content" role="main">
