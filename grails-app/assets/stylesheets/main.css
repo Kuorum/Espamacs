@@ -179,6 +179,10 @@ img {
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
 
+.form-group h4{
+    margin-left: 5%;
+}
+
 fieldset,
 .property-list {
     margin: 0.6em 1.25em 0 1.25em;
@@ -196,13 +200,14 @@ fieldset,
 
 .fieldcontain {
     margin-top: 1em;
+    float:left;
 }
+
 
 .fieldcontain label,
 .fieldcontain .property-label {
     color: #666666;
-    text-align: right;
-    width: 25%;
+    width: 30%;
 }
 
 .fieldcontain .property-label {
@@ -212,6 +217,15 @@ fieldset,
 .fieldcontain .property-value {
     display: block;
     margin-left: 27%;
+}
+
+.fieldcontain.error .field-errors{
+    color:#cc0000;
+    width: 15em; /*Label width*/
+}
+.fieldcontain.error .field-errors ul{
+    padding:0;
+    margin: 0;
 }
 
 label {
@@ -225,6 +239,9 @@ input, select, textarea {
     border: 1px solid #cccccc;
     font-size: 1em;
     padding: 0.2em 0.4em;
+    border-radius: 4px;
+    width: 15em;
+    height: 2.3em;
 }
 
 select {
@@ -255,6 +272,12 @@ input:focus, select:focus, textarea:focus {
     -moz-box-shadow: 0 0 0.5em #ffffff;
     -webkit-box-shadow: 0 0 0.5em #ffffff;
     box-shadow: 0 0 0.5em #ffffff;
+}
+
+input.datepicker{
+    font-size: 1em;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
 }
 
 .required-indicator {
@@ -571,4 +594,16 @@ a.skip {
 img.grails-logo {
     height:340px;
     margin-top:-10px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .fieldcontain label,
+    .fieldcontain .property-label {
+        text-align: right;
+    }
+
+    .fieldcontain.error .field-errors{
+        margin-left: 30%;
+        color:#cc0000;
+    }
 }

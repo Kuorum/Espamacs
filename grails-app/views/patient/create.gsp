@@ -25,8 +25,19 @@
         </ul>
         </g:hasErrors>
         <g:form action="save">
-            <fieldset class="form">
-                <f:all bean="patient"/>
+            <fieldset class="form-group">
+                <h4>Datos del paciente</h4>
+                <f:field bean="patient" property="initials"/>
+                <f:field bean="patient" property="birthDate"/>
+                <f:field bean="patient" property="weigh"/>
+                <f:field bean="patient" property="height"/>
+                <f:field bean="patient" property="gender"/>
+            </fieldset>
+            <fieldset class="form-group two-columns">
+                <h4>Datos básicos del transplante</h4>
+                <f:field bean="patient" property="externalId"/>
+                <f:field bean="patient" property="centre"/>
+                <f:field bean="patient" property="cardiacCareType"/>
             </fieldset>
             <fieldset class="buttons">
                 <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

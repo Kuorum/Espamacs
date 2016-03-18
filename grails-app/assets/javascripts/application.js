@@ -7,6 +7,7 @@
 //
 //= require jquery-2.2.0.min
 //= require bootstrap
+//= require plugins/bootstrap-datepicker
 //= require_tree .
 //= require_self
 
@@ -19,3 +20,9 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
+
+
+$(function(){
+
+    $('.date-picker-popup').datepicker()
+})
