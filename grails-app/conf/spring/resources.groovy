@@ -10,7 +10,16 @@ beans = {
 
     doubleConverter(DoubleConverter)
     //ENUM DOMAIN CONVERTERS
-    genderConverter(DatabaseEnumConverter){domainClass=espamacs.type.Gender}
-    cardiacCareTypeConverter(DatabaseEnumConverter){domainClass=espamacs.type.CardiacCareType}
+    List<Class> enumDatabaseTypes = grailsApplication.getArtefacts("Domain")*.clazz
+            .findAll{it.superclass == espamacs.type.DatabaseEnumType}
+
+    enumDatabaseTypes.each{ enumClazz ->
+//    Class enumClazz = enumDatabaseTypes.first()
+        String converterName="${enumClazz.canonicalName}_converter"
+        log.info("Loading converter '${converterName}'")
+        "${converterName}"  (DatabaseEnumConverter) {
+            domainClass=enumClazz
+        }
+    }
 
 }

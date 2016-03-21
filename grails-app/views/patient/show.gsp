@@ -19,7 +19,7 @@
         <f:display bean="patient" />
         <g:form resource="${this.paciente}" method="DELETE">
             <fieldset class="buttons">
-                <g:link class="edit" mapping="patientEdit" params="[id:patient.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                <g:link class="edit" mapping="patientEdit" params="[patientId:patient.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                 <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
             </fieldset>
         </g:form>

@@ -9,7 +9,7 @@
     <div class="nav" role="navigation">
         <ul>
             <li><g:link class="list" action="index"><g:message code="patient.list.title"/></g:link></li>
-            <li><g:link class="edit" mapping="patientEdit" params="[id:patient.id]"><g:message code="default.edit.label" args="[patient.initials]"/></g:link></li>
+            <li><g:link class="edit" mapping="patientEdit" params="[patientId:patient.id]"><g:message code="default.edit.label" args="[patient.initials]"/></g:link></li>
         </ul>
     </div>
     <div id="create-paciente" class="content scaffold-create" role="main">
@@ -24,7 +24,9 @@
                 </g:eachError>
             </ul>
         </g:hasErrors>
-        <g:form mapping="patientPersonalHistory" params="[id:patient.id]">
+        <g:form mapping="patientPersonalHistory" params="[patientId:patient.id]">
+            <g:hiddenField name="id" value="${patient.personalHistory?.id}"/>
+            <input type="hidden" name="patient.id" value="${patient?.id}"/>
             <fieldset class="form-group">
                 <f:field bean="personalHistory" property="smoker"/>
                 <f:field bean="personalHistory" property="hypertensive"/>

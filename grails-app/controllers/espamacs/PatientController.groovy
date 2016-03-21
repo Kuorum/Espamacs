@@ -50,7 +50,8 @@ class PatientController {
         }
     }
 
-    def edit(Patient patient) {
+    def edit() {
+        Patient patient = Patient.get(params.patientId)
         respond patient
     }
 
@@ -99,13 +100,37 @@ class PatientController {
         }
     }
 
-    def editPersonalHistory(Patient patient) {
+    def editPersonalHistory() {
+        Patient patient = Patient.get(params.patientId)
         PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
         respond personalHistory, model:[patient:patient]
     }
 
-    def savePersonalHistory(Patient patient, PersonalHistory personalHistory) {
-        respond new Patient(params)
+    @Transactional
+    def savePersonalHistory(PersonalHistory personalHistory) {
+        Patient patient = Patient.get(params.patientId)
+        if (personalHistory == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+        if (personalHistory.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond personalHistory.errors, model:[patient:patient] ,view:'editPersonalHistory'
+            return
+        }
+
+        personalHistory.save flush:true
+        patient.personalHistory = personalHistory
+        patient.save flush: true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+                redirect patient
+            }
+            '*'{ respond patient, [status: OK] }
+        }
     }
 
     protected void notFound() {

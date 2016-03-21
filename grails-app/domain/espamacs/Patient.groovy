@@ -17,6 +17,7 @@ class Patient {
     Centre centre;
     String externalId
     CardiacCareType cardiacCareType
+
     PersonalHistory personalHistory
 
     static constraints = {

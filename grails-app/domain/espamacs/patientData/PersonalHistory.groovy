@@ -1,5 +1,6 @@
 package espamacs.patientData
 
+import espamacs.Patient
 import espamacs.type.patientData.DiabeticType
 import espamacs.type.patientData.DisplemiaType
 import espamacs.type.patientData.DrinkerType
@@ -14,6 +15,7 @@ import espamacs.type.patientData.SocialCareType
 
 class PersonalHistory {
 
+    Patient patient
     SmokerType smoker;
     HypertensiveType hypertensive;
     DiabeticType diabetic;
@@ -27,6 +29,8 @@ class PersonalHistory {
     List<PreCardiacSurgery> preCardiacSurgeries;
 
     static hasMany = [preCardiacSurgeries: PreCardiacSurgery]
+
+    static belongsTo = [patient: Patient]
 
     static constraints = {
 
