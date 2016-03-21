@@ -38,11 +38,54 @@
                 <f:field bean="personalHistory" property="intravenouslyDrugs"/>
                 <f:field bean="personalHistory" property="severeMentalRetardation"/>
                 <f:field bean="personalHistory" property="socialCareType"/>
+                <f:field bean="personalHistory" property="preCardiacSurgeries" templates="multiCheck"/>
+
             </fieldset>
 
             <fieldset class="form-group">
-                <f:field bean="personalHistory" property="preCardiacSurgeries" templates="multiCheck" input-domainList="${espamacs.type.patientData.PreCardiacSurgery.list()}"/>
+                <h4><g:message code="patient.create.step2.patientHistory.renal.title"/></h4>
+                <f:field bean="personalHistory" property="renal.baselineCreatinine"/>
+                <f:field bean="personalHistory" property="renal.renalReplacementTherapy"/>
             </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.respiratory.title"/></h4>
+                <f:field bean="personalHistory" property="respiratory.severeLungDisease"/>
+                <f:field bean="personalHistory" property="respiratory.primaryPulmonaryHypertension"/>
+                <f:field bean="personalHistory" property="respiratory.pulmonaryEmbolism"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.gastric.title"/></h4>
+                <f:field bean="personalHistory" property="gastric.gastricUlcer"/>
+                <f:field bean="personalHistory" property="gastric.hepatitis"/>
+                <f:field bean="personalHistory" property="gastric.cirrhosis"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.vascular.title"/></h4>
+                <f:field bean="personalHistory" property="vascular.aortaPathology"/>
+                <f:field bean="personalHistory" property="vascular.peripheralVascularDisease"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.centralNervousSystem.title"/></h4>
+                <f:field bean="personalHistory" property="centralNervousSystem.stroke"/>
+                <f:field bean="personalHistory" property="centralNervousSystem.transientIschemicAttack"/>
+                <f:field bean="personalHistory" property="centralNervousSystem.brainHemorrhage"/>
+                <f:field bean="personalHistory" property="centralNervousSystem.severeNeurologicalDisease"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.endocrineHematologicSystem.title"/></h4>
+                <f:field bean="personalHistory" property="respiratory.severeLungDisease"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.oncologicInfectious.title"/></h4>
+                <f:field bean="personalHistory" property="respiratory.severeLungDisease"/>
+            </fieldset>
+
 
             <fieldset class="buttons">
                 <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

@@ -28,9 +28,20 @@ class PersonalHistory {
     SocialCareType socialCareType;
     List<PreCardiacSurgery> preCardiacSurgeries;
 
-    static hasMany = [preCardiacSurgeries: PreCardiacSurgery]
+    Renal renal
+    Respiratory respiratory
+    Gastric gastric
+    Vascular vascular
+    CentralNervousSystem centralNervousSystem
+//    EndocrineHematologicSystem endocrineHematologicSystem
+//    OncologicInfectious oncologicInfectious
 
     static belongsTo = [patient: Patient]
+    static hasMany = [preCardiacSurgeries: PreCardiacSurgery]
+
+//    static embedded = ['renal', 'respiratory','gastric','vascular','centralNervousSystem', 'endocrineHematologicSystem','oncologicInfectious']
+    static embedded = ['renal', 'respiratory']
+
 
     static constraints = {
 

@@ -6,17 +6,26 @@ import espamacs.Role
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
+import espamacs.type.patientData.AortaPathology
+import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.DiabeticType
 import espamacs.type.patientData.DisplemiaType
 import espamacs.type.patientData.DrinkerType
+import espamacs.type.patientData.Hepatitis
 import espamacs.type.patientData.HypertensiveType
 import espamacs.type.patientData.IntravenouslyDrugsType
 import espamacs.type.patientData.MalnutritionType
 import espamacs.type.patientData.ObeseType
+import espamacs.type.patientData.PeripheralVascularDisease
 import espamacs.type.patientData.PreCardiacSurgery
+import espamacs.type.patientData.PrimaryPulmonaryHypertension
+import espamacs.type.patientData.PulmonaryEmbolism
+import espamacs.type.patientData.RenalReplacementTherapy
 import espamacs.type.patientData.SevereMentalRetardationType
 import espamacs.type.patientData.SmokerType
 import espamacs.type.patientData.SocialCareType
+import espamacs.type.patientData.Stroke
+import espamacs.type.patientData.TransientIschemicAttack
 
 class BootStrap {
 
@@ -90,6 +99,47 @@ class BootStrap {
         new PreCardiacSurgery(code: "OTHER").save()
 
 
+        new RenalReplacementTherapy(code:"NO").save()
+        new RenalReplacementTherapy(code:"PERITONEAL_DIALYSIS").save()
+        new RenalReplacementTherapy(code:"HEMODIALYSIS").save()
+        new RenalReplacementTherapy(code:"KIDNEY_TRANSPLANT").save()
+
+        new PrimaryPulmonaryHypertension(code:"NO").save()
+        new PrimaryPulmonaryHypertension(code:"SOFT").save()
+        new PrimaryPulmonaryHypertension(code:"MODERATE").save()
+        new PrimaryPulmonaryHypertension(code:"SEVERE").save()
+
+        new PulmonaryEmbolism(code: "NO").save()
+        new PulmonaryEmbolism(code: "LESS_ONE_YEAR").save()
+        new PulmonaryEmbolism(code: "MORE_ONE_YEAR").save()
+
+        new Hepatitis(code:"NO").save()
+        new Hepatitis(code:"VHB-HEALED").save()
+        new Hepatitis(code:"VHC-HEALED").save()
+        new Hepatitis(code:"VHB-CHRONIC").save()
+        new Hepatitis(code:"VHC-CHRONIC").save()
+
+        new AortaPathology(code: "NO").save()
+        new AortaPathology(code: "THORACIC").save()
+        new AortaPathology(code: "ABDOMINAL").save()
+        new AortaPathology(code: "THORACIC_ABDOMINAL").save()
+
+        new PeripheralVascularDisease(code:"NO").save()
+        new PeripheralVascularDisease(code:"CAROTID_AXIS").save()
+        new PeripheralVascularDisease(code:"ILIOFEMORAL_AXIS").save()
+        new PeripheralVascularDisease(code:"MULTI_TERRITORY").save()
+
+        new Stroke(code: "NO").save()
+        new Stroke(code: "YES_AFTERMATH").save()
+        new Stroke(code: "YES_HEALED").save()
+
+        new TransientIschemicAttack(code: "NO").save()
+        new TransientIschemicAttack(code: "LESS_ONE_YEAR").save()
+        new TransientIschemicAttack(code: "MORE_ONE_YEAR").save()
+
+        new BrainHemorrhage(code: "NO").save()
+        new BrainHemorrhage(code: "LESS_SIX_MONTHS").save()
+        new BrainHemorrhage(code: "MORE_SIX_MONTHS").save()
 
 
         /// TEST USERS
