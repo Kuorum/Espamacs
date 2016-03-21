@@ -33,5 +33,3 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 
 grails.databinding.dateFormats=["dd/MM/yyyy"]
-
-

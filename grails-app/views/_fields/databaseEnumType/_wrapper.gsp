@@ -8,7 +8,7 @@
             from="${persistentProperty.type.list()}"
             optionKey="code"
             valueMessagePrefix="${type.name}"
-            value="${value.code}"
+            value="${value?.code}"
             name="${property}"/>
     <div class="field-errors">
         <g:hasErrors bean="${bean}" field="${property}">

@@ -6,7 +6,7 @@ class DatabaseEnumType {
     String code;
 
     static mapping = {
-        tablePerHierarchy false
+//        tablePerHierarchy false
     }
 
     static constraints = {
