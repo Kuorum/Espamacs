@@ -32,7 +32,7 @@
                 <f:field bean="patient" property="height"/>
                 <f:field bean="patient" property="gender"/>
             </fieldset>
-            <fieldset class="form-group two-columns">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step1.basicCardiacCareAssistance"/></h4>
                 <f:field bean="patient" property="externalId"/>
                 <f:field bean="patient" property="centre"/>

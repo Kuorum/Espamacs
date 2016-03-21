@@ -1,7 +1,7 @@
 
 <g:set var="error" value="${hasErrors(bean: bean, field: property,'error')}"/>
 
-<div class="fieldcontain ${error?'error':''} col-lg-6">
+<div class="fieldcontain ${error?'error':''} col-lg-4 col-md-6 col-sm-12">
 
     <label for="${property}"><g:message code="${bean.class.name}.${property}" default="${label}"/></label>
     <g:select

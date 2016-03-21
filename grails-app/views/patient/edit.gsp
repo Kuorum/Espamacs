@@ -26,8 +26,19 @@
         </g:hasErrors>
         <g:form resource="${this.paciente}" method="PUT">
             <g:hiddenField name="version" value="${this.paciente?.version}" />
-            <fieldset class="form">
-                <f:all bean="patient"/>
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step1.basicData"/> </h4>
+                <f:field bean="patient" property="initials"/>
+                <f:field bean="patient" property="birthDate"/>
+                <f:field bean="patient" property="weigh"/>
+                <f:field bean="patient" property="height"/>
+                <f:field bean="patient" property="gender"/>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step1.basicCardiacCareAssistance"/></h4>
+                <f:field bean="patient" property="externalId"/>
+                <f:field bean="patient" property="centre"/>
+                <f:field bean="patient" property="cardiacCareType"/>
             </fieldset>
             <fieldset class="buttons">
                 <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

@@ -1,5 +1,6 @@
 package espamacs
 
+import espamacs.patientData.PersonalHistory
 import espamacs.type.PatientStatus
 
 import static org.springframework.http.HttpStatus.*
@@ -96,6 +97,15 @@ class PatientController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    def editPersonalHistory(Patient patient) {
+        PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
+        respond personalHistory, model:[patient:patient]
+    }
+
+    def savePersonalHistory(Patient patient, PersonalHistory personalHistory) {
+        respond new Patient(params)
     }
 
     protected void notFound() {

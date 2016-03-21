@@ -1,3 +1,5 @@
+if (typeof jQuery !== 'undefined') {
+
 // This is a manifest file that'll be compiled into application.js.
 //
 // Any JavaScript file within this directory can be referenced here using a relative path.
@@ -8,10 +10,10 @@
 //= require jquery-2.2.0.min
 //= require bootstrap
 //= require plugins/bootstrap-datepicker
+//= require plugins/bootstrap-datepicker-i18n
 //= require_tree .
 //= require_self
 
-if (typeof jQuery !== 'undefined') {
     (function($) {
         $('#spinner').ajaxStart(function() {
             $(this).fadeIn();
@@ -25,7 +27,6 @@ if (typeof jQuery !== 'undefined') {
 $(function(){
 
     $('.date-picker-popup').datepicker({
-        format: 'dd/mm/yyyy',
         language: "es",
         autoclose: true,
         todayHighlight: true
