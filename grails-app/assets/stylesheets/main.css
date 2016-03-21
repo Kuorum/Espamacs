@@ -267,6 +267,12 @@ input[type=checkbox], input[type=radio] {
     background-color: transparent;
     border: 0;
     padding: 0;
+    height: initial;
+    width: initial;
+}
+
+.checkbox-inline input[type=checkbox]{
+    margin: 5px 0 0 0 ;
 }
 
 input:focus, select:focus, textarea:focus {
