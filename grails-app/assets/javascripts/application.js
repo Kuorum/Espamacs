@@ -11,6 +11,7 @@ if (typeof jQuery !== 'undefined') {
 //= require bootstrap
 //= require plugins/bootstrap-datepicker
 //= require plugins/bootstrap-datepicker-i18n
+//= require plugins/jquery.noty.packaged.min
 //= require_tree .
 //= require_self
 
@@ -32,3 +33,31 @@ $(function(){
         todayHighlight: true
     })
 })
+
+
+
+var display = {
+    error:function(text){this._notyGeneric(text, "error", "top")},
+    success:function(text){this._notyGeneric(text, "success", "top")},
+    info:function(text){this._notyGeneric(text, "information", "top")},
+    warn:function(text){this._notyGeneric(text, "warning", "top")},
+
+    _notyGeneric:function(text, type, notyLayout) {
+        var htmlText = $.parseHTML(text)
+        var nW = noty({
+            layout: notyLayout,
+            dismissQueue: true,
+            animation: {
+                open: {height: 'toggle'},
+                close: {height: 'toggle'},
+                easing: 'swing',
+                speed: 500 // opening & closing animation speed
+            },
+            template: '<div class="noty_message" role="alert"><span class="noty_text"></span><div class="noty_close"></div></div>',
+            type: type,
+            text: htmlText
+        });
+    }
+}
+
+

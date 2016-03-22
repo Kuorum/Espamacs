@@ -4,22 +4,18 @@
     <g:set var="entityName" value="${message(code: 'centre.label', default: 'Centre')}" />
     <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
-<content tag="mainContent">
-    <a href="#list-centro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-    <div class="nav" role="navigation">
-        <ul>
-            <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        </ul>
-    </div>
-    <div id="list-centro" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-        <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
-        <f:table collection="${centroList}" />
 
-        <div class="pagination">
-            <g:paginate total="${centroCount ?: 0}" />
-        </div>
+<content tag="breadcrumb">
+    <ul>
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+    </ul>
+</content>
+
+<content tag="mainContent">
+    <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+    <f:table collection="${centreList}" />
+
+    <div class="pagination">
+        <g:paginate total="${centreCount ?: 0}" />
     </div>
 </content>
