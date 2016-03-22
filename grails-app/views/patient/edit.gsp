@@ -20,8 +20,8 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form resource="${this.paciente}" method="PUT">
-        <g:hiddenField name="id" value="${this.patient?.id}"
+    <g:form mapping="patientEdit" params="[patientId: patient.id]" method="POST">
+        <g:hiddenField name="id" value="${this.patient?.id}"/>
         <g:hiddenField name="version" value="${this.paciente?.version}" />
         <fieldset class="form-group">
             <h4><g:message code="patient.create.step1.basicData"/> </h4>
