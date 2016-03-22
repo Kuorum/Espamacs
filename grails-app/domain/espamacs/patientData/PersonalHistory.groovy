@@ -33,14 +33,13 @@ class PersonalHistory {
     Gastric gastric
     Vascular vascular
     CentralNervousSystem centralNervousSystem
-//    EndocrineHematologicSystem endocrineHematologicSystem
-//    OncologicInfectious oncologicInfectious
+    EndocrineHematologicSystem endocrineHematologicSystem
+    OncologicInfectious oncologicInfectious
 
     static belongsTo = [patient: Patient]
     static hasMany = [preCardiacSurgeries: PreCardiacSurgery]
 
-//    static embedded = ['renal', 'respiratory','gastric','vascular','centralNervousSystem', 'endocrineHematologicSystem','oncologicInfectious']
-    static embedded = ['renal', 'respiratory']
+    static embedded = ['renal', 'respiratory','gastric','vascular','centralNervousSystem', 'endocrineHematologicSystem','oncologicInfectious']
 
 
     static constraints = {

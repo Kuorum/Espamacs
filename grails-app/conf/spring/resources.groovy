@@ -1,3 +1,4 @@
+import espamacs.binding.converters.BooleanConverter
 import espamacs.binding.converters.DatabaseEnumConverter
 import espamacs.binding.converters.DoubleConverter
 import espamacs.security.EspamacsUserDetailsService

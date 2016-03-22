@@ -2,10 +2,7 @@ package espamacs.type.patientData
 
 import espamacs.type.DatabaseEnumType
 
-/**
- * ES => ACVA: Accidente cerebrovascular
- */
-class Stroke extends DatabaseEnumType{
+class MalignantTumor extends DatabaseEnumType{
 
     static constraints = {
     }

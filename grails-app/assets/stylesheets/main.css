@@ -188,6 +188,16 @@ fieldset,
     border: none;
 }
 
+fieldset.box{
+    background-color: #efefef;
+    box-shadow: 0 0 3px 1px #aaaaaa;
+}
+fieldset.box > h4{
+    width: 100%;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 0.5em 0;
+}
+
 .property-list .fieldcontain {
     list-style: none;
     overflow: hidden;
@@ -201,8 +211,12 @@ fieldset,
 .fieldcontain label,
 .fieldcontain .property-label {
     color: #666666;
-    text-align: right;
+    width: 100%;
+}
+
+.fieldcontain.checkbox-inline label{
     width: 11em;
+    text-align: right;
 }
 
 .fieldcontain .property-label {
@@ -218,6 +232,7 @@ fieldset,
     color:#cc0000;
     width: 15em; /*Label width*/
     padding-left:0.4em;
+    margin-left: 11em;
 }
 .fieldcontain.error .field-errors ul{
     padding:0;

@@ -8,12 +8,15 @@ import espamacs.type.Gender
 import espamacs.type.PatientStatus
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
+import espamacs.type.patientData.ChronicAnemia
 import espamacs.type.patientData.DiabeticType
 import espamacs.type.patientData.DisplemiaType
 import espamacs.type.patientData.DrinkerType
 import espamacs.type.patientData.Hepatitis
 import espamacs.type.patientData.HypertensiveType
 import espamacs.type.patientData.IntravenouslyDrugsType
+import espamacs.type.patientData.Leukemia
+import espamacs.type.patientData.MalignantTumor
 import espamacs.type.patientData.MalnutritionType
 import espamacs.type.patientData.ObeseType
 import espamacs.type.patientData.PeripheralVascularDisease
@@ -25,6 +28,7 @@ import espamacs.type.patientData.SevereMentalRetardationType
 import espamacs.type.patientData.SmokerType
 import espamacs.type.patientData.SocialCareType
 import espamacs.type.patientData.Stroke
+import espamacs.type.patientData.ThyroidDisorders
 import espamacs.type.patientData.TransientIschemicAttack
 
 class BootStrap {
@@ -140,6 +144,23 @@ class BootStrap {
         new BrainHemorrhage(code: "NO").save()
         new BrainHemorrhage(code: "LESS_SIX_MONTHS").save()
         new BrainHemorrhage(code: "MORE_SIX_MONTHS").save()
+
+        new ThyroidDisorders(code: "NO").save()
+        new ThyroidDisorders(code: "YES_HYPERTHYROIDISM").save()
+        new ThyroidDisorders(code: "YES_HYPOTHYROIDISM").save()
+        new ThyroidDisorders(code: "YES_OTHERS").save()
+
+        new ChronicAnemia(code: "NO").save()
+        new ChronicAnemia(code: "YES_NO_TREATEMENT").save()
+        new ChronicAnemia(code: "YES_TREATEMENT").save()
+
+        new MalignantTumor(code: "NO").save()
+        new MalignantTumor(code: "YES_MORE_5_YEARS").save()
+        new MalignantTumor(code: "YES_LESS_5_YEARS").save()
+
+        new Leukemia(code: "NO").save()
+        new Leukemia(code: "YES_MORE_5_YEARS").save()
+        new Leukemia(code: "YES_LESS_5_YEARS").save()
 
 
         /// TEST USERS
