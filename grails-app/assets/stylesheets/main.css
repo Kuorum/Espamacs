@@ -188,11 +188,11 @@ fieldset,
     border: none;
 }
 
-fieldset.box{
+fieldset.form-group{
     background-color: #efefef;
     box-shadow: 0 0 3px 1px #aaaaaa;
 }
-fieldset.box > h4{
+fieldset.form-group > h4{
     width: 100%;
     border-bottom: 1px solid #aaaaaa;
     padding: 0.5em 0;
@@ -214,9 +214,16 @@ fieldset.box > h4{
     width: 100%;
 }
 
-.fieldcontain.checkbox-inline label{
+
+.fieldcontain.checkbox-inline{
+    width: 100%;
+    padding-right: 2em;
+}
+
+.fieldcontain.checkbox-inline label, .fieldcontain label.label-checkbox{
     width: 11em;
     text-align: right;
+    font-weight: normal;
 }
 
 .fieldcontain .property-label {
@@ -230,9 +237,7 @@ fieldset.box > h4{
 
 .fieldcontain.error .field-errors{
     color:#cc0000;
-    width: 15em; /*Label width*/
     padding-left:0.4em;
-    margin-left: 11em;
 }
 .fieldcontain.error .field-errors ul{
     padding:0;
@@ -241,11 +246,23 @@ fieldset.box > h4{
 .fieldcontain.error .field-errors ul li{
     list-style: none;
 }
+.fieldcontain abbr{
+    border-bottom: none;
+}
 
 label {
     cursor: pointer;
     display: inline-block;
     margin: 0 0.25em 0 0;
+}
+
+.fieldcontain.checkbox label{
+    padding:0px;
+    font-weight:bold ;
+    margin-top:1.3em;
+}
+.fieldcontain.checkbox input[type=checkbox]{
+    margin: 0.45em;
 }
 
 input, select, textarea {
@@ -254,7 +271,8 @@ input, select, textarea {
     font-size: 1em;
     padding: 0.2em 0.4em;
     border-radius: 4px;
-    width: 10em;
+    width: 100%;
+    height: 2em;
 }
 
 select {
@@ -279,9 +297,18 @@ input[type=checkbox], input[type=radio] {
     height: initial;
     width: initial;
 }
+.checkbox-inline{
+    box-shadow: 0 0 3px 1px #ddd;
+    padding: 1em;
+}
 
 .checkbox-inline input[type=checkbox]{
     margin: 5px 0 0 5px ;
+}
+
+.checkbox-inline h4{
+    color:rgb(102, 102, 102);
+    margin-bottom: 0.5em;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -559,6 +586,7 @@ th:hover, tr:hover {
     -moz-border-radius: 0.3em;
     -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
+    width: auto;
 }
 
 .buttons input:hover, .buttons input:focus,

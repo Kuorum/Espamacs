@@ -27,7 +27,8 @@
         <g:form mapping="patientPersonalHistory" params="[patientId:patient.id]">
             <g:hiddenField name="id" value="${patient.personalHistory?.id}"/>
             <input type="hidden" name="patient.id" value="${patient?.id}"/>
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
+                <h4><g:message code="patient.create.step2.patientHistory.basic.title"/></h4>
                 <f:field bean="personalHistory" property="smoker"/>
                 <f:field bean="personalHistory" property="hypertensive"/>
                 <f:field bean="personalHistory" property="diabetic"/>
@@ -42,33 +43,33 @@
 
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.renal.title"/></h4>
                 <f:field bean="personalHistory" property="renal.baselineCreatinine"/>
                 <f:field bean="personalHistory" property="renal.renalReplacementTherapy"/>
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.respiratory.title"/></h4>
                 <f:field bean="personalHistory" property="respiratory.severeLungDisease"/>
                 <f:field bean="personalHistory" property="respiratory.primaryPulmonaryHypertension"/>
                 <f:field bean="personalHistory" property="respiratory.pulmonaryEmbolism"/>
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.gastric.title"/></h4>
                 <f:field bean="personalHistory" property="gastric.gastricUlcer"/>
                 <f:field bean="personalHistory" property="gastric.hepatitis"/>
                 <f:field bean="personalHistory" property="gastric.cirrhosis"/>
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.vascular.title"/></h4>
                 <f:field bean="personalHistory" property="vascular.aortaPathology"/>
                 <f:field bean="personalHistory" property="vascular.peripheralVascularDisease"/>
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.centralNervousSystem.title"/></h4>
                 <f:field bean="personalHistory" property="centralNervousSystem.stroke"/>
                 <f:field bean="personalHistory" property="centralNervousSystem.transientIschemicAttack"/>
@@ -76,7 +77,7 @@
                 <f:field bean="personalHistory" property="centralNervousSystem.severeNeurologicalDisease"/>
             </fieldset>
 
-            <fieldset class="form-group box">
+            <fieldset class="form-group">
                 <h4><g:message code="patient.create.step2.patientHistory.endocrineHematologicSystem.title"/></h4>
                 <f:field bean="personalHistory" property="endocrineHematologicSystem.thyroidDisorders"/>
                 <f:field bean="personalHistory" property="endocrineHematologicSystem.chronicAnemia"/>
