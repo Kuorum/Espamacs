@@ -1,5 +1,6 @@
 package espamacs
 
+import espamacs.baselineConditions.BaselineCondition
 import espamacs.patientData.PersonalHistory
 import espamacs.type.PatientStatus
 
@@ -131,6 +132,17 @@ class PatientController {
             }
             '*'{ respond patient, [status: OK] }
         }
+    }
+
+    def editBaselineCondition() {
+        Patient patient = Patient.get(params.patientId)
+        BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
+        respond baselineCondition, model:[patient:patient]
+    }
+
+    @Transactional
+    def saveBaselineCondition(PersonalHistory personalHistory) {
+
     }
 
     protected void notFound() {

@@ -12,25 +12,9 @@
 </content>
 
 <content tag="actions">
-    <div class="dropdown">
-        <a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            Dropdown Example
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
-    </div>
+    <g:link mapping="patientCreate" class="btn btn-primary" type="button">
+        <g:message code="patient.navigation.create"/>
+    </g:link>
 </content>
 
 <content tag="mainContent">

@@ -1,5 +1,6 @@
 package espamacs
 
+import espamacs.baselineConditions.BaselineCondition
 import espamacs.patientData.PersonalHistory
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
@@ -19,6 +20,7 @@ class Patient {
     CardiacCareType cardiacCareType
 
     PersonalHistory personalHistory
+    BaselineCondition baselineCondition
 
     static constraints = {
         patientStatus nullable: false
@@ -26,5 +28,6 @@ class Patient {
         centre nullable: false
 
         personalHistory nullable:true
+        baselineCondition nullable: true
     }
 }

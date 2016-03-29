@@ -38,10 +38,6 @@ body {
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 }
 
-#grailsLogo {
-    background-color: #abbf78;
-}
-
 a:hover, a:active {
     outline: none; /* prevents outline in webkit on active links but retains it for tab focus */
 }
@@ -61,11 +57,6 @@ img {
 }
 
 /* GENERAL */
-
-#grailsLogo a {
-    display: inline-block;
-    margin: 1em;
-}
 
 .content {
 }
@@ -202,7 +193,7 @@ img {
 
 .action a { }
 .action ul {  }
-.action ul li{  }
+.action .dropdown > ul > li{  width: 100%;}
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
 
