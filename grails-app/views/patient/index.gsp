@@ -6,8 +6,31 @@
 
 <content tag="breadcrumb">
     <ul>
-        <li><g:link class="list" action="index"><g:message code="patient.list.title"/></g:link></li>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:message code="patient.list.title"/></li>
     </ul>
+</content>
+
+<content tag="actions">
+    <div class="dropdown">
+        <a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Dropdown Example
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">JavaScript</a></li>
+        </ul>
+    </div>
 </content>
 
 <content tag="mainContent">

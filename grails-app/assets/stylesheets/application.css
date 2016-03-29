@@ -9,9 +9,9 @@
 *
 *= require bootstrap
 *= require plugins/datepicker
-*= require grails
 *= require font-awesome/css/font-awesome.min
 *= require main
+*= require espamacs
 *= require mobile
 *= require_self
 */

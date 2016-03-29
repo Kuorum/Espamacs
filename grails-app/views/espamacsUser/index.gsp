@@ -7,7 +7,7 @@
 
 <content tag="breadcrumb">
     <ul>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
     </ul>
 </content>
 

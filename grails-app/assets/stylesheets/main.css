@@ -36,9 +36,6 @@ body {
     background: #ffffff;
     color: #333333;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-    -moz-box-shadow: 0 0 0.3em #4D8618;
-    -webkit-box-shadow: 0 0 0.3em #4D8618;
-    box-shadow: 0 0 0.3em #4D8618;
 }
 
 #grailsLogo {
@@ -84,7 +81,7 @@ img {
 }
 
 .footer {
-    background: #48802c;
+    background: #AD0202;
     color: #000;
     clear: both;
     font-size: 0.8em;
@@ -177,6 +174,36 @@ img {
     background-color: #4D8618;
 }
 
+.nav.page-navigation{
+    background-color: #efefef;
+    padding: 0.3em;
+    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
+    box-shadow: 0 0 3px 1px #aaaaaa;
+    margin: 1em 0 0 0;
+    border: none;
+}
+
+
+.breadcrumb, .action {padding: 8px 15px; margin: 0; background: none; }
+
+.breadcrumb ul {margin:0;}
+.breadcrumb ul li{display: flex; padding:0;}
+.breadcrumb ul li a{padding: 0 0.5em}
+.breadcrumb ul li:before{
+    /*list-style: "\f105";*/
+    content: "\f105"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    margin-right: 0.5em;
+}
+
+
+.action .btn, .nav .action .dropdown { display: inline; margin-left: 10px; float:right;}
+
+.action a { }
+.action ul {  }
+.action ul li{  }
+
 /* CREATE/EDIT FORMS AND SHOW PAGES */
 
 fieldset,
@@ -208,8 +235,12 @@ fieldset.form-group > h4{
     margin-top: 1em;
 }
 
-.fieldcontain label,
+
 .fieldcontain .property-label {
+    color: #666666;
+}
+
+.fieldcontain label{
     color: #666666;
     width: 100%;
 }
@@ -569,6 +600,7 @@ th:hover, tr:hover {
     box-shadow: 0 0 3px 1px #aaaaaa;
     margin: 0.1em 0 0 0;
     border: none;
+    text-align: right;
 }
 
 .buttons input,

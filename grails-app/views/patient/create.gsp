@@ -6,7 +6,9 @@
 
 <content tag="breadcrumb">
     <ul>
-        <li><g:link class="list" action="index"><g:message code="patient.list.title"/></g:link></li>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:link mapping="patientList"><g:message code="patient.list.title"/></g:link></li>
+        <li><g:message code="patient.list.title"/></li>
     </ul>
 </content>
 

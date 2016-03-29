@@ -44,7 +44,7 @@ pre {
 
 }
 .navbar-default, .navbar-static-top {
-    background-color: #4D8618;
+    background-color: #AD0202;
     border: 0px;
 }
 a.navbar-brand {
@@ -59,7 +59,7 @@ a.navbar-brand {
     color: white !important;
 }
 .navbar-nav>li>a:hover {
-    background-color: #db4800 !important;
+    background-color: #F90303 !important;
     color: white !important;
 }
 .navbar-nav>li>a {
@@ -69,7 +69,7 @@ a.navbar-brand {
     background-color: white;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #db4800;
+    background-color: #F90303;
 }
 
 @media (min-width: 768px) {
@@ -88,41 +88,6 @@ a.navbar-brand {
     .navbar {
         padding-right: 0px;
     }
-}
-
-#fork-me{
-    position: fixed;
-    padding: 0px 50px 0px 50px;
-    top: 40px;
-    right: -60px;
-    background-color: #a60000;
-    color: #ffffff;
-    font-size: 1em;
-    z-index: 100;
-    transform: rotate(+45deg);
-    text-align: center;
-    font-weight: bolder;
-    border: #c14646;
-    border-style: dashed;
-    border-width: 1px;
-}
-
-#fork-me p {
-    margin: 0em 0;
-}
-
-#band {
-    /*grey =#808080*/
-    background: #79B94C  no-repeat 50% 30%;
-    height: 400px;
-}
-
-.svg #band {
-    background-image: url(../img/grails-cupsonly-logo-white.svg);
-}
-
-.no-svg #band {
-    background-image: url(../img/groovy-logo-white.png);
 }
 
 @media (max-width: 1010px) {
@@ -144,19 +109,6 @@ a.navbar-brand {
         background-size: 70%;
         height: 100px;
     }
-}
-
-#they-use-groovy {
-    width: 100%;
-    height: 450px;
-    background-color: #db4800;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#they-use-groovy .item {
-    text-align: center;
-    color: white;
 }
 
 #logos-holder {
@@ -297,6 +249,18 @@ code, kbd, pre, samp {
     font-family: "Source Code Pro", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }
 
+
+.nav.page-navigation .btn-primary {
+    color: #fff;
+    background-color: #AD0202;
+    border-color: #7A0101;
+}
+
+.nav.page-navigation .btn-primary:hover {background-color: #F90303;}
+
+.nav.page-navigation .open .btn-primary:hover{ background-color: #F90303;}
+.nav.page-navigation .open .btn-primary{ background-color: #F90303;}
+
 #contribute-btn {
     position: absolute;
     right: 15px;
@@ -323,21 +287,6 @@ code, kbd, pre, samp {
     }
 }
 
-#big-download-button {
-    float: right;
-    font-size: 30px;
-    padding: 15px;
-    margin: 10px 0px 10px 20px;
-    border: 2px solid #db4800;
-    border-radius: 6px;
-    background-color: #db4800;
-    color: white;
-}
-
-#big-download-button:hover {
-    background-color: #e6e6e6;
-    color: #db4800;
-}
 
 .colset-3-footer .col-1, .colset-3-footer .col-2, .colset-3-footer .col-3 {
     min-width: 180px;
@@ -373,7 +322,7 @@ body, html {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
-    background: #FFF;
+    background: #EEEEEE;
     color: #343437;
     line-height: 25px;
     font-weight: normal;
@@ -381,12 +330,12 @@ body, html {
 }
 
 a {
-    color: #db4800;
+    color: #F90303;
     text-decoration: underline;
 }
 
 a:hover {
-    color: #db4800;
+    color: #F90303;
     text-decoration: none
 }
 
@@ -413,13 +362,13 @@ h4 {
 h5 {
     font-size: 1.125em;
     font-weight: bold;
-    color: #db4800;
+    color: #F90303;
 }
 
 h6 {
     font-size: 1.08em;
     font-weight: normal;
-    color: #db4800;
+    color: #F90303;
 }
 
 h7 {
@@ -501,7 +450,7 @@ h8 {
 }
 
 #footer .second a {
-    color: #db4800
+    color: #F90303
 }
 
 .row {
@@ -541,7 +490,7 @@ h8 {
 }
 
 #content {
-    background: white
+    background: #FFFFFF;
 }
 
 #content .row:before, #content .row:after {
@@ -722,7 +671,7 @@ h8 {
 }
 
 #content .colset-3-article article .author a {
-    color: #db4800
+    color: #F90303
 }
 
 #content .colset-3-article article:first-child {
@@ -792,7 +741,7 @@ ul.nav-sidebar li a {
 
 ul.nav-sidebar li.active a:hover, ul.nav-sidebar li a:hover {
     color: white;
-    background-color: #db4800;
+    background-color: #F90303;
 }
 
 ul.nav-sidebar li.active a {
@@ -822,7 +771,7 @@ ul.nav-sidebar li.active a {
 }
 
 body {
-    background: #444
+    background: #ffffff
 }
 
 html.noScroll {
