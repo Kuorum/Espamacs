@@ -34,6 +34,13 @@
             <f:field bean="baselineCondition" property="ascites"/>
         </fieldset>
 
+        <fieldset class="form-group">
+            <h4><g:message code="patient.create.step3.baselineCondition.echocardiographicData.title"/></h4>
+            <f:field bean="baselineCondition" property="lvef"/>
+            <f:field bean="baselineCondition" property="rightVentricleStatus"/>
+            <f:field bean="baselineCondition" property="aorticValveStatuses" templates="multiCheck"/>
+        </fieldset>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
         </fieldset>

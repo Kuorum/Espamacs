@@ -2,7 +2,7 @@ package espamacs.type.baselineConditions
 
 import espamacs.type.DatabaseEnumType
 
-class PeripheralEdemaLevel extends DatabaseEnumType{
+class RightVentricleStatus extends DatabaseEnumType{
 
     static constraints = {
     }

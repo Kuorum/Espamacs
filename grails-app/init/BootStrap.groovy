@@ -6,7 +6,10 @@ import espamacs.Role
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
+import espamacs.type.baselineConditions.AorticValveStatus
+import espamacs.type.baselineConditions.Lvef
 import espamacs.type.baselineConditions.PeripheralEdemaLevel
+import espamacs.type.baselineConditions.RightVentricleStatus
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -168,6 +171,26 @@ class BootStrap {
         new PeripheralEdemaLevel(code: "MINOR").save()
         new PeripheralEdemaLevel(code: "MODERATE").save()
         new PeripheralEdemaLevel(code: "SEVERE").save()
+
+        new Lvef(code: "PLUS_50").save()
+        new Lvef(code: "40_50").save()
+        new Lvef(code: "30_39").save()
+        new Lvef(code: "20_29").save()
+        new Lvef(code: "MINUS_20").save()
+
+        new RightVentricleStatus(code: "NO").save()
+        new RightVentricleStatus(code: "MINOR").save()
+        new RightVentricleStatus(code: "MODERATE").save()
+        new RightVentricleStatus(code: "SEVERE").save()
+
+        new AorticValveStatus(code: "NORMAL").save()
+        new AorticValveStatus(code: "PREVIOUS_AORTIC_VALVE_REPLACEMENT").save()
+        new AorticValveStatus(code: "MINOR_AORTIC_INSUFFICIENCY").save()
+        new AorticValveStatus(code: "MODERATE_AORTIC_INSUFFICIENCY").save()
+        new AorticValveStatus(code: "SEVERE_AORTIC_INSUFFICIENCY").save()
+        new AorticValveStatus(code: "MINOR_AORTIC_STENOSIS").save()
+        new AorticValveStatus(code: "MODERATE_AORTIC_STENOSIS").save()
+        new AorticValveStatus(code: "SEVERE_AORTIC_STENOSIS").save()
 
         /// TEST USERS
 
