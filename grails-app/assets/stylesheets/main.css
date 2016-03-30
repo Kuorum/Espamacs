@@ -165,6 +165,11 @@ img {
     background-color: #4D8618;
 }
 
+
+.page-navigation .dropdown-menu > li > a:hover, .page-navigation .dropdown-menu > li > a:focus{
+    text-shadow: none;
+}
+
 .nav.page-navigation{
     background-color: #efefef;
     padding: 0.3em;
