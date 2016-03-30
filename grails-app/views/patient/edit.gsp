@@ -18,7 +18,7 @@
 </content>
 
 <content tag="mainContent">
-    <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+    <h1><g:message code="patient.edit.title" args="[patient.initials]" /></h1>
     <g:hasErrors bean="${this.paciente}">
         <ul class="errors" role="alert">
             <g:eachError bean="${this.paciente}" var="error">
