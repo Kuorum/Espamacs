@@ -1,6 +1,8 @@
 package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
+import espamacs.pagination.Pagination
+import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.type.PatientStatus
 
@@ -12,9 +14,9 @@ class PatientController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Patient.list(params), model:[patientCount: Patient.count()]
+    def index(PatientPagination pagination) {
+        pagination.total=Patient.count()
+        respond Patient.list(pagination.properties), model:[pagination:pagination]
     }
 
     def show(Patient patient) {

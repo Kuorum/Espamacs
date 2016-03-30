@@ -32,7 +32,7 @@ pre {
     padding-right: 110px;
 }
 .navbar .container {
-    margin: 10px;
+    /*margin: 10px;*/
 }
 .navbar-default a {
     color: #ffffff !important;
@@ -69,6 +69,10 @@ a.navbar-brand {
     background-color: white;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #F90303;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
     background-color: #F90303;
 }
 

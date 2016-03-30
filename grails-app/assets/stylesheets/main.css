@@ -82,7 +82,7 @@ img {
 }
 
 .footer a {
-    color: #4D8618;
+    color: #7A0101;
 }
 
 .spinner {
@@ -162,12 +162,15 @@ img {
 }
 
 .nav li.dropdown.open ul.dropdown-menu {
-    background-color: #4D8618;
+    background-color: #AD0202;
 }
 
+.dropdown-menu > li{ width: 100%; padding: 0 1em;}
+.dropdown-menu > li a:hover{background-color: #F90303;}
 
 .page-navigation .dropdown-menu > li > a:hover, .page-navigation .dropdown-menu > li > a:focus{
     text-shadow: none;
+    background-color: #999999;
 }
 
 .nav.page-navigation{
@@ -542,7 +545,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-    background: #79b94c;
+    background: #AAAAAA;
 }
 
 /* PAGINATION */

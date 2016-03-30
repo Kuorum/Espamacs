@@ -18,10 +18,14 @@
 </content>
 
 <content tag="mainContent">
-    <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-    <f:table collection="${patientList}" properties="['initials', 'centre', 'patientStatus', 'externalId']"/>
+    <h1><g:message code="patient.list.title"/></h1>
+    <table:searchable
+            collection="${patientList}"
+            properties="['initials', 'centre', 'patientStatus', 'externalId','cardiacCareType']"
+            pagination="${pagination}"
+    />
 
     <div class="pagination">
-        <g:paginate total="${patientCount ?: 0}" />
+        <g:paginate total="${pagination.total ?: 0}" />
     </div>
 </content>
