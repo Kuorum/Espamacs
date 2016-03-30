@@ -18,7 +18,8 @@ class PatientController {
     }
 
     def show(Patient patient) {
-        respond patient
+        respond patient, view: "edit"
+//        respond patient
     }
 
     def create() {
