@@ -6,6 +6,7 @@ import espamacs.Role
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
+import espamacs.type.baselineConditions.PeripheralEdemaLevel
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -162,6 +163,11 @@ class BootStrap {
         new Leukemia(code: "YES_MORE_5_YEARS").save()
         new Leukemia(code: "YES_LESS_5_YEARS").save()
 
+
+        new PeripheralEdemaLevel(code: "NO").save()
+        new PeripheralEdemaLevel(code: "MINOR").save()
+        new PeripheralEdemaLevel(code: "MODERATE").save()
+        new PeripheralEdemaLevel(code: "SEVERE").save()
 
         /// TEST USERS
 
