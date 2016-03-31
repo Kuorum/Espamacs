@@ -116,13 +116,8 @@ class PatientController {
         patient.personalHistory = personalHistory
         patient.save flush: true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-                redirect mapping:patientEdit, params: patient.id
-            }
-            '*'{ respond patient, [status: OK] }
-        }
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+        redirect mapping:'patientEdit', params: [patientId:  patient.id]
     }
 
     @Transactional
