@@ -248,6 +248,7 @@ fieldset.form-group > h4{
 .fieldcontain.checkbox-inline{
     width: 100%;
     padding-right: 2em;
+    padding-top: 0;
 }
 
 .fieldcontain.checkbox-inline label, .fieldcontain label.label-checkbox{
