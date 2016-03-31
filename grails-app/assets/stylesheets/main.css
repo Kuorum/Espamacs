@@ -456,6 +456,16 @@ fieldset.embedded legend {
 .panel-title.error-form .fa-warning{
     color: #cc0000;
 }
+
+.panel-footer{
+    padding: 0;
+}
+
+.panel-footer fieldset.buttons{
+    border:none;
+    box-shadow: none;
+    background: transparent;
+}
 /* same effects for browsers that support HTML5 client-side validation (these have to be specified separately or IE will ignore the entire rule) */
 
 input:invalid, select:invalid, textarea:invalid {
