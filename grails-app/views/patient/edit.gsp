@@ -19,33 +19,17 @@
 
 <content tag="mainContent">
     <h1><g:message code="patient.edit.title" args="[patient.initials]" /></h1>
-    <g:hasErrors bean="${this.paciente}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.paciente}" var="error">
-            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-            </g:eachError>
-        </ul>
-    </g:hasErrors>
-    <g:form mapping="patientEdit" params="[patientId: patient.id]" method="POST">
-        <g:hiddenField name="id" value="${this.patient?.id}"/>
-        <g:hiddenField name="version" value="${this.paciente?.version}" />
-        <fieldset class="form-group">
-            <h4><g:message code="patient.create.step1.basicData"/> </h4>
-            <f:field bean="patient" property="initials"/>
-            <f:field bean="patient" property="birthDate"/>
-            <f:field bean="patient" property="weigh"/>
-            <f:field bean="patient" property="height"/>
-            <f:field bean="patient" property="gender"/>
-        </fieldset>
-        <fieldset class="form-group">
-            <h4><g:message code="patient.create.step1.basicCardiacCareAssistance"/></h4>
-            <f:field bean="patient" property="externalId"/>
-            <f:field bean="patient" property="centre"/>
-            <f:field bean="patient" property="cardiacCareType"/>
-        </fieldset>
-        <fieldset class="buttons">
-            <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-        </fieldset>
-    </g:form>
+    %{--<g:hasErrors bean="${this.paciente}">--}%
+        %{--<ul class="errors" role="alert">--}%
+            %{--<g:eachError bean="${this.paciente}" var="error">--}%
+            %{--<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>--}%
+            %{--</g:eachError>--}%
+        %{--</ul>--}%
+    %{--</g:hasErrors>--}%
+
+    <g:render template="panelForms/basicDataPanelForm" model="[patient:patient]"/>
+    <g:render template="panelForms/personalHistoryPanelForm" model="[patient:patient, personalHistory:personalHistory]"/>
+    <g:render template="panelForms/baselineConditionsForm" model="[patient:patient, baselineCondition:baselineCondition]"/>
+
 </content>
 

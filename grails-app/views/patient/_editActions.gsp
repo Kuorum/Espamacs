@@ -7,7 +7,7 @@
     <ul class="dropdown-menu pull-right">
         <li>
             <g:link mapping="patientPersonalHistory" params="[patientId:patient.id]">
-                <g:if test="${!patient.personalHistory}"><span class="fa fa-exclamation"></span></g:if>
+                <g:if test="${!patient.personalHistory}"><abbr title="Datos incompletos"><span class="fa fa-exclamation"></span></abbr></g:if>
                 <g:message code="patient.navigation.baseData.personalHistory"/>
             </g:link>
         </li>

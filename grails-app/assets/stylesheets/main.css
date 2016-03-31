@@ -276,7 +276,7 @@ fieldset.form-group > h4{
 .fieldcontain.error .field-errors ul li{
     list-style: none;
 }
-.fieldcontain abbr{
+abbr, abbr[title], abbr[data-original-title]{
     border-bottom: none;
 }
 
@@ -451,6 +451,10 @@ fieldset.embedded legend {
     box-shadow: 0 0 0.5em #ffaaaa;
 }
 
+
+.panel-title.error-form .fa-warning{
+    color: #cc0000;
+}
 /* same effects for browsers that support HTML5 client-side validation (these have to be specified separately or IE will ignore the entire rule) */
 
 input:invalid, select:invalid, textarea:invalid {

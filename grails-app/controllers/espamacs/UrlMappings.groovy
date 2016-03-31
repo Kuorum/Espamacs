@@ -13,8 +13,8 @@ class UrlMappings {
         name patientCreate:             "/patient/create" (controller:"patient") {action=[GET:"create", POST:"save"]}
         name patientShow:               "/patient/${patientId}" (controller:"patient", action:"show")
         name patientEdit:               "/patient/edit/$patientId" (controller:"patient") {action=[GET:"edit", POST:"update"]}
-        name patientPersonalHistory:    "/patient/edit/$patientId/personalHistory" (controller:"patient") {action=[GET:"editPersonalHistory", POST:"savePersonalHistory"]}
-        name patientBaselineCondition:  "/patient/edit/$patientId/baselineConditions" (controller:"patient") {action=[GET:"editBaselineCondition", POST:"saveBaselineCondition"]}
+        name patientPersonalHistory:    "/patient/edit/$patientId/personalHistory" (controller:"patient") {action=[GET:"postGet", POST:"savePersonalHistory"]}
+        name patientBaselineCondition:  "/patient/edit/$patientId/baselineConditions" (controller:"patient") {action=[GET:"postGet", POST:"saveBaselineCondition"]}
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {

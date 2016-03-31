@@ -22,6 +22,14 @@ class Patient {
     PersonalHistory personalHistory
     BaselineCondition baselineCondition
 
+    static mapping = {
+        centre lazy: false
+        cardiacCareType lazy: false
+        gender lazy: false
+        personalHistory lazy: false
+        baselineCondition lazy: false
+    }
+
     static constraints = {
         patientStatus nullable: false
         initials nullable:false, minSize: 3

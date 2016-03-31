@@ -20,7 +20,7 @@ class PatientController {
     }
 
     def show(Patient patient) {
-        respond patient, view: "edit"
+        respond patient, view: "edit", model:editPatientModel(patient)
 //        respond patient
     }
 
@@ -45,18 +45,13 @@ class PatientController {
 
         patient.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-                redirect patient
-            }
-            '*' { respond patient, [status: CREATED] }
-        }
+        flash.message = message(code: 'default.created.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+        redirect mapping:'editPatient', params:[patientId:patient.id]
     }
 
     def edit() {
         Patient patient = Patient.get(params.patientId)
-        respond patient
+        respond patient, model:editPatientModel(patient)
     }
 
     @Transactional
@@ -74,14 +69,8 @@ class PatientController {
         }
 
         patient.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-                redirect patient
-            }
-            '*'{ respond patient, [status: OK] }
-        }
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+        redirect mapping:'editPatient', params:[patientId:patient.id]
     }
 
     @Transactional
@@ -104,10 +93,9 @@ class PatientController {
         }
     }
 
-    def editPersonalHistory() {
+    def postGet() {
         Patient patient = Patient.get(params.patientId)
-        PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
-        respond personalHistory, model:[patient:patient]
+        redirect mapping:'patientEdit', params: [patientId:patient.id], method:"GET"
     }
 
     @Transactional
@@ -120,7 +108,7 @@ class PatientController {
         }
         if (personalHistory.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond personalHistory.errors, model:[patient:patient] ,view:'editPersonalHistory'
+            render model:editPatientModel(patient, personalHistory) ,view:'edit'
             return
         }
 
@@ -131,21 +119,31 @@ class PatientController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-                redirect patient
+                redirect mapping:patientEdit, params: patient.id
             }
             '*'{ respond patient, [status: OK] }
         }
     }
 
-    def editBaselineCondition() {
-        Patient patient = Patient.get(params.patientId)
-        BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
-        respond baselineCondition, model:[patient:patient]
-    }
-
     @Transactional
     def saveBaselineCondition(PersonalHistory personalHistory) {
 
+    }
+
+    private def editPatientModel(Patient patient, def section = null){
+        PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
+        BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
+        def model = [
+                patient:patient,
+                personalHistory:personalHistory,
+                baselineCondition:baselineCondition
+        ]
+        if (section && section instanceof PersonalHistory){
+            model.personalHistory = section
+        }else if(section && section instanceof BaselineCondition){
+            model.baselineCondition = section
+        }
+        return model
     }
 
     protected void notFound() {

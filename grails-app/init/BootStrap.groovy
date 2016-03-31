@@ -54,31 +54,31 @@ class BootStrap {
         new CardiacCareType(code: "SHORT").save()
         new CardiacCareType(code: "LONG").save()
 
+        new SmokerType(code: "UNKNOWN").save()
         new SmokerType(code: "NO").save()
         new SmokerType(code: "YES").save()
         new SmokerType(code: "EX-SMOKER").save()
-        new SmokerType(code: "UNKNOWN").save()
 
+        new HypertensiveType(code: "UNKNOWN").save()
         new HypertensiveType(code: "NO").save()
         new HypertensiveType(code: "YES").save()
-        new HypertensiveType(code: "UNKNOWN").save()
 
+        new DiabeticType(code: "UNKNOWN").save()
         new DiabeticType(code: "NO").save()
         new DiabeticType(code: "TYPE1").save()
         new DiabeticType(code: "TYPE2").save()
-        new DiabeticType(code: "UNKNOWN").save()
 
+        new DisplemiaType(code: "UNKNOWN").save()
         new DisplemiaType(code: "NO").save()
         new DisplemiaType(code: "YES").save()
-        new DisplemiaType(code: "UNKNOWN").save()
 
+        new ObeseType(code: "UNKNOWN").save()
         new ObeseType(code: "NO").save()
         new ObeseType(code: "YES").save()
-        new ObeseType(code: "UNKNOWN").save()
 
+        new MalnutritionType(code: "UNKNOWN").save()
         new MalnutritionType(code: "NO").save()
         new MalnutritionType(code: "YES").save()
-        new MalnutritionType(code: "UNKNOWN").save()
 
         new DrinkerType(code: "NO_NEVER").save()
         new DrinkerType(code: "NO_NOW").save()
@@ -88,13 +88,13 @@ class BootStrap {
         new IntravenouslyDrugsType(code: "NO_NOW").save()
         new IntravenouslyDrugsType(code: "YES").save()
 
+        new SevereMentalRetardationType(code: "UNKNOWN").save()
         new SevereMentalRetardationType(code: "NO").save()
         new SevereMentalRetardationType(code: "YES").save()
-        new SevereMentalRetardationType(code: "UNKNOWN").save()
 
+        new SocialCareType(code: "UNKNOWN").save()
         new SocialCareType(code: "NO").save()
         new SocialCareType(code: "YES").save()
-        new SocialCareType(code: "UNKNOWN").save()
 
         new PreCardiacSurgery(code: "NO").save()
         new PreCardiacSurgery(code: "CABG").save()
