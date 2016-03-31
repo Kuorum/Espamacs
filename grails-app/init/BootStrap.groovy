@@ -8,8 +8,10 @@ import espamacs.type.Gender
 import espamacs.type.PatientStatus
 import espamacs.type.baselineConditions.AorticValveStatus
 import espamacs.type.baselineConditions.Lvef
+import espamacs.type.baselineConditions.MitralValveStatus
 import espamacs.type.baselineConditions.PeripheralEdemaLevel
 import espamacs.type.baselineConditions.RightVentricleStatus
+import espamacs.type.baselineConditions.TricuspidValveStatus
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -191,6 +193,24 @@ class BootStrap {
         new AorticValveStatus(code: "MINOR_AORTIC_STENOSIS").save()
         new AorticValveStatus(code: "MODERATE_AORTIC_STENOSIS").save()
         new AorticValveStatus(code: "SEVERE_AORTIC_STENOSIS").save()
+
+        new MitralValveStatus(code: "NORMAL").save()
+        new MitralValveStatus(code: "PREVIOUS_MITRAL_VALVE_REPLACEMENT").save()
+        new MitralValveStatus(code: "MINOR_MITRAL_INSUFFICIENCY").save()
+        new MitralValveStatus(code: "MODERATE_MITRAL_INSUFFICIENCY").save()
+        new MitralValveStatus(code: "SEVERE_MITRAL_INSUFFICIENCY").save()
+        new MitralValveStatus(code: "MINOR_MITRAL_STENOSIS").save()
+        new MitralValveStatus(code: "MODERATE_MITRAL_STENOSIS").save()
+        new MitralValveStatus(code: "SEVERE_MITRAL_STENOSIS").save()
+
+        new TricuspidValveStatus(code: "NORMAL").save()
+        new TricuspidValveStatus(code: "PREVIOUS_TRICUSPID_VALVE_REPLACEMENT").save()
+        new TricuspidValveStatus(code: "MINOR_TRICUSPID_INSUFFICIENCY").save()
+        new TricuspidValveStatus(code: "MODERATE_TRICUSPID_INSUFFICIENCY").save()
+        new TricuspidValveStatus(code: "SEVERE_TRICUSPID_INSUFFICIENCY").save()
+        new TricuspidValveStatus(code: "MINOR_TRICUSPID_STENOSIS").save()
+        new TricuspidValveStatus(code: "MODERATE_TRICUSPID_STENOSIS").save()
+        new TricuspidValveStatus(code: "SEVERE_TRICUSPID_STENOSIS").save()
 
         /// TEST USERS
 

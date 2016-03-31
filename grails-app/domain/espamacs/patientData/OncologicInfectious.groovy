@@ -7,7 +7,7 @@ class OncologicInfectious {
 
     MalignantTumor malignantTumor
     Leukemia leukemia
-    Boolean hiv
+    Boolean rvh
     Boolean chronicInfectiousDiseases
 
     static constraints = {

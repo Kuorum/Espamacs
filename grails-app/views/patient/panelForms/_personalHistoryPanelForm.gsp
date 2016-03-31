@@ -81,7 +81,7 @@
                         <h4><g:message code="patient.create.step2.patientHistory.oncologicInfectious.title"/></h4>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.malignantTumor"/>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.leukemia"/>
-                        <f:field bean="${personalHistory}" property="oncologicInfectious.hiv"/>
+                        <f:field bean="${personalHistory}" property="oncologicInfectious.rvh"/>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.chronicInfectiousDiseases"/>
                     </fieldset>
 
