@@ -9,14 +9,14 @@
     <ul>
         <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
         <li><g:link mapping="patientList"><g:message code="patient.list.title"/></g:link></li>
-        <li><g:message code="default.show.label" args="[patient.initials]"/></li>
+        <li><g:message code="default.show.label" args="[patient.code]"/></li>
     </ul>
 </content>
 
 
 <content tag="mainContent">
     <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-    %{--<f:display bean="patient" property="initials"/>--}%
+    %{--<f:display bean="patient" property="code"/>--}%
     %{--<f:display bean="patient" property="gender"/>--}%
 
     <f:display bean="patient" />

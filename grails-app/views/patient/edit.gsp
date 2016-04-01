@@ -8,8 +8,8 @@
     <ul>
         <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
         <li><g:link mapping="patientList"><g:message code="patient.list.title"/></g:link></li>
-        %{--<li><g:link mapping="patientShow" params="[patientId: patient.id]"><g:message code="default.show.label" args="[patient.initials]"/></g:link></li>--}%
-        <li><g:message code="default.edit.label" args="[patient.initials]"/></li>
+        %{--<li><g:link mapping="patientShow" params="[patientId: patient.id]"><g:message code="default.show.label" args="[patient.code]"/></g:link></li>--}%
+        <li><g:message code="default.edit.label" args="[patient.code]"/></li>
     </ul>
 </content>
 
@@ -18,7 +18,7 @@
 </content>
 
 <content tag="mainContent">
-    <h1><g:message code="patient.edit.title" args="[patient.initials]" /></h1>
+    <h1><g:message code="patient.edit.title" args="[patient.code]" /></h1>
     %{--<g:hasErrors bean="${this.paciente}">--}%
         %{--<ul class="errors" role="alert">--}%
             %{--<g:eachError bean="${this.paciente}" var="error">--}%

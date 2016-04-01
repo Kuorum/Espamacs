@@ -24,7 +24,7 @@
     <g:form mapping="patientCreate">
         <fieldset class="form-group">
             <h4><g:message code="patient.create.step1.basicData"/> </h4>
-            <f:field bean="patient" property="initials"/>
+            <f:field bean="patient" property="code"/>
             <f:field bean="patient" property="birthDate"/>
             <f:field bean="patient" property="weigh"/>
             <f:field bean="patient" property="height"/>

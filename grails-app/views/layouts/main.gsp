@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="es" class="no-js">
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -23,7 +27,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                    <i class="fa fa-heartbeat"></i>Espamacs
+                    <i class="fa fa-heartbeat"></i> Espamacs
+                    <sec:ifLoggedIn>
+                        <span class="centre-head">
+                            <span class="fa fa-hospital-o"></span>
+                            <sec:loggedInUserInfo field='centreName'/>
+                        </span>
+                    </sec:ifLoggedIn>
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
@@ -36,11 +46,25 @@
 
     <g:layoutBody/>
 
-    %{--<div class="footer" role="contentinfo"></div>--}%
-
-    <div id="spinner" class="spinner" style="display:none;">
-        <g:message code="spinner.alt" default="Loading&hellip;"/>
+    <div class="footer" role="contentinfo">
+        <div class="sponsors">
+            <ul>
+                <li>Empresa 1</li>
+                <li>Empresa 2</li>
+            </ul>
+        </div>
     </div>
+
+<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <h1>Processing...</h1>
+    </div>
+    <div class="modal-body">
+        <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
 
     <asset:javascript src="application.js"/>
 

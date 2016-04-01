@@ -229,17 +229,34 @@ class BootStrap {
         Patient patient = new Patient(
                 [
                         patientStatus: PatientStatus.findByCode("INCOMPLETE"),
-                        initials: "INC",
+                        code: "INC",
                         birthDate: new Date(),
                         weigh: 86.2D,
                         height: 156.3D,
                         gender: Gender.findByCode("FEMALE"),
                         centre:ph,
                         externalId:"ExternalId",
-                        cardiacCareType: CardiacCareType.findByCode("LONG")
+                        cardiacCareType: CardiacCareType.findByCode("SHORT")
                 ]
         )
         patient.save()
+
+        (1..35).each{
+            Patient patientPaz = new Patient(
+                    [
+                            patientStatus: PatientStatus.findByCode("INCOMPLETE"),
+                            code: "Paz-$it",
+                            birthDate: new Date(),
+                            weigh: it*10,
+                            height: it*100,
+                            gender: Gender.findByCode("MALE"),
+                            centre:paz,
+                            externalId:"External-${it}",
+                            cardiacCareType: CardiacCareType.findByCode("LONG")
+                    ]
+            )
+            patientPaz.save()
+        }
 
     }
     def destroy = {

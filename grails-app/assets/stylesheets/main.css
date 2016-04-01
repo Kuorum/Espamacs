@@ -85,6 +85,10 @@ img {
     color: #7A0101;
 }
 
+.sponsors{}
+.footer .sponsors{text-align: right;}
+.footer .sponsors ul{}
+.footer .sponsors ul li{display: inline; list-style: none;}
 .spinner {
     background: url(../images/spinner.gif) 50% 50% no-repeat transparent;
     height: 16px;
@@ -492,10 +496,17 @@ table {
     margin-bottom: 1em;
 }
 
+
+
 tr {
     border: 0;
 }
-
+tr.clickable-row, .table-striped > tbody > tr:nth-of-type(odd){
+    cursor: pointer;
+}
+tr.clickable-row:hover, .table-striped > tbody > tr:nth-of-type(odd):hover{
+    background-color: #CCCCCC;
+}
 tr>td:first-child, tr>th:first-child {
     padding-left: 1.25em;
 }

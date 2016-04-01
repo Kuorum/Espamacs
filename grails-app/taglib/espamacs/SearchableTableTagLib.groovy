@@ -12,6 +12,8 @@ class SearchableTableTagLib {
 
     def searchable = { attrs, body ->
         def collection = resolveBean(attrs.remove('collection'))
+        String rowClickMappingLink = attrs.rowClickMappingLink
+        String ajaxPaginationLink = attrs.ajaxPaginationLink
         Pagination paginationCommand = attrs.pagination
         def domainClass
         if (attrs.containsKey('domainClass')) {
@@ -36,12 +38,16 @@ class SearchableTableTagLib {
                             domainProperties: properties,
                             pagination:paginationCommand,
                             collection: collection,
-                            displayStyle: displayStyle])
+                            rowClickMappingLink:rowClickMappingLink,
+                            displayStyle: displayStyle,
+                            isAjax: request.xhr,
+                            ajaxPaginationLink:ajaxPaginationLink
+                    ])
         }
     }
 
     private Object resolveBean(beanAttribute) {
-        resolvePageScopeVariable(beanAttribute) ?: beanAttribute ?: beanStack.bean
+        resolvePageScopeVariable(beanAttribute) ?: beanAttribute ?: null
     }
 
     private resolvePageScopeVariable(attributeName) {

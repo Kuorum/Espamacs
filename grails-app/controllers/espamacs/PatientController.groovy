@@ -1,13 +1,13 @@
 package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
-import espamacs.pagination.Pagination
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.type.PatientStatus
-
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.NO_CONTENT
 
 @Transactional(readOnly = true)
 class PatientController {
@@ -15,11 +15,29 @@ class PatientController {
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(PatientPagination pagination) {
-        pagination.total=Patient.count()
-        respond Patient.list(pagination.properties), model:[pagination:pagination]
+        def model = searchModel(pagination)
+        if (request.xhr){
+            render template:'/patient/searchablePatientsList', model:searchModel(pagination)
+        }else{
+            model
+        }
     }
 
-    def show(Patient patient) {
+    private Map searchModel(PatientPagination pagination){
+        grails.orm.PagedResultList result = Patient.createCriteria().list(max:pagination.max, offset:pagination.offset) {
+            if (pagination.centre) {eq("centre", pagination.centre)}
+            if (pagination.id) {eq("id", pagination.id)}
+            if (pagination.cardiacCareType) {eq("cardiacCareType", pagination.id)}
+            if (pagination.code) {ilike("code", "%${pagination.code}%")}
+            if (pagination.externalId) {ilike("externalId", "%${pagination.externalId}%")}
+            if (pagination.sort){order(pagination.sort, pagination.order)}
+        }
+        pagination.total=result.totalCount
+        [pagination:pagination, patientList: result]
+    }
+
+    def show(Patient p) {
+        Patient patient = Patient.get(params.patientId)
         respond patient, view: "edit", model:editPatientModel(patient)
 //        respond patient
     }

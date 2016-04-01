@@ -9,14 +9,15 @@ import espamacs.type.PatientStatus;
  */
 public class PatientPagination extends Pagination
 {
-    String initials
+    Long id
+    String code
     String externalId
     CardiacCareType cardiacCareType
     Centre centre
     PatientStatus patientStatus
 
     static constraints = {
-        initials nullable: true
+        code nullable: true
         cardiacCareType nullable:true
         centre nullable:true
         externalId nullable:true

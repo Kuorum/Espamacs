@@ -32,9 +32,82 @@ $(function(){
         autoclose: true,
         todayHighlight: true
     })
+
+    $(".ajax-searchable-table-form").on("click","tr.clickable-row", function() {
+        window.document.location = $(this).data("href");
+    });
+
+    $(".ajax-searchable-table-form").on("change","input, select", function() {
+        var $form = $(this).parents("form")
+        var params = $form.serializeArray()
+        _reloadSearchableTable($form, params)
+    });
+
+    $(".ajax-searchable-table-form").on("click",".searchable-table a", function(e) {
+        e.preventDefault()
+
+        var linkParams = getUrlParams($(this).attr("href"))
+        var $form = $(this).parents("form")
+        var formParams = $form.serializeArray()
+        var params = merge_options(formParams, linkParams)
+        _reloadSearchableTable($form, params)
+    })
+
+    function _reloadSearchableTable($form, params){
+        var url = $form.attr("action")
+        $.ajax({
+            url: url,
+            data: params,
+            beforeSend: function () {
+                $("#pleaseWaitDialog").modal()
+            },
+            success: function (html) {
+                $("#pleaseWaitDialog").modal('hide')
+                $form.html(html)
+                if (!isOldBrowser()){
+                    history.pushState(params,document.getElementsByTagName("title")[0].innerHTML,url+"?"+jQuery.param( params ) )
+                }
+            },
+            fail: function (jqXHR, textStatus) {
+                $("#pleaseWaitDialog").modal('hide')
+                alert("Request failed: " + textStatus);
+            }
+        })
+    }
 })
 
+function getUrlParams(url){
+    var stringVars = url.split('?');
+    if (stringVars.length>1 && stringVars[stringVars.length-1].length>0){
+        var sURLVariables = stringVars[stringVars.length-1].split('&');
+        var res = {}
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            res[sParameterName[0]] = sParameterName[1]
+        }
+        return res
+    }else{
+        return {}
+    }
+}
+/**
+ * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+ * @param obj1
+ * @param obj2
+ * @returns obj3 a new object based on obj1 and obj2
+ */
+function merge_options(obj1,obj2){
+    var obj3 = {};
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
+}
 
+function isOldBrowser(){
+    //On main.gsp is defined the html tags with 'Conditional statements'
+    return $('html').is('.lt-ie7, .lt-ie8, .lt-ie9')
+}
 
 var display = {
     error:function(text){this._notyGeneric(text, "error", "top")},

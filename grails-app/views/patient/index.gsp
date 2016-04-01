@@ -19,13 +19,5 @@
 
 <content tag="mainContent">
     <h1><g:message code="patient.list.title"/></h1>
-    <table:searchable
-            collection="${patientList}"
-            properties="['initials', 'centre', 'patientStatus', 'externalId','cardiacCareType']"
-            pagination="${pagination}"
-    />
-
-    <div class="pagination">
-        <g:paginate total="${pagination.total ?: 0}" />
-    </div>
+    <g:render template="searchablePatientsList" model="[pagination:pagination, patientList: patientList]"/>
 </content>

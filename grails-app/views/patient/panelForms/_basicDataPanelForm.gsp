@@ -13,7 +13,7 @@
                     <g:hiddenField name="id" value="${patient?.id}"/>
                     <g:hiddenField name="version" value="${patient?.version}" />
                     <fieldset class="form-group">
-                        <f:field bean="${patient}" property="initials"/>
+                        <f:field bean="${patient}" property="code"/>
                         <f:field bean="${patient}" property="birthDate"/>
                         <f:field bean="${patient}" property="weigh"/>
                         <f:field bean="${patient}" property="height"/>

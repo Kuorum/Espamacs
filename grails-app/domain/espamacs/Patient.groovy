@@ -9,7 +9,7 @@ import espamacs.type.PatientStatus
 class Patient {
 
     PatientStatus patientStatus
-    String initials;
+    String code;
     Date birthDate
     Double weigh
     Double height
@@ -32,7 +32,7 @@ class Patient {
 
     static constraints = {
         patientStatus nullable: false
-        initials nullable:false, minSize: 3
+        code nullable:false, minSize: 3
         centre nullable: false
 
         personalHistory nullable:true
