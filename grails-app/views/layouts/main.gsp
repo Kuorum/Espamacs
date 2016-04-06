@@ -29,6 +29,7 @@
                 <a class="navbar-brand" href="/#">
                     <i class="fa fa-heartbeat"></i> Espamacs
                     <sec:ifLoggedIn>
+                        -
                         <span class="centre-head">
                             <span class="fa fa-hospital-o"></span>
                             <sec:loggedInUserInfo field='centreName'/>
