@@ -8,7 +8,9 @@ import espamacs.type.Gender
 import espamacs.type.PatientStatus
 import espamacs.type.baselineConditions.AorticValveStatus
 import espamacs.type.baselineConditions.Lvef
+import espamacs.type.baselineConditions.Medication
 import espamacs.type.baselineConditions.MitralValveStatus
+import espamacs.type.baselineConditions.Nyha
 import espamacs.type.baselineConditions.PeripheralEdemaLevel
 import espamacs.type.baselineConditions.RightVentricleStatus
 import espamacs.type.baselineConditions.TricuspidValveStatus
@@ -211,6 +213,31 @@ class BootStrap {
         new TricuspidValveStatus(code: "MINOR_TRICUSPID_STENOSIS").save()
         new TricuspidValveStatus(code: "MODERATE_TRICUSPID_STENOSIS").save()
         new TricuspidValveStatus(code: "SEVERE_TRICUSPID_STENOSIS").save()
+
+
+        new Medication(code: "ACE_INHIBITORS").save()
+        new Medication(code: "ARBS_II").save()
+        new Medication(code: "CALCIUM_BLOCKERS").save()
+        new Medication(code: "BETA_BLOCKERS").save()
+        new Medication(code: "ALDOSTERONE_BLOCKERS").save()
+        new Medication(code: "LOOP_DIURETICS").save()
+        new Medication(code: "AMIODARONE").save()
+        new Medication(code: "DIGOXIN").save()
+        new Medication(code: "OTHER_ANTIARRYTHMICS").save()
+        new Medication(code: "WARFARIN").save()
+        new Medication(code: "HEPARIN").save()
+        new Medication(code: "ANTIAGGREGANT").save()
+        new Medication(code: "NITRIC_OXIDE").save()
+        new Medication(code: "SILDENAFIL").save()
+        new Medication(code: "ILOPROST").save()
+        new Medication(code: "BOSENTAN").save()
+        new Medication(code: "NESERITIDE").save()
+        new Medication(code: "RESYNCHRONIZATION_THERAPIES").save()
+
+        new Nyha(code:"TYPE_I").save()
+        new Nyha(code:"TYPE_II").save()
+        new Nyha(code:"TYPE_III").save()
+        new Nyha(code:"TYPE_IV").save()
 
         /// TEST USERS
 

@@ -259,7 +259,7 @@ fieldset.form-group > h4{
 }
 
 .fieldcontain.checkbox-inline label, .fieldcontain label.label-checkbox{
-    width: 11em;
+    width: 16em;
     text-align: right;
     font-weight: normal;
 }

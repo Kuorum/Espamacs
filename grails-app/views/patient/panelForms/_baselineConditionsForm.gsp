@@ -50,6 +50,37 @@
                         <f:field bean="${baselineCondition}" property="hemodynamicData.cardiacOutput"/>
                         <f:field bean="${baselineCondition}" property="hemodynamicData.cardiacIndex"/>
                     </fieldset>
+
+                    <fieldset class="form-group">
+                        <h4><g:message code="patient.create.step3.baselineCondition.sixMinutesTest.title"/></h4>
+                        <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceMetres"/>
+                        <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceV02"/>
+                        <f:field bean="${baselineCondition}" property="medications" templates="multiCheck"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <h4><g:message code="patient.create.step3.baselineCondition.bloodTest.title"/></h4>
+                        <f:field bean="${baselineCondition}" property="sodium"/>
+                        <f:field bean="${baselineCondition}" property="potassium"/>
+                        <f:field bean="${baselineCondition}" property="creatinine"/>
+                        <f:field bean="${baselineCondition}" property="urea"/>
+                        <f:field bean="${baselineCondition}" property="alt"/>
+                        <f:field bean="${baselineCondition}" property="ast"/>
+                        <f:field bean="${baselineCondition}" property="ldh"/>
+                        <f:field bean="${baselineCondition}" property="cpk"/>
+                        <f:field bean="${baselineCondition}" property="bilirubin"/>
+                        <f:field bean="${baselineCondition}" property="leukocytes"/>
+                        <f:field bean="${baselineCondition}" property="hemoglobin"/>
+                        <f:field bean="${baselineCondition}" property="platelets"/>
+                        <f:field bean="${baselineCondition}" property="inr"/>
+                        <f:field bean="${baselineCondition}" property="NTproBNP"/>
+                        <f:field bean="${baselineCondition}" property="crp"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <h4><g:message code="patient.create.step3.baselineCondition.nyha.title"/></h4>
+                        <f:field bean="${baselineCondition}" property="nyha"/>
+                    </fieldset>
                 </div>
                 <div class="panel-footer">
                     <fieldset class="buttons">

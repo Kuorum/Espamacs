@@ -139,8 +139,27 @@ class PatientController {
     }
 
     @Transactional
-    def saveBaselineCondition(PersonalHistory personalHistory) {
+    def saveBaselineCondition(BaselineCondition baselineCondition) {
+        Patient patient = Patient.get(params.patientId)
 
+        if (baselineCondition == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+        if (baselineCondition.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            flash.error = message(code: 'patient.data.error')
+            render model:editPatientModel(patient, baselineCondition) ,view:'edit'
+            return
+        }
+
+        baselineCondition.save flush:true
+        patient.baselineCondition = baselineCondition
+        patient.save flush: true
+
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+        redirect mapping:'patientEdit', params: [patientId:  patient.id]
     }
 
     private def editPatientModel(Patient patient, def section = null){
