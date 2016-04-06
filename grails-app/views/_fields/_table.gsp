@@ -12,11 +12,11 @@
         </tr>
         <tr class="search-row">
             <g:each in="${domainProperties}" var="p" status="i">
-                <td>
+                <th>
                     <g:if test="${pagination.properties.containsKey(p.name)}">
                         <f:input bean="${pagination}" property="${p.name}"/>
                     </g:if>
-                </td>
+                </th>
             </g:each>
         </tr>
         </thead>
@@ -35,20 +35,19 @@
         </g:if>
         <g:else>
             <tr class="no-results">
-                <td colspan="${domainProperties.size()}">NO RESULTS</td>
+                <td colspan="0">NO RESULTS</td>
             </tr>
         </g:else>
         </tbody>
         <g:if test="${pagination.total > pagination.max}">
-            <tfoot class="pagination">
+            <tfoot>
                 <tr>
-                    <td colspan="${domainProperties.size()}">
+                    <td colspan="${domainProperties.size()}" class="pagination">
                         <g:paginate total="${pagination.total ?: 0}" />
                     </td>
                 </tr>
-            </div>
+            </tfoot>
         </g:if>
-        </tfoot>
     </table>
 <g:if test="${!isAjax}">
     </form>

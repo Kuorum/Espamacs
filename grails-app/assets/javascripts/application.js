@@ -50,6 +50,7 @@ $(function(){
         var $form = $(this).parents("form")
         var formParams = $form.serializeArray()
         var params = merge_options(formParams, linkParams)
+        console.log(params)
         _reloadSearchableTable($form, params)
     })
 
@@ -70,7 +71,6 @@ $(function(){
             },
             fail: function (jqXHR, textStatus) {
                 $("#pleaseWaitDialog").modal('hide')
-                alert("Request failed: " + textStatus);
             }
         })
     }
@@ -99,8 +99,20 @@ function getUrlParams(url){
  */
 function merge_options(obj1,obj2){
     var obj3 = {};
-    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    for (var attrname in obj1) {
+        if (obj1[attrname].hasOwnProperty('name')){
+            obj3[obj1[attrname].name] = obj1[attrname].value;
+        }else{
+            obj3[attrname] = obj1[attrname];
+        }
+    }
+    for (var attrname in obj2) {
+        if (obj2[attrname].hasOwnProperty('name')){
+            obj3[obj2[attrname].name] = obj2[attrname].value;
+        }else{
+            obj3[attrname] = obj2[attrname];
+        }
+    }
     return obj3;
 }
 

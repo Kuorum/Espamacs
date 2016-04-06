@@ -753,14 +753,18 @@ ul.nav-sidebar li.active a {
 }
 
 .table {
-    margin: 20px 0
+    margin: 20px 0;
+    border: 1px solid #EEE
 }
 
 .table thead tr th {
-    padding: 10px;
+    padding: 3px;
     font-weight: normal;
-    font-size: 18px
+    font-size: 18px;
+    border:none;
 }
+
+.table thead tr.search-row th, .table thead tr.search-row th:hover, .table thead tr.search-row:hover{background: #EEEEEE}
 
 .table tbody tr td {
     vertical-align: top;
@@ -1004,6 +1008,11 @@ html, body, .st-container, .st-pusher, .st-content {
 
 .presentations .urls {
 }
+
+.patientStatus {text-align: center; padding: 0 40%}
+.patientStatus .INCOMPLETE,.patientStatus .ACTIVE { color: #5cb85c}
+
+.patientStatus .INACTIVE{ color: #0044cc}
 
 @media screen and (max-width: 767px) {
     .presentations .img.screenshot, .video .metadata {
