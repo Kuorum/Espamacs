@@ -9,4 +9,9 @@ class Renal {
 
     static constraints = {
     }
+
+    static mapping = {
+        baselineCreatinine lazy: false, fetch: 'join'
+        renalReplacementTherapy lazy: false, fetch: 'join'
+    }
 }

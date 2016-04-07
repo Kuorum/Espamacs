@@ -10,4 +10,9 @@ class Vascular {
 
     static constraints = {
     }
+
+    static mapping = {
+        aortaPathology lazy: false, fetch: 'join'
+        peripheralVascularDisease lazy: false, fetch: 'join'
+    }
 }

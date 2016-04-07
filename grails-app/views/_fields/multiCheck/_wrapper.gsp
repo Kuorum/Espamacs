@@ -7,7 +7,7 @@
     <g:each in="${bean.hasMany[property].list()}" var="optionValue">
         <label for="${property}-${optionValue.id}">
             <g:message code="${optionValue.class.name}.${optionValue.code}" default="${optionValue.code}"/>
-            <input type="checkbox" name="${property}" value="${optionValue.code}" id="${property}" ${value?.contains(optionValue)?'CHECKED':''} />
+            <input type="checkbox" name="${property}" value="${optionValue.code}" id="${property}" ${value*.code?.contains(optionValue?.code)?'CHECKED':''} />
         </label>
     </g:each>
     <div class="field-errors">

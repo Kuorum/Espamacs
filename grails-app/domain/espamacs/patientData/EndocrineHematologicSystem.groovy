@@ -12,4 +12,9 @@ class EndocrineHematologicSystem {
 
     static constraints = {
     }
+
+    static mapping = {
+        thyroidDisorders lazy: false, fetch: 'join'
+        chronicAnemia lazy: false, fetch: 'join'
+    }
 }

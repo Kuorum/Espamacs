@@ -7,9 +7,14 @@ class OncologicInfectious {
 
     MalignantTumor malignantTumor
     Leukemia leukemia
-    Boolean rvh
+    Boolean hiv
     Boolean chronicInfectiousDiseases
 
     static constraints = {
+    }
+
+    static mapping = {
+        malignantTumor lazy: false, fetch: 'join'
+        leukemia lazy: false, fetch: 'join'
     }
 }

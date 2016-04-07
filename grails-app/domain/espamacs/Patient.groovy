@@ -2,6 +2,7 @@ package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.patientData.PersonalHistory
+import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
@@ -21,13 +22,15 @@ class Patient {
 
     PersonalHistory personalHistory
     BaselineCondition baselineCondition
+    PreimplantSituation preimplantSituation
 
     static mapping = {
-        centre lazy: false
-        cardiacCareType lazy: false
-        gender lazy: false
-        personalHistory lazy: false
-        baselineCondition lazy: false
+        centre lazy: false, fetch: 'join'
+        cardiacCareType lazy: false, fetch: 'join'
+        gender lazy: false, fetch: 'join'
+        personalHistory lazy: false, fetch: 'join'
+        baselineCondition lazy: false, fetch: 'join'
+        preimplantSituation lazy: false, fetch: 'join'
     }
 
     static constraints = {
@@ -37,5 +40,6 @@ class Patient {
 
         personalHistory nullable:true
         baselineCondition nullable: true
+        preimplantSituation nullable: true
     }
 }

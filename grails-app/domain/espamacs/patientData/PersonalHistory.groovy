@@ -41,6 +41,20 @@ class PersonalHistory {
 
     static embedded = ['renal', 'respiratory','gastric','vascular','centralNervousSystem', 'endocrineHematologicSystem','oncologicInfectious']
 
+    static mapping = {
+        preCardiacSurgeries lazy: false, fetch: 'join'
+        smoker lazy: false, fetch:'join'
+        hypertensive lazy: false, fetch:'join'
+        diabetic lazy: false, fetch:'join'
+        displemia lazy: false, fetch:'join'
+        obeseType lazy: false, fetch:'join'
+        malnutrition lazy: false, fetch:'join'
+        drinker lazy: false, fetch:'join'
+        intravenouslyDrugs lazy: false, fetch:'join'
+        severeMentalRetardation lazy: false, fetch:'join'
+        socialCareType lazy: false, fetch:'join'
+        preCardiacSurgeries lazy: false, fetch:'join'
+    }
 
     static constraints = {
 

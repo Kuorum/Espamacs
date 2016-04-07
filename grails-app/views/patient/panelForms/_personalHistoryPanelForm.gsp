@@ -14,7 +14,7 @@
                 </a>
             </h4>
         </div>
-        <g id="personalHistoryForm" class="panel-collapse collapse ${errors?'in':''}">
+        <div id="personalHistoryForm" class="panel-collapse collapse ${errors?'in':''}">
             <g:form mapping="patientPersonalHistory" params="[patientId: patient.id]" method="POST">
                 <div class="panel-body">
                     <g:hiddenField name="id" value="${patient.personalHistory?.id}"/>
@@ -81,7 +81,7 @@
                         <h4><g:message code="patient.create.step2.patientHistory.oncologicInfectious.title"/></h4>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.malignantTumor"/>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.leukemia"/>
-                        <f:field bean="${personalHistory}" property="oncologicInfectious.rvh"/>
+                        <f:field bean="${personalHistory}" property="oncologicInfectious.hiv"/>
                         <f:field bean="${personalHistory}" property="oncologicInfectious.chronicInfectiousDiseases"/>
                     </fieldset>
 

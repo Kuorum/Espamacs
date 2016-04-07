@@ -11,4 +11,9 @@ class Respiratory {
 
     static constraints = {
     }
+
+    static mapping = {
+        primaryPulmonaryHypertension lazy: false, fetch: 'join'
+        pulmonaryEmbolism lazy: false, fetch: 'join'
+    }
 }

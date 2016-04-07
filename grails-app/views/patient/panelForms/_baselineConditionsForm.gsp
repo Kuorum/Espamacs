@@ -16,7 +16,7 @@
         <g id="baselineConditionForm" class="panel-collapse collapse">
             <g:form mapping="patientBaselineCondition" params="[patientId: patient.id]" method="POST">
                 <div class="panel-body">
-                    <g:hiddenField name="id" value="${patient.personalHistory?.id}"/>
+                    <g:hiddenField name="id" value="${patient.baselineCondition?.id}"/>
                     <input type="hidden" name="patient.id" value="${patient?.id}"/>
                     <fieldset class="form-group">
                         <h4><g:message code="patient.create.step3.baselineCondition.heartFailureData.title"/></h4>

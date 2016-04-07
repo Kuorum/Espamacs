@@ -57,6 +57,13 @@ class BaselineCondition {
             medications:Medication
     ]
 
+    static mapping = {
+        aorticValveStatuses lazy: false, fetch: 'join'
+        mitralValveStatuses lazy: false, fetch: 'join'
+        tricuspidValveStatuses lazy: false, fetch: 'join'
+        medications lazy: false, fetch: 'join'
+    }
+
     static embedded = ['hemodynamicData']
 
     static constraints = {

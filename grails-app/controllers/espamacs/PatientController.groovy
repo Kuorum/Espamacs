@@ -3,6 +3,7 @@ package espamacs
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
+import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.PatientStatus
 import grails.transaction.Transactional
 
@@ -119,43 +120,36 @@ class PatientController {
     @Transactional
     def savePersonalHistory(PersonalHistory personalHistory) {
         Patient patient = Patient.get(params.patientId)
-        if (personalHistory == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-        if (personalHistory.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            render model:editPatientModel(patient, personalHistory) ,view:'edit'
-            return
-        }
-
-        personalHistory.save flush:true
-        patient.personalHistory = personalHistory
-        patient.save flush: true
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-        redirect mapping:'patientEdit', params: [patientId:  patient.id]
+        gericSectionUpdate(patient, personalHistory, "personalHistory", transactionStatus)
     }
 
     @Transactional
     def saveBaselineCondition(BaselineCondition baselineCondition) {
         Patient patient = Patient.get(params.patientId)
+        gericSectionUpdate(patient, baselineCondition, "baselineCondition", transactionStatus)
+    }
 
-        if (baselineCondition == null) {
+    @Transactional
+    def savePreimplantSituation(PreimplantSituation preimplantSituation) {
+        Patient patient = Patient.get(params.patientId)
+        gericSectionUpdate(patient, preimplantSituation, "preimplantSituation", transactionStatus)
+    }
+
+    private def gericSectionUpdate(Patient patient, def command,String fieldName, def transactionStatus){
+        if (command == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
-        if (baselineCondition.hasErrors()) {
+        if (command.hasErrors()) {
             transactionStatus.setRollbackOnly()
             flash.error = message(code: 'patient.data.error')
-            render model:editPatientModel(patient, baselineCondition) ,view:'edit'
+            render model:editPatientModel(patient, command) ,view:'edit'
             return
         }
 
-        baselineCondition.save flush:true
-        patient.baselineCondition = baselineCondition
+        command.save flush:true
+        patient."${fieldName}" = command
         patient.save flush: true
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
@@ -165,15 +159,20 @@ class PatientController {
     private def editPatientModel(Patient patient, def section = null){
         PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
         BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
+        PreimplantSituation preimplantSituation = patient.preimplantSituation?:new PreimplantSituation()
         def model = [
                 patient:patient,
                 personalHistory:personalHistory,
-                baselineCondition:baselineCondition
+                baselineCondition:baselineCondition,
+                preimplantSituation:preimplantSituation
+
         ]
         if (section && section instanceof PersonalHistory){
             model.personalHistory = section
         }else if(section && section instanceof BaselineCondition){
             model.baselineCondition = section
+        }else if(section && section instanceof PreimplantSituation){
+            model.preimplantSituation = section
         }
         return model
     }

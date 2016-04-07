@@ -38,6 +38,9 @@ import espamacs.type.patientData.SocialCareType
 import espamacs.type.patientData.Stroke
 import espamacs.type.patientData.ThyroidDisorders
 import espamacs.type.patientData.TransientIschemicAttack
+import espamacs.type.preimplantSituation.IntermacsSituation
+import espamacs.type.preimplantSituation.IntropicMedication
+import espamacs.type.preimplantSituation.PreimplantEvent
 
 class BootStrap {
 
@@ -238,6 +241,31 @@ class BootStrap {
         new Nyha(code:"TYPE_II").save()
         new Nyha(code:"TYPE_III").save()
         new Nyha(code:"TYPE_IV").save()
+
+        new PreimplantEvent(code:"IABP").save() //Intra-aortic balloon pump
+        new PreimplantEvent(code:"VAD").save() //ventricular assist device,
+        new PreimplantEvent(code:"ECMO").save() //ventricular assist device,
+        new PreimplantEvent(code:"DIALYSIS").save() //Intra-aortic balloon pump
+        new PreimplantEvent(code:"ULTRAFILTRATION").save() //Intra-aortic balloon pump
+        new PreimplantEvent(code:"INVASIVE_MV").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+
+        new IntropicMedication(code:"DOBUTAMINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"DOPAMINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"NORADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"ADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"NITRIC_OXIDE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"MILRINONE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"LEVOSIMENDAN").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"ISOPROTERENOL").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"OTHERS").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+
+        new IntermacsSituation(code:"INTERMACS_1").save()
+		new IntermacsSituation(code:"INTERMACS_2").save()
+        new IntermacsSituation(code:"INTERMACS_3").save()
+		new IntermacsSituation(code:"INTERMACS_4").save()
+        new IntermacsSituation(code:"INTERMACS_5").save()
+		new IntermacsSituation(code:"INTERMACS_6").save()
+        new IntermacsSituation(code:"INTERMACS_7").save()
 
         /// TEST USERS
 

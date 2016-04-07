@@ -14,4 +14,10 @@ class CentralNervousSystem {
 
     static constraints = {
     }
+
+    static mapping = {
+        stroke lazy: false, fetch: 'join'
+        transientIschemicAttack lazy: false, fetch: 'join'
+        brainHemorrhage lazy: false, fetch: 'join'
+    }
 }
