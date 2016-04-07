@@ -32,6 +32,7 @@
     <g:render template="panelForms/baselineConditionsForm" model="[patient:patient, baselineCondition:baselineCondition]"/>
     <g:render template="panelForms/preimplantSituation" model="[patient:patient, preimplantSituation:preimplantSituation]"/>
     <g:render template="panelForms/diagnosisAndimplanGoalsForm" model="[patient:patient, diagnosisAndImplantGoals:diagnosisAndImplantGoals]"/>
+    <g:render template="panelForms/implantDataPanelForm" model="[patient:patient, implantData:implantData]"/>
 
 </content>
 

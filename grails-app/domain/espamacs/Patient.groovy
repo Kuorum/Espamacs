@@ -2,6 +2,7 @@ package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
+import espamacs.implantData.ImplantData
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.CardiacCareType
@@ -25,6 +26,7 @@ class Patient {
     BaselineCondition baselineCondition
     PreimplantSituation preimplantSituation
     DiagnosisAndImplantGoals diagnosisAndImplantGoals
+    ImplantData implantData
 
     static mapping = {
         centre lazy: false, fetch: 'join'
@@ -45,5 +47,6 @@ class Patient {
         baselineCondition nullable: true
         preimplantSituation nullable: true
         diagnosisAndImplantGoals nullable: true
+        implantData nullable:true
     }
 }

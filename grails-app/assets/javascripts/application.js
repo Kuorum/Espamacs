@@ -54,6 +54,8 @@ $(function(){
         _reloadSearchableTable($form, params)
     })
 
+
+
     function _reloadSearchableTable($form, params){
         var url = $form.attr("action")
         $.ajax({
@@ -74,6 +76,11 @@ $(function(){
             }
         })
     }
+
+    $("#implantType").on("change", function(){
+        changeImplantDataDependingOnSelect();
+    })
+    changeImplantDataDependingOnSelect();
 })
 
 function getUrlParams(url){
@@ -119,6 +126,21 @@ function merge_options(obj1,obj2){
 function isOldBrowser(){
     //On main.gsp is defined the html tags with 'Conditional statements'
     return $('html').is('.lt-ie7, .lt-ie8, .lt-ie9')
+}
+
+function changeImplantDataDependingOnSelect(){
+    showImplantDataInfo($("#implantType").val().split("_"));
+}
+
+function showImplantDataInfo(imaplantTypes){
+    var dynamicFieldset = ['LVAD', 'RVAD', 'TOTAL', 'ECMO']
+    $.each(dynamicFieldset, function(idx, typeName){
+        if ($.inArray(typeName, imaplantTypes)>=0){
+            $("#"+typeName).show("slow")
+        }else{
+            $("#"+typeName).hide("slow")
+        }
+    })
 }
 
 var display = {

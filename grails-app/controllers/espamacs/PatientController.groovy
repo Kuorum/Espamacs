@@ -2,10 +2,12 @@ package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
+import espamacs.implantData.ImplantData
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.PatientStatus
+import espamacs.type.implantData.ImplantType
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
@@ -143,6 +145,34 @@ class PatientController {
         gericSectionUpdate(patient, diagnosisAndImplantGoals, "diagnosisAndImplantGoals", transactionStatus)
     }
 
+    @Transactional
+    def saveImplantData(ImplantData implantData) {
+        //CHAPU
+        Patient patient = Patient.get(params.patientId)
+        if (implantData.implantType == ImplantType.findByCode("LVAD")){
+            implantData.rvadData = null
+            implantData.totalHeartData = null
+            implantData.ecmoData = null
+        }else if(implantData.implantType == ImplantType.findByCode("RVAD")){
+            implantData.lvadData = null
+            implantData.totalHeartData = null
+            implantData.ecmoData = null
+        }else if(implantData.implantType == ImplantType.findByCode("LVAD_RVAD")){
+            implantData.ecmoData = null
+            implantData.totalHeartData = null
+        }else if(implantData.implantType == ImplantType.findByCode("TOTAL")){
+            implantData.lvadData = null
+            implantData.rvadData= null
+            implantData.ecmoData= null
+        }else if(implantData.implantType == ImplantType.findByCode("ECMO")){
+            implantData.lvadData = null
+            implantData.rvadData = null
+            implantData.totalHeartData = null
+        }
+        implantData.validate()
+        gericSectionUpdate(patient, implantData, "implantData", transactionStatus)
+    }
+
     private def gericSectionUpdate(Patient patient, def command,String fieldName, def transactionStatus){
         if (patient == null || command == null) {
             transactionStatus.setRollbackOnly()
@@ -169,12 +199,14 @@ class PatientController {
         BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
         PreimplantSituation preimplantSituation = patient.preimplantSituation?:new PreimplantSituation()
         DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
+        ImplantData implantData = patient.implantData?:new ImplantData()
         def model = [
                 patient:patient,
                 personalHistory:personalHistory,
                 baselineCondition:baselineCondition,
                 preimplantSituation:preimplantSituation,
-                diagnosisAndImplantGoals:diagnosisAndImplantGoals
+                diagnosisAndImplantGoals:diagnosisAndImplantGoals,
+                implantData:implantData
 
         ]
         if (section && section instanceof PersonalHistory){
@@ -185,6 +217,8 @@ class PatientController {
             model.preimplantSituation = section
         }else if(section && section instanceof DiagnosisAndImplantGoals){
             model.diagnosisAndImplantGoals = section
+        }else if(section && section instanceof ImplantData){
+            model.implantData = section
         }
         return model
     }

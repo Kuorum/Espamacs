@@ -19,6 +19,20 @@ import espamacs.type.diagnosis.CurrentSituation
 import espamacs.type.diagnosis.ImplantGoal
 import espamacs.type.diagnosis.MainCardiacImplantCause
 import espamacs.type.diagnosis.MainLungImplantCause
+import espamacs.type.implantData.BloodFlowType
+import espamacs.type.implantData.EcmoBrand
+import espamacs.type.implantData.HeartTotalBrand
+import espamacs.type.implantData.ImplantEcmoIn
+import espamacs.type.implantData.ImplantEcmoOut
+import espamacs.type.implantData.ImplantLvadIn
+import espamacs.type.implantData.ImplantLvadOut
+import espamacs.type.implantData.ImplantRvadIn
+import espamacs.type.implantData.ImplantRvadOut
+import espamacs.type.implantData.ImplantTotalIn
+import espamacs.type.implantData.ImplantTotalOut
+import espamacs.type.implantData.ImplantType
+import espamacs.type.implantData.LvadBrand
+import espamacs.type.implantData.RvadBrand
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -319,6 +333,104 @@ class BootStrap {
 		new MainLungImplantCause(code:"ACUTE_RESPIRATORY_DISTRESS_SYNDROME").save()//SDRA
         new MainLungImplantCause(code:"PRE_LUNG_TRANSPLANT").save()//Pretrasplante pulmonar
 		new MainLungImplantCause(code:"OTHER").save()//Otra
+
+        new ImplantType(code:"LVAD").save()
+        new ImplantType(code:"RVAD").save()
+        new ImplantType(code:"LVAD_RVAD").save()
+        new ImplantType(code:"TOTAL").save()
+        new ImplantType(code:"ECMO").save()
+
+
+        new LvadBrand(code:"AB5000", defaultText:"AB5000").save()
+        new LvadBrand(code:"THORATEX_PVAD", defaultText:"Thoratec pVAD").save()
+        new LvadBrand(code:"LEVITRONIX_CENTRIMAG", defaultText:"Levitronix Centrimag").save()
+        new LvadBrand(code:"BERLIN_HEART_EXCOR", defaultText:"Berlin Heart Excor").save()
+        new LvadBrand(code:"BERLIN_HEART_INCOR", defaultText:"Berlin Heart Incor").save()
+        new LvadBrand(code:"JARVIC_2000", defaultText:"Jarvic 2000").save()
+        new LvadBrand(code:"HEARTWARE_HVAD", defaultText:"Heartware HVAD").save()
+        new LvadBrand(code:"TERUMO_DURAHEART", defaultText:"Terumo DuraHeart").save()
+        new LvadBrand(code:"HEARTASSIST_5", defaultText:"HeartAssist 5").save()
+        new LvadBrand(code:"HEARTMATE_II", defaultText:"HeartMate II").save()
+        new LvadBrand(code:"HEARTMATE_III", defaultText:"HeartMate III").save()
+        new LvadBrand(code:"VENTRACOR_VENTRASSIST", defaultText:"Ventracor VentrAssist").save()
+        new LvadBrand(code:"CIRCULITE_SYNERGY", defaultText:"Circulite Synergy").save()
+        new LvadBrand(code:"HEARTWARE_MVAD", defaultText:"Heartware MVAD").save()
+        new LvadBrand(code:"IMPELLA", defaultText:"Impella").save()
+        new LvadBrand(code:"TANDEM_HEART", defaultText:"Tandem Heart").save()
+        new LvadBrand(code:"BIOMEDICUS", defaultText:"Biomedicus").save()
+        new LvadBrand(code:"BVS_5000", defaultText:"BVS 5000").save()
+        new LvadBrand(code:"JOSTRA_ROTAFLOW", defaultText:"Jostra Rotaflow").save()
+        new LvadBrand(code:"OTHER", defaultText:"Otro").save()
+
+        new RvadBrand(code:"THORATEC_PVAD", defaultText: "Thoratec pVAD").save()
+	    new RvadBrand(code:"BERLIN_HEART_EXCOR", defaultText: "Berlin Heart Excor").save()
+        new RvadBrand(code:"LEVITRONIX_CENTRIMAG", defaultText: "Levitronix Centrimag").save()
+	    new RvadBrand(code:"HEARTWARE_HVAD", defaultText: "Heartware HVAD").save()
+        new RvadBrand(code:"BIOMEDICUS", defaultText: "Biomedicus").save()
+	    new RvadBrand(code:"AB_5000", defaultText: "AB 5000").save()
+        new RvadBrand(code:"BVS_5000", defaultText: "BVS 5000").save()
+    	new RvadBrand(code:"JOSTRA_ROTAFLOW", defaultText: "Jostra Rotaflow").save()
+        new RvadBrand(code:"OTHER", defaultText: "Otra").save()
+
+        new HeartTotalBrand(code:"CARDIOWEST").save() //CardioWest
+    	new HeartTotalBrand(code:"THORATEX").save() //Thoratec
+        new HeartTotalBrand(code:"HEARTWARE").save() //HeartWare
+	    new HeartTotalBrand(code:"BERLIN").save() //Berlin
+        new HeartTotalBrand(code:"OTHER").save() //Otra
+
+        new EcmoBrand(code:"ROTAFLOW_PLS").save() //Rotaflow PLS
+        new EcmoBrand(code:"CARDIO_HELP").save() //Cardiohelp
+        new EcmoBrand(code:"MEDOS").save() //Medos
+        new EcmoBrand(code:"CENTRIFUGAL_OXIGENATOR").save() //Centrifuga + oxigenador
+        new EcmoBrand(code:"OTHERS").save() //Otros
+
+
+        new BloodFlowType(code:"PULSATILE").save()
+        new BloodFlowType(code:"CONTINUOUS").save()
+
+        new ImplantLvadIn(code:"LEFT_ATRIUM").save() //Aurícula izquierda
+        new ImplantLvadIn(code:"LEFT_ATRIAL_APPENDAGE").save() //Orejuela izquierda
+        new ImplantLvadIn(code:"APEX_VI").save() //Apex VI
+        new ImplantLvadIn(code:"OTHER").save() //Otro
+
+
+        new ImplantLvadOut(code:"ASCENDING_AORTA").save() //Aorta ascendente
+        new ImplantLvadOut(code:"DESCENDING_THORACIC_AORTA").save() //Aorta torácica descendente
+        new ImplantLvadOut(code:"ABDOMINAL_AORTA").save() //Aorta abdominal
+        new ImplantLvadOut(code:"OTHER").save() //Otra
+
+        new ImplantRvadIn(code:"RIGHT_ATRIUM").save() //Aurícula derecha
+        new ImplantRvadIn(code:"RIGHT_ATRIAL_APPENDAGE").save() //Orejuela derecha
+        new ImplantRvadIn(code:"APEX_VD").save() //Apex VD
+        new ImplantRvadIn(code:"OTHER").save() //Otro
+
+        new ImplantRvadOut(code:"PULMONARY_ARTERY").save() //Arteria pulmonar
+        new ImplantRvadOut(code:"OTHER").save() //Otra
+
+        new ImplantTotalIn(code:"RIGHT_ATRIUM").save() //Aurícula derecha
+        new ImplantTotalIn(code:"RIGHT_ATRIAL_APPENDAGE").save() //Orejuela derecha
+        new ImplantTotalIn(code:"APEX_VD").save() //Apex VD
+        new ImplantTotalIn(code:"OTHER").save() //Otro
+
+        new ImplantTotalOut(code:"ASCENDING_AORTA").save() //Aorta ascendente
+        new ImplantTotalOut(code:"DESCENDING_THORACIC_AORTA").save() //Aorta torácica descendente
+        new ImplantTotalOut(code:"ABDOMINAL_AORTA").save() //Aorta abdominal
+        new ImplantTotalOut(code:"OTHER").save() //Otra
+
+        new ImplantEcmoIn(code:"FEMORAL_VEIN").save() //Vena femoral
+        new ImplantEcmoIn(code:"JUGULAR_VEIN").save() //Vena yugular/subclavia
+        new ImplantEcmoIn(code:"RIGHT_ATRIUM").save() //Aurícula derecha
+        new ImplantEcmoIn(code:"OTHER").save() //Otro
+
+
+        new ImplantEcmoOut(code:"FEMORAL_VEIN").save() //Vena femoral
+        new ImplantEcmoOut(code:"JUGULAR_VEIN").save() //Vena yugular
+        new ImplantEcmoOut(code:"FEMORAL_ARTERY").save() //Arteria femoral
+        new ImplantEcmoOut(code:"SUBCLAVIAN_ARTERY").save() //Arteria subclavia/axilar
+        new ImplantEcmoOut(code:"CAROTID_ARTERY").save() //Arteria carótida
+        new ImplantEcmoOut(code:"AORTA").save() //Aorta
+        new ImplantEcmoOut(code:"PULMONARY_ARTERY").save() //Arteria pulmonar
+        new ImplantEcmoOut(code:"OTHER").save() //Otra
 
         /// TEST USERS
 
