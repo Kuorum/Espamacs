@@ -1,6 +1,7 @@
 package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
+import espamacs.diagnosis.DiagnosisAndImplantGoals
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
@@ -135,8 +136,15 @@ class PatientController {
         gericSectionUpdate(patient, preimplantSituation, "preimplantSituation", transactionStatus)
     }
 
+
+    @Transactional
+    def saveDiagnosisAndImplantGoals(DiagnosisAndImplantGoals diagnosisAndImplantGoals) {
+        Patient patient = Patient.get(params.patientId)
+        gericSectionUpdate(patient, diagnosisAndImplantGoals, "diagnosisAndImplantGoals", transactionStatus)
+    }
+
     private def gericSectionUpdate(Patient patient, def command,String fieldName, def transactionStatus){
-        if (command == null) {
+        if (patient == null || command == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
@@ -160,11 +168,13 @@ class PatientController {
         PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
         BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
         PreimplantSituation preimplantSituation = patient.preimplantSituation?:new PreimplantSituation()
+        DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
         def model = [
                 patient:patient,
                 personalHistory:personalHistory,
                 baselineCondition:baselineCondition,
-                preimplantSituation:preimplantSituation
+                preimplantSituation:preimplantSituation,
+                diagnosisAndImplantGoals:diagnosisAndImplantGoals
 
         ]
         if (section && section instanceof PersonalHistory){
@@ -173,6 +183,8 @@ class PatientController {
             model.baselineCondition = section
         }else if(section && section instanceof PreimplantSituation){
             model.preimplantSituation = section
+        }else if(section && section instanceof DiagnosisAndImplantGoals){
+            model.diagnosisAndImplantGoals = section
         }
         return model
     }

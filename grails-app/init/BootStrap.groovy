@@ -14,6 +14,11 @@ import espamacs.type.baselineConditions.Nyha
 import espamacs.type.baselineConditions.PeripheralEdemaLevel
 import espamacs.type.baselineConditions.RightVentricleStatus
 import espamacs.type.baselineConditions.TricuspidValveStatus
+import espamacs.type.diagnosis.Contraindication
+import espamacs.type.diagnosis.CurrentSituation
+import espamacs.type.diagnosis.ImplantGoal
+import espamacs.type.diagnosis.MainCardiacImplantCause
+import espamacs.type.diagnosis.MainLungImplantCause
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -266,6 +271,54 @@ class BootStrap {
         new IntermacsSituation(code:"INTERMACS_5").save()
 		new IntermacsSituation(code:"INTERMACS_6").save()
         new IntermacsSituation(code:"INTERMACS_7").save()
+
+        new ImplantGoal(code:"TRANSITION_RECOVERY").save()
+        new ImplantGoal(code:"TRANSITION_TRANSPLANT").save()
+        new ImplantGoal(code:"POSSIBLE_TRANSITION_TRANSPLANT").save()
+        new ImplantGoal(code:"TARGET_THERAPY").save()
+        new ImplantGoal(code:"OTHER").save()
+
+        new Contraindication(code: "UNKNOWN").save()
+        new Contraindication(code: "NO").save()
+        new Contraindication(code: "YES").save()
+
+        new CurrentSituation(code: "ELECTIVE_IMPLANT").save() // Implante electivo
+        new CurrentSituation(code: "URGENT_IMPLANT").save() // Implante urgente
+        new CurrentSituation(code: "EMERGING_IMPLANT").save() // Implante emergente
+        new CurrentSituation(code: "POSTCARDIOTOMY").save() // Postcardiotomía
+        new CurrentSituation(code: "OTHERS").save() // Otros
+
+        new MainCardiacImplantCause(code:"NONE").save() //Ninguna
+		new MainCardiacImplantCause(code:"CANCER").save() //Cáncer
+        new MainCardiacImplantCause(code:"CONGENITAL_DISEASE").save() //Enfermedad congénita
+		new MainCardiacImplantCause(code:"CORONARY_DISEASE").save() //Enfermedad coronaria
+        new MainCardiacImplantCause(code:"VALVE_DISEASE").save() //Enfermedad valvular
+		new MainCardiacImplantCause(code:"PATHOLOGY_AORTA").save() //Patología de la aorta
+        new MainCardiacImplantCause(code:"VALVULAR_HEAR_DISEASE").save() //Enfermedad valvular y coronaria
+		new MainCardiacImplantCause(code:"FAMILY_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada familiar
+        new MainCardiacImplantCause(code:"IDIOPATHIC_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada idiopática
+		new MainCardiacImplantCause(code:"ISCHEMIC_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada isquémica
+        new MainCardiacImplantCause(code:"MYOCARDITIS_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada miocarditis
+		new MainCardiacImplantCause(code:"POSTPARTUM_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada postparto
+        new MainCardiacImplantCause(code:"VIRAL_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada viral
+		new MainCardiacImplantCause(code:"OTHER_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada por otra causa
+        new MainCardiacImplantCause(code:"TOXIC_DILATED_CARDIOMYOPATHY").save() //Miocardiopatía dilatada de origen tóxico (Alcohol, quimioterapia, fármacos, etc.)
+		new MainCardiacImplantCause(code:"HYPERTROPHIC_CARDIOMYOPATHY").save() //Miocardiopatía hipertrófica
+        new MainCardiacImplantCause(code:"AMYLOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva por amiloidosis
+		new MainCardiacImplantCause(code:"FIBROSIS_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva por fibrosis
+        new MainCardiacImplantCause(code:"SARCOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva por sarcoidosis
+		new MainCardiacImplantCause(code:"QUIMIO_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva secundaria a quimio o radioterapia
+        new MainCardiacImplantCause(code:"IDIOPATHIC_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva idiopática
+		new MainCardiacImplantCause(code:"OTHER_RESTRICTIVE_CARDIOMYOPATHY").save() //Miocardiopatía restrictiva de otra causa
+        new MainCardiacImplantCause(code:"OTHER").save() //Otra
+
+        new MainLungImplantCause(code:"NONE").save()//Ninguna
+		new MainLungImplantCause(code:"IDIOPATHIC_PULMONART_FIBROSIS").save()//FPI postTXP
+        new MainLungImplantCause(code:"MASSIVE_PULMONARY_EMBOLISM").save()//TEP masivo
+		new MainLungImplantCause(code:"PNEUMONIA").save()//Neumonía/infección respiratoria
+		new MainLungImplantCause(code:"ACUTE_RESPIRATORY_DISTRESS_SYNDROME").save()//SDRA
+        new MainLungImplantCause(code:"PRE_LUNG_TRANSPLANT").save()//Pretrasplante pulmonar
+		new MainLungImplantCause(code:"OTHER").save()//Otra
 
         /// TEST USERS
 
