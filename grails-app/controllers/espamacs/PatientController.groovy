@@ -3,6 +3,7 @@ package espamacs
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
 import espamacs.implantData.ImplantData
+import espamacs.initialData.InitialData
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
@@ -173,6 +174,13 @@ class PatientController {
         gericSectionUpdate(patient, implantData, "implantData", transactionStatus)
     }
 
+
+    @Transactional
+    def saveInitialData(InitialData initialData) {
+        Patient patient = Patient.get(params.patientId)
+        gericSectionUpdate(patient, initialData, "initialData", transactionStatus)
+    }
+
     private def gericSectionUpdate(Patient patient, def command,String fieldName, def transactionStatus){
         if (patient == null || command == null) {
             transactionStatus.setRollbackOnly()
@@ -200,13 +208,15 @@ class PatientController {
         PreimplantSituation preimplantSituation = patient.preimplantSituation?:new PreimplantSituation()
         DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
         ImplantData implantData = patient.implantData?:new ImplantData()
+        InitialData initialData = patient.initialData?:new InitialData()
         def model = [
                 patient:patient,
                 personalHistory:personalHistory,
                 baselineCondition:baselineCondition,
                 preimplantSituation:preimplantSituation,
                 diagnosisAndImplantGoals:diagnosisAndImplantGoals,
-                implantData:implantData
+                implantData:implantData,
+                initialData:initialData
 
         ]
         if (section && section instanceof PersonalHistory){
@@ -219,6 +229,8 @@ class PatientController {
             model.diagnosisAndImplantGoals = section
         }else if(section && section instanceof ImplantData){
             model.implantData = section
+        }else if(section && section instanceof InitialData){
+            model.initialData = section
         }
         return model
     }

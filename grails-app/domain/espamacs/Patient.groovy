@@ -3,6 +3,7 @@ package espamacs
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
 import espamacs.implantData.ImplantData
+import espamacs.initialData.InitialData
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.CardiacCareType
@@ -27,15 +28,18 @@ class Patient {
     PreimplantSituation preimplantSituation
     DiagnosisAndImplantGoals diagnosisAndImplantGoals
     ImplantData implantData
+    InitialData initialData
 
     static mapping = {
-        centre lazy: false, fetch: 'join'
-        cardiacCareType lazy: false, fetch: 'join'
-        gender lazy: false, fetch: 'join'
-        personalHistory lazy: false, fetch: 'join'
-        baselineCondition lazy: false, fetch: 'join'
-        preimplantSituation lazy: false, fetch: 'join'
-        diagnosisAndImplantGoals lazy: false, fetch: 'join'
+        centre lazy: false, fetch: 'select'
+        cardiacCareType lazy: false, fetch: 'select'
+        gender lazy: false, fetch: 'select'
+        personalHistory lazy: false, fetch: 'select'
+        baselineCondition lazy: false, fetch: 'select'
+        preimplantSituation lazy: false, fetch: 'select'
+        diagnosisAndImplantGoals lazy: false, fetch: 'select'
+        implantData lazy: false, fetch: 'select'
+        initialData lazy: false, fetch: 'select'
     }
 
     static constraints = {
@@ -48,5 +52,7 @@ class Patient {
         preimplantSituation nullable: true
         diagnosisAndImplantGoals nullable: true
         implantData nullable:true
+        implantData nullable: true
+        initialData nullable: true
     }
 }

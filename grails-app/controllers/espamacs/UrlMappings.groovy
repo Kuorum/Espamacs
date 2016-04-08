@@ -18,6 +18,7 @@ class UrlMappings {
         name patientPreimplantSituation:"/patient/edit/$patientId/preimplantSituation" (controller:"patient") {action=[GET:"postGet", POST:"savePreimplantSituation"]}
         name patientDiagnosisAndImplantGoals:"/patient/edit/$patientId/diagnosisAndImplantGoals" (controller:"patient") {action=[GET:"postGet", POST:"saveDiagnosisAndImplantGoals"]}
         name patientImplantData:        "/patient/edit/$patientId/implantData" (controller:"patient") {action=[GET:"postGet", POST:"saveImplantData"]}
+        name patientInitialData:        "/patient/edit/$patientId/initialData" (controller:"patient") {action=[GET:"postGet", POST:"saveInitialData"]}
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {

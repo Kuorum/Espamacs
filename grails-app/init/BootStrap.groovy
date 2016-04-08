@@ -33,6 +33,14 @@ import espamacs.type.implantData.ImplantTotalOut
 import espamacs.type.implantData.ImplantType
 import espamacs.type.implantData.LvadBrand
 import espamacs.type.implantData.RvadBrand
+import espamacs.type.initialData.AntiheparineAntibodies
+import espamacs.type.initialData.BloodMedication
+import espamacs.type.initialData.CardiacSurgicalProcedure
+import espamacs.type.initialData.CardiologicalTreatmenAtDischarge
+import espamacs.type.initialData.DischargedDestination
+import espamacs.type.initialData.OtherSurgicalProcedure
+import espamacs.type.initialData.SurgicalProcedureAfterTransplant
+import espamacs.type.initialData.TimeWithoutIntropicIV
 import espamacs.type.patientData.AortaPathology
 import espamacs.type.patientData.BrainHemorrhage
 import espamacs.type.patientData.ChronicAnemia
@@ -341,26 +349,26 @@ class BootStrap {
         new ImplantType(code:"ECMO").save()
 
 
-        new LvadBrand(code:"AB5000", defaultText:"AB5000").save()
-        new LvadBrand(code:"THORATEX_PVAD", defaultText:"Thoratec pVAD").save()
-        new LvadBrand(code:"LEVITRONIX_CENTRIMAG", defaultText:"Levitronix Centrimag").save()
-        new LvadBrand(code:"BERLIN_HEART_EXCOR", defaultText:"Berlin Heart Excor").save()
-        new LvadBrand(code:"BERLIN_HEART_INCOR", defaultText:"Berlin Heart Incor").save()
-        new LvadBrand(code:"JARVIC_2000", defaultText:"Jarvic 2000").save()
-        new LvadBrand(code:"HEARTWARE_HVAD", defaultText:"Heartware HVAD").save()
-        new LvadBrand(code:"TERUMO_DURAHEART", defaultText:"Terumo DuraHeart").save()
-        new LvadBrand(code:"HEARTASSIST_5", defaultText:"HeartAssist 5").save()
-        new LvadBrand(code:"HEARTMATE_II", defaultText:"HeartMate II").save()
-        new LvadBrand(code:"HEARTMATE_III", defaultText:"HeartMate III").save()
-        new LvadBrand(code:"VENTRACOR_VENTRASSIST", defaultText:"Ventracor VentrAssist").save()
-        new LvadBrand(code:"CIRCULITE_SYNERGY", defaultText:"Circulite Synergy").save()
-        new LvadBrand(code:"HEARTWARE_MVAD", defaultText:"Heartware MVAD").save()
-        new LvadBrand(code:"IMPELLA", defaultText:"Impella").save()
-        new LvadBrand(code:"TANDEM_HEART", defaultText:"Tandem Heart").save()
-        new LvadBrand(code:"BIOMEDICUS", defaultText:"Biomedicus").save()
-        new LvadBrand(code:"BVS_5000", defaultText:"BVS 5000").save()
-        new LvadBrand(code:"JOSTRA_ROTAFLOW", defaultText:"Jostra Rotaflow").save()
-        new LvadBrand(code:"OTHER", defaultText:"Otro").save()
+        new LvadBrand(code:"AB5000").save()
+        new LvadBrand(code:"THORATEX_PVAD").save()
+        new LvadBrand(code:"LEVITRONIX_CENTRIMAG").save()
+        new LvadBrand(code:"BERLIN_HEART_EXCOR").save()
+        new LvadBrand(code:"BERLIN_HEART_INCOR").save()
+        new LvadBrand(code:"JARVIC_2000").save()
+        new LvadBrand(code:"HEARTWARE_HVAD").save()
+        new LvadBrand(code:"TERUMO_DURAHEART").save()
+        new LvadBrand(code:"HEARTASSIST_5").save()
+        new LvadBrand(code:"HEARTMATE_II").save()
+        new LvadBrand(code:"HEARTMATE_III").save()
+        new LvadBrand(code:"VENTRACOR_VENTRASSIST").save()
+        new LvadBrand(code:"CIRCULITE_SYNERGY").save()
+        new LvadBrand(code:"HEARTWARE_MVAD").save()
+        new LvadBrand(code:"IMPELLA").save()
+        new LvadBrand(code:"TANDEM_HEART").save()
+        new LvadBrand(code:"BIOMEDICUS").save()
+        new LvadBrand(code:"BVS_5000").save()
+        new LvadBrand(code:"JOSTRA_ROTAFLOW").save()
+        new LvadBrand(code:"OTHER").save()
 
         new RvadBrand(code:"THORATEC_PVAD", defaultText: "Thoratec pVAD").save()
 	    new RvadBrand(code:"BERLIN_HEART_EXCOR", defaultText: "Berlin Heart Excor").save()
@@ -431,6 +439,69 @@ class BootStrap {
         new ImplantEcmoOut(code:"AORTA").save() //Aorta
         new ImplantEcmoOut(code:"PULMONARY_ARTERY").save() //Arteria pulmonar
         new ImplantEcmoOut(code:"OTHER").save() //Otra
+
+
+        new DischargedDestination(code:"HOME").save() //Casa o residencia permanente</option>
+		new DischargedDestination(code:"INTERMEDIATE_CARE_UNIT").save() //Unidad de cuidados intermedios</option>
+        new DischargedDestination(code:"REHABILIATATION").save() //Centro de rehabilitación</option>
+		new DischargedDestination(code:"OTHER").save() //Otro</option>
+        new DischargedDestination(code:"NONE_PATIENT_DEATH").save() //No aplicable (paciente fallecido)</option>
+
+        new TimeWithoutIntropicIV(code:"1_7").save() //1-7 días</option>
+		new TimeWithoutIntropicIV(code:"8_13").save() //8-13 días</option>
+        new TimeWithoutIntropicIV(code:"14_27").save() //14-27 días</option>
+		new TimeWithoutIntropicIV(code:"27_MORE").save() //Más de 27 días</option>
+
+        new SurgicalProcedureAfterTransplant(code:"NONE").save() //Ninguno
+        new SurgicalProcedureAfterTransplant(code:"NO_CARDIAC_SURGERY_PROCEUDRE").save() //Procedimiento quirúrgico no cardíaco
+        new SurgicalProcedureAfterTransplant(code:"INVASIVE_CARDIAC_PROCEDURE").save() //Procedimiento cardíaco invasivo
+        new SurgicalProcedureAfterTransplant(code:"CARDIAC_SURGERY_PROCEUDRE").save() //Procedimiento quirúrgico cardíaco
+        new SurgicalProcedureAfterTransplant(code:"OTHER").save() //Otro
+
+        new CardiacSurgicalProcedure(code: "BLEEDING_BEFORE_48").save() //Reoperación por sangrado (hasta 48 horas postimplante)
+        new CardiacSurgicalProcedure(code: "BLEEDING_AFTER_48").save() //Drenaje del derrame pericárdico/ taponamiento/ reoperación por sangrado (tras 48 del implante)
+        new CardiacSurgicalProcedure(code: "CHEST_DRAINAGE").save() //Colocación de drenaje torácico
+        new CardiacSurgicalProcedure(code: "AORTIC_VALVE_SURGERY").save() //Cirugía valvular aórtica
+        new CardiacSurgicalProcedure(code: "MITRAL_VALVE_SURGERY").save() //Cirugía valvular mitral
+        new CardiacSurgicalProcedure(code: "TRICUSPID_VALVE_SURGERY").save() //Cirugía valvular tricúspide
+        new CardiacSurgicalProcedure(code: "PULMONARY_VALVE_SURGERY").save() //Cirugía valvular pulmonar
+
+
+        new OtherSurgicalProcedure(code:"REINTUBATE").save() //Reintubación
+        new OtherSurgicalProcedure(code:"HEMOFILTRATIOIN").save() //Hemofiltración
+        new OtherSurgicalProcedure(code:"HEMODIALYSIS").save() //Hemodiálisis
+
+
+        new CardiologicalTreatmenAtDischarge(code:"ACE_INHIBITORS").save() //IECA, Inhibidor de la enzima convertidora de angiotensina
+        new CardiologicalTreatmenAtDischarge(code:"AIIRAS").save() //ARA II, Antagonistas de los Receptores de la Angiotensina II
+        new CardiologicalTreatmenAtDischarge(code:"CALCIUM_BLOCKERS").save() //Antagonistas del Calcio
+        new CardiologicalTreatmenAtDischarge(code:"BETA_BLOCKERS").save() //Betabloqueantes
+        new CardiologicalTreatmenAtDischarge(code:"ALDOSTERONE_BLOCKERS").save() //Antagonistas de la aldosterona
+        new CardiologicalTreatmenAtDischarge(code:"LOOP_DIURETICS").save() //Diuréticos de asa
+        new CardiologicalTreatmenAtDischarge(code:"AMIODARONE").save() //Amiodarona
+        new CardiologicalTreatmenAtDischarge(code:"DIGOXIN").save() //Digoxina
+        new CardiologicalTreatmenAtDischarge(code:"OTHER_ANTIARRYTHMICS").save() //Otros antiarrítmicos
+        new CardiologicalTreatmenAtDischarge(code:"NITRIC_OXIDE").save() //Óxido nítrico
+        new CardiologicalTreatmenAtDischarge(code:"SILDENAFIL").save() //Sildenafilo
+        new CardiologicalTreatmenAtDischarge(code:"ILOPROST").save() //Iloprost
+        new CardiologicalTreatmenAtDischarge(code:"BOSENTAN").save() //Bosentan
+        new CardiologicalTreatmenAtDischarge(code:"NESERITIDE").save() //Neseritide
+
+        new AntiheparineAntibodies(code: "UNKNOWN").save() //Desconocido
+        new AntiheparineAntibodies(code: "NO").save() // Sí
+        new AntiheparineAntibodies(code: "YES").save() // No
+
+        new BloodMedication(code:"WARFARIN").save() //Warfarina o derivados
+        new BloodMedication(code:"ACETYLSALICYLIC_ACID").save() //AAS
+        new BloodMedication(code:"DIPYRIDAMOLE").save() //Dipiridamol
+        new BloodMedication(code:"CLOPIDOGREL").save() //Clopidogrel
+        new BloodMedication(code:"TICLOPIDINE").save() //Ticlopidina
+        new BloodMedication(code:"HEPARIN").save() //Heparina
+        new BloodMedication(code:"ENOXAPARIN").save() //Enoxaparina
+        new BloodMedication(code:"BIVALIRUDIN").save() //Bivalirudina
+        new BloodMedication(code:"ARGOTRAVAN").save() //Argatrovan
+        new BloodMedication(code:"HIRUDIN").save() //Hirudina
+        new BloodMedication(code:"LEPIRUDIN").save() //Lepirudina
 
         /// TEST USERS
 
