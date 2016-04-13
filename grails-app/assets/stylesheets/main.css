@@ -364,6 +364,8 @@ input.datepicker{
     border-radius: 4px;
 }
 
+.datepicker td, .datepicker th{border-radius: 0}
+
 .required-indicator {
     color: #cc0000;
     display: inline-block;

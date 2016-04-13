@@ -2,6 +2,7 @@ package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
+import espamacs.event.Event
 import espamacs.implantData.ImplantData
 import espamacs.initialData.InitialData
 import espamacs.patientData.PersonalHistory
@@ -30,6 +31,9 @@ class Patient {
     ImplantData implantData
     InitialData initialData
 
+    List<Event> events
+
+    static hasMany = [events: Event]
     static mapping = {
         centre lazy: false, fetch: 'select'
         cardiacCareType lazy: false, fetch: 'select'

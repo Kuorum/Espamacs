@@ -2,6 +2,7 @@ package espamacs
 
 import espamacs.baselineConditions.BaselineCondition
 import espamacs.diagnosis.DiagnosisAndImplantGoals
+import espamacs.event.Event
 import espamacs.implantData.ImplantData
 import espamacs.initialData.InitialData
 import espamacs.pagination.PatientPagination
@@ -209,6 +210,7 @@ class PatientController {
         DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
         ImplantData implantData = patient.implantData?:new ImplantData()
         InitialData initialData = patient.initialData?:new InitialData()
+        List<Event> events = patient.events
         def model = [
                 patient:patient,
                 personalHistory:personalHistory,
@@ -216,7 +218,8 @@ class PatientController {
                 preimplantSituation:preimplantSituation,
                 diagnosisAndImplantGoals:diagnosisAndImplantGoals,
                 implantData:implantData,
-                initialData:initialData
+                initialData:initialData,
+                events:events
 
         ]
         if (section && section instanceof PersonalHistory){

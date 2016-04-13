@@ -1,5 +1,7 @@
 package espamacs.event
 
+import espamacs.Patient
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -8,41 +10,53 @@ class EventController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Event.list(params), model:[eventoCount: Event.count()]
-    }
-
     def show(Event evento) {
         respond evento
     }
 
-    def create() {
-        respond new Event(params)
+
+    def createMalfunctionDevice(){
+        Patient patient = Patient.get(params.patientId)
+        respond patient, view: 'create', model:[patient:patient, event:new MalfunctionDevice(params)]
     }
 
     @Transactional
-    def save(Event evento) {
-        if (evento == null) {
+    def saveMalfunctionDevice(MalfunctionDevice malfunctionDevice){
+        Patient patient = Patient.get(params.patientId)
+        log.info("Creating malfunction device event")
+        save(malfunctionDevice, patient, transactionStatus)
+    }
+
+    def createHemorrhage(){
+        Patient patient = Patient.get(params.patientId)
+        respond patient, view: 'create', model:[patient:patient, event:new Hemorrhage(params)]
+    }
+
+    def saveHemorrhage(){
+        respond new Hemorrhage()
+    }
+
+    private save(Event event, Patient patient, def transactionStatus) {
+        if (event == null || patient == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (evento.hasErrors()) {
+        if (event.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond evento.errors, view:'create'
+            respond event.errors, view:'create'
             return
         }
 
-        evento.save flush:true
+        event.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), evento.id])
-                redirect evento
+                flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+                redirect mapping:'patientShow', params:patient.encodeAsLinkProperties()
             }
-            '*' { respond evento, [status: CREATED] }
+            '*' { respond event, [status: CREATED] }
         }
     }
 

@@ -1,5 +1,6 @@
 import espamacs.Centre
 import espamacs.Patient
+import espamacs.event.Event
 
 /**
  * Created by iduetxe on 24/03/14.
@@ -12,6 +13,7 @@ class LinkPropertiesCodec {
         switch (target){
             case Patient:
             case Centre:
+            case Event:
                 params = prepareParams(target);
                 break
             default:
@@ -26,6 +28,9 @@ class LinkPropertiesCodec {
 
     private static def prepareParams(Patient patient){
         [patientId:patient.id]
+    }
+    private static def prepareParams(Event event){
+        [patientId:event.patient.id, eventId:event.id]
     }
     private static def prepareParams(Centre centre){
         [id:centre.id]

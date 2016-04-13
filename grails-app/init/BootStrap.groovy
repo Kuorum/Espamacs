@@ -3,6 +3,8 @@ import espamacs.EspamacsUser
 import espamacs.EspamacsUserRole
 import espamacs.Patient
 import espamacs.Role
+import espamacs.event.Event
+import espamacs.event.MalfunctionDevice
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
@@ -19,6 +21,10 @@ import espamacs.type.diagnosis.CurrentSituation
 import espamacs.type.diagnosis.ImplantGoal
 import espamacs.type.diagnosis.MainCardiacImplantCause
 import espamacs.type.diagnosis.MainLungImplantCause
+import espamacs.type.event.PatientHealthStatus
+import espamacs.type.event.RemovedAssistance
+import espamacs.type.event.hemorrhage.HemorrhageCause
+import espamacs.type.event.malfunctionDevice.MalfunctionDeviceType
 import espamacs.type.implantData.BloodFlowType
 import espamacs.type.implantData.EcmoBrand
 import espamacs.type.implantData.HeartTotalBrand
@@ -503,6 +509,33 @@ class BootStrap {
         new BloodMedication(code:"HIRUDIN").save() //Hirudina
         new BloodMedication(code:"LEPIRUDIN").save() //Lepirudina
 
+        new PatientHealthStatus(code:"ICU").save() // Ingresado en UCI
+		new PatientHealthStatus(code:"HOSPITAL_ADMISION").save() //Ingresado en planta de hospitalización
+        new PatientHealthStatus(code:"OTHER_HOSPITAL_ADMISION").save() //Ingresado en otro centro hospitalario
+		new PatientHealthStatus(code:"DISCHARGED").save() //Alta hospitalaria
+
+        new RemovedAssistance(code:"NO").save() // No
+		new RemovedAssistance(code:"YES_HEALED").save() // Sí, por recuperación
+        new RemovedAssistance(code:"YES_TRNSPLANT").save() // Sí, por trasplante
+		new RemovedAssistance(code:"YES_CHANGE_ASSISTANCE").save() // Sí, por cambio de tipo de asistencia
+        new RemovedAssistance(code:"YES_DEAD").save() // Sí, por fallecimiento
+
+        new MalfunctionDeviceType(code:"PUMP_ERROR").save() // Fallo de la bomba
+		new MalfunctionDeviceType(code:"CONTROL_DEVICE_ERROR").save() // Fallo de los dispositivos de control
+        new MalfunctionDeviceType(code:"BATERY_ERROR").save() // Fallo de la batería
+		new MalfunctionDeviceType(code:"DEVICE_THROMBOSIS").save() // Trombosis del dispositivo
+        new MalfunctionDeviceType(code:"MISPLACEMENT_INPUT_CANNULA").save() // Colocación inadecuada de cánula de entrada
+		new MalfunctionDeviceType(code:"MISPLACEMENT_OUTPUT_CANNULA").save() // Colocación inadecuada de la cánula de salida
+        new MalfunctionDeviceType(code:"THROMBOSIS_INPUT_VALVE").save() // Trombosis válvula de entrada
+		new MalfunctionDeviceType(code:"THROMBOSIS_OUTPUT_VALVE").save() // Trombosis válvula de salida
+        new MalfunctionDeviceType(code:"PATIENT_NEGLIGENCE").save() // Error del paciente en el cuidado del dispositivo
+		new MalfunctionDeviceType(code:"OTHER").save() // Otro
+
+        new HemorrhageCause(code:"TRANSFUSION").save() //Trasfusión
+		new HemorrhageCause(code:"TRANSFUSION_ICU").save() //Trasfusión e ingreso en UCI
+        new HemorrhageCause(code:"TRANSFUSION_ICU_SURGERY").save() //Trasfusión, ingreso en UCI y /reintervención
+		new HemorrhageCause(code:"DEAD").save() //Muerte
+
         /// TEST USERS
 
         EspamacsUser user = new EspamacsUser("user", "user")
@@ -530,6 +563,17 @@ class BootStrap {
                         cardiacCareType: CardiacCareType.findByCode("SHORT")
                 ]
         )
+        patient.save()
+        patient.events = new ArrayList<Event>()
+        MalfunctionDevice event = new MalfunctionDevice()
+        event.patient=patient
+        event.eventDate=new Date()
+        event.patientHealthStatus=PatientHealthStatus.findAll().first()
+        event.patientDeath= true
+        event.removedAssistance=RemovedAssistance.findAll().first()
+        event.malfunctionDeviceType=MalfunctionDeviceType.findAll().first()
+        patient.events.add(event)
+        event.save()
         patient.save()
 
         (1..35).each{

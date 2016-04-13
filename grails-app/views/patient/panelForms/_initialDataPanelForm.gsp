@@ -22,7 +22,7 @@
                     <f:field bean="${initialData}" property="antiheparineAntibodies" />
                     <f:field bean="${initialData}" property="bloodMedications" templates="multiCheck"/>
                 </fieldset>
-
+            </div>
             <div class="panel-footer">
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

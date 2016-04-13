@@ -20,6 +20,11 @@ class UrlMappings {
         name patientImplantData:        "/patient/edit/$patientId/implantData" (controller:"patient") {action=[GET:"postGet", POST:"saveImplantData"]}
         name patientInitialData:        "/patient/edit/$patientId/initialData" (controller:"patient") {action=[GET:"postGet", POST:"saveInitialData"]}
 
+        name patientEvent:        "/patient/$patientId/event/${eventId}" (controller:"event", action:"show")
+
+        name patientEventCreateMalfunctionDevice:        "/patient/$patientId/add-event/malfunctionDevice" (controller:"event") {action=[GET:"createMalfunctionDevice", POST:"saveMalfunctionDevice"]}
+        name patientEventCreateHemorrhage:        "/patient/$patientId/add-event/hemorrhage" (controller:"event") {action=[GET:"createHemorrhage", POST:"saveHemorrhage"]}
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here

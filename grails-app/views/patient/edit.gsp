@@ -34,6 +34,7 @@
     <g:render template="panelForms/diagnosisAndimplanGoalsForm" model="[patient:patient, diagnosisAndImplantGoals:diagnosisAndImplantGoals]"/>
     <g:render template="panelForms/implantDataPanelForm" model="[patient:patient, implantData:implantData]"/>
     <g:render template="panelForms/initialDataPanelForm" model="[patient:patient, initialData:initialData]"/>
+    <g:render template="panelForms/patientEvents" model="[patient:patient, events:events]"/>
 
 </content>
 
