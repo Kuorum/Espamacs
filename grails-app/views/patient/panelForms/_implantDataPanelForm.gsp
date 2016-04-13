@@ -49,6 +49,7 @@
                     <f:field bean="${implantData}" property="ecmoData.implantOut"/>
                     <f:field bean="${implantData}" property="ecmoData.initialFlow"/>
                 </fieldset>
+            </div>
             <div class="panel-footer">
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
