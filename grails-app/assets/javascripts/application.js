@@ -37,6 +37,10 @@ $(function(){
         window.document.location = $(this).data("href");
     });
 
+    $("tr.clickable-row").on("click", function() {
+        window.document.location = $(this).data("href");
+    });
+
     $(".ajax-searchable-table-form").on("change","input, select", function() {
         var $form = $(this).parents("form")
         var params = $form.serializeArray()

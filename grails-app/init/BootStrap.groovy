@@ -23,8 +23,34 @@ import espamacs.type.diagnosis.MainCardiacImplantCause
 import espamacs.type.diagnosis.MainLungImplantCause
 import espamacs.type.event.PatientHealthStatus
 import espamacs.type.event.RemovedAssistance
+import espamacs.type.event.arrhythmia.ArrhythmiaType
+import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis
+import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace
+import espamacs.type.event.hemolysis.HemolysisCause
+import espamacs.type.event.hemorrhage.BleedingPlace
 import espamacs.type.event.hemorrhage.HemorrhageCause
+import espamacs.type.event.hemorrhage.HemorrhageTreatment
+import espamacs.type.event.infection.InfectionPlace
+import espamacs.type.event.infection.InfectionTreatment
 import espamacs.type.event.malfunctionDevice.MalfunctionDeviceType
+import espamacs.type.event.malfunctionDevice.UrgentSurgery
+import espamacs.type.event.myocardialInfarction.MyocardialInfractionCause
+import espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace
+import espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement
+import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType
+import espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod
+import espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity
+import espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment
+import espamacs.type.event.rightHeartFailure.RightHeartFailureSignals
+import espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace
+import espamacs.type.event.woundDehiscence.WoundDehiscenceType
 import espamacs.type.implantData.BloodFlowType
 import espamacs.type.implantData.EcmoBrand
 import espamacs.type.implantData.HeartTotalBrand
@@ -536,6 +562,145 @@ class BootStrap {
         new HemorrhageCause(code:"TRANSFUSION_ICU_SURGERY").save() //Trasfusión, ingreso en UCI y /reintervención
 		new HemorrhageCause(code:"DEAD").save() //Muerte
 
+        new UrgentSurgery(code:"YES_URGENT").save() // Sí, urgente
+		new UrgentSurgery(code:"YES_NO_URGENT").save() // Sí, electiva
+        new UrgentSurgery(code:"NO").save() // No
+
+        new HemorrhageTreatment(code:"MEDICAL").save() //Médico
+		new HemorrhageTreatment(code:"CARDIAC_SURGERY").save() //Reintervención cardiaca
+        new HemorrhageTreatment(code:"NO_CARDIAC_SURGERY").save() //Intervención no cardiaca
+
+        new BleedingPlace(code:"MEDIASINUM").save() // Mediastino
+        new BleedingPlace(code:"SUTURES_DEVICE").save() // Suturas del dispositivo
+        new BleedingPlace(code:"CANNULATION_PLACE").save() // Lugar de canulación venosa o arterial
+        new BleedingPlace(code:"INTRAABDOMINAL").save() // Intraabdominal
+        new BleedingPlace(code:"CHEST_WALL").save() // Pared torácica
+        new BleedingPlace(code:"GASTROINTESTINAL").save() // Gastrointestinal
+        new BleedingPlace(code:"RESPIRATORY").save() // Respiratorio
+        new BleedingPlace(code:"POCKET_PUMP").save() // Bolsillo de la bomba
+        new BleedingPlace(code:"IN_OUT_DUCT").save() // Conducto de entrada o de salida
+        new BleedingPlace(code:"PLEURAL_SPACE").save() // Espacio pleural
+        new BleedingPlace(code:"RETROPERITONEO").save() // Retroperitoneo
+        new BleedingPlace(code:"OTHER").save() // Otro
+
+
+        new InfectionPlace(code:"SEPSIS").save() // Sepsis con hemocultivos positivos
+        new InfectionPlace(code:"RESPIRATORY").save() // Infección respiratoria
+        new InfectionPlace(code:"URINARY").save() // Infección del tracto urinario
+        new InfectionPlace(code:"GASTROINTESTINAL").save() // Infección gastrointestinal
+        new InfectionPlace(code:"PERIPHERAL_WOUND").save() // Infección de herida periférica
+        new InfectionPlace(code:"CATHETER").save() // Infección de catéter
+        new InfectionPlace(code:"MEDIASTINITIS").save() // Mediastinitis
+        new InfectionPlace(code:"CONTROL_LINE").save() // Infección de línea de control de la asistencia
+        new InfectionPlace(code:"CANNULAS_OUT").save() // Infección de orificios de salida de las cánulas
+        new InfectionPlace(code:"PUMP").save() // >Infección de la bomba
+
+        new InfectionTreatment(code:"MEDICAL").save() //Médico
+        new InfectionTreatment(code:"SURGERY").save() //Quirúrgico
+        new InfectionTreatment(code:"MEDICAL_SURGERY").save() //Médico + quirúrgico
+
+        new NeurologicalDysfunctionType(code:"ISCHEMIC").save() // Isquémico
+        new NeurologicalDysfunctionType(code:"HEMORRHAGIC").save() // Hemorrágico
+        new NeurologicalDysfunctionType(code:"ISCHEMIC_HEMORRHAGIC").save() // Isquémico con trasformación hemorrágica posterior
+        new NeurologicalDysfunctionType(code:"OTHER").save() // Otro
+
+        new NeurologicalDysfunctionEffect(code:"ISCHEMIC_STROKE_TEMPORAL").save() //AIT
+        new NeurologicalDysfunctionEffect(code:"ISCHEMIC_STROKE_NO_EFFECT").save() //ACVA isquémico sin secuelas
+        new NeurologicalDysfunctionEffect(code:"ISCHEMIC_STROKE_EFFECT").save() //ACVA isquémico con secuelas
+        new NeurologicalDysfunctionEffect(code:"ISCHEMIC_STROKE_DEAD").save() //ACVA isquémico que causa la muerte del paciente
+        new NeurologicalDysfunctionEffect(code:"HEMORRHAGIC_STROKE_NO_EFFECT").save() //ACVA hemorrágico sin secuelas
+        new NeurologicalDysfunctionEffect(code:"HEMORRHAGIC_STROKE_EFFECT").save() //ACVA hemorrágico con secuelas
+        new NeurologicalDysfunctionEffect(code:"HEMORRHAGIC_STROKE_DEAD").save() //ACVA hemorrágico que causa la muerte del paciente
+
+        new NeurologicalDysfunctionCause(code:"DEVICE").save() //Complicación relacionada con el dispositivo</option>
+        new NeurologicalDysfunctionCause(code:"MEDICATION").save() //Complicación relacionada con la toma inadecuada de la medicación</option>
+        new NeurologicalDysfunctionCause(code:"COMPLEX_PATIENT").save() //Complicación relacionada con la complejidad del paciente</option>
+        new NeurologicalDysfunctionCause(code:"OTHER").save() //Otra</option>
+
+		new NeurologicalDysfunctionINR(code:"UNKNOWN").save() //Desconocido
+		new NeurologicalDysfunctionINR(code:"INR_UP").save() //INR por encima del rango
+		new NeurologicalDysfunctionINR(code:"INR_DOWN").save() //INR por debajo del rango
+
+        new NeurologicalDysfunctionAPTT(code:"UNKNOWN").save() //Desconocido
+        new NeurologicalDysfunctionAPTT(code:"APTT_UP").save() //APTT por encima del rango
+        new NeurologicalDysfunctionAPTT(code:"APTT_DOWN").save() //APTT por debajo del rango
+
+        new NeurologicalDysfunctionPlace(code:'RIGHT_HEMISPHERE').save() //Hemisferio derecho
+        new NeurologicalDysfunctionPlace(code:'left_HEMISPHERE').save() //Hemisferio izquierdo
+        new NeurologicalDysfunctionPlace(code:'OCCIPITAL').save() //Occipital
+        new NeurologicalDysfunctionPlace(code:'BRAINSTEM').save() //Tronco del encéfalo
+        new NeurologicalDysfunctionPlace(code:'OTHER').save() //Otro
+
+        new NeurologicalDysfunctionDiagnosis(code:"TAC").save() //TAC
+        new NeurologicalDysfunctionDiagnosis(code:"NUCLEAR_MAGNETIC_RESONANCE").save() //RNM
+        new NeurologicalDysfunctionDiagnosis(code:"ANGIOGRAPHY").save() //Angiografía
+        new NeurologicalDysfunctionDiagnosis(code:"CLINIC").save() //Clínico
+        new NeurologicalDysfunctionDiagnosis(code:"OTHER").save() //Otro
+
+        new NeurologicalDysfunctionTreatement(code:"NONE").save() //Ninguno
+        new NeurologicalDysfunctionTreatement(code:"HEPARINE").save() //Heparina
+        new NeurologicalDysfunctionTreatement(code:"FIBRINOLYSIS").save() //Fibrinolisis
+        new NeurologicalDysfunctionTreatement(code:"ANTICONVULSANTS").save() //Anticonvulsivantes
+        new NeurologicalDysfunctionTreatement(code:"OTHER").save() //Otro
+
+        new ArrhythmiaType(code:"VENTRICULAR").save() // Arritmia ventricular sostenida que precisa desfibrilación / cardioversión
+        new ArrhythmiaType(code:"SUPRAVENTRICULAR").save() // Arritmia supraventricular que precisa tratamiento médico o cardioversión
+
+        new RenalDysfunctionTreatment(code:"HEMODIALYSIS").save() //Hemodiálisis
+        new RenalDysfunctionTreatment(code:"HEMOFILTRATION").save() //Hemofiltración
+
+        new ArterialThromboembolismPlace(code:"PULMONARY").save() // Pulmonar
+        new ArterialThromboembolismPlace(code:"RENAL").save() // Renal
+        new ArterialThromboembolismPlace(code:"HEPATIC").save() // Hepática
+        new ArterialThromboembolismPlace(code:"SPLEN").save() // Esplénica
+        new ArterialThromboembolismPlace(code:"EXTREMITIES").save() // Extremidades
+
+        new ArterialThromboembolismDiagnosis(code:"CLINIC").save() //Clínico
+        new ArterialThromboembolismDiagnosis(code:"INVASIVE_TECHNIQUES").save() //Técnicas invasivas
+        new ArterialThromboembolismDiagnosis(code:"INTREAOPERATIVE_FINDING").save() //Hallazgo intraoperatorio
+        new ArterialThromboembolismDiagnosis(code:"NECROPSY_FINDING").save() //Hallazgo en necropsia
+
+        new WoundDehiscenceType(code:"WOUND").save() //Dehiscencia exclusiva de la herida
+        new WoundDehiscenceType(code:"BREASTBONE").save() //Dehiscencia del esternón
+        new WoundDehiscenceType(code:"WOUND_BREASTBONE").save() //Dehiscencia de la herida y el esternón
+
+        new VenousThromboembolismPlace(code:"VENOUS_DEEP").save() //Trombosis venosa profunda
+        new VenousThromboembolismPlace(code:"PULMONARY").save() //Trombosis pulmonar
+        new VenousThromboembolismPlace(code:"OTHER").save() //Otra
+
+        new MyocardialInfractionPlace(code:"DA").save() //Territorio de DA
+        new MyocardialInfractionPlace(code:"CX").save() //Territorio Cx
+        new MyocardialInfractionPlace(code:"DP").save() //Territorio DP
+        new MyocardialInfractionPlace(code:"MULTIPLE").save() //Múltiples territorios
+
+        new MyocardialInfractionCause(code:"UNKOWN").save() //Desconocida
+        new MyocardialInfractionCause(code:"CORONARY_DISEASE").save() //Enfermedad coronaria previa
+        new MyocardialInfractionCause(code:"DEVICE_CAUSE").save() //Relacionado con el dispositivo
+        new MyocardialInfractionCause(code:"OTHER").save() //Otro
+
+        new MyocardialInfractionTreatment(code:"MEDICAL").save() //Médico
+        new MyocardialInfractionTreatment(code:"INTERVENTION").save() //Intervencionista
+        new MyocardialInfractionTreatment(code:"SURGERY").save() //Quirúrgico
+
+        new PericardialEffussionQuantity(code:"SOFT").save() //Suave
+        new PericardialEffussionQuantity(code:"MODERATE").save() //Moderado
+        new PericardialEffussionQuantity(code:"SEVERE").save() // Severo
+
+        new PericardialEffussionDrainMethod(code:"NONE").save() //No precisa
+        new PericardialEffussionDrainMethod(code:"PERCUTANEOUS").save() //Percutáneo
+        new PericardialEffussionDrainMethod(code:"SURGICAL").save() //Quirúrgico
+        new PericardialEffussionDrainMethod(code:"OTHER").save() //Otro
+
+        new HemolysisCause(code:"UNKNOWN").save() //Desconocida
+        new HemolysisCause(code:"DUETO_ASSISTANCE").save() //Relacionada con la asistencia
+        new HemolysisCause(code:"HEMATOLOGIC").save() //Origen hematológico
+        new HemolysisCause(code:"OTHER").save() //Otra
+
+        new RightHeartFailureSignals(code:"ASCItES").save() //Ascitis
+        new RightHeartFailureSignals(code:"EDEMAS").save() //Edemas
+        new RightHeartFailureSignals(code:"IC").save() //IC &lt; 2 L/min/m2
+        new RightHeartFailureSignals(code:"PVC").save() //PVC &gt; 18 mm
+
         /// TEST USERS
 
         EspamacsUser user = new EspamacsUser("user", "user")
@@ -572,6 +737,8 @@ class BootStrap {
         event.patientDeath= true
         event.removedAssistance=RemovedAssistance.findAll().first()
         event.malfunctionDeviceType=MalfunctionDeviceType.findAll().first()
+        event.urgentSurgery=UrgentSurgery.findAll().first()
+        event.changeAssistanceComponents=true
         patient.events.add(event)
         event.save()
         patient.save()

@@ -474,6 +474,7 @@ fieldset.embedded legend {
     border:none;
     box-shadow: none;
     background: transparent;
+    overflow: visible;
 }
 /* same effects for browsers that support HTML5 client-side validation (these have to be specified separately or IE will ignore the entire rule) */
 
