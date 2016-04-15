@@ -31,10 +31,10 @@
                 <a class="navbar-brand" href="/#">
                     <div id="logos-holder">
                         <asset:image src="logo.png" id="espamacs-logo" class="logo"/>
-                        <span id="espamacs-text">Espamacs</span>
+                        <span id="espamacs-text" class="hidden-xs">Espamacs</span>
                     </div>
                     <sec:ifLoggedIn>
-                        -
+                        <span class="hidden-xs">-</span>
                         <span class="centre-head">
                             <span class="fa fa-hospital-o"></span>
                             <sec:loggedInUserInfo field='centreName'/>
@@ -55,8 +55,11 @@
     <div class="footer" role="contentinfo">
         <div class="sponsors">
             <ul>
-                <li>Empresa 1</li>
-                <li>Empresa 2</li>
+                <li><a target="_blank" href="http://www.cardiolink.es/index.php/es/">   <asset:image src="sponsors/cardiolink.jpg" class="sponsors-logo" alt="Cardiolink"/></a></li>
+                <li><a target="_blank" href="http://www.palexmedical.com/es/index.cfm"> <asset:image src="sponsors/palex.jpg" class="sponsors-logo" alt="Palex"/></a></li>
+                <li><a target="_blank" href="http://www.getingegroup.com/">             <asset:image src="sponsors/getinge_group.png" class="sponsors-logo small" alt="Geteinge Group"/></a></li>
+                <li><a target="_blank" href="http://www.mercev.com/web/">               <asset:image src="sponsors/merce_v.jpg" class="sponsors-logo" alt="Merce V - Electromedicina"/></a></li>
+                <li><a target="_blank" href="https://www.sjm.com/corporate.aspx">       <asset:image src="sponsors/sjmlogo.gif" class="sponsors-logo" alt="ST. Jude Medical"/></a></li>
             </ul>
         </div>
     </div>
