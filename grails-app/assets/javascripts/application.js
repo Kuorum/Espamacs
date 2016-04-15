@@ -123,9 +123,7 @@ $(function(){
         if (creatinine!= "" && age!="" && weigh!="" && gender!=""){
             var genderFactor = gender == "MALE"?1:0.85;
             var creatinineClearance = (140 - age) * weigh * genderFactor / creatinine
-            console.log(creatinineClearance)
-
-            updateDisabledFields("#renal\\.creatinineClearance", creatinineClearance);
+            updateDisabledFields("#renal\\.creatinineClearance", Math.round(creatinineClearance * 100) / 100);
         }
     });
 
