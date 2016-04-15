@@ -14,6 +14,11 @@ class Event { // THIS CLASS CAN NOT BE ABSTRACT DUE TO GORM
 
     static belongsTo = [patient:Patient]
 
+    static mapping = {
+        patientHealthStatus lazy: false, fetch: 'join'
+        removedAssistance lazy: false, fetch: 'join'
+    }
+
     static constraints = {
     }
 }

@@ -210,6 +210,7 @@ class PatientController {
         DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
         ImplantData implantData = patient.implantData?:new ImplantData()
         InitialData initialData = patient.initialData?:new InitialData()
+        patient.events.findAll()
         List<Event> events = Event.findAllByPatient(patient, [sort: "eventDate", order: "desc",])
         def model = [
                 patient:patient,
