@@ -366,6 +366,8 @@ input.datepicker{
 
 .datepicker td, .datepicker th{border-radius: 0}
 
+.datepicker td.highlighted{color:#999999}
+
 .required-indicator {
     color: #cc0000;
     display: inline-block;
@@ -462,6 +464,9 @@ fieldset.embedded legend {
 }
 
 
+.panel-title a {text-decoration: none;}
+.panel-title a:hover {text-decoration: underline;  color: inherit;}
+
 .panel-title.error-form .fa-warning{
     color: #cc0000;
 }
@@ -533,10 +538,6 @@ td, th {
 
 th {
     background-color: #efefef;
-    /*background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);*/
-    /*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');*/
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";*/
     color: #666666;
     font-weight: bold;
     line-height: 1.7em;
@@ -582,9 +583,9 @@ th.desc a {
     background: #ffffff;
 }
 
-th:hover, tr:hover {
-    background: #AAAAAA;
-}
+/*th:hover, tr:hover {*/
+    /*background: #AAAAAA;*/
+/*}*/
 
 /* PAGINATION */
 

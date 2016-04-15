@@ -44,7 +44,7 @@
   display: none;
 }
 .datepicker table {
-  width: 100%;
+  width: 16em;
   margin: 0;
 }
 .datepicker td,
@@ -165,13 +165,24 @@
 }
 .datepicker th.next,
 .datepicker th.prev {
-  font-size: 21px;
+  /*font-size: 21px;*/
 }
-.datepicker thead tr:first-child th {
+
+.today.day{
+    /*Calendar day*/
+    font-weight: bold;
+}
+.datepicker th.next,
+.datepicker th.prev,
+.datepicker-switch,
+.today{
   cursor: pointer;
 }
-.datepicker thead tr:first-child th:hover {
-  background: #eeeeee;
+.datepicker th.next:hover,
+.datepicker th.prev:hover,
+.datepicker-switch:hover,
+.today:hover {
+  background: #CCCCCC;
 }
 .input-append.date .add-on i,
 .input-prepend.date .add-on i {

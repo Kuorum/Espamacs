@@ -260,7 +260,9 @@ code, kbd, pre, samp {
     border-color: #7A0101;
 }
 
-.nav.page-navigation .btn-primary:hover {background-color: #F90303;}
+.nav.page-navigation .btn-primary:hover {
+    background-color: #F90303;
+}
 
 .nav.page-navigation .open .btn-primary:hover{ background-color: #F90303;}
 .nav.page-navigation .open .btn-primary{ background-color: #F90303;}

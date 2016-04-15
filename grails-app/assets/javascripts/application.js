@@ -28,9 +28,13 @@ if (typeof jQuery !== 'undefined') {
 $(function(){
 
     $('.date-picker-popup').datepicker({
+        weekStart: 1,
+        todayBtn: "linked",
         language: "es",
+        daysOfWeekHighlighted: "0,6",
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+        zIndexOffset:10000,
     })
 
     $(".ajax-searchable-table-form").on("click","tr.clickable-row", function() {
@@ -133,7 +137,9 @@ function isOldBrowser(){
 }
 
 function changeImplantDataDependingOnSelect(){
-    showImplantDataInfo($("#implantType").val().split("_"));
+    if($("#implantType").length >0){
+        showImplantDataInfo($("#implantType").val().split("_"));
+    }
 }
 
 function showImplantDataInfo(imaplantTypes){
