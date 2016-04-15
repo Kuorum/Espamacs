@@ -14,7 +14,9 @@
 </content>
 
 <content tag="actions">
-    <g:render template="editActions" model="[patient:patient]"/>
+    <a href="#" class="btn btn-primary" type="button">
+        <g:message code="default.button.delete.label"/>
+    </a>
 </content>
 
 <content tag="mainContent">

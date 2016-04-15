@@ -131,7 +131,6 @@ img {
 }
 
 .nav a {
-    color: #666666;
     display: block;
     padding: 0.25em 0.7em;
     text-decoration: none;
@@ -139,12 +138,15 @@ img {
     -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
 }
-
-.nav a:active, .nav a:visited {
+.nav .breadcrumb a {
     color: #666666;
 }
 
-.nav a:focus, .nav a:hover {
+.nav .breadcrumb a:active, .nav .breadcrumb a:visited {
+    color: #666666;
+}
+
+.nav .breadcrumb a:focus, .nav .breadcrumb a:hover {
     background-color: #999999;
     color: #ffffff;
     outline: none;
