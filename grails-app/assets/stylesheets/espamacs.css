@@ -124,10 +124,10 @@ a.navbar-brand {
 
 #logos-holder .logo {
     padding: 0px;
-    margin: 0px;
+    margin: -17px 10px;
     display: inline-block;
-    width: 100px;
-    height: 80px;
+    width: 57px;
+    /*height: 80px;*/
     background-size: 95%;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -135,7 +135,7 @@ a.navbar-brand {
 
 @media (min-width: 330px) {
     #logos-holder {
-        width: 320px;
+        /*width: 320px;*/
     }
 
     #they-use-groovy {
@@ -145,7 +145,7 @@ a.navbar-brand {
 
 @media (min-width: 475px) {
     #logos-holder {
-        width: 420px;
+        /*width: 420px;*/
     }
 
     #they-use-groovy {
@@ -155,7 +155,7 @@ a.navbar-brand {
 
 @media (min-width: 690px) {
     #logos-holder {
-        width: 630px;
+        /*width: 630px;*/
     }
 
     #they-use-groovy {
@@ -165,7 +165,7 @@ a.navbar-brand {
 
 @media (min-width: 1010px) {
     #logos-holder {
-        width: 940px;
+        /*width: 940px;*/
     }
 
     #they-use-groovy {

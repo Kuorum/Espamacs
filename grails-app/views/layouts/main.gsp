@@ -29,7 +29,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/#">
-                    <i class="fa fa-heartbeat"></i> Espamacs
+                    <div id="logos-holder">
+                        <asset:image src="logo.png" id="espamacs-logo" class="logo"/>
+                        <span id="espamacs-text">Espamacs</span>
+                    </div>
                     <sec:ifLoggedIn>
                         -
                         <span class="centre-head">
