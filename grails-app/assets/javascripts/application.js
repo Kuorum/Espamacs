@@ -114,6 +114,21 @@ $(function(){
         }
     });
 
+    $("#renal\\.baselineCreatinine,#patientAgeOnImplant,#weigh, #gender ").on("change", function(e){
+        var creatinine = $("#renal\\.baselineCreatinine").val();
+        var age = $("#patientAgeOnImplant").val()
+        var weigh = $("#weigh").val()
+        var gender = $("#gender").val()
+        console.log(gender)
+        if (creatinine!= "" && age!="" && weigh!="" && gender!=""){
+            var genderFactor = gender == "MALE"?1:0.85;
+            var creatinineClearance = (140 - age) * weigh * genderFactor / creatinine
+            console.log(creatinineClearance)
+
+            updateDisabledFields("#renal\\.creatinineClearance", creatinineClearance);
+        }
+    });
+
     /*******************************************/
     /******** END DYNAMIC INPUTS ***************/
     /*******************************************/

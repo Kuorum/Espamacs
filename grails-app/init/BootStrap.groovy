@@ -1,24 +1,8 @@
-import espamacs.Centre
-import espamacs.EspamacsUser
-import espamacs.EspamacsUserRole
-import espamacs.Patient
-import espamacs.Role
+import espamacs.*
 import espamacs.event.Event
 import espamacs.event.MalfunctionDevice
-import espamacs.type.BloodType
-import espamacs.type.CardiacCareType
-import espamacs.type.Gender
-import espamacs.type.PatientStatus
-import espamacs.type.RHFactor
-import espamacs.type.baselineConditions.AorticValveStatus
-import espamacs.type.baselineConditions.Lvef
-import espamacs.type.baselineConditions.Medication
-import espamacs.type.baselineConditions.MitralValveStatus
-import espamacs.type.baselineConditions.Nyha
-import espamacs.type.baselineConditions.PeripheralEdemaLevel
-import espamacs.type.baselineConditions.RightVentricleStatus
-import espamacs.type.baselineConditions.TricuspidValveStatus
-import espamacs.type.diagnosis.Contraindication
+import espamacs.type.*
+import espamacs.type.baselineConditions.*
 import espamacs.type.diagnosis.CurrentSituation
 import espamacs.type.diagnosis.ImplantGoal
 import espamacs.type.diagnosis.MainCardiacImplantCause
@@ -39,66 +23,16 @@ import espamacs.type.event.malfunctionDevice.UrgentSurgery
 import espamacs.type.event.myocardialInfarction.MyocardialInfractionCause
 import espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace
 import espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement
-import espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType
+import espamacs.type.event.neurologicalDysfunction.*
 import espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod
 import espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity
 import espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment
 import espamacs.type.event.rightHeartFailure.RightHeartFailureSignals
 import espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace
 import espamacs.type.event.woundDehiscence.WoundDehiscenceType
-import espamacs.type.implantData.BloodFlowType
-import espamacs.type.implantData.EcmoBrand
-import espamacs.type.implantData.HeartTotalBrand
-import espamacs.type.implantData.ImplantEcmoIn
-import espamacs.type.implantData.ImplantEcmoOut
-import espamacs.type.implantData.ImplantLvadIn
-import espamacs.type.implantData.ImplantLvadOut
-import espamacs.type.implantData.ImplantRvadIn
-import espamacs.type.implantData.ImplantRvadOut
-import espamacs.type.implantData.ImplantTotalIn
-import espamacs.type.implantData.ImplantTotalOut
-import espamacs.type.implantData.ImplantType
-import espamacs.type.implantData.LvadBrand
-import espamacs.type.implantData.RvadBrand
-import espamacs.type.initialData.AntiheparineAntibodies
-import espamacs.type.initialData.BloodMedication
-import espamacs.type.initialData.CardiacSurgicalProcedure
-import espamacs.type.initialData.CardiologicalTreatmenAtDischarge
-import espamacs.type.initialData.DischargedDestination
-import espamacs.type.initialData.OtherSurgicalProcedure
-import espamacs.type.initialData.SurgicalProcedureAfterTransplant
-import espamacs.type.initialData.TimeWithoutIntropicIV
-import espamacs.type.patientData.AortaPathology
-import espamacs.type.patientData.BrainHemorrhage
-import espamacs.type.patientData.ChronicAnemia
-import espamacs.type.patientData.DiabeticType
-import espamacs.type.patientData.DisplemiaType
-import espamacs.type.patientData.DrinkerType
-import espamacs.type.patientData.Hepatitis
-import espamacs.type.patientData.HypertensiveType
-import espamacs.type.patientData.IntravenouslyDrugsType
-import espamacs.type.patientData.Leukemia
-import espamacs.type.patientData.MalignantTumor
-import espamacs.type.patientData.MalnutritionType
-import espamacs.type.patientData.ObeseType
-import espamacs.type.patientData.PeripheralVascularDisease
-import espamacs.type.patientData.PreCardiacSurgery
-import espamacs.type.patientData.PrimaryPulmonaryHypertension
-import espamacs.type.patientData.PulmonaryEmbolism
-import espamacs.type.patientData.RenalReplacementTherapy
-import espamacs.type.patientData.SevereMentalRetardationType
-import espamacs.type.patientData.SmokerType
-import espamacs.type.patientData.SocialCareType
-import espamacs.type.patientData.Stroke
-import espamacs.type.patientData.ThyroidDisorders
-import espamacs.type.patientData.TransientIschemicAttack
+import espamacs.type.implantData.*
+import espamacs.type.initialData.*
+import espamacs.type.patientData.*
 import espamacs.type.preimplantSituation.IntermacsSituation
 import espamacs.type.preimplantSituation.IntropicMedication
 import espamacs.type.preimplantSituation.PreimplantEvent
@@ -111,6 +45,10 @@ class BootStrap {
 
         Centre ph = new Centre(name:"Puerta de hierro").save()
         Centre paz= new Centre(name: "La paz").save()
+
+        new BooleanDBType(code: "UNKNOWN").save()
+        new BooleanDBType(code: "NO").save()
+        new BooleanDBType(code: "YES").save()
 
         new PatientStatus(code:"INCOMPLETE").save()
         new PatientStatus(code:"ACTIVE").save()
@@ -125,6 +63,7 @@ class BootStrap {
         new BloodType(code:"UNKNOWN").save() //Desconocido
         new BloodType(code:"BLOOD_A").save() //A
         new BloodType(code:"BLOOD_B").save() //B
+        new BloodType(code:"BLOOD_B").save() //B
         new BloodType(code:"BLOOD_AB").save() //AB
         new BloodType(code:"BLOOD_0").save() //O
 
@@ -137,26 +76,10 @@ class BootStrap {
         new SmokerType(code: "YES").save()
         new SmokerType(code: "EX-SMOKER").save()
 
-        new HypertensiveType(code: "UNKNOWN").save()
-        new HypertensiveType(code: "NO").save()
-        new HypertensiveType(code: "YES").save()
-
         new DiabeticType(code: "UNKNOWN").save()
         new DiabeticType(code: "NO").save()
         new DiabeticType(code: "TYPE1").save()
         new DiabeticType(code: "TYPE2").save()
-
-        new DisplemiaType(code: "UNKNOWN").save()
-        new DisplemiaType(code: "NO").save()
-        new DisplemiaType(code: "YES").save()
-
-        new ObeseType(code: "UNKNOWN").save()
-        new ObeseType(code: "NO").save()
-        new ObeseType(code: "YES").save()
-
-        new MalnutritionType(code: "UNKNOWN").save()
-        new MalnutritionType(code: "NO").save()
-        new MalnutritionType(code: "YES").save()
 
         new DrinkerType(code: "NO_NEVER").save()
         new DrinkerType(code: "NO_NOW").save()
@@ -166,18 +89,11 @@ class BootStrap {
         new IntravenouslyDrugsType(code: "NO_NOW").save()
         new IntravenouslyDrugsType(code: "YES").save()
 
-        new SevereMentalRetardationType(code: "UNKNOWN").save()
-        new SevereMentalRetardationType(code: "NO").save()
-        new SevereMentalRetardationType(code: "YES").save()
-
-        new SocialCareType(code: "UNKNOWN").save()
-        new SocialCareType(code: "NO").save()
-        new SocialCareType(code: "YES").save()
-
         new PreCardiacSurgery(code: "NO").save()
-        new PreCardiacSurgery(code: "CABG").save()
+        new PreCardiacSurgery(code: "CORONARY").save()
         new PreCardiacSurgery(code: "VALVULAR").save()
         new PreCardiacSurgery(code: "VALVULAR_CORONARY").save()
+        new PreCardiacSurgery(code: "THORACIC_AORTA").save()
         new PreCardiacSurgery(code: "CONGENITAL").save()
         new PreCardiacSurgery(code: "LVAD").save()
         new PreCardiacSurgery(code: "RVAD").save()
@@ -343,10 +259,6 @@ class BootStrap {
         new ImplantGoal(code:"POSSIBLE_TRANSITION_TRANSPLANT").save()
         new ImplantGoal(code:"TARGET_THERAPY").save()
         new ImplantGoal(code:"OTHER").save()
-
-        new Contraindication(code: "UNKNOWN").save()
-        new Contraindication(code: "NO").save()
-        new Contraindication(code: "YES").save()
 
         new CurrentSituation(code: "ELECTIVE_IMPLANT").save() // Implante electivo
         new CurrentSituation(code: "URGENT_IMPLANT").save() // Implante urgente
@@ -530,10 +442,6 @@ class BootStrap {
         new CardiologicalTreatmenAtDischarge(code:"ILOPROST").save() //Iloprost
         new CardiologicalTreatmenAtDischarge(code:"BOSENTAN").save() //Bosentan
         new CardiologicalTreatmenAtDischarge(code:"NESERITIDE").save() //Neseritide
-
-        new AntiheparineAntibodies(code: "UNKNOWN").save() //Desconocido
-        new AntiheparineAntibodies(code: "NO").save() // Sí
-        new AntiheparineAntibodies(code: "YES").save() // No
 
         new BloodMedication(code:"WARFARIN").save() //Warfarina o derivados
         new BloodMedication(code:"ACETYLSALICYLIC_ACID").save() //AAS

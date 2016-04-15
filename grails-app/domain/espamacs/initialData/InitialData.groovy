@@ -1,16 +1,7 @@
 package espamacs.initialData
 
-import espamacs.type.diagnosis.*
-import espamacs.type.initialData.AntiheparineAntibodies
-import espamacs.type.initialData.BloodMedication
-import espamacs.type.initialData.CardiacSurgicalProcedure
-import espamacs.type.initialData.CardiologicalTreatmenAtDischarge
-import espamacs.type.initialData.DischargedDestination
-import espamacs.type.initialData.OtherSurgicalProcedure
-import espamacs.type.initialData.SurgicalProcedureAfterTransplant
-import espamacs.type.initialData.TimeWithoutIntropicIV
-import espamacs.type.preimplantSituation.IntropicMedication
-import espamacs.type.preimplantSituation.PreimplantEvent
+import espamacs.type.BooleanDBType
+import espamacs.type.initialData.*
 
 class InitialData {
 
@@ -24,7 +15,7 @@ class InitialData {
     List<CardiacSurgicalProcedure> cardiacSurgicalProcedures
     List<OtherSurgicalProcedure> otherSurgicalProcedures
     List<CardiologicalTreatmenAtDischarge> cardiologicalTreatmensAtDischarge
-    AntiheparineAntibodies antiheparineAntibodies
+    BooleanDBType antiheparineAntibodies
     List<BloodMedication> bloodMedications
 
     static constraints = {

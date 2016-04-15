@@ -5,6 +5,7 @@ import espamacs.type.patientData.RenalReplacementTherapy
 class Renal {
 
     Double baselineCreatinine
+    Double creatinineClearance
     RenalReplacementTherapy renalReplacementTherapy
 
     static constraints = {

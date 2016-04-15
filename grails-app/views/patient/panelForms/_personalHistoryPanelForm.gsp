@@ -19,13 +19,14 @@
                     <f:field bean="${personalHistory}" property="intravenouslyDrugs"/>
                     <f:field bean="${personalHistory}" property="severeMentalRetardation"/>
                     <f:field bean="${personalHistory}" property="socialCareType"/>
-                    <f:field bean="${personalHistory}" property="preCardiacSurgeries" templates="multiCheck"/>
+                    <f:field bean="${personalHistory}" property="preCardiacSurgery"/>
 
                 </fieldset>
 
                 <fieldset class="form-group">
                     <h4><g:message code="patient.create.step2.patientHistory.renal.title"/></h4>
                     <f:field bean="${personalHistory}" property="renal.baselineCreatinine"/>
+                    <f:field bean="${personalHistory}" property="renal.creatinineClearance" templates="disabled"/>
                     <f:field bean="${personalHistory}" property="renal.renalReplacementTherapy"/>
                 </fieldset>
 

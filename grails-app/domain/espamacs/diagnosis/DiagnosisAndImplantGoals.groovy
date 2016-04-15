@@ -1,6 +1,6 @@
 package espamacs.diagnosis
 
-import espamacs.type.diagnosis.Contraindication
+import espamacs.type.BooleanDBType
 import espamacs.type.diagnosis.CurrentSituation
 import espamacs.type.diagnosis.ImplantGoal
 import espamacs.type.diagnosis.MainCardiacImplantCause
@@ -9,7 +9,7 @@ import espamacs.type.diagnosis.MainLungImplantCause
 class DiagnosisAndImplantGoals {
 
     ImplantGoal implantGoal
-    Contraindication contraindication
+    BooleanDBType contraindication
     CurrentSituation currentSituation
     MainCardiacImplantCause cardiacImplantCause
     MainLungImplantCause mainLungImplantCause
