@@ -16,6 +16,7 @@
 
                 <fieldset class="form-group">
                     <h4><g:message code="patient.create.step3.baselineCondition.echocardiographicData.title"/></h4>
+                    <f:field bean="${baselineCondition}" property="echocardiogramDate"/>
                     <f:field bean="${baselineCondition}" property="lvef"/>
                     <f:field bean="${baselineCondition}" property="rightVentricleStatus"/>
                     <f:field bean="${baselineCondition}" property="aorticValveStatuses" templates="multiCheck"/>
@@ -43,6 +44,7 @@
 
                 <fieldset class="form-group">
                     <h4><g:message code="patient.create.step3.baselineCondition.sixMinutesTest.title"/></h4>
+                    <f:field bean="${baselineCondition}" property="sixMinutesDate"/>
                     <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceMetres"/>
                     <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceV02"/>
                     <f:field bean="${baselineCondition}" property="medications" templates="multiCheck"/>

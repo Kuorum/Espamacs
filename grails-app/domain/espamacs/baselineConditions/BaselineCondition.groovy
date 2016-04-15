@@ -1,6 +1,7 @@
 package espamacs.baselineConditions
 
 import espamacs.Patient
+import espamacs.type.BooleanDBType
 import espamacs.type.baselineConditions.AorticValveStatus
 import espamacs.type.baselineConditions.Lvef
 import espamacs.type.baselineConditions.Medication
@@ -14,8 +15,9 @@ class BaselineCondition {
 
     Patient patient
     PeripheralEdemaLevel peripheralEdemaLevel
-    Boolean ascites
+    BooleanDBType ascites
 
+    Date echocardiogramDate
     Lvef lvef
     RightVentricleStatus rightVentricleStatus
     List<AorticValveStatus> aorticValveStatuses
@@ -28,6 +30,7 @@ class BaselineCondition {
 
     HemodynamicData hemodynamicData
 
+    Date sixMinutesDate
     Double sixMinutesTestDistanceMetres
     Double sixMinutesTestDistanceV02
     List<Medication> medications
