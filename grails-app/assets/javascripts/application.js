@@ -60,8 +60,7 @@ $(function(){
         var params = merge_options(formParams, linkParams)
         console.log(params)
         _reloadSearchableTable($form, params)
-    })
-
+    });
 
 
     function _reloadSearchableTable($form, params){
@@ -89,6 +88,35 @@ $(function(){
         changeImplantDataDependingOnSelect();
     })
     changeImplantDataDependingOnSelect();
+
+
+
+    /*******************************************/
+    /******** DYNAMIC INPUTS *******************/
+    /*******************************************/
+
+    $("#weigh, #height").on("change", function(e){
+        w = $("#weigh").val();
+        h = $("#height").val();
+        if (w != "" && h !=""){
+            var bmi = w / (h*h);
+            bmi = Math.round(bmi * 100) / 100;
+            updateDisabledFields("#bmi", bmi);
+        }
+    });
+
+    $("#birthDate, #implantDate").on("change", function(e){
+        var birthDate = $("#birthDate").val();
+        var implantDate = $("#implantDate").val();
+        if (birthDate != "" && implantDate !=""){
+            var age = calculateAge(birthDate, implantDate);
+            updateDisabledFields("#patientAgeOnImplant", age);
+        }
+    });
+
+    /*******************************************/
+    /******** END DYNAMIC INPUTS ***************/
+    /*******************************************/
 })
 
 function getUrlParams(url){
@@ -105,6 +133,35 @@ function getUrlParams(url){
     }else{
         return {}
     }
+}
+
+function updateDisabledFields(idField, value){
+    $(idField).val(value)
+    $(idField+"-disabledDisplay").html(value)
+}
+
+function calculateAge (birthDate, otherDate) {
+    birthDate = parseDate(birthDate);
+    otherDate = parseDate(otherDate);
+
+    console.log(birthDate)
+    console.log(otherDate)
+
+    var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+    if (otherDate.getMonth() < birthDate.getMonth() ||
+        otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+        console.log("ajustando")
+        years--;
+    }
+
+    return years;
+}
+
+function parseDate(input) {
+    var parts = input.split('/');
+    // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+    return new Date(parts[2], parts[1]-1, parts[0]); // Note: months are 0-based
 }
 /**
  * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1

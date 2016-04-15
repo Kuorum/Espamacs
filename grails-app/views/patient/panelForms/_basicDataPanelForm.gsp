@@ -14,19 +14,7 @@
                 <div class="panel-body">
                     <g:hiddenField name="id" value="${patient?.id}"/>
                     <g:hiddenField name="version" value="${patient?.version}" />
-                    <fieldset class="form-group">
-                        <f:field bean="${patient}" property="code"/>
-                        <f:field bean="${patient}" property="birthDate"/>
-                        <f:field bean="${patient}" property="weigh"/>
-                        <f:field bean="${patient}" property="height"/>
-                        %{--<f:field bean="${patient}" property="gender"/>--}%
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <h4><g:message code="patient.create.step1.basicCardiacCareAssistance"/></h4>
-                        <f:field bean="${patient}" property="externalId"/>
-                        <f:field bean="${patient}" property="centre"/>
-                        <f:field bean="${patient}" property="cardiacCareType"/>
-                    </fieldset>
+                    <g:render template="panelForms/basicDataForm" model="[patient:patient]"/>
                 </div>
                 <div class="panel-footer">
                     <fieldset class="buttons">

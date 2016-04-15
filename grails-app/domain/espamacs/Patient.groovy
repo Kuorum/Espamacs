@@ -7,22 +7,31 @@ import espamacs.implantData.ImplantData
 import espamacs.initialData.InitialData
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
+import espamacs.type.BloodType
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
+import espamacs.type.RHFactor
 
 class Patient {
 
     PatientStatus patientStatus
     String code;
     Date birthDate
-    Double weigh
-    Double height
     Gender gender
+
+    Double height
+    Double weigh
+    Double bmi // Body mass index -> indice de masa corporal
 
     Centre centre;
     String externalId
+
     CardiacCareType cardiacCareType
+    Date implantDate
+    Integer patientAgeOnImplant
+    BloodType bloodType
+    RHFactor rhFactor
 
     PersonalHistory personalHistory
     BaselineCondition baselineCondition

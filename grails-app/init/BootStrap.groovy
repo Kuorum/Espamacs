@@ -5,9 +5,11 @@ import espamacs.Patient
 import espamacs.Role
 import espamacs.event.Event
 import espamacs.event.MalfunctionDevice
+import espamacs.type.BloodType
 import espamacs.type.CardiacCareType
 import espamacs.type.Gender
 import espamacs.type.PatientStatus
+import espamacs.type.RHFactor
 import espamacs.type.baselineConditions.AorticValveStatus
 import espamacs.type.baselineConditions.Lvef
 import espamacs.type.baselineConditions.Medication
@@ -119,6 +121,16 @@ class BootStrap {
 
         new CardiacCareType(code: "SHORT").save()
         new CardiacCareType(code: "LONG").save()
+
+        new BloodType(code:"UNKNOWN").save() //Desconocido
+        new BloodType(code:"BLOOD_A").save() //A
+        new BloodType(code:"BLOOD_B").save() //B
+        new BloodType(code:"BLOOD_AB").save() //AB
+        new BloodType(code:"BLOOD_0").save() //O
+
+        new RHFactor(code: "RH_POSITIVE").save() // +
+        new RHFactor(code: "RH_NEGATIVE").save() //-
+        new RHFactor(code: "UNKNOWN").save() //Desconocido
 
         new SmokerType(code: "UNKNOWN").save()
         new SmokerType(code: "NO").save()
@@ -725,7 +737,12 @@ class BootStrap {
                         gender: Gender.findByCode("FEMALE"),
                         centre:ph,
                         externalId:"ExternalId",
-                        cardiacCareType: CardiacCareType.findByCode("SHORT")
+                        cardiacCareType: CardiacCareType.findByCode("SHORT"),
+                        patientAgeOnImplant:60,
+                        implantDate: new Date() -60*365,
+                        bloodType: BloodType.findAll().first(),
+                        rhFactor: RHFactor.findAll().first(),
+                        bmi: 15
                 ]
         )
         patient.save()
@@ -754,7 +771,12 @@ class BootStrap {
                             gender: Gender.findByCode("MALE"),
                             centre:paz,
                             externalId:"External-${it}",
-                            cardiacCareType: CardiacCareType.findByCode("LONG")
+                            cardiacCareType: CardiacCareType.findByCode("LONG"),
+                            patientAgeOnImplant:60,
+                            implantDate: new Date() -60*365,
+                            bloodType: BloodType.findAll().first(),
+                            rhFactor: RHFactor.findAll().first(),
+                            bmi: 15
                     ]
             )
             patientPaz.save()
