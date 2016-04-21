@@ -12,6 +12,7 @@
                     <f:field bean="${implantData}" property="implantType"/>
                     <f:field bean="${implantData}" property="lengthMinutes"/>
                     <f:field bean="${implantData}" property="lengthBypassMinutes"/>
+                    <f:field bean="${implantData}" property="collateralSurgery"/>
                 </fieldset>
 
                 <fieldset class="form-group" id="LVAD">

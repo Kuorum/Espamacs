@@ -10,6 +10,7 @@
                 <fieldset class="form-group">
                     <f:field bean="${preimplantSituation}" property="preimplantEvents" templates="multiCheck"/>
                     <f:field bean="${preimplantSituation}" property="intropicMedications" templates="multiCheck"/>
+                    <f:field bean="${preimplantSituation}" property="heartAttack"/>
                     <f:field bean="${preimplantSituation}" property="intermacsSituation"/>
                 </fieldset>
             </div>

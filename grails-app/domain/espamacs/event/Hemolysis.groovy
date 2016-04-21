@@ -6,6 +6,7 @@ class Hemolysis extends Event{
 
     Double hemoglobin
     HemolysisCause hemolysisCause
+    Double ldh
 
     static constraints = {
     }

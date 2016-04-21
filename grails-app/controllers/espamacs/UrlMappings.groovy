@@ -38,7 +38,8 @@ class UrlMappings {
         name patientEventCreateRightHeartFailure:        "/patient/${patientId}/add-event/RightHeartFailure"        (controller:"event"){action=[GET:'createRightHeartFailure', POST:'saveRightHeartFailure']}
         name patientEventCreateOtherEvent:               "/patient/${patientId}/add-event/OtherEvent"               (controller:"event"){action=[GET:'createOtherEvent', POST:'saveOtherEvent']}
         name patientEventCreateMalfunctionDevice:        "/patient/${patientId}/add-event/MalfunctionDevice"        (controller:"event"){action=[GET:'createMalfunctionDevice', POST:'saveMalfunctionDevice']}
-        
+        name patientEventCreatePeripheralVascularAccessComplications:        "/patient/${patientId}/add-event/PeripheralVascularAccessComplications"        (controller:"event"){action=[GET:'createPeripheralVascularAccessComplications', POST:'savePeripheralVascularAccessComplications']}
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here

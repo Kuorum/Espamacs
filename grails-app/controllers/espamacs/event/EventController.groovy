@@ -168,6 +168,16 @@ class EventController {
         save(rightHeartFailure, patient, transactionStatus)
     }
 
+    def createPeripheralVascularAccessComplications(){
+        Patient patient = Patient.get(params.patientId)
+        respond patient, view: 'create', model:[patient:patient, event:new PeripheralVascularAccessComplications(params)]
+    }
+	@Transactional
+	def savePeripheralVascularAccessComplications(PeripheralVascularAccessComplications peripheralVascularAccessComplications){
+        Patient patient = Patient.get(params.patientId)
+        save(peripheralVascularAccessComplications, patient, transactionStatus)
+    }
+
     def createOtherEvent(){
         Patient patient = Patient.get(params.patientId)
         respond patient, view: 'create', model:[patient:patient, event:new OtherEvent(params)]

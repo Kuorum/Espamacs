@@ -1,5 +1,6 @@
 package espamacs.implantData
 
+import espamacs.type.implantData.CollateralSurgery
 import espamacs.type.implantData.ImplantType
 
 class ImplantData {
@@ -7,6 +8,7 @@ class ImplantData {
     ImplantType implantType
     Double lengthMinutes
     Double lengthBypassMinutes
+    CollateralSurgery collateralSurgery
 
     LvadData lvadData
     RvadData rvadData

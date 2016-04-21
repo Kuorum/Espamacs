@@ -2,14 +2,23 @@ package espamacs.baselineConditions
 
 class HemodynamicData {
 
-    Double systolicPressure
-    Double diastolicPressure
-    Double averagePulmonaryPressure
+    Date catheterizationDate
+    Double systolicArterialPressure
+    Double diastolicArterialPressure
+    Double averageArterialPressure
+    Double hearRate
+
+    Double systolicArterialPulmonaryPressure
+    Double diastolicArterialPulmonaryPressure
+    Double averageArterialPulmonaryPressure
+
     Double pulmonaryCapillaryPressure
     Double transpulmonaryGradient
     Double centralVenousPressure
+
+    Double pulmonaryVascularResistance
     Double systemicVascularResistance
-    Double uw
+    Double systolicEffortIndex
     Double cardiacOutput
     Double cardiacIndex
 

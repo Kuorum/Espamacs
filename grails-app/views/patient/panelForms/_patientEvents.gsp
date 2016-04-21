@@ -57,6 +57,7 @@
                         <li><g:link mapping="patientEventCreatePericardialEffusion"     params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.PericardialEffusion"/></g:link></li>
                         <li><g:link mapping="patientEventCreateHemolysis"               params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.Hemolysis"/></g:link></li>
                         <li><g:link mapping="patientEventCreateRightHeartFailure"       params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.RightHeartFailure"/></g:link></li>
+                        <li><g:link mapping="patientEventCreatePeripheralVascularAccessComplications" params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.PeripheralVascularAccessComplications"/></g:link></li>
                         <li><g:link mapping="patientEventCreateOtherEvent"              params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.OtherEvent"/></g:link></li>
                     </ul>
                 </div>

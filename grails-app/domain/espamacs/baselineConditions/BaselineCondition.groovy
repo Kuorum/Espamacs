@@ -8,6 +8,7 @@ import espamacs.type.baselineConditions.Medication
 import espamacs.type.baselineConditions.MitralValveStatus
 import espamacs.type.baselineConditions.Nyha
 import espamacs.type.baselineConditions.PeripheralEdemaLevel
+import espamacs.type.baselineConditions.RightVentricleDilatation
 import espamacs.type.baselineConditions.RightVentricleStatus
 import espamacs.type.baselineConditions.TricuspidValveStatus
 
@@ -20,6 +21,8 @@ class BaselineCondition {
     Date echocardiogramDate
     Lvef lvef
     RightVentricleStatus rightVentricleStatus
+    Double tapse
+    RightVentricleDilatation rightVentricleDilatation
     List<AorticValveStatus> aorticValveStatuses
     List<MitralValveStatus> mitralValveStatuses
     List<TricuspidValveStatus> tricuspidValveStatuses
@@ -35,6 +38,7 @@ class BaselineCondition {
     Double sixMinutesTestDistanceV02
     List<Medication> medications
 
+    Date analyticDate
     Double sodium
     Double potassium
     Double creatinine
@@ -49,7 +53,9 @@ class BaselineCondition {
     Double platelets
     Double inr // International normalized ratio - Ratio Internacional Normalizado
     Double NTproBNP // prohormona N-terminal del péptido natriurético cerebral
-    Double crp // proteína C reactiva
+    Double crp // proteína C reactiva (PCR)
+    Double albumin
+    Double lactate
 
     Nyha nyha
 

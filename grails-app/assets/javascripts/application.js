@@ -58,7 +58,6 @@ $(function(){
         var $form = $(this).parents("form")
         var formParams = $form.serializeArray()
         var params = merge_options(formParams, linkParams)
-        console.log(params)
         _reloadSearchableTable($form, params)
     });
 
@@ -99,7 +98,7 @@ $(function(){
         w = $("#weigh").val();
         h = $("#height").val();
         if (w != "" && h !=""){
-            var bmi = w / (h*h);
+            var bmi = w / (h*h /10000);
             bmi = Math.round(bmi * 100) / 100;
             updateDisabledFields("#bmi", bmi);
         }
@@ -119,7 +118,6 @@ $(function(){
         var age = $("#patientAgeOnImplant").val()
         var weigh = $("#weigh").val()
         var gender = $("#gender").val()
-        console.log(gender)
         if (creatinine!= "" && age!="" && weigh!="" && gender!=""){
             var genderFactor = gender == "MALE"?1:0.85;
             var creatinineClearance = (140 - age) * weigh * genderFactor / creatinine
@@ -157,14 +155,10 @@ function calculateAge (birthDate, otherDate) {
     birthDate = parseDate(birthDate);
     otherDate = parseDate(otherDate);
 
-    console.log(birthDate)
-    console.log(otherDate)
-
     var years = (otherDate.getFullYear() - birthDate.getFullYear());
 
     if (otherDate.getMonth() < birthDate.getMonth() ||
         otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
-        console.log("ajustando")
         years--;
     }
 

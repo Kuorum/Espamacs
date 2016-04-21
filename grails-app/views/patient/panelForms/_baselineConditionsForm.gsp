@@ -19,6 +19,8 @@
                     <f:field bean="${baselineCondition}" property="echocardiogramDate"/>
                     <f:field bean="${baselineCondition}" property="lvef"/>
                     <f:field bean="${baselineCondition}" property="rightVentricleStatus"/>
+                    <f:field bean="${baselineCondition}" property="tapse"/>
+                    <f:field bean="${baselineCondition}" property="rightVentricleDilatation"/>
                     <f:field bean="${baselineCondition}" property="aorticValveStatuses" templates="multiCheck"/>
                     <f:field bean="${baselineCondition}" property="mitralValveStatuses" templates="multiCheck"/>
                     <f:field bean="${baselineCondition}" property="tricuspidValveStatuses" templates="multiCheck"/>
@@ -30,14 +32,20 @@
 
                 <fieldset class="form-group">
                     <h4><g:message code="patient.create.step3.baselineCondition.hemodynamicData.title"/></h4>
-                    <f:field bean="${baselineCondition}" property="hemodynamicData.systolicPressure"/>
-                    <f:field bean="${baselineCondition}" property="hemodynamicData.diastolicPressure"/>
-                    <f:field bean="${baselineCondition}" property="hemodynamicData.averagePulmonaryPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.catheterizationDate"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.systolicArterialPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.diastolicArterialPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.averageArterialPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.hearRate"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.systolicArterialPulmonaryPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.diastolicArterialPulmonaryPressure"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.averageArterialPulmonaryPressure"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.pulmonaryCapillaryPressure"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.transpulmonaryGradient"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.pulmonaryVascularResistance"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.centralVenousPressure"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.systemicVascularResistance"/>
-                    <f:field bean="${baselineCondition}" property="hemodynamicData.uw"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.systolicEffortIndex"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.cardiacOutput"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.cardiacIndex"/>
                 </fieldset>
@@ -52,6 +60,7 @@
 
                 <fieldset class="form-group">
                     <h4><g:message code="patient.create.step3.baselineCondition.bloodTest.title"/></h4>
+                    <f:field bean="${baselineCondition}" property="analyticDate"/>
                     <f:field bean="${baselineCondition}" property="sodium"/>
                     <f:field bean="${baselineCondition}" property="potassium"/>
                     <f:field bean="${baselineCondition}" property="creatinine"/>
@@ -67,6 +76,8 @@
                     <f:field bean="${baselineCondition}" property="inr"/>
                     <f:field bean="${baselineCondition}" property="NTproBNP"/>
                     <f:field bean="${baselineCondition}" property="crp"/>
+                    <f:field bean="${baselineCondition}" property="albumin"/>
+                    <f:field bean="${baselineCondition}" property="lactate"/>
                 </fieldset>
 
                 <fieldset class="form-group">

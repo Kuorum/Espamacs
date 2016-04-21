@@ -26,7 +26,9 @@ import espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment
 import espamacs.type.event.neurologicalDysfunction.*
 import espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod
 import espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity
+import espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType
 import espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment
+import espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds
 import espamacs.type.event.rightHeartFailure.RightHeartFailureSignals
 import espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace
 import espamacs.type.event.woundDehiscence.WoundDehiscenceType
@@ -67,9 +69,9 @@ class BootStrap {
         new BloodType(code:"BLOOD_AB").save() //AB
         new BloodType(code:"BLOOD_0").save() //O
 
+        new RHFactor(code: "UNKNOWN").save() //Desconocido
         new RHFactor(code: "RH_POSITIVE").save() // +
         new RHFactor(code: "RH_NEGATIVE").save() //-
-        new RHFactor(code: "UNKNOWN").save() //Desconocido
 
         new SmokerType(code: "UNKNOWN").save()
         new SmokerType(code: "NO").save()
@@ -81,10 +83,12 @@ class BootStrap {
         new DiabeticType(code: "TYPE1").save()
         new DiabeticType(code: "TYPE2").save()
 
+        new DrinkerType(code: "UNKNOWN").save()
         new DrinkerType(code: "NO_NEVER").save()
         new DrinkerType(code: "NO_NOW").save()
         new DrinkerType(code: "YES").save()
 
+        new IntravenouslyDrugsType(code: "UNKNOWN").save()
         new IntravenouslyDrugsType(code: "NO_NEVER").save()
         new IntravenouslyDrugsType(code: "NO_NOW").save()
         new IntravenouslyDrugsType(code: "YES").save()
@@ -166,6 +170,7 @@ class BootStrap {
         new PeripheralEdemaLevel(code: "MODERATE").save()
         new PeripheralEdemaLevel(code: "SEVERE").save()
 
+        new Lvef(code: "UNKNOWN").save()
         new Lvef(code: "PLUS_50").save()
         new Lvef(code: "40_50").save()
         new Lvef(code: "30_39").save()
@@ -176,6 +181,12 @@ class BootStrap {
         new RightVentricleStatus(code: "MINOR").save()
         new RightVentricleStatus(code: "MODERATE").save()
         new RightVentricleStatus(code: "SEVERE").save()
+
+        new RightVentricleDilatation(code: "NO").save()
+        new RightVentricleDilatation(code: "MINOR").save()
+        new RightVentricleDilatation(code: "MODERATE").save()
+        new RightVentricleDilatation(code: "SEVERE").save()
+
 
         new AorticValveStatus(code: "NORMAL").save()
         new AorticValveStatus(code: "PREVIOUS_AORTIC_VALVE_REPLACEMENT").save()
@@ -222,8 +233,13 @@ class BootStrap {
         new Medication(code: "ILOPROST").save()
         new Medication(code: "BOSENTAN").save()
         new Medication(code: "NESERITIDE").save()
+        new Medication(code: "OTHER_HYPERTENSION_MEDICINE").save()
         new Medication(code: "RESYNCHRONIZATION_THERAPIES").save()
+        new Medication(code: "ICD").save()
+        new Medication(code: "OXYGEN_THERAPY").save()
 
+
+        new Nyha(code:"UNKNOWN").save()
         new Nyha(code:"TYPE_I").save()
         new Nyha(code:"TYPE_II").save()
         new Nyha(code:"TYPE_III").save()
@@ -236,14 +252,14 @@ class BootStrap {
         new PreimplantEvent(code:"ULTRAFILTRATION").save() //Intra-aortic balloon pump
         new PreimplantEvent(code:"INVASIVE_MV").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
 
+        new IntropicMedication(code:"ADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
         new IntropicMedication(code:"DOBUTAMINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
         new IntropicMedication(code:"DOPAMINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
-        new IntropicMedication(code:"NORADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
-        new IntropicMedication(code:"ADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
-        new IntropicMedication(code:"NITRIC_OXIDE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
-        new IntropicMedication(code:"MILRINONE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
-        new IntropicMedication(code:"LEVOSIMENDAN").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
         new IntropicMedication(code:"ISOPROTERENOL").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"LEVOSIMENDAN").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"MILRINONE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"NORADRENALINE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
+        new IntropicMedication(code:"NITRIC_OXIDE").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
         new IntropicMedication(code:"OTHERS").save() //Ventilación mecánica invasiva - invasive mechanical ventilation
 
         new IntermacsSituation(code:"INTERMACS_1").save()
@@ -291,7 +307,7 @@ class BootStrap {
         new MainCardiacImplantCause(code:"OTHER").save() //Otra
 
         new MainLungImplantCause(code:"NONE").save()//Ninguna
-		new MainLungImplantCause(code:"IDIOPATHIC_PULMONART_FIBROSIS").save()//FPI postTXP
+		new MainLungImplantCause(code:"PRIMARY_GRAFT_FAILURE").save()//FPI postTXP
         new MainLungImplantCause(code:"MASSIVE_PULMONARY_EMBOLISM").save()//TEP masivo
 		new MainLungImplantCause(code:"PNEUMONIA").save()//Neumonía/infección respiratoria
 		new MainLungImplantCause(code:"ACUTE_RESPIRATORY_DISTRESS_SYNDROME").save()//SDRA
@@ -312,39 +328,36 @@ class BootStrap {
         new LvadBrand(code:"BERLIN_HEART_INCOR").save()
         new LvadBrand(code:"JARVIC_2000").save()
         new LvadBrand(code:"HEARTWARE_HVAD").save()
+        new LvadBrand(code:"HEARTWARE_MVAD").save()
         new LvadBrand(code:"TERUMO_DURAHEART").save()
         new LvadBrand(code:"HEARTASSIST_5").save()
         new LvadBrand(code:"HEARTMATE_II").save()
         new LvadBrand(code:"HEARTMATE_III").save()
-        new LvadBrand(code:"VENTRACOR_VENTRASSIST").save()
-        new LvadBrand(code:"CIRCULITE_SYNERGY").save()
-        new LvadBrand(code:"HEARTWARE_MVAD").save()
         new LvadBrand(code:"IMPELLA").save()
         new LvadBrand(code:"TANDEM_HEART").save()
         new LvadBrand(code:"BIOMEDICUS").save()
         new LvadBrand(code:"BVS_5000").save()
-        new LvadBrand(code:"JOSTRA_ROTAFLOW").save()
         new LvadBrand(code:"OTHER").save()
 
+        new RvadBrand(code:"AB5000", defaultText: "Abiomed AB 5000").save()
         new RvadBrand(code:"THORATEC_PVAD", defaultText: "Thoratec pVAD").save()
-	    new RvadBrand(code:"BERLIN_HEART_EXCOR", defaultText: "Berlin Heart Excor").save()
         new RvadBrand(code:"LEVITRONIX_CENTRIMAG", defaultText: "Levitronix Centrimag").save()
+	    new RvadBrand(code:"BERLIN_HEART_EXCOR", defaultText: "Berlin Heart Excor").save()
 	    new RvadBrand(code:"HEARTWARE_HVAD", defaultText: "Heartware HVAD").save()
+        new RvadBrand(code:"HEARTWARE_MVAD").save()
         new RvadBrand(code:"BIOMEDICUS", defaultText: "Biomedicus").save()
-	    new RvadBrand(code:"AB_5000", defaultText: "AB 5000").save()
-        new RvadBrand(code:"BVS_5000", defaultText: "BVS 5000").save()
-    	new RvadBrand(code:"JOSTRA_ROTAFLOW", defaultText: "Jostra Rotaflow").save()
+        new RvadBrand(code:"BVS5000", defaultText: "BVS 5000").save()
         new RvadBrand(code:"OTHER", defaultText: "Otra").save()
 
-        new HeartTotalBrand(code:"CARDIOWEST").save() //CardioWest
-    	new HeartTotalBrand(code:"THORATEX").save() //Thoratec
-        new HeartTotalBrand(code:"HEARTWARE").save() //HeartWare
-	    new HeartTotalBrand(code:"BERLIN").save() //Berlin
-        new HeartTotalBrand(code:"OTHER").save() //Otra
+        new HeartTotalBrand(code:"ABIOCOR").save() //AbioCor Implantable
+        new HeartTotalBrand(code:"SYNCARDIA").save() //SynCardia Cardiowest
+        new HeartTotalBrand(code:"AKUTSU_III").save() //Akutsu III
+        new HeartTotalBrand(code:"BIVACOR").save() //BiVacor
+        new HeartTotalBrand(code:"JARVIC7").save() //Jarvic 7
+        new HeartTotalBrand(code:"OTHER").save() //Otro
 
         new EcmoBrand(code:"ROTAFLOW_PLS").save() //Rotaflow PLS
         new EcmoBrand(code:"CARDIO_HELP").save() //Cardiohelp
-        new EcmoBrand(code:"MEDOS").save() //Medos
         new EcmoBrand(code:"CENTRIFUGAL_OXIGENATOR").save() //Centrifuga + oxigenador
         new EcmoBrand(code:"OTHERS").save() //Otros
 
@@ -396,6 +409,12 @@ class BootStrap {
         new ImplantEcmoOut(code:"PULMONARY_ARTERY").save() //Arteria pulmonar
         new ImplantEcmoOut(code:"OTHER").save() //Otra
 
+        new CollateralSurgery(code:"AORTIC_VALVE_SURGERY").save() // Cirugía sobre la válvula aórtica
+        new CollateralSurgery(code:"MITRAL_VALVE_SURGERY").save() // Cirugía sobre la válvula mitral
+        new CollateralSurgery(code:"TRICUSPID_VALVE_SURGERY").save() // Cirugía sobre la válvula tricúspide
+        new CollateralSurgery(code:"PULMONARY_VALVE_SURGERY").save() // Cirugía sobre la válvula pulmonar
+        new CollateralSurgery(code:"CABG").save() // CABG
+        new CollateralSurgery(code:"OTHER").save() // Otros
 
         new DischargedDestination(code:"HOME").save() //Casa o residencia permanente</option>
 		new DischargedDestination(code:"INTERMEDIATE_CARE_UNIT").save() //Unidad de cuidados intermedios</option>
@@ -620,6 +639,14 @@ class BootStrap {
         new RightHeartFailureSignals(code:"EDEMAS").save() //Edemas
         new RightHeartFailureSignals(code:"IC").save() //IC &lt; 2 L/min/m2
         new RightHeartFailureSignals(code:"PVC").save() //PVC &gt; 18 mm
+
+        new RightHeartFailureNeeds(code:"RIGHT_ASISTANCE").save() //Necesidad de implante de dispositivo de asistencia derecha
+        new RightHeartFailureNeeds(code:"INOTROPICS").save() //Necesidad de inotrópicos tras 14 días del implante del dispositivo
+        new RightHeartFailureNeeds(code:"OTHER").save() //Otra
+
+        new PeripheralVascularAccessComplicationsType(code:"ISCHEMIC").save() // Isquémicas
+        new PeripheralVascularAccessComplicationsType(code:"LYMPHORRHAGIA").save() // Linforragia
+        new PeripheralVascularAccessComplicationsType(code:"OTHER").save() // Otra
 
         /// TEST USERS
 
