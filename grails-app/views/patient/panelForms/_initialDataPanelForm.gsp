@@ -9,10 +9,23 @@
                 <g:hiddenField name="id" value="${patient.initialData?.id}"/>
                 <input type="hidden" name="patient.id" value="${patient?.id}"/>
                 <fieldset class="form-group">
-                    <f:field bean="${initialData}" property="dischargedDate"/>
-                    <f:field bean="${initialData}" property="dischargedDestination"/>
+                    <f:field bean="${initialData}" property="patientDeath"/>
                     <f:field bean="${initialData}" property="uciTime"/>
                     <f:field bean="${initialData}" property="hospitalizedTime"/>
+                </fieldset>
+                <fieldset class="form-group" id="initialData_dischargedData">
+                    <h4><g:message code="patient.create.step7.initialData.dischagedData"/> </h4>
+                    <f:field bean="${initialData}" property="dischargedData.dischargedDate"/>
+                    <f:field bean="${initialData}" property="dischargedData.dischargedDestination"/>
+                    <f:field bean="${initialData}" property="dischargedData.dischargedStatus"/>
+                </fieldset>
+                <fieldset class="form-group" id="initialData_exitusData">
+                    <h4><g:message code="patient.create.step7.initialData.exitusData"/> </h4>
+                    <f:field bean="${initialData}" property="exitusData.exitusDate"/>
+                    <f:field bean="${initialData}" property="exitusData.existusStatus"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <h4><g:message code="patient.create.step7.initialData.postSurgeryData"/> </h4>
                     <f:field bean="${initialData}" property="timeWithoutIntropicIV"/>
                     <f:field bean="${initialData}" property="ventilationTime"/>
                     <f:field bean="${initialData}" property="surgicalProceduresAfterTransplant" templates="multiCheck"/>

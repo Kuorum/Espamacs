@@ -94,6 +94,11 @@ $(function(){
     })
     showEventRemovedAssitanceData();
 
+    $("#patientDeath").on("change", function(){
+        showDischargedOrExitusData();
+    })
+    showDischargedOrExitusData();
+
 
 
     /*******************************************/
@@ -234,6 +239,18 @@ function showEventRemovedAssitanceData(){
         $("#dynamicRemovedAssistanceFields .fieldcontain").slideUp(function(){
             $("#dynamicRemovedAssistanceFields").hide();
         })
+    }
+}
+
+
+function showDischargedOrExitusData(){
+    var patientDeath = $("#patientDeath").val()
+    if (patientDeath=="true"){
+        $("#initialData_dischargedData").show("slow")
+        $("#initialData_exitusData").hide("slow")
+    }else{
+        $("#initialData_dischargedData").hide("slow")
+        $("#initialData_exitusData").show("slow")
     }
 }
 

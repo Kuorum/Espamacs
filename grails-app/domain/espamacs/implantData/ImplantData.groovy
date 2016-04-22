@@ -6,8 +6,8 @@ import espamacs.type.implantData.ImplantType
 class ImplantData {
 
     ImplantType implantType
-    Double lengthMinutes
-    Double lengthBypassMinutes
+    Integer lengthMinutes
+    Integer lengthBypassMinutes
     CollateralSurgery collateralSurgery
 
     LvadData lvadData

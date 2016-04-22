@@ -423,6 +423,12 @@ class BootStrap {
 		new DischargedDestination(code:"OTHER").save() //Otro</option>
         new DischargedDestination(code:"NONE_PATIENT_DEATH").save() //No aplicable (paciente fallecido)</option>
 
+        new DischargedStatus(code:"ASSISTED").save() //Asistido
+        new DischargedStatus(code:"UNASSISTED").save() //Sin asistencia
+
+        new ExistusStatus(code:"DURING_ASSISTANCE").save() //Existus en asistencia
+        new ExistusStatus(code:"POST_ASSISTANCE").save() //Exitus posretirada de asistencia
+
         new TimeWithoutIntropicIV(code:"1_7").save() //1-7 días</option>
 		new TimeWithoutIntropicIV(code:"8_13").save() //8-13 días</option>
         new TimeWithoutIntropicIV(code:"14_27").save() //14-27 días</option>

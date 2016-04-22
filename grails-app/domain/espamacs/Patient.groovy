@@ -46,6 +46,8 @@ class Patient {
     static mapping = {
         centre lazy: false, fetch: 'select'
         cardiacCareType lazy: false, fetch: 'select'
+        bloodType lazy: false, fetch: 'select'
+        rhFactor lazy: false, fetch: 'select'
         gender lazy: false, fetch: 'select'
         personalHistory lazy: false, fetch: 'select'
         baselineCondition lazy: false, fetch: 'select'

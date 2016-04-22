@@ -5,8 +5,9 @@ import espamacs.type.initialData.*
 
 class InitialData {
 
-    Date dischargedDate
-    DischargedDestination dischargedDestination
+    Boolean patientDeath
+    DischargedData dischargedData
+    ExitusData exitusData
     Integer uciTime
     Integer hospitalizedTime
     TimeWithoutIntropicIV timeWithoutIntropicIV
@@ -19,10 +20,12 @@ class InitialData {
     List<BloodMedication> bloodMedications
 
     static constraints = {
+        dischargedData nullable: true
+        exitusData nullable: true
     }
 
     static mapping = {
-        dischargedDestination lazy: false, fetch: 'join'
+        dischargedData lazy: false, fetch: 'join'
         timeWithoutIntropicIV lazy: false, fetch: 'join'
         surgicalProceduresAfterTransplant lazy: false, fetch: 'join'
         cardiacSurgicalProcedures lazy: false, fetch: 'join'
@@ -40,5 +43,41 @@ class InitialData {
             cardiologicalTreatmensAtDischarge:CardiologicalTreatmenAtDischarge,
             bloodMedications:BloodMedication,
     ]
+
+    static embedded = ['dischargedData', 'exitusData']
+
+}
+
+
+
+class DischargedData {
+
+    Date dischargedDate
+    DischargedDestination dischargedDestination
+    DischargedStatus dischargedStatus
+
+
+    static constraints = {
+    }
+
+    static mapping = {
+        dischargedDestination lazy: false, fetch: 'join'
+        dischargedStatus lazy: false, fetch: 'join'
+    }
+
+}
+
+class ExitusData {
+
+    Date exitusDate
+    ExistusStatus existusStatus
+
+
+    static constraints = {
+    }
+
+    static mapping = {
+        existusStatus lazy: false, fetch: 'join'
+    }
 
 }

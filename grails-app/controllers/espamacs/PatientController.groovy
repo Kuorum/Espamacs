@@ -10,6 +10,7 @@ import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.PatientStatus
 import espamacs.type.implantData.ImplantType
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.NOT_FOUND
@@ -98,6 +99,7 @@ class PatientController {
     }
 
     @Transactional
+    @Secured("ROLE_ADMIN")
     def delete(Patient patient) {
 
         if (patient == null) {
@@ -179,6 +181,11 @@ class PatientController {
     @Transactional
     def saveInitialData(InitialData initialData) {
         Patient patient = Patient.get(params.patientId)
+        if (initialData?.patientDeath){
+            initialData.exitusData = null
+        }else{
+            initialData.dischargedData = null
+        }
         gericSectionUpdate(patient, initialData, "initialData", transactionStatus)
     }
 
