@@ -9,6 +9,7 @@ import espamacs.type.diagnosis.MainCardiacImplantCause
 import espamacs.type.diagnosis.MainLungImplantCause
 import espamacs.type.event.PatientHealthStatus
 import espamacs.type.event.RemovedAssistance
+import espamacs.type.event.RemovedAssistanceDeath
 import espamacs.type.event.arrhythmia.ArrhythmiaType
 import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis
 import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace
@@ -485,6 +486,11 @@ class BootStrap {
 		new RemovedAssistance(code:"YES_CHANGE_ASSISTANCE").save() // Sí, por cambio de tipo de asistencia
         new RemovedAssistance(code:"YES_DEAD").save() // Sí, por fallecimiento
 
+        new RemovedAssistanceDeath(code:"NONE").save() //No aplica
+        new RemovedAssistanceDeath(code:"CARDIOVASCULAR_CAUSE").save() //Causa cardiovascular
+        new RemovedAssistanceDeath(code:"NO_CARDIOVASCULAR_CAUSE").save() //Causa no cardiovascular
+        new RemovedAssistanceDeath(code:"OTHER").save() //Otras
+
         new MalfunctionDeviceType(code:"PUMP_ERROR").save() // Fallo de la bomba
 		new MalfunctionDeviceType(code:"CONTROL_DEVICE_ERROR").save() // Fallo de los dispositivos de control
         new MalfunctionDeviceType(code:"BATERY_ERROR").save() // Fallo de la batería
@@ -691,6 +697,9 @@ class BootStrap {
         event.malfunctionDeviceType=MalfunctionDeviceType.findAll().first()
         event.urgentSurgery=UrgentSurgery.findAll().first()
         event.changeAssistanceComponents=true
+        event.removedAssistanceDeath = RemovedAssistanceDeath.findAll().first()
+        event.aliveDays = 2
+        event.aliveAfterHospital = true
         patient.events.add(event)
         event.save()
         patient.save()

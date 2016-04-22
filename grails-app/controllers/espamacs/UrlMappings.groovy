@@ -20,7 +20,8 @@ class UrlMappings {
         name patientImplantData:        "/patient/edit/$patientId/implantData" (controller:"patient") {action=[GET:"postGet", POST:"saveImplantData"]}
         name patientInitialData:        "/patient/edit/$patientId/initialData" (controller:"patient") {action=[GET:"postGet", POST:"saveInitialData"]}
 
-        name patientEvent:        "/patient/$patientId/event/${eventId}" (controller:"event", action:"show")
+        name patientEvent:        "/patient/$patientId/event/${eventId}" (controller:"event"){action=[GET:"edit", POST:"update"]}
+        name patientEventEdit:    "/patient/$patientId/event/${eventId}/edit" (controller:"event"){action=[GET:"edit", POST:"update"]}
 
         name patientEventCreateHemorrhage:               "/patient/${patientId}/add-event/Hemorrhage"               (controller:"event"){action=[GET:'createHemorrhage', POST:'saveHemorrhage']}
         name patientEventCreateInfection:                "/patient/${patientId}/add-event/Infection"                (controller:"event"){action=[GET:'createInfection', POST:'saveInfection']}
@@ -45,6 +46,8 @@ class UrlMappings {
                 // apply constraints here
             }
         }
+
+        "/error" (view:'/error')
 
         "500"(view:'/error')
         "404"(view:'/notFound')

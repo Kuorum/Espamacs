@@ -19,6 +19,9 @@
         <g:elseif test="${type == java.lang.Double || type == double}">
             <input type="number" step="0.01" name="${property}" value="${value}" id="${property}">
         </g:elseif>
+        <g:elseif test="${type == java.lang.Integer || type == int}">
+            <input type="number" step="1" name="${property}" value="${value}" id="${property}">
+        </g:elseif>
         <g:else>
             <input type="text" name="${property}" value="${value}" id="${property}">
         </g:else>

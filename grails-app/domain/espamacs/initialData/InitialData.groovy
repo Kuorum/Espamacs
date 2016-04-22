@@ -7,10 +7,10 @@ class InitialData {
 
     Date dischargedDate
     DischargedDestination dischargedDestination
-    Double uciTime
-    Double hospitalizedTime
+    Integer uciTime
+    Integer hospitalizedTime
     TimeWithoutIntropicIV timeWithoutIntropicIV
-    Double ventilationTime
+    Integer ventilationTime
     List<SurgicalProcedureAfterTransplant> surgicalProceduresAfterTransplant
     List<CardiacSurgicalProcedure> cardiacSurgicalProcedures
     List<OtherSurgicalProcedure> otherSurgicalProcedures

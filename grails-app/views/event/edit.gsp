@@ -1,37 +1,28 @@
+<%@ page import="espamacs.event.Event" %>
+
+<g:set var="eventCodeName" value="${event.class.simpleName}"/>
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
-    <title><g:message code="default.edit.label" args="[entityName]" /></title>
+    <title><g:message code="patient.event.title"/> :: <g:message code="patient.event.${eventCodeName}.title"/></title>
 </head>
-<content tag="mainContent">
-    <a href="#edit-evento" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-    <div class="nav" role="navigation">
-        <ul>
-            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        </ul>
-    </div>
-    <div id="edit-evento" class="content scaffold-edit" role="main">
-        <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-        <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-        </g:if>
-        <g:hasErrors bean="${this.evento}">
-        <ul class="errors" role="alert">
-            <g:eachError bean="${this.evento}" var="error">
-            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-            </g:eachError>
-        </ul>
-        </g:hasErrors>
-        <g:form resource="${this.evento}" method="PUT">
-            <g:hiddenField name="version" value="${this.evento?.version}" />
-            <fieldset class="form">
-                <f:all bean="event"/>
-            </fieldset>
-            <fieldset class="buttons">
-                <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-            </fieldset>
-        </g:form>
-    </div>
+
+<content tag="breadcrumb">
+    <ul>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:link mapping="patientList"><g:message code="patient.list.title"/></g:link></li>
+        <li><g:link mapping="patientShow" params="${patient.encodeAsLinkProperties()}"> ${patient.code}</g:link></li>
+        <li><g:message code="patient.create.step8.events.createEventsButton.${eventCodeName}"/></li>
+    </ul>
 </content>
+
+<content tag="mainContent">
+    <h1><g:message code="patient.create.step8.events.createEventsButton.${eventCodeName}"/></h1>
+
+    <form action="" method="POST">
+        <g:hiddenField name="version" value="${event?.version}" />
+        <g:hiddenField name="id" value="${event?.id}" />
+        <g:render template="eventFields" model="[patient:patient, event:event]"/>
+    </form>
+
+</content>
+

@@ -89,6 +89,12 @@ $(function(){
     changeImplantDataDependingOnSelect();
 
 
+    $("#removedAssistance").on("change", function(){
+        showEventRemovedAssitanceData();
+    })
+    showEventRemovedAssitanceData();
+
+
 
     /*******************************************/
     /******** DYNAMIC INPUTS *******************/
@@ -215,6 +221,20 @@ function showImplantDataInfo(imaplantTypes){
             $("#"+typeName).hide("slow")
         }
     })
+}
+
+function showEventRemovedAssitanceData(){
+    var removedAsistance = $("#removedAssistance").val()
+    var valuesWithExtraData= ['YES_HEALED', 'YES_TRNSPLANT']
+    if ($.inArray(removedAsistance, valuesWithExtraData)>=0){
+        $("#dynamicRemovedAssistanceFields").show()
+        $("#dynamicRemovedAssistanceFields .fieldcontain").slideDown()
+    }else{
+
+        $("#dynamicRemovedAssistanceFields .fieldcontain").slideUp(function(){
+            $("#dynamicRemovedAssistanceFields").hide();
+        })
+    }
 }
 
 var display = {

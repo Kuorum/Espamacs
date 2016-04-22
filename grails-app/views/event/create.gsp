@@ -20,20 +20,7 @@
 
     <form action="" method="POST">
         <g:hiddenField name="version" value="${this.event?.version}" />
-        <fieldset class="form-group">
-            <input type="hidden" name="patient.id" value="${patient.id}"/>
-            <f:field bean="${event}" property="eventDate"           label="${g.message(code:"${espamacs.event.Event.class.name}.eventDate")}"/>
-            <f:field bean="${event}" property="patientHealthStatus" label="${g.message(code:"${espamacs.event.Event.class.name}.patientHealthStatus")}"/>
-            <f:field bean="${event}" property="patientDeath"        label="${g.message(code:"${espamacs.event.Event.class.name}.patientDeath")}"/>
-            <f:field bean="${event}" property="removedAssistance"   label="${g.message(code:"${espamacs.event.Event.class.name}.removedAssistance")}"/>
-        </fieldset>
-
-        <fieldset class="form-group">
-            <f:all bean="${event}" except="patient,eventDate,patientHealthStatus,patientDeath,removedAssistance"/>
-        </fieldset>
-        <fieldset class="buttons">
-            <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-        </fieldset>
+        <g:render template="eventFields" model="[patient:patient, event:event]"/>
     </form>
 
 </content>

@@ -8,8 +8,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EventController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def show() {
         Event event = Event.get(params.eventId)
         respond event
@@ -205,40 +203,38 @@ class EventController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: "patient.create.step8.events.createEventsButton.${event.class.simpleName}",  default: 'Se ha creado satisfactoriamente el evento')
+                flash.message = message(code: 'default.event.created.message', args: [message(code: "patient.create.step8.events.createEventsButton.${event.class.simpleName}",  default: 'event'), patient.code])
                 redirect mapping:'patientShow', params:patient.encodeAsLinkProperties()
             }
             '*' { respond event, [status: CREATED] }
         }
     }
 
-    def edit(Event evento) {
-        respond evento
+    def edit() {
+        Patient patient = Patient.get(params.patientId)
+        Event event = Event.get(params.eventId)
+        respond patient, view: 'edit', model:[patient:patient, event:event]
     }
 
     @Transactional
-    def update(Event evento) {
-        if (evento == null) {
+    def update(Event event) {
+        Patient patient = Patient.get(params.patientId)
+        if (patient == null || event == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (evento.hasErrors()) {
+        if (event.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond evento.errors, view:'edit'
+            respond event.errors, view:'edit', model:[patient:patient, event:event]
             return
         }
 
-        evento.save flush:true
+        event.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), evento.id])
-                redirect evento
-            }
-            '*'{ respond evento, [status: OK] }
-        }
+        flash.message = message(code: 'default.event.updated.message', args: [message(code: "patient.create.step8.events.createEventsButton.${event.class.simpleName}",  default: 'event'), patient.code])
+        redirect mapping:'patientShow', params: patient.encodeAsLinkProperties()
     }
 
     @Transactional
