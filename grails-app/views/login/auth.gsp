@@ -45,7 +45,8 @@
         </section>
     </div>
     <div class="col-md-6" id="login-logo-container">
-        <asset:image src="logo_org.png"/>
+        <h1>Registro español de asistencia mecánica circulatoria</h1>
+        <asset:image src="logo.png"/>
     </div>
 </div>
 <script>

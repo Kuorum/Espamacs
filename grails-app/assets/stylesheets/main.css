@@ -2,20 +2,27 @@
 body,
 input, select, textarea {
     font-family: "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color:#2D6A78
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h5, h6 {
     line-height: 1.1;
+    color: #4097ab;
+}
+
+h4{
+    line-height: 1.1;
+    color:#2D6A78
 }
 
 /* BASE LAYOUT */
 
 html {
     background-color: #ddd;
-    background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
+    background-image: -moz-linear-gradient(center top, #aaa, #ddf);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddf));
     background-image: linear-gradient(top, #aaa, #ddd);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaff', EndColorStr = '#ddddff');
     background-repeat: no-repeat;
     height: 100%;
     /* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
@@ -32,9 +39,20 @@ html * {
     margin: 0;
 }
 
+
 body {
     background: #ffffff;
-    color: #333333;
+    background: -webkit-linear-gradient(#eef, #fff);
+    background: -moz-linear-gradient(#eef, #fff);
+    background: -o-linear-gradient(#eef, #fff);
+    background: linear-gradient(#eef, #fff);
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 25px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #2D6A78;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 }
 
@@ -62,7 +80,7 @@ img {
 }
 
 .content h1 {
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #4097ab;
     margin: 0.8em 1em 0.3em;
     padding: 0 0.25em;
 }
@@ -138,19 +156,20 @@ img {
     -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
 }
-.nav .breadcrumb a {
-    color: #666666;
+.nav .breadcrumb a, .nav .breadcrumb ul li {
+    color: #2D6A78;
 }
 
 .nav .breadcrumb a:active, .nav .breadcrumb a:visited {
-    color: #666666;
+    color: #2D6A78;
 }
 
 .nav .breadcrumb a:focus, .nav .breadcrumb a:hover {
-    background-color: #999999;
+    background-color: #4097ab;
     color: #ffffff;
     outline: none;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);*/
+    text-shadow: none;
 }
 
 .no-borderradius .nav a:focus, .no-borderradius .nav a:hover {
@@ -182,7 +201,7 @@ img {
 }
 
 .dropdown-menu > li{ width: 100%; padding: 0 1em;}
-.dropdown-menu > li a:hover{background-color: #F90303;}
+.dropdown-menu > li a:hover{background-color: #7A0101;}
 
 .page-navigation .dropdown-menu > li > a:hover, .page-navigation .dropdown-menu > li > a:focus{
     text-shadow: none;
@@ -190,11 +209,11 @@ img {
 }
 
 .nav.page-navigation{
-    background-color: #efefef;
+    background-color: #efefff;
     padding: 0.3em;
-    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-    box-shadow: 0 0 3px 1px #aaaaaa;
+    -moz-box-shadow: 0 0 3px 1px #cce;
+    -webkit-box-shadow: 0 0 3px 1px #cce;
+    box-shadow: 0 0 3px 1px #cce;
     margin: 1em 0 0 0;
     border: none;
 }
@@ -231,12 +250,12 @@ fieldset,
 }
 
 fieldset.form-group{
-    background-color: #efefef;
-    box-shadow: 0 0 3px 1px #aaaaaa;
+    background-color: #efefff;
+    box-shadow: 0 0 3px 1px #aab;
 }
 fieldset.form-group > h4{
     width: 100%;
-    border-bottom: 1px solid #aaaaaa;
+    border-bottom: 1px solid #2D6A78;
     padding: 0.5em 0;
 }
 
@@ -252,11 +271,11 @@ fieldset.form-group > h4{
 
 
 .fieldcontain .property-label {
-    color: #666666;
+    color: #2D6A78;
 }
 
 .fieldcontain label{
-    color: #666666;
+    color: #2D6A78;
     width: 100%;
 }
 
@@ -348,8 +367,9 @@ input[type=checkbox], input[type=radio] {
     width: initial;
 }
 .checkbox-inline{
-    box-shadow: 0 0 3px 1px #ddd;
+    box-shadow: 0 0 1px 1px #dde;
     padding: 1em;
+    background-color: #f6f6ff;
 }
 
 .checkbox-inline input[type=checkbox]{
@@ -357,17 +377,17 @@ input[type=checkbox], input[type=radio] {
 }
 
 .checkbox-inline h4{
-    color:rgb(102, 102, 102);
+    /*color:rgb(102, 102, 102);*/
     margin-bottom: 0.5em;
 }
 
 input:focus, select:focus, textarea:focus {
     background-color: #ffffff;
-    border: 1px solid #eeeeee;
+    border: 1px solid #aab;
     outline: 0;
-    -moz-box-shadow: 0 0 0.5em #ffffff;
-    -webkit-box-shadow: 0 0 0.5em #ffffff;
-    box-shadow: 0 0 0.5em #ffffff;
+    -moz-box-shadow: 0 0 0.5em #aab;
+    -webkit-box-shadow: 0 0 0.5em #aab;
+    box-shadow: 0 0 0.5em #aab;
 }
 
 input.datepicker{
@@ -378,7 +398,7 @@ input.datepicker{
 
 .datepicker td, .datepicker th{border-radius: 0}
 
-.datepicker td.highlighted{color:#999999}
+.datepicker td.highlighted{color:#9999bb}
 
 .required-indicator {
     color: #cc0000;
@@ -445,6 +465,19 @@ fieldset.embedded legend {
     box-shadow: 0 0 0.25em #ff8888;
 }
 
+.panel-group.errors{
+    border:inherit;
+    margin:inherit;
+    padding: inherit;
+    box-shadow: none;
+    font-size: inherit;
+    font:inherit;
+}
+
+.panel-group.errors .panel-heading h4, .panel-group.errors .panel-heading h4 a{
+    color: #cc0000;
+}
+
 .errors ul,
 .message {
     padding: 0;
@@ -475,8 +508,15 @@ fieldset.embedded legend {
     box-shadow: 0 0 0.5em #ffaaaa;
 }
 
+.noty_text{
+    font-weight: bold;
+}
 
-.panel-title a {text-decoration: none;}
+.panel-title{
+    color: #2D6A78;
+}
+
+.panel-title a {text-decoration: none;color:#2D6A78;}
 .panel-title a:hover {text-decoration: underline;  color: inherit;}
 
 .panel-title.error-form .fa-warning{
@@ -493,6 +533,8 @@ fieldset.embedded legend {
     background: transparent;
     overflow: visible;
 }
+
+.panel-footer fieldset.buttons .dropdown a:hover {background-color: #368091; color:#FFFFFF;text-shadow: none;}
 /* same effects for browsers that support HTML5 client-side validation (these have to be specified separately or IE will ignore the entire rule) */
 
 input:invalid, select:invalid, textarea:invalid {
@@ -510,13 +552,13 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 /* TABLES */
 
 table {
-    border-top: 1px solid #DFDFDF;
+    border-top: 1px solid #eef;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1em;
-    -moz-box-shadow: 0 0 3px 1px #AAAAAA;
-    -webkit-box-shadow: 0 0 3px 1px #AAAAAA;
-    box-shadow: 0 0 3px 1px #AAAAAA;
+    -moz-box-shadow: 0 0 3px 1px #aab;
+    -webkit-box-shadow: 0 0 3px 1px #aab;
+    box-shadow: 0 0 3px 1px #aab;
 }
 
 thead {border-bottom: 1px solid #DFDFDF;border:1px solid #DFDFDF;}
@@ -531,7 +573,7 @@ tr.clickable-row, .table-striped > tbody > tr:nth-of-type(odd){
     cursor: pointer;
 }
 tr.clickable-row:hover, .table-striped > tbody > tr:nth-of-type(odd):hover{
-    background-color: #CCCCCC;
+    background-color: #ddf;
 }
 tr>td:first-child, tr>th:first-child {
     padding-left: 1.25em;
@@ -549,8 +591,8 @@ td, th {
 }
 
 th {
-    background-color: #efefef;
-    color: #666666;
+    background-color: #efefff;
+    color: #2D6A78;
     font-weight: bold;
     line-height: 1.7em;
     padding: 0.2em 0.6em;
@@ -563,14 +605,15 @@ thead th {
 th a {
     display: block;
     text-decoration: none;
+    color: #2D6A78;
 }
 
 th a:link, th a:visited {
-    color: #666666;
+    color: #2D6A78;
 }
 
 th a:hover, th a:focus {
-    color: #333333;
+    color: #4097AB;
 }
 
 th.sortable a {
@@ -606,10 +649,10 @@ th.desc a {
     margin: 0.8em 1em 0.3em;
     padding: 0.3em 0.2em;
     text-align: center;
-    -moz-box-shadow: 0 0 3px 1px #AAAAAA;
-    -webkit-box-shadow: 0 0 3px 1px #AAAAAA;
-    box-shadow: 0 0 3px 1px #AAAAAA;
-    background-color: #EFEFEF;
+    -moz-box-shadow: 0 0 3px 1px #aab;
+    -webkit-box-shadow: 0 0 3px 1px #aab;
+    box-shadow: 0 0 3px 1px #aab;
+    background-color: #efefff;
 }
 
 .pagination a,
@@ -626,10 +669,9 @@ th.desc a {
 
 .pagination a:hover, .pagination a:focus,
 .pagination .currentStep {
-    background-color: #999999;
+    background-color: #368091;
     color: #ffffff;
     outline: none;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 .no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
@@ -642,12 +684,12 @@ th.desc a {
 /* ACTION BUTTONS */
 
 .buttons {
-    background-color: #efefef;
+    background-color: #efefff;
     overflow: hidden;
     padding: 0.3em;
-    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-    box-shadow: 0 0 3px 1px #aaaaaa;
+    -moz-box-shadow: 0 0 3px 1px #cce;
+    -webkit-box-shadow: 0 0 3px 1px #cce;
+    box-shadow: 0 0 3px 1px #cce;
     margin: 0.1em 0 0 0;
     border: none;
     text-align: right;

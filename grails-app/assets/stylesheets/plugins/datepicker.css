@@ -57,15 +57,16 @@
   border-radius: 4px;
 }
 .datepicker td.day:hover {
-  background: #eeeeee;
+  background: #eeeeff;
   cursor: pointer;
+  color: inherit;
 }
 .datepicker td.day.disabled {
-  color: #eeeeee;
+  color: #eeeeff;
 }
 .datepicker td.old,
 .datepicker td.new {
-  color: #999999;
+  color: #9999aa;
 }
 .datepicker td.active,
 .datepicker td.active:hover {
@@ -182,7 +183,8 @@
 .datepicker th.prev:hover,
 .datepicker-switch:hover,
 .today:hover {
-  background: #CCCCCC;
+  background: #285F6B;
+  color: #FFF;
 }
 .input-append.date .add-on i,
 .input-prepend.date .add-on i {

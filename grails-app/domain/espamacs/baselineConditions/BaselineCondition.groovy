@@ -67,10 +67,16 @@ class BaselineCondition {
     ]
 
     static mapping = {
+        peripheralEdemaLevel lazy: false, fetch: 'join'
         aorticValveStatuses lazy: false, fetch: 'join'
         mitralValveStatuses lazy: false, fetch: 'join'
+        lvef lazy: false, fetch: 'join'
+        rightVentricleStatus lazy: false, fetch: 'join'
+        tapse lazy: false, fetch: 'join'
+        rightVentricleDilatation lazy: false, fetch: 'join'
         tricuspidValveStatuses lazy: false, fetch: 'join'
         medications lazy: false, fetch: 'join'
+        nyha lazy: false, fetch: 'join'
     }
 
     static embedded = ['hemodynamicData']

@@ -29,8 +29,6 @@
                     <f:field bean="${initialData}" property="timeWithoutIntropicIV"/>
                     <f:field bean="${initialData}" property="ventilationTime"/>
                     <f:field bean="${initialData}" property="surgicalProceduresAfterTransplant" templates="multiCheck"/>
-                    <f:field bean="${initialData}" property="cardiacSurgicalProcedures" templates="multiCheck"/>
-                    <f:field bean="${initialData}" property="otherSurgicalProcedures" templates="multiCheck"/>
                     <f:field bean="${initialData}" property="cardiologicalTreatmensAtDischarge" templates="multiCheck"/>
                     <f:field bean="${initialData}" property="antiheparineAntibodies" />
                     <f:field bean="${initialData}" property="bloodMedications" templates="multiCheck"/>
@@ -38,7 +36,7 @@
             </div>
             <div class="panel-footer">
                 <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                    <button class="save btn btn-primary" type="submit">${message(code: 'default.button.update.label', default: 'Update')}</button>
                 </fieldset>
             </div>
         </g:form>

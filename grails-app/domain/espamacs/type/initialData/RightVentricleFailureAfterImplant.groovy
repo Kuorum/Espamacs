@@ -2,7 +2,7 @@ package espamacs.type.initialData
 
 import espamacs.type.DatabaseEnumType
 
-class CardiacSurgicalProcedure extends DatabaseEnumType{
+class RightVentricleFailureAfterImplant extends DatabaseEnumType{
 
     static constraints = {
     }

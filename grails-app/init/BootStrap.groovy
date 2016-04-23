@@ -434,24 +434,13 @@ class BootStrap {
         new TimeWithoutIntropicIV(code:"14_27").save() //14-27 días</option>
 		new TimeWithoutIntropicIV(code:"27_MORE").save() //Más de 27 días</option>
 
-        new SurgicalProcedureAfterTransplant(code:"NONE").save() //Ninguno
-        new SurgicalProcedureAfterTransplant(code:"NO_CARDIAC_SURGERY_PROCEUDRE").save() //Procedimiento quirúrgico no cardíaco
-        new SurgicalProcedureAfterTransplant(code:"INVASIVE_CARDIAC_PROCEDURE").save() //Procedimiento cardíaco invasivo
-        new SurgicalProcedureAfterTransplant(code:"CARDIAC_SURGERY_PROCEUDRE").save() //Procedimiento quirúrgico cardíaco
-        new SurgicalProcedureAfterTransplant(code:"OTHER").save() //Otro
-
-        new CardiacSurgicalProcedure(code: "BLEEDING_BEFORE_48").save() //Reoperación por sangrado (hasta 48 horas postimplante)
-        new CardiacSurgicalProcedure(code: "BLEEDING_AFTER_48").save() //Drenaje del derrame pericárdico/ taponamiento/ reoperación por sangrado (tras 48 del implante)
-        new CardiacSurgicalProcedure(code: "CHEST_DRAINAGE").save() //Colocación de drenaje torácico
-        new CardiacSurgicalProcedure(code: "AORTIC_VALVE_SURGERY").save() //Cirugía valvular aórtica
-        new CardiacSurgicalProcedure(code: "MITRAL_VALVE_SURGERY").save() //Cirugía valvular mitral
-        new CardiacSurgicalProcedure(code: "TRICUSPID_VALVE_SURGERY").save() //Cirugía valvular tricúspide
-        new CardiacSurgicalProcedure(code: "PULMONARY_VALVE_SURGERY").save() //Cirugía valvular pulmonar
-
-
-        new OtherSurgicalProcedure(code:"REINTUBATE").save() //Reintubación
-        new OtherSurgicalProcedure(code:"HEMOFILTRATIOIN").save() //Hemofiltración
-        new OtherSurgicalProcedure(code:"HEMODIALYSIS").save() //Hemodiálisis
+        new SurgicalProcedureAfterTransplant(code: "BLEEDING_BEFORE_48").save() //Reoperación por sangrado (hasta 48 horas postimplante)
+        new SurgicalProcedureAfterTransplant(code: "BLEEDING_AFTER_48").save() //Drenaje del derrame pericárdico/ taponamiento/ reoperación por sangrado (tras 48 del implante)
+        new SurgicalProcedureAfterTransplant(code: "CHEST_DRAINAGE").save() //Colocación de drenaje torácico
+        new SurgicalProcedureAfterTransplant(code:"REINTUBATE").save() //Reintubación
+        new SurgicalProcedureAfterTransplant(code:"HEMOFILTRATIOIN").save() //Hemofiltración
+        new SurgicalProcedureAfterTransplant(code:"HEMODIALYSIS").save() //Hemodiálisis
+        new RightVentricleFailureAfterImplant(code:"OTHER").save() //Otro
 
 
         new CardiologicalTreatmenAtDischarge(code:"ACE_INHIBITORS").save() //IECA, Inhibidor de la enzima convertidora de angiotensina
@@ -468,6 +457,7 @@ class BootStrap {
         new CardiologicalTreatmenAtDischarge(code:"ILOPROST").save() //Iloprost
         new CardiologicalTreatmenAtDischarge(code:"BOSENTAN").save() //Bosentan
         new CardiologicalTreatmenAtDischarge(code:"NESERITIDE").save() //Neseritide
+        new CardiologicalTreatmenAtDischarge(code:"OTHER").save() //Otros fármacos para la hipertensión pulmonar
 
         new BloodMedication(code:"WARFARIN").save() //Warfarina o derivados
         new BloodMedication(code:"ACETYLSALICYLIC_ACID").save() //AAS

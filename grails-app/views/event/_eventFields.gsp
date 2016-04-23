@@ -15,5 +15,5 @@
     <f:all bean="${event}" except="patient,eventDate,patientHealthStatus,patientDeath,removedAssistance,removedAssistanceDeath,aliveDays,aliveAfterHospital"/>
 </fieldset>
 <fieldset class="buttons">
-    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+    <button class="save btn btn-primary" type="submit">${message(code: 'default.button.update.label', default: 'Update')}</button>
 </fieldset>

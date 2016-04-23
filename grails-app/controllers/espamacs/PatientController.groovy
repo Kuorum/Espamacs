@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT
 @Transactional(readOnly = true)
 class PatientController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index(PatientPagination pagination) {
         def model = searchModel(pagination)

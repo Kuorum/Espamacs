@@ -44,17 +44,19 @@ class Patient {
 
     static hasMany = [events: Event]
     static mapping = {
-        centre lazy: false, fetch: 'select'
-        cardiacCareType lazy: false, fetch: 'select'
-        bloodType lazy: false, fetch: 'select'
-        rhFactor lazy: false, fetch: 'select'
-        gender lazy: false, fetch: 'select'
-        personalHistory lazy: false, fetch: 'select'
-        baselineCondition lazy: false, fetch: 'select'
-        preimplantSituation lazy: false, fetch: 'select'
-        diagnosisAndImplantGoals lazy: false, fetch: 'select'
-        implantData lazy: false, fetch: 'select'
-        initialData lazy: false, fetch: 'select'
+        centre lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        cardiacCareType lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        bloodType lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        rhFactor lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        gender lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        personalHistory lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        baselineCondition lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        preimplantSituation lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        diagnosisAndImplantGoals lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        implantData lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        initialData lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+
+        events cascade: "all-delete-orphan"
     }
 
     static constraints = {

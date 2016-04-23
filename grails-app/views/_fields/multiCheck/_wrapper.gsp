@@ -9,7 +9,6 @@
             <abbr title="${helpText}"><span class="fa fa-info-circle"></span></abbr>
         </g:if>
     </h4>
-    <hr/>
     <g:each in="${bean.hasMany[property].list()}" var="optionValue">
         <g:set var="labelHelpText"><g:message code="${optionValue.class.name}.${optionValue.code}.help" default=""></g:message></g:set>
         <label for="${property}-${optionValue.id}">
