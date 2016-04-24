@@ -46,8 +46,10 @@ class BootStrap {
         Role roleUser = new Role("ROLE_USER").save()
         Role roleAdmin = new Role("ROLE_ADMIN").save()
 
-        Centre ph = new Centre(name:"Puerta de hierro").save()
-        Centre paz= new Centre(name: "La paz").save()
+        Province province = new Province(name: "Madrid").save()
+
+        Centre ph = new Centre(name:"Puerta de hierro", province:province).save()
+        Centre paz= new Centre(name: "La paz", province: province).save()
 
         new BooleanDBType(code: "UNKNOWN").save()
         new BooleanDBType(code: "NO").save()
@@ -440,7 +442,11 @@ class BootStrap {
         new SurgicalProcedureAfterTransplant(code:"REINTUBATE").save() //Reintubación
         new SurgicalProcedureAfterTransplant(code:"HEMOFILTRATIOIN").save() //Hemofiltración
         new SurgicalProcedureAfterTransplant(code:"HEMODIALYSIS").save() //Hemodiálisis
-        new RightVentricleFailureAfterImplant(code:"OTHER").save() //Otro
+
+        new RightVentricleFailureAfterImplant(code:"NONE").save() //Otro
+        new RightVentricleFailureAfterImplant(code:"YES_MEDICAL_TREATMENT").save() //Otro
+        new RightVentricleFailureAfterImplant(code:"YES_IABP").save() //Otro
+        new RightVentricleFailureAfterImplant(code:"YES_RVAD").save() //Otro
 
 
         new CardiologicalTreatmenAtDischarge(code:"ACE_INHIBITORS").save() //IECA, Inhibidor de la enzima convertidora de angiotensina

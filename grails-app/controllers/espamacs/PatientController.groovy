@@ -181,11 +181,12 @@ class PatientController {
     @Transactional
     def saveInitialData(InitialData initialData) {
         Patient patient = Patient.get(params.patientId)
-        if (initialData?.patientDeath){
+        if (initialData?.patientDischarged){
             initialData.exitusData = null
         }else{
             initialData.dischargedData = null
         }
+        initialData.validate()
         gericSectionUpdate(patient, initialData, "initialData", transactionStatus)
     }
 
@@ -206,7 +207,7 @@ class PatientController {
         patient."${fieldName}" = command
         patient.save flush: true
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
+        flash.message = message(code: 'default.patient.updated.message', args: [patient.code])
         redirect mapping:'patientEdit', params: [patientId:  patient.id]
     }
 

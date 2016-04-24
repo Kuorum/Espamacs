@@ -5,7 +5,7 @@ import espamacs.type.initialData.*
 
 class InitialData {
 
-    Boolean patientDeath
+    Boolean patientDischarged
     DischargedData dischargedData
     ExitusData exitusData
     Integer uciTime
@@ -32,7 +32,6 @@ class InitialData {
         antiheparineAntibodies lazy: false, fetch: 'join'
         bloodMedications lazy: false, fetch: 'join'
     }
-
 
     static hasMany = [
             surgicalProceduresAfterTransplant: SurgicalProcedureAfterTransplant,

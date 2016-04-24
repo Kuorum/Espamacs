@@ -94,7 +94,7 @@ $(function(){
     })
     showEventRemovedAssitanceData();
 
-    $("#patientDeath").on("change", function(){
+    $("#patientDischarged").on("change", function(){
         showDischargedOrExitusData();
     })
     showDischargedOrExitusData();
@@ -244,8 +244,8 @@ function showEventRemovedAssitanceData(){
 
 
 function showDischargedOrExitusData(){
-    var patientDeath = $("#patientDeath").val()
-    if (patientDeath=="true"){
+    var patientDischarged = $("#patientDischarged").val()
+    if (patientDischarged=="true"){
         $("#initialData_dischargedData").show("slow")
         $("#initialData_exitusData").hide("slow")
     }else{

@@ -9,7 +9,7 @@
                 <g:hiddenField name="id" value="${patient.initialData?.id}"/>
                 <input type="hidden" name="patient.id" value="${patient?.id}"/>
                 <fieldset class="form-group">
-                    <f:field bean="${initialData}" property="patientDeath"/>
+                    <f:field bean="${initialData}" property="patientDischarged"/>
                     <f:field bean="${initialData}" property="uciTime"/>
                     <f:field bean="${initialData}" property="hospitalizedTime"/>
                 </fieldset>
@@ -28,6 +28,7 @@
                     <h4><g:message code="patient.create.step7.initialData.postSurgeryData"/> </h4>
                     <f:field bean="${initialData}" property="timeWithoutIntropicIV"/>
                     <f:field bean="${initialData}" property="ventilationTime"/>
+                    <f:field bean="${initialData}" property="rightVentricleFailureAfterImplant"/>
                     <f:field bean="${initialData}" property="surgicalProceduresAfterTransplant" templates="multiCheck"/>
                     <f:field bean="${initialData}" property="cardiologicalTreatmensAtDischarge" templates="multiCheck"/>
                     <f:field bean="${initialData}" property="antiheparineAntibodies" />
