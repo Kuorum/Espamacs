@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<div id="content" role="main">
+<div id="content" role="main" class="login-content">
     <div class="col-md-6">
         <section class="row colset-2-its">
             <div class="login-container">
@@ -39,6 +39,11 @@
                                 <input class="btn-primary" type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
                             </div>
                         </form>
+                        <script>
+                            (function() {
+                                document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
+                            })();
+                        </script>
                     </div>
                 </div>
             </div>
@@ -49,9 +54,4 @@
         <asset:image src="logo.png"/>
     </div>
 </div>
-<script>
-    (function() {
-        document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
-    })();
-</script>
 </body>

@@ -258,10 +258,6 @@ article .content time {
     font-weight: bold;
 }
 
-#footer .colset-3-footer .col-1 h1, #footer .colset-3-footer .col-2 h1, #footer .colset-3-footer .col-3 h1 {
-    font-size: 15px !important;
-}
-
 .anchor-link:before {
     content: ' # ';
     color: lightgray;
@@ -384,77 +380,24 @@ h8 {
 }
 
 #footer {
-    background: #f2f2f2;
-    text-align: center;
-    font-size: 14px;
-    padding: 20px 0 30px;
-    margin-top: 30px;
-    color: #cce
+    background: #AD0202;
+    color: #000;
+    clear: both;
+    font-size: 0.8em;
+    margin-top: 1.5em;
+    padding: 1em;
+    min-height: 1em;
 }
 
-#footer .col-right {
-    float: right;
-    width: 300px;
-    text-align: right;
-    padding-top: 10px
+#footer a {
+    color: #7A0101;
 }
 
-#footer .colset-3-footer {
-    color: #222;
-    font-size: 14px
-}
+.sponsors{}
+#footer .sponsors{text-align: center;}
+#footer .sponsors ul{}
+#footer .sponsors ul li{display: inline; list-style: none; margin: 1%}
 
-#footer .colset-3-footer:before, #footer .colset-3-footer:after {
-    content: " ";
-    display: table
-}
-
-#footer .colset-3-footer:after {
-    clear: both
-}
-
-#footer .colset-3-footer .col-1, #footer .colset-3-footer .col-2, #footer .colset-3-footer .col-3 {
-    width: 18%;
-    padding: 20px 0 30px;
-    padding-right: 3%;
-    float: left;
-    text-align: left
-}
-
-#footer .colset-3-footer .col-3 {
-    width: 24%;
-}
-
-#footer .colset-3-footer .col-1 h1, #footer .colset-3-footer .col-2 h1, #footer .colset-3-footer .col-3 h1 {
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 30px;
-    margin: 0
-}
-
-#footer .colset-3-footer .col-1 ul, #footer .colset-3-footer .col-2 ul, #footer .colset-3-footer .col-3 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0
-}
-
-#footer .colset-3-footer .col-1 ul li, #footer .colset-3-footer .col-2 ul li, #footer .colset-3-footer .col-3 ul li {
-    margin: 0;
-    padding: 0
-}
-
-#footer .colset-3-footer .col-1 ul li a, #footer .colset-3-footer .col-2 ul li a, #footer .colset-3-footer .col-3 ul li a {
-    color: #343437;
-    text-decoration: none
-}
-
-#footer .colset-3-footer .col-1 ul li a:hover, #footer .colset-3-footer .col-2 ul li a:hover, #footer .colset-3-footer .col-3 ul li a:hover {
-    text-decoration: underline
-}
-
-#footer .second a {
-    color: #7A0101
-}
 
 .row {
     position: relative;
@@ -723,6 +666,10 @@ h8 {
     display: block;
     background: #f2f2f2;
     padding: 12px 20px
+}
+
+#content.login-content{
+    /*height: 75%;*/
 }
 
 ul.nav-sidebar {
@@ -1011,6 +958,14 @@ html, body, .st-container, .st-pusher, .st-content {
 @media screen and (max-width: 767px) {
     .presentations .img.screenshot, .video .metadata {
         float: none;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .login-content  + #footer{
+        position:absolute;
+        bottom: 0;
+        width: 100%;
     }
 }
 

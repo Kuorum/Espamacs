@@ -52,7 +52,7 @@
 
     <g:layoutBody/>
 
-    <div class="footer" role="contentinfo">
+    <footer class="footer" role="contentinfo" id="footer">
         <div class="sponsors">
             <ul>
                 <li><a target="_blank" href="http://www.cardiolink.es/index.php/es/">   <asset:image src="sponsors/cardiolink.jpg" class="sponsors-logo" alt="Cardiolink"/></a></li>
@@ -62,7 +62,7 @@
                 <li><a target="_blank" href="https://www.sjm.com/corporate.aspx">       <asset:image src="sponsors/sjmlogo.gif" class="sponsors-logo" alt="ST. Jude Medical"/></a></li>
             </ul>
         </div>
-    </div>
+    </footer>
 
 <div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-header">

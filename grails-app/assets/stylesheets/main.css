@@ -89,25 +89,6 @@ img {
     border: none;
 }
 
-.footer {
-    background: #AD0202;
-    color: #000;
-    clear: both;
-    font-size: 0.8em;
-    margin-top: 1.5em;
-    padding: 1em;
-    min-height: 1em;
-}
-
-.footer a {
-    color: #7A0101;
-}
-
-.sponsors{}
-.footer .sponsors{text-align: center;}
-.footer .sponsors ul{}
-.footer .sponsors ul li{display: inline; list-style: none; margin: 1%}
-
 .sponsors-logo{
     height: 3em;
     margin: 1em;
@@ -752,14 +733,6 @@ th.desc a {
 a.skip {
     position: absolute;
     left: -9999px;
-}
-
-.grails-logo-container {
-    background:#79b94c no-repeat 50% 30%;
-    margin-bottom: 20px;
-    color: white;
-    height:300px;
-    text-align:center;"
 }
 
 img.grails-logo {
