@@ -9,7 +9,7 @@
         <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
         <li><g:link mapping="patientList"><g:message code="patient.list.title"/></g:link></li>
         %{--<li><g:link mapping="patientShow" params="[patientId: patient.id]"><g:message code="default.show.label" args="[patient.code]"/></g:link></li>--}%
-        <li><g:message code="default.edit.label" args="[patient.code]"/></li>
+        <li><g:message code="patient.edit.title" args="[patient.code]"/></li>
     </ul>
 </content>
 
