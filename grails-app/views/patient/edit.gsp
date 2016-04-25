@@ -14,9 +14,9 @@
 </content>
 
 <content tag="actions">
-    <a href="#" class="btn btn-primary" type="button">
+    <g:link mapping="patientDelete" params="${patient.encodeAsLinkProperties()}" class="btn btn-default" type="button">
         <g:message code="default.button.delete.label"/>
-    </a>
+    </g:link>
 </content>
 
 <content tag="mainContent">
