@@ -10,6 +10,8 @@ import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
 import espamacs.type.PatientStatus
 import espamacs.type.implantData.ImplantType
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -18,6 +20,9 @@ import static org.springframework.http.HttpStatus.NO_CONTENT
 
 @Transactional(readOnly = true)
 class PatientController {
+
+    PatientService patientService
+    SpringSecurityService springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST"]
 
@@ -31,10 +36,16 @@ class PatientController {
     }
 
     private Map searchModel(PatientPagination pagination){
+        if (SpringSecurityUtils.ifNotGranted("ROLE_ADMIN")){
+            EspamacsUser user = springSecurityService.currentUser
+            Centre centre = user.centre
+            pagination.centre = centre
+        }
         grails.orm.PagedResultList result = Patient.createCriteria().list(max:pagination.max, offset:pagination.offset) {
             if (pagination.centre) {eq("centre", pagination.centre)}
             if (pagination.id) {eq("id", pagination.id)}
-            if (pagination.cardiacCareType) {eq("cardiacCareType", pagination.id)}
+            if (pagination.cardiacCareType) {eq("cardiacCareType", pagination.cardiacCareType)}
+            if (pagination.patientStatus) {eq("patientStatus", pagination.patientStatus)}
             if (pagination.code) {ilike("code", "%${pagination.code}%")}
             if (pagination.externalId) {ilike("externalId", "%${pagination.externalId}%")}
             if (pagination.sort){order(pagination.sort, pagination.order)}
@@ -203,10 +214,8 @@ class PatientController {
             return
         }
 
-        command.save flush:true
-        patient."${fieldName}" = command
-        patient.save flush: true
 
+        patient = patientService.update(patient, command, fieldName)
         flash.message = message(code: 'default.patient.updated.message', args: [patient.code])
         redirect mapping:'patientEdit', params: [patientId:  patient.id]
     }

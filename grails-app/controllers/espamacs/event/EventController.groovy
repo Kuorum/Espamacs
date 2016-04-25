@@ -1,12 +1,15 @@
 package espamacs.event
 
 import espamacs.Patient
+import espamacs.PatientService
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class EventController {
+
+    PatientService patientService
 
     def show() {
         Event event = Event.get(params.eventId)
@@ -199,7 +202,7 @@ class EventController {
             return
         }
 
-        event.save flush:true
+        patientService.addEvent(patient, event)
 
         request.withFormat {
             form multipartForm {
