@@ -31,7 +31,7 @@ environments:
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: update
+            dbCreate: no-validate
             url: jdbc:mysql://195.76.176.81:3306/espamacs
             username: espamacs
             password: 3sp4m4cs
