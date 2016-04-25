@@ -45,6 +45,9 @@ class PatientController {
 
     def show(Patient p) {
         Patient patient = Patient.get(params.patientId)
+        if (!patient){
+            return notFound()
+        }
         respond patient, view: "edit", model:editPatientModel(patient)
 //        respond patient
     }
@@ -103,8 +106,8 @@ class PatientController {
 
     @Transactional
     @Secured("ROLE_ADMIN")
-    def delete(Patient patient) {
-
+    def delete() {
+        Patient patient = Patient.get(params.patientId)
         if (patient == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -113,13 +116,7 @@ class PatientController {
 
         patient.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect mapping:'patientList'
     }
 
     def postGet() {
