@@ -76,6 +76,9 @@ class PatientController {
 
     def edit() {
         Patient patient = Patient.get(params.patientId)
+        if (!patient){
+            return notFound()
+        }
         respond patient, model:editPatientModel(patient)
     }
 
