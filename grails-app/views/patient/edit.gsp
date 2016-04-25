@@ -14,9 +14,11 @@
 </content>
 
 <content tag="actions">
-    <g:link mapping="patientDelete" params="${patient.encodeAsLinkProperties()}" class="btn btn-default" type="button">
-        <g:message code="default.button.delete.label"/>
-    </g:link>
+    <sec:ifAllGranted roles="ROLE_ADMIN">
+        <g:link mapping="patientDelete" params="${patient.encodeAsLinkProperties()}" class="btn btn-default" type="button">
+            <g:message code="default.button.delete.label"/>
+        </g:link>
+    </sec:ifAllGranted>
 </content>
 
 <content tag="mainContent">
@@ -31,7 +33,9 @@
 
     <g:render template="panelForms/basicDataPanelForm" model="[patient:patient]"/>
     <g:render template="panelForms/personalHistoryPanelForm" model="[patient:patient, personalHistory:personalHistory]"/>
-    <g:render template="panelForms/baselineConditionsForm" model="[patient:patient, baselineCondition:baselineCondition]"/>
+    <g:if test="${patient.cardiacCareType.code =='LONG'}">
+        <g:render template="panelForms/baselineConditionsForm" model="[patient:patient, baselineCondition:baselineCondition]"/>
+    </g:if>
     <g:render template="panelForms/preimplantSituation" model="[patient:patient, preimplantSituation:preimplantSituation]"/>
     <g:render template="panelForms/diagnosisAndimplanGoalsForm" model="[patient:patient, diagnosisAndImplantGoals:diagnosisAndImplantGoals]"/>
     <g:render template="panelForms/implantDataPanelForm" model="[patient:patient, implantData:implantData]"/>
