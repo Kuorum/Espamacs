@@ -1,14 +1,23 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Page Not Found</title>
-        <meta name="layout" content="main">
-        <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
-    </head>
-    <body>
-        <ul class="errors">
-            <li>Error: Page Not Found (404)</li>
-            <li>Path: ${request.forwardURI}</li>
-        </ul>
-    </body>
-</html>
+<head>
+    <meta name="layout" content="loggedLayout" />
+    <title><g:message code="default.error.notFound" /></title>
+</head>
+
+<content tag="breadcrumb">
+    <ul>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:message code="default.error.notFound"/></li>
+    </ul>
+</content>
+
+<content tag="actions">
+
+</content>
+
+<content tag="mainContent">
+    <ul class="errors">
+        <li>Error: Page Not Found (404)</li>
+        <li>Path: ${request.forwardURI}</li>
+    </ul>
+</content>
+
