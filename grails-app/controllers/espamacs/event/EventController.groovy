@@ -13,11 +13,13 @@ class EventController {
 
     def show() {
         Event event = Event.get(params.eventId)
+        patientService.checkPermission(event.patient)
         respond event
     }
 
     def createMalfunctionDevice(){
         Patient patient = Patient.get(params.patientId)
+		patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new MalfunctionDevice(params)]
     }
 
@@ -29,6 +31,7 @@ class EventController {
 
     def createHemorrhage(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new Hemorrhage(params)]
     }
 
@@ -41,6 +44,7 @@ class EventController {
 
     def createInfection(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new Infection(params)]
     }
     @Transactional
@@ -51,16 +55,19 @@ class EventController {
 
     def createNeurologicalDysfunction(){
         Patient patient = Patient.get(params.patientId)
+		patientService.checkPermission(event.patient)
         respond patient, view: 'create', model:[patient:patient, event:new NeurologicalDysfunction(params)]
     }
 	@Transactional
 	def saveNeurologicalDysfunction(NeurologicalDysfunction neurologicalDysfunction){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         save(neurologicalDysfunction, patient, transactionStatus)
     }
 
     def createArrhythmia(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new Arrhythmia(params)]
     }
 	@Transactional
@@ -71,6 +78,7 @@ class EventController {
 
     def createHepaticDysfunction(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new HepaticDysfunction(params)]
     }
 	@Transactional
@@ -81,6 +89,7 @@ class EventController {
 
     def createRenalDysfunction(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new RenalDysfunction(params)]
     }
 	@Transactional
@@ -91,6 +100,7 @@ class EventController {
 
     def createRespiratoryFailure(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new RespiratoryFailure(params)]
     }
 	@Transactional
@@ -101,6 +111,7 @@ class EventController {
 
     def createArterialThromboembolism(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new ArterialThromboembolism(params)]
     }
 	@Transactional
@@ -111,6 +122,7 @@ class EventController {
 
     def createWoundDehiscence(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new WoundDehiscence(params)]
     }
 	@Transactional
@@ -121,6 +133,7 @@ class EventController {
 
     def createVenousThromboembolism(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new VenousThromboembolism(params)]
     }
 	@Transactional
@@ -131,6 +144,7 @@ class EventController {
 
     def createMyocardialInfarction(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new MyocardialInfarction(params)]
     }
 	@Transactional
@@ -141,6 +155,7 @@ class EventController {
 
     def createPericardialEffusion(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new PericardialEffusion(params)]
     }
 	@Transactional
@@ -151,6 +166,7 @@ class EventController {
 
     def createHemolysis(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new Hemolysis(params)]
     }
 	@Transactional
@@ -161,6 +177,7 @@ class EventController {
 
     def createRightHeartFailure(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new RightHeartFailure(params)]
     }
 	@Transactional
@@ -171,6 +188,7 @@ class EventController {
 
     def createPeripheralVascularAccessComplications(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new PeripheralVascularAccessComplications(params)]
     }
 	@Transactional
@@ -181,6 +199,7 @@ class EventController {
 
     def createOtherEvent(){
         Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new OtherEvent(params)]
     }
 	@Transactional
@@ -215,6 +234,7 @@ class EventController {
 
     def edit() {
         Patient patient = Patient.get(params.patientId)
+		patientService.checkPermission(patient)
         Event event = Event.get(params.eventId)
         respond patient, view: 'edit', model:[patient:patient, event:event]
     }
@@ -233,27 +253,27 @@ class EventController {
             respond event.errors, view:'edit', model:[patient:patient, event:event]
             return
         }
-
-        event.save flush:true
+        patientService.checkPermission(event.patient)
+        patientService.addEvent(patient, event)
 
         flash.message = message(code: 'default.event.updated.message', args: [message(code: "patient.create.step8.events.createEventsButton.${event.class.simpleName}",  default: 'event'), patient.code])
         redirect mapping:'patientShow', params: patient.encodeAsLinkProperties()
     }
 
     @Transactional
-    def delete(Event evento) {
+    def delete(Event event) {
 
-        if (evento == null) {
+        if (event == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
-
-        evento.delete flush:true
+        patientService.checkPermission(event.patient)
+        event.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'event.label', default: 'Event'), evento.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'event.label', default: 'Event'), event.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

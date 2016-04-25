@@ -1,5 +1,6 @@
 import espamacs.binding.converters.DatabaseEnumConverter
 import espamacs.binding.converters.DoubleConverter
+import espamacs.security.EspamacsPermissionEvaluator
 import espamacs.security.EspamacsUserDetailsService
 
 // Place your Spring DSL code here
@@ -22,4 +23,10 @@ beans = {
         }
     }
 
+
+    // ACL
+    permissionEvaluator(EspamacsPermissionEvaluator) {
+        grailsApplication     = ref('grailsApplication')
+        springSecurityService = ref('springSecurityService')
+    }
 }

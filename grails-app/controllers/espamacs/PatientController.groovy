@@ -59,6 +59,7 @@ class PatientController {
         if (!patient){
             return notFound()
         }
+        patientService.checkPermission(patient)
         respond patient, view: "edit", model:editPatientModel(patient)
 //        respond patient
     }
@@ -93,6 +94,7 @@ class PatientController {
         if (!patient){
             return notFound()
         }
+        patientService.checkPermission(patient)
         respond patient, model:editPatientModel(patient)
     }
 
@@ -109,7 +111,7 @@ class PatientController {
             respond patient.errors, view:'edit'
             return
         }
-
+        patientService.checkPermission(patient)
         patient.save flush:true
         flash.message = message(code: 'default.updated.message', args: [message(code: 'patient.label', default: 'Patient'), patient.id])
         redirect mapping:'editPatient', params:[patientId:patient.id]
@@ -213,7 +215,7 @@ class PatientController {
             render model:editPatientModel(patient, command) ,view:'edit'
             return
         }
-
+        patientService.checkPermission(patient)
 
         patient = patientService.update(patient, command, fieldName)
         flash.message = message(code: 'default.patient.updated.message', args: [patient.code])

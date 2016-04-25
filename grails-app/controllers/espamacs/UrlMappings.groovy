@@ -1,5 +1,7 @@
 package espamacs
 
+import espamacs.exception.NotAuthorizedException
+
 class UrlMappings {
 
     static mappings = {
@@ -50,7 +52,8 @@ class UrlMappings {
 
         "/error" (view:'/error')
 
-        "500"(view:'/error')
+        "500" (controller: "error", action: "notAuthorized", exception: NotAuthorizedException)
+        "500" (controller: "error", action: "error")
         "404"(view:'/notFound')
     }
 }
