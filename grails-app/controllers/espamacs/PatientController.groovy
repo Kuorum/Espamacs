@@ -29,7 +29,7 @@ class PatientController {
     def index(PatientPagination pagination) {
         def model = searchModel(pagination)
         if (request.xhr){
-            render template:'/patient/searchablePatientsList', model:searchModel(pagination)
+            render template:'/patient/searchablePatientsList', model:model
         }else{
             model
         }

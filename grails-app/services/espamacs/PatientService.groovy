@@ -1,13 +1,13 @@
 package espamacs
 
 import espamacs.event.Event
-import espamacs.exception.NotAuthorizedException
 import espamacs.type.PatientStatus
 import espamacs.type.event.RemovedAssistance
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.transaction.Transactional
-import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.security.access.AccessDeniedException
+
 
 @Transactional
 class PatientService {
@@ -16,11 +16,11 @@ class PatientService {
 
     public void checkPermission(Patient patient){
         if (!patient){
-            throw  new NotAuthorizedException();
+            throw  new AccessDeniedException("patient.access.notAuthorized");
         }
         EspamacsUser user = springSecurityService.currentUser;
         if (SpringSecurityUtils.ifNotGranted("ROLE_ADMIN") && patient.centre != user.centre){
-            throw  new NotAuthorizedException();
+            throw  new AccessDeniedException("patient.access.notAuthorized");
         }
     }
     public void checkPermission(Long id){

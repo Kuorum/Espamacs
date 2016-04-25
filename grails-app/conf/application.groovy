@@ -6,6 +6,8 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'espamacs.Espam
 grails.plugin.springsecurity.authority.className = 'espamacs.Role'
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
 
+grails.plugin.springsecurity.adh.errorPage = '/error/notAuthorized'
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/error',          access: ['permitAll']],
 		[pattern: '/shutdown',       access: ['permitAll']],

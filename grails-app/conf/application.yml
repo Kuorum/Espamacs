@@ -25,20 +25,6 @@ environments:
             username: espamacs
             password: 3sp4m4cs
             logSql: true
-
-#
-#dataSource:
-#    pooled: true
-#    jmxExport: true
-#    driverClassName: org.h2.Driver
-#    username: sa
-#    password:
-#
-#environments:
-#    development:
-#        dataSource:
-#            dbCreate: create-drop
-#            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
             dbCreate: update
@@ -46,7 +32,9 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:mysql://195.76.176.81:3306/espamacs
+            username: espamacs
+            password: 3sp4m4cs
             properties:
                 jmxEnabled: true
                 initialSize: 5

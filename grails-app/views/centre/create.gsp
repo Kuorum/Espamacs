@@ -1,18 +1,19 @@
 
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'centre.label', default: 'Centre')}" />
-    <title><g:message code="default.create.label" args="[entityName]" /></title>
+    <title><g:message code="centre.create.title" /></title>
 </head>
 
 <content tag="breadcrumb">
     <ul>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:link mapping="centreList"><g:message code="centre.list.title"/></g:link></li>
+        <li><g:message code="centre.create.title" /></li>
     </ul>
 </content>
 
 <content tag="mainContent">
-    <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+    <h1><g:message code="centre.create.title" /></h1>
     <g:hasErrors bean="${this.centro}">
     <ul class="errors" role="alert">
         <g:eachError bean="${this.centro}" var="error">
@@ -25,7 +26,7 @@
             <f:all bean="centre"/>
         </fieldset>
         <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+            <g:submitButton name="create" class="save btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
         </fieldset>
     </g:form>
 </content>

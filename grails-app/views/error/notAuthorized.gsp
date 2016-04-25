@@ -1,6 +1,6 @@
 <head>
     <meta name="layout" content="loggedLayout" />
-    <title><g:message code="default.error" /></title>
+    <title><g:message code="default.error.notAuthorized" /></title>
 </head>
 
 <content tag="breadcrumb">

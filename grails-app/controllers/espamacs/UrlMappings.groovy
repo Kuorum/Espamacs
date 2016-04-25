@@ -1,6 +1,6 @@
 package espamacs
 
-import espamacs.exception.NotAuthorizedException
+import org.springframework.security.access.AccessDeniedException
 
 class UrlMappings {
 
@@ -44,6 +44,9 @@ class UrlMappings {
         name patientEventCreateMalfunctionDevice:        "/patient/${patientId}/add-event/MalfunctionDevice"        (controller:"event"){action=[GET:'createMalfunctionDevice', POST:'saveMalfunctionDevice']}
         name patientEventCreatePeripheralVascularAccessComplications:        "/patient/${patientId}/add-event/PeripheralVascularAccessComplications"        (controller:"event"){action=[GET:'createPeripheralVascularAccessComplications', POST:'savePeripheralVascularAccessComplications']}
 
+        name centreList:                                 "/centros"         (controller:"centre", action:"index")
+        name centreShow:                                 "/centros/${id}"   (controller:"centre", action:"show")
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
@@ -52,7 +55,9 @@ class UrlMappings {
 
         "/error" (view:'/error')
 
-        "500" (controller: "error", action: "notAuthorized", exception: NotAuthorizedException)
+        "403" (controller: "error", action: "notAuthorized")
+        "401" (controller: "error", action: "notAuthorized")
+        "500" (controller: "error", action: "notAuthorized", exception: AccessDeniedException)
         "500" (controller: "error", action: "error")
         "404"(view:'/notFound')
     }
