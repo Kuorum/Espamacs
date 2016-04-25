@@ -1,7 +1,7 @@
 
 <head>
     <meta name="layout" content="main" />
-    <title><g:message code="patient.create.step1.title"/></title>
+    <title><g:message code="login.title"/></title>
 </head>
 
 <body>
