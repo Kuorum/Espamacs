@@ -44,11 +44,11 @@ class Patient {
 
     static hasMany = [events: Event]
     static mapping = {
-        centre lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
-        cardiacCareType lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
-        bloodType lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
-        rhFactor lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
-        gender lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
+        centre lazy: false, fetch: 'select'
+        cardiacCareType lazy: false, fetch: 'select'
+        bloodType lazy: false, fetch: 'select'
+        rhFactor lazy: false, fetch: 'select'
+        gender lazy: false, fetch: 'select'
         personalHistory lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
         baselineCondition lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
         preimplantSituation lazy: false, fetch: 'select',  cascade:"all-delete-orphan"
