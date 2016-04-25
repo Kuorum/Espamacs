@@ -227,7 +227,6 @@ LOCK TABLES `baseline_condition_type_tricuspid_valve_status` WRITE;
 /*!40000 ALTER TABLE `baseline_condition_type_tricuspid_valve_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
 --
 -- Table structure for table `province`
 --
@@ -297,9 +296,9 @@ DROP TABLE IF EXISTS `centre`;
 CREATE TABLE `centre` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` bigint(20) NOT NULL,
-  `province_id` bigint(20) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
+  `province_id` bigint(20) NOT NULL,
   `service` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_m83d7vfwejqwmjv038ncacsv7` (`province_id`),
@@ -459,7 +458,7 @@ CREATE TABLE `espamacs_user` (
 
 LOCK TABLES `espamacs_user` WRITE;
 /*!40000 ALTER TABLE `espamacs_user` DISABLE KEYS */;
-INSERT INTO `espamacs_user` VALUES (1,0,'\0','\0',1,'','$2a$10$.T8lqidJs.z7z1RZ4V420eR6UDY..4.daMOHtPB7ss3eedfhlCM7S','\0','user'),(2,0,'\0','\0',2,'','$2a$10$a429/8T./OsAkya5UOEcUuHJRETAPRsfnpTX5ALMolMsxZ/saeOq6','\0','admin');
+INSERT INTO `espamacs_user` VALUES (1,0,'\0','\0',1,'','$2a$10$9tKnSSdaNNJj4grWFG107OA4mUWgvDzApSSYOTzaJ0FCGABBWueRu','\0','user'),(2,0,'\0','\0',2,'','$2a$10$nYyXCK5hSTJ8EdaxKzp9muW1BHxJvHuqksE9c5vnppAB1kH9wIReW','\0','admin');
 /*!40000 ALTER TABLE `espamacs_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,20 +508,36 @@ CREATE TABLE `event` (
   `removed_assistance_id` bigint(20) NOT NULL,
   `removed_assistance_death_id` bigint(20) DEFAULT NULL,
   `class` varchar(255) NOT NULL,
+  `peripheral_vascular_access_complications_type_id` bigint(20) DEFAULT NULL,
+  `infection_place_id` bigint(20) DEFAULT NULL,
+  `infection_treatment_id` bigint(20) DEFAULT NULL,
   `hemorrhage_cause_id` bigint(20) DEFAULT NULL,
   `hemorrhage_treatment_id` bigint(20) DEFAULT NULL,
-  `alt` double DEFAULT NULL,
-  `ast` double DEFAULT NULL,
-  `bilirrubin` double DEFAULT NULL,
   `right_heart_failure_needs_id` bigint(20) DEFAULT NULL,
   `right_heart_failure_signals_id` bigint(20) DEFAULT NULL,
   `arterial_thromboembolism_diagnosis_id` bigint(20) DEFAULT NULL,
+  `venous_thromboembolism_place_id` bigint(20) DEFAULT NULL,
+  `text` varchar(50) DEFAULT NULL,
   `days_after_surgery` int(11) DEFAULT NULL,
   `days_with_respiratory_problems` int(11) DEFAULT NULL,
   `tracheotomy` bit(1) DEFAULT NULL,
+  `flow_blocking` bit(1) DEFAULT NULL,
+  `pericardial_effussion_drain_method_id` bigint(20) DEFAULT NULL,
+  `pericardial_effussion_quantity_id` bigint(20) DEFAULT NULL,
+  `creatinine` double DEFAULT NULL,
+  `recover_renal_functionality` bit(1) DEFAULT NULL,
+  `renal_dysfunction_treatment_id` bigint(20) DEFAULT NULL,
+  `therapy_days` int(11) DEFAULT NULL,
+  `wound_dehiscence_type_id` bigint(20) DEFAULT NULL,
   `hemoglobin` double DEFAULT NULL,
   `hemolysis_cause_id` bigint(20) DEFAULT NULL,
   `ldh` double DEFAULT NULL,
+  `change_assistance_components` bit(1) DEFAULT NULL,
+  `malfunction_device_type_id` bigint(20) DEFAULT NULL,
+  `urgent_surgery_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_cause_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_place_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_treatment_id` bigint(20) DEFAULT NULL,
   `aptt_id` bigint(20) DEFAULT NULL,
   `inr_id` bigint(20) DEFAULT NULL,
   `neurological_dysfunction_cause_id` bigint(20) DEFAULT NULL,
@@ -532,38 +547,35 @@ CREATE TABLE `event` (
   `neurological_dysfunction_type_id` bigint(20) DEFAULT NULL,
   `surgery` bit(1) DEFAULT NULL,
   `treatement_id` bigint(20) DEFAULT NULL,
-  `flow_blocking` bit(1) DEFAULT NULL,
-  `pericardial_effussion_drain_method_id` bigint(20) DEFAULT NULL,
-  `pericardial_effussion_quantity_id` bigint(20) DEFAULT NULL,
-  `venous_thromboembolism_place_id` bigint(20) DEFAULT NULL,
-  `text` varchar(50) DEFAULT NULL,
   `arrhythmia_type_id` bigint(20) DEFAULT NULL,
-  `infection_place_id` bigint(20) DEFAULT NULL,
-  `infection_treatment_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_cause_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_place_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_treatment_id` bigint(20) DEFAULT NULL,
-  `change_assistance_components` bit(1) DEFAULT NULL,
-  `malfunction_device_type_id` bigint(20) DEFAULT NULL,
-  `urgent_surgery_id` bigint(20) DEFAULT NULL,
-  `peripheral_vascular_access_complications_type_id` bigint(20) DEFAULT NULL,
-  `wound_dehiscence_type_id` bigint(20) DEFAULT NULL,
-  `creatinine` double DEFAULT NULL,
-  `recover_renal_functionality` bit(1) DEFAULT NULL,
-  `renal_dysfunction_treatment_id` bigint(20) DEFAULT NULL,
-  `therapy_days` int(11) DEFAULT NULL,
+  `alt` double DEFAULT NULL,
+  `ast` double DEFAULT NULL,
+  `bilirrubin` double DEFAULT NULL,
   `events_idx` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_9848kbetc6v9qm57d727cvbox` (`patient_id`),
   KEY `FK_66ksb2vk8ogs149a9mrep1vb8` (`patient_health_status_id`),
   KEY `FK_2ncxscv57y5blvnadacsenk48` (`removed_assistance_id`),
   KEY `FK_8q30cov2bng29hr4u0indiacu` (`removed_assistance_death_id`),
+  KEY `FK_kh2o4q6jxaj7x00bsw4u3oyrv` (`peripheral_vascular_access_complications_type_id`),
+  KEY `FK_j35tilxoaduj0cc4gxo2vwni7` (`infection_place_id`),
+  KEY `FK_58gbttxt2pfggwt55sxksxsi2` (`infection_treatment_id`),
   KEY `FK_ilhak7kawj62m2quav420paym` (`hemorrhage_cause_id`),
   KEY `FK_otu9ci4qyqkrfhb8pp6mmfwjo` (`hemorrhage_treatment_id`),
   KEY `FK_33l1mx9lwkvd1b14ygaec0btx` (`right_heart_failure_needs_id`),
   KEY `FK_kkvw8uytwgorkghibnbo8rhmc` (`right_heart_failure_signals_id`),
   KEY `FK_21tyujn58itwlqq6yd95w0bfl` (`arterial_thromboembolism_diagnosis_id`),
+  KEY `FK_8kgh0wy5uo4rccajl24g3m2da` (`venous_thromboembolism_place_id`),
+  KEY `FK_40c5m697r51570fjnu221tfcn` (`pericardial_effussion_drain_method_id`),
+  KEY `FK_7vedlb6cgb4qaingoqp8ch446` (`pericardial_effussion_quantity_id`),
+  KEY `FK_s2uc7jdocl9j8quu24md579m2` (`renal_dysfunction_treatment_id`),
+  KEY `FK_s50xm5g3d7qewy15xukxw8pfv` (`wound_dehiscence_type_id`),
   KEY `FK_mqh3e9g9lrucxp6hlo9q9f2i8` (`hemolysis_cause_id`),
+  KEY `FK_t3osnu02c228naglqnqsyrjjf` (`malfunction_device_type_id`),
+  KEY `FK_4r4c6pymfjiyy0a2gid6edrc9` (`urgent_surgery_id`),
+  KEY `FK_hid46nbqou0psojs2raxhotxh` (`myocardial_infraction_cause_id`),
+  KEY `FK_3086fbl3w4grn483yqyrybsro` (`myocardial_infraction_place_id`),
+  KEY `FK_ru913yebw3d9g9s0k4i0geawr` (`myocardial_infraction_treatment_id`),
   KEY `FK_pvt0wyv1gyhkjl1efp28nlpqq` (`aptt_id`),
   KEY `FK_mugw1lk6ar777iqg9pu8cdwuh` (`inr_id`),
   KEY `FK_kkx8r955p0b4c9g82llivxr5a` (`neurological_dysfunction_cause_id`),
@@ -572,20 +584,7 @@ CREATE TABLE `event` (
   KEY `FK_grxr7npfb0phtq6qcged4fkk9` (`neurological_dysfunction_place_id`),
   KEY `FK_ia3c3cq3u9l41cv4fey92cf07` (`neurological_dysfunction_type_id`),
   KEY `FK_2ee009v942w8xotuqlo26pmt9` (`treatement_id`),
-  KEY `FK_40c5m697r51570fjnu221tfcn` (`pericardial_effussion_drain_method_id`),
-  KEY `FK_7vedlb6cgb4qaingoqp8ch446` (`pericardial_effussion_quantity_id`),
-  KEY `FK_8kgh0wy5uo4rccajl24g3m2da` (`venous_thromboembolism_place_id`),
   KEY `FK_s9wkspf2wcb3ggky7wl356o9p` (`arrhythmia_type_id`),
-  KEY `FK_j35tilxoaduj0cc4gxo2vwni7` (`infection_place_id`),
-  KEY `FK_58gbttxt2pfggwt55sxksxsi2` (`infection_treatment_id`),
-  KEY `FK_hid46nbqou0psojs2raxhotxh` (`myocardial_infraction_cause_id`),
-  KEY `FK_3086fbl3w4grn483yqyrybsro` (`myocardial_infraction_place_id`),
-  KEY `FK_ru913yebw3d9g9s0k4i0geawr` (`myocardial_infraction_treatment_id`),
-  KEY `FK_t3osnu02c228naglqnqsyrjjf` (`malfunction_device_type_id`),
-  KEY `FK_4r4c6pymfjiyy0a2gid6edrc9` (`urgent_surgery_id`),
-  KEY `FK_kh2o4q6jxaj7x00bsw4u3oyrv` (`peripheral_vascular_access_complications_type_id`),
-  KEY `FK_s50xm5g3d7qewy15xukxw8pfv` (`wound_dehiscence_type_id`),
-  KEY `FK_s2uc7jdocl9j8quu24md579m2` (`renal_dysfunction_treatment_id`),
   CONSTRAINT `FK_1o3fvyp609qga8plgrt5noow5` FOREIGN KEY (`neurological_dysfunction_effect_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_21tyujn58itwlqq6yd95w0bfl` FOREIGN KEY (`arterial_thromboembolism_diagnosis_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_2ee009v942w8xotuqlo26pmt9` FOREIGN KEY (`treatement_id`) REFERENCES `type_database_enum_type` (`id`),
@@ -627,35 +626,9 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,0,'',2,'2016-04-24 11:03:07',1,'',351,355,360,'espamacs.event.MalfunctionDevice',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',364,378,NULL,NULL,NULL,NULL,NULL,NULL,0);
+INSERT INTO `event` VALUES (1,0,'',2,'2016-04-25 10:44:43',1,'',354,358,363,'espamacs.event.MalfunctionDevice',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',367,381,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `hemorrhage_type_bleeding_place`
---
-
-DROP TABLE IF EXISTS `hemorrhage_type_bleeding_place`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `hemorrhage_type_bleeding_place` (
-  `hemorrhage_bleeding_places_id` bigint(20) DEFAULT NULL,
-  `bleeding_place_id` bigint(20) DEFAULT NULL,
-  `bleeding_places_idx` int(11) DEFAULT NULL,
-  KEY `FK_8akfayw982cmoobtqna3df6ei` (`bleeding_place_id`),
-  CONSTRAINT `FK_8akfayw982cmoobtqna3df6ei` FOREIGN KEY (`bleeding_place_id`) REFERENCES `type_database_enum_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `hemorrhage_type_bleeding_place`
---
-
-LOCK TABLES `hemorrhage_type_bleeding_place` WRITE;
-/*!40000 ALTER TABLE `hemorrhage_type_bleeding_place` DISABLE KEYS */;
-/*!40000 ALTER TABLE `hemorrhage_type_bleeding_place` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 --
 -- Table structure for table `implant_data`
@@ -739,7 +712,6 @@ LOCK TABLES `implant_data` WRITE;
 /*!40000 ALTER TABLE `implant_data` DISABLE KEYS */;
 /*!40000 ALTER TABLE `implant_data` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `initial_data`
@@ -927,7 +899,7 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,1,NULL,'2016-04-24 11:03:07',11,15,9,1,'INC',NULL,'ExternalId',8,156.3,NULL,'1956-05-09 11:03:07',NULL,60,4,NULL,NULL,17,86.2),(2,0,NULL,'2016-04-24 11:03:07',11,15,10,2,'Paz-1',NULL,'External-1',7,100,NULL,'1956-05-09 11:03:07',NULL,60,4,NULL,NULL,17,10),(3,0,NULL,'2016-04-24 11:03:07',11,15,10,2,'Paz-2',NULL,'External-2',7,200,NULL,'1956-05-09 11:03:07',NULL,60,4,NULL,NULL,17,20),(4,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-3',NULL,'External-3',7,300,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,30),(5,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-4',NULL,'External-4',7,400,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,40),(6,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-5',NULL,'External-5',7,500,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,50),(7,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-6',NULL,'External-6',7,600,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,60),(8,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-7',NULL,'External-7',7,700,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,70),(9,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-8',NULL,'External-8',7,800,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,80),(10,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-9',NULL,'External-9',7,900,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,90),(11,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-10',NULL,'External-10',7,1000,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,100),(12,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-11',NULL,'External-11',7,1100,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,110),(13,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-12',NULL,'External-12',7,1200,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,120),(14,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-13',NULL,'External-13',7,1300,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,130),(15,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-14',NULL,'External-14',7,1400,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,140),(16,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-15',NULL,'External-15',7,1500,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,150),(17,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-16',NULL,'External-16',7,1600,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,160),(18,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-17',NULL,'External-17',7,1700,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,170),(19,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-18',NULL,'External-18',7,1800,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,180),(20,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-19',NULL,'External-19',7,1900,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,190),(21,0,NULL,'2016-04-24 11:03:08',11,15,10,2,'Paz-20',NULL,'External-20',7,2000,NULL,'1956-05-09 11:03:08',NULL,60,4,NULL,NULL,17,200),(22,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-21',NULL,'External-21',7,2100,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,210),(23,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-22',NULL,'External-22',7,2200,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,220),(24,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-23',NULL,'External-23',7,2300,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,230),(25,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-24',NULL,'External-24',7,2400,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,240),(26,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-25',NULL,'External-25',7,2500,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,250),(27,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-26',NULL,'External-26',7,2600,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,260),(28,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-27',NULL,'External-27',7,2700,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,270),(29,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-28',NULL,'External-28',7,2800,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,280),(30,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-29',NULL,'External-29',7,2900,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,290),(31,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-30',NULL,'External-30',7,3000,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,300),(32,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-31',NULL,'External-31',7,3100,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,310),(33,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-32',NULL,'External-32',7,3200,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,320),(34,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-33',NULL,'External-33',7,3300,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,330),(35,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-34',NULL,'External-34',7,3400,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,340),(36,0,NULL,'2016-04-24 11:03:09',11,15,10,2,'Paz-35',NULL,'External-35',7,3500,NULL,'1956-05-09 11:03:09',NULL,60,4,NULL,NULL,17,350);
+INSERT INTO `patient` VALUES (1,1,NULL,'2016-04-25 10:44:43',11,15,9,1,'INC',NULL,'ExternalId',8,156.3,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,86.2),(2,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-1',NULL,'External-1',7,100,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,10),(3,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-2',NULL,'External-2',7,200,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,20),(4,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-3',NULL,'External-3',7,300,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,30),(5,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-4',NULL,'External-4',7,400,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,40),(6,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-5',NULL,'External-5',7,500,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,50),(7,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-6',NULL,'External-6',7,600,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,60),(8,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-7',NULL,'External-7',7,700,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,70),(9,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-8',NULL,'External-8',7,800,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,80),(10,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-9',NULL,'External-9',7,900,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,90),(11,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-10',NULL,'External-10',7,1000,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,100),(12,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-11',NULL,'External-11',7,1100,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,110),(13,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-12',NULL,'External-12',7,1200,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,120),(14,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-13',NULL,'External-13',7,1300,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,130),(15,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-14',NULL,'External-14',7,1400,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,140),(16,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-15',NULL,'External-15',7,1500,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,150),(17,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-16',NULL,'External-16',7,1600,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,160),(18,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-17',NULL,'External-17',7,1700,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,170),(19,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-18',NULL,'External-18',7,1800,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,180),(20,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-19',NULL,'External-19',7,1900,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,190),(21,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-20',NULL,'External-20',7,2000,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,200),(22,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-21',NULL,'External-21',7,2100,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,210),(23,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-22',NULL,'External-22',7,2200,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,220),(24,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-23',NULL,'External-23',7,2300,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,230),(25,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-24',NULL,'External-24',7,2400,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,240),(26,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-25',NULL,'External-25',7,2500,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,250),(27,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-26',NULL,'External-26',7,2600,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,260),(28,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-27',NULL,'External-27',7,2700,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,270),(29,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-28',NULL,'External-28',7,2800,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,280),(30,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-29',NULL,'External-29',7,2900,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,290),(31,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-30',NULL,'External-30',7,3000,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,300),(32,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-31',NULL,'External-31',7,3100,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,310),(33,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-32',NULL,'External-32',7,3200,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,320),(34,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-33',NULL,'External-33',7,3300,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,330),(35,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-34',NULL,'External-34',7,3400,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,340),(36,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-35',NULL,'External-35',7,3500,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,350);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1166,7 +1138,7 @@ CREATE TABLE `type_database_enum_type` (
   `code` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=499 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1175,8 +1147,6 @@ CREATE TABLE `type_database_enum_type` (
 
 LOCK TABLES `type_database_enum_type` WRITE;
 /*!40000 ALTER TABLE `type_database_enum_type` DISABLE KEYS */;
-
-
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (1,0,'UNKNOWN','espamacs.type.BooleanDBType');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (2,0,'NO','espamacs.type.BooleanDBType');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (3,0,'YES','espamacs.type.BooleanDBType');
@@ -1689,4 +1659,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-24 11:03:30
+-- Dump completed on 2016-04-25 10:45:56
