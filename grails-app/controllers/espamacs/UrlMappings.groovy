@@ -46,6 +46,9 @@ class UrlMappings {
 
         name centreList:                                 "/centros"         (controller:"centre", action:"index")
         name centreShow:                                 "/centros/${id}"   (controller:"centre", action:"show")
+        name centreEdit:                                 "/centros/${id}/edit"   (controller:"centre"){action=[GET:'edit', POST:'update']}
+
+        name profile:                                    "/profile"   (controller:"profile", action:"editProfile")
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {

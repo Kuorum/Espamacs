@@ -1,13 +1,13 @@
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'centre.label', default: 'Centre')}" />
-    <title><g:message code="default.show.label" args="[entityName]" /></title>
+    <title><g:message code="default.show.label" args="[centre.name]" /></title>
 </head>
 
 <content tag="breadcrumb">
     <ul>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+        <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
+        <li><g:link action="index"><g:message code="centre.list.title"/></g:link></li>
+        <li>${centre.name}</li>
     </ul>
 </content>
 
@@ -17,8 +17,9 @@
     <f:display bean="centre" />
     <g:form resource="${this.centro}" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${this.centre}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+            <input type="submit" class="edit btn btn-primary" value="${message(code:'default.button.edit.label')}"/>
+            %{--<input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />--}%
         </fieldset>
     </g:form>
+
 </content>

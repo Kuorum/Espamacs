@@ -12,8 +12,6 @@ import grails.transaction.Transactional
 @Secured("ROLE_ADMIN")
 class CentreController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def index(Pagination pagination) {
         def model = searchModel(pagination)
         if (request.xhr){
@@ -31,8 +29,8 @@ class CentreController {
         [pagination:pagination, centreList: result]
     }
 
-    def show(Centre centro) {
-        respond centro
+    def show(Centre centre) {
+        render view: "edit", model:[centre:centre]
     }
 
     def create() {
@@ -40,73 +38,73 @@ class CentreController {
     }
 
     @Transactional
-    def save(Centre centro) {
-        if (centro == null) {
+    def save(Centre centre) {
+        if (centre == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (centro.hasErrors()) {
+        if (centre.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond centro.errors, view:'create'
+            respond centre.errors, view:'create'
             return
         }
 
-        centro.save flush:true
+        centre.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
-                redirect centro
+                flash.message = message(code: 'default.created.message', args: [centre.name, centre.id])
+                redirect centre
             }
-            '*' { respond centro, [status: CREATED] }
+            '*' { respond centre, [status: CREATED] }
         }
     }
 
-    def edit(Centre centro) {
-        respond centro
+    def edit(Centre centre) {
+        respond centre
     }
 
     @Transactional
-    def update(Centre centro) {
-        if (centro == null) {
+    def update(Centre centre) {
+        if (centre == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (centro.hasErrors()) {
+        if (centre.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond centro.errors, view:'edit'
+            respond centre.errors, view:'edit'
             return
         }
 
-        centro.save flush:true
+        centre.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
-                redirect centro
+                flash.message = message(code: 'default.updated.message', args: [centre.name, centre.id])
+                redirect centre
             }
-            '*'{ respond centro, [status: OK] }
+            '*'{ respond centre, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Centre centro) {
+    def delete(Centre centre) {
 
-        if (centro == null) {
+        if (centre == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        centro.delete flush:true
+        centre.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'centre.label', default: 'Centre'), centro.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'centre.label', default: 'Centre'), centre.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
