@@ -8,8 +8,8 @@ class UrlMappings {
 
         name home: "/" (controller: "patient")
 
-        name centros: "/centros" (controller:"centre")
-        name usuarios: "/usuarios" (controller:"espamacsUser")
+        name users: "/usuarios" (controller:"espamacsUser")
+        name userShow: "/usuarios/${id}" (controller:"espamacsUser", action:"show")
 
         name patientList:               "/patients" (controller:"patient")
         name patientCreate:             "/patient/create" (controller:"patient") {action=[GET:"create", POST:"save"]}

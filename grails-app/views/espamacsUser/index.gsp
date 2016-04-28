@@ -13,9 +13,5 @@
 
 <content tag="mainContent">
     <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-    <f:table collection="${espamacsUserList}" />
-
-    <div class="pagination">
-        <g:paginate total="${espamacsUserCount ?: 0}" />
-    </div>
+    <g:render template="searchableEspamacsUserList" model="[pagination:pagination, userList: userList]"/>
 </content>

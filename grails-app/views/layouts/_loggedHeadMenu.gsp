@@ -15,7 +15,7 @@
         </a>
         <ul class="dropdown-menu">
             <li><g:link mapping="centros"> <g:message code="head.menu.centers"/></g:link> </li>
-            <li><g:link mapping="usuarios"> <g:message code="head.menu.users"/></g:link> </li>
+            <li><g:link mapping="users"> <g:message code="head.menu.users"/></g:link> </li>
         </ul>
     </li>
 </sec:ifAllGranted>

@@ -1,5 +1,7 @@
 package espamacs
 
+import espamacs.pagination.Pagination
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -8,9 +10,21 @@ class EspamacsUserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond EspamacsUser.list(params), model:[espamacsUserCount: EspamacsUser.count()]
+    def index(Pagination pagination) {
+        def model = searchModel(pagination)
+        if (request.xhr){
+            render template:'/espamacsUser/searchableEspamacsUserList', model:model
+        }else{
+            model
+        }
+    }
+
+    private Map searchModel(Pagination pagination){
+        grails.orm.PagedResultList result = EspamacsUser.createCriteria().list(max:pagination.max, offset:pagination.offset) {
+            if (pagination.sort){order(pagination.sort, pagination.order)}
+        }
+        pagination.total=result.totalCount
+        [pagination:pagination, userList: result]
     }
 
     def show(EspamacsUser espamacsUser) {
