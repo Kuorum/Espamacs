@@ -25,6 +25,8 @@ environments:
             username: espamacs
             password: 3sp4m4cs
             logSql: true
+        grails:
+            serverURL: http://localhost:8080
     test:
         dataSource:
             dbCreate: update
@@ -32,7 +34,8 @@ environments:
     production:
         dataSource:
             dbCreate: no-validate
-            url: jdbc:mysql://195.76.176.81:3306/espamacs
+#            url: jdbc:mysql://195.76.176.81:3306/espamacs
+            url: jdbc:mysql://localhost:3306/espamacs
             username: espamacs
             password: 3sp4m4cs
             properties:
@@ -53,6 +56,8 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+        grails:
+            serverURL: http://espamacs.kuorum.org
 
 ---
 ---
