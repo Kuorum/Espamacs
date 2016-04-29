@@ -8,7 +8,8 @@
     <ul>
         <li><g:link mapping="home"><span class="fa fa-home"/></g:link></li>
         <li><g:link mapping="userList"><g:message code="espamacsUser.list.title"/></g:link></li>
-        <li><g:message code="espamacsUser.navigation.edit" args="[this.espamacsUser.name]" /></li>
+        <li><g:link mapping="userShow" params="${this.espamacsUser.encodeAsLinkProperties()}">${this.espamacsUser.username}</g:link></li>
+        <li><g:message code="espamacsUser.navigation.edit" args="[this.espamacsUser.username]" /></li>
     </ul>
 </content>
 
