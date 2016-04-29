@@ -7,7 +7,7 @@
     <sec:ifAllGranted roles='ROLE_ADMIN'>
         <label for="${property}"><g:message code="${bean.class.name}.${property}" default="${label}"/></label>
         <g:select
-                from="${espamacs.Centre.list()}"
+                from="${espamacs.Centre.findAll([sort:'name'])}"
                 optionKey="id"
                 optionValue="name"
                 value="${value}"

@@ -9,7 +9,9 @@ class UrlMappings {
         name home: "/" (controller: "patient")
 
         name users: "/usuarios" (controller:"espamacsUser")
+        name userCreate: "/usuarios/create" (controller:"espamacsUser"){action=[GET:"create", POST:"save"]}
         name userShow: "/usuarios/${id}" (controller:"espamacsUser", action:"show")
+        name userEdit: "/usuarios/${id}/edit" (controller:"espamacsUser"){action=[GET:"edit", POST:"update"]}
 
         name patientList:               "/patients" (controller:"patient")
         name patientCreate:             "/patient/create" (controller:"patient") {action=[GET:"create", POST:"save"]}

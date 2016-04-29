@@ -678,19 +678,7 @@ th.desc a {
 
 .buttons input,
 .buttons a {
-    background-color: transparent;
-    border: 0;
-    color: #666666;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 0.25em 0;
-    overflow: visible;
     padding: 0.25em 0.7em;
-    text-decoration: none;
-
-    -moz-border-radius: 0.3em;
-    -webkit-border-radius: 0.3em;
-    border-radius: 0.3em;
     width: auto;
 }
 
@@ -720,6 +708,10 @@ th.desc a {
 
 .buttons .delete {
     background-image: url(../images/skin/database_delete.png);
+}
+
+.buttons .delete:hover {
+    background-color: #990000;
 }
 
 .buttons .edit {

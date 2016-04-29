@@ -48,16 +48,11 @@ class EspamacsUserController {
             respond espamacsUser.errors, view:'create'
             return
         }
-
         espamacsUser.save flush:true
+        EspamacsUserRole.create(espamacsUser,  Role.findByAuthority('ROLE_USER'), true)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'espamacsUser.label', default: 'EspamacsUser'), espamacsUser.id])
-                redirect espamacsUser
-            }
-            '*' { respond espamacsUser, [status: CREATED] }
-        }
+        flash.message = message(code: 'default.created.message', args: [espamacsUser.username, espamacsUser.id])
+        redirect mapping:'userShow', params:espamacsUser.encodeAsLinkProperties()
     }
 
     def edit(EspamacsUser espamacsUser) {
@@ -97,12 +92,12 @@ class EspamacsUserController {
             notFound()
             return
         }
-
+        EspamacsUserRole.removeAll(espamacsUser, true)
         espamacsUser.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'espamacsUser.label', default: 'EspamacsUser'), espamacsUser.id])
+                flash.message = message(code: 'default.deleted.message', args: [espamacsUser.username, espamacsUser.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
