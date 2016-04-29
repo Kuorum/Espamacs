@@ -55,7 +55,7 @@ class EventController {
 
     def createNeurologicalDysfunction(){
         Patient patient = Patient.get(params.patientId)
-		patientService.checkPermission(event.patient)
+		patientService.checkPermission(patient)
         respond patient, view: 'create', model:[patient:patient, event:new NeurologicalDysfunction(params)]
     }
 	@Transactional
