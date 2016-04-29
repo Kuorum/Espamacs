@@ -5,8 +5,10 @@ import espamacs.type.event.rightHeartFailure.RightHeartFailureSignals
 
 class RightHeartFailure extends Event{
 
-    RightHeartFailureSignals rightHeartFailureSignals
+    List<RightHeartFailureSignals> rightHeartFailureSignals
     RightHeartFailureNeeds rightHeartFailureNeeds
+
+    static hasMany = [rightHeartFailureSignals: RightHeartFailureSignals]
 
     static constraints = {
     }

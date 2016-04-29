@@ -228,63 +228,39 @@ LOCK TABLES `baseline_condition_type_tricuspid_valve_status` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `province`
+-- Table structure for table `central_nervous_system`
 --
 
-DROP TABLE IF EXISTS `province`;
+DROP TABLE IF EXISTS `central_nervous_system`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `province` (
+CREATE TABLE `central_nervous_system` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` bigint(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `brain_hemorrhage_id` bigint(20) NOT NULL,
+  `severe_neurological_disease_id` bigint(20) NOT NULL,
+  `stroke_id` bigint(20) NOT NULL,
+  `transient_ischemic_attack_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_y2tnqovbhd2trxdcw1xv0wwx` (`brain_hemorrhage_id`),
+  KEY `FK_oxt5lynm8t7ek70n722ve1eb9` (`severe_neurological_disease_id`),
+  KEY `FK_u4dandrfnoj8hgyj81g635fu` (`stroke_id`),
+  KEY `FK_16axfg0ddontlf67ydrx6fjve` (`transient_ischemic_attack_id`),
+  CONSTRAINT `FK_16axfg0ddontlf67ydrx6fjve` FOREIGN KEY (`transient_ischemic_attack_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_oxt5lynm8t7ek70n722ve1eb9` FOREIGN KEY (`severe_neurological_disease_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_u4dandrfnoj8hgyj81g635fu` FOREIGN KEY (`stroke_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_y2tnqovbhd2trxdcw1xv0wwx` FOREIGN KEY (`brain_hemorrhage_id`) REFERENCES `type_database_enum_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `province`
+-- Dumping data for table `central_nervous_system`
 --
 
-LOCK TABLES `province` WRITE;
-/*!40000 ALTER TABLE `province` DISABLE KEYS */;
-INSERT INTO `province` (id,version, name) VALUES (5, 0, 'Almeria');
-INSERT INTO `province` (id,version, name) VALUES (6, 0, 'A Coruña');
-INSERT INTO `province` (id,version, name) VALUES (7, 0, 'Albacete');
-INSERT INTO `province` (id,version, name) VALUES (8, 0, 'Alicante');
-INSERT INTO `province` (id,version, name) VALUES (9, 0, 'Asturias');
-INSERT INTO `province` (id,version, name) VALUES (10, 0, 'Badajoz');
-INSERT INTO `province` (id,version, name) VALUES (11, 0, 'Badalona');
-INSERT INTO `province` (id,version, name) VALUES (12, 0, 'Barcelona');
-INSERT INTO `province` (id,version, name) VALUES (13, 0, 'Cádiz');
-INSERT INTO `province` (id,version, name) VALUES (14, 0, 'Cantabria');
-INSERT INTO `province` (id,version, name) VALUES (15, 0, 'Córdoba');
-INSERT INTO `province` (id,version, name) VALUES (16, 0, 'Gran Canaria');
-INSERT INTO `province` (id,version, name) VALUES (17, 0, 'Granada');
-INSERT INTO `province` (id,version, name) VALUES (18, 0, 'Guipúzcoa');
-INSERT INTO `province` (id,version, name) VALUES (19, 0, 'LA CORUÑA');
-INSERT INTO `province` (id,version, name) VALUES (20, 0, 'Las Palmas de G.C.');
-INSERT INTO `province` (id,version, name) VALUES (21, 0, 'León');
-INSERT INTO `province` (id,version, name) VALUES (22, 0, 'Madrid');
-INSERT INTO `province` (id,version, name) VALUES (23, 0, 'Málaga');
-INSERT INTO `province` (id,version, name) VALUES (24, 0, 'Murcia');
-INSERT INTO `province` (id,version, name) VALUES (25, 0, 'Navarra');
-INSERT INTO `province` (id,version, name) VALUES (26, 0, 'Palma de Mallorca');
-INSERT INTO `province` (id,version, name) VALUES (27, 0, 'Pontevedra');
-INSERT INTO `province` (id,version, name) VALUES (28, 0, 'Salamanca');
-INSERT INTO `province` (id,version, name) VALUES (29, 0, 'Sevilla');
-INSERT INTO `province` (id,version, name) VALUES (30, 0, 'Tenerife');
-INSERT INTO `province` (id,version, name) VALUES (31, 0, 'Toledo');
-INSERT INTO `province` (id,version, name) VALUES (32, 0, 'Valencia');
-INSERT INTO `province` (id,version, name) VALUES (33, 0, 'Valladolid');
-INSERT INTO `province` (id,version, name) VALUES (34, 0, 'Vizcaya');
-INSERT INTO `province` (id,version, name) VALUES (35, 0, 'Zaragoza');
-INSERT INTO `province` (id,version, name) VALUES (36, 0, 'Andalucia');
-
-
-/*!40000 ALTER TABLE `province` ENABLE KEYS */;
+LOCK TABLES `central_nervous_system` WRITE;
+/*!40000 ALTER TABLE `central_nervous_system` DISABLE KEYS */;
+/*!40000 ALTER TABLE `central_nervous_system` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `centre`
@@ -408,14 +384,14 @@ CREATE TABLE `diagnosis_and_implant_goals` (
   PRIMARY KEY (`id`),
   KEY `FK_kiitlhr18arb0t4fmt5c8n57c` (`cardiac_implant_cause_id`),
   KEY `FK_2b1vr2ypnsjfytow1xd00763` (`contraindication_id`),
-  KEY `FK_2q2t30ipqv9u8pwst8gosvbv` (`implant_cause_id`),
+  KEY `FK_ru0g57lcjd4cs81ho1rc3qe22` (`implant_cause_id`),
   KEY `FK_eypp4qk7yx0p82t1r3hfuv28x` (`implant_goal_id`),
   KEY `FK_oy03uxy7ijd53rurn6qhxpe50` (`main_lung_implant_cause_id`),
   CONSTRAINT `FK_2b1vr2ypnsjfytow1xd00763` FOREIGN KEY (`contraindication_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_2q2t30ipqv9u8pwst8gosvbv` FOREIGN KEY (`implant_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_eypp4qk7yx0p82t1r3hfuv28x` FOREIGN KEY (`implant_goal_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_kiitlhr18arb0t4fmt5c8n57c` FOREIGN KEY (`cardiac_implant_cause_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_oy03uxy7ijd53rurn6qhxpe50` FOREIGN KEY (`main_lung_implant_cause_id`) REFERENCES `type_database_enum_type` (`id`)
+  CONSTRAINT `FK_oy03uxy7ijd53rurn6qhxpe50` FOREIGN KEY (`main_lung_implant_cause_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_ru0g57lcjd4cs81ho1rc3qe22` FOREIGN KEY (`implant_cause_id`) REFERENCES `type_database_enum_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -458,7 +434,8 @@ CREATE TABLE `espamacs_user` (
 
 LOCK TABLES `espamacs_user` WRITE;
 /*!40000 ALTER TABLE `espamacs_user` DISABLE KEYS */;
-INSERT INTO `espamacs_user` VALUES (1,0,'\0','\0',1,'','$2a$10$9tKnSSdaNNJj4grWFG107OA4mUWgvDzApSSYOTzaJ0FCGABBWueRu','\0','user'),(2,0,'\0','\0',2,'','$2a$10$nYyXCK5hSTJ8EdaxKzp9muW1BHxJvHuqksE9c5vnppAB1kH9wIReW','\0','admin');
+INSERT INTO `espamacs_user` VALUES (1,0,'\0','\0',1,'','$2a$10$.zPbYI6HylSLqfUFmaMn/.87xFYZsvcBsyqcadvKgolNPS/iz3q.u','\0','user'),
+(2,0,'\0','\0',2,'','$2a$10$CorZxpPvdbsIKeH9yc8KL.1RkhtkRQwyds91V3xdzBi9Zt/sdeT/e','\0','admin');
 /*!40000 ALTER TABLE `espamacs_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -485,7 +462,9 @@ CREATE TABLE `espamacs_user_role` (
 
 LOCK TABLES `espamacs_user_role` WRITE;
 /*!40000 ALTER TABLE `espamacs_user_role` DISABLE KEYS */;
-INSERT INTO `espamacs_user_role` VALUES (1,1),(2,1),(2,2);
+INSERT INTO `espamacs_user_role` VALUES (1,1),
+(2,1),
+(2,2);
 /*!40000 ALTER TABLE `espamacs_user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,36 +487,11 @@ CREATE TABLE `event` (
   `removed_assistance_id` bigint(20) NOT NULL,
   `removed_assistance_death_id` bigint(20) DEFAULT NULL,
   `class` varchar(255) NOT NULL,
-  `peripheral_vascular_access_complications_type_id` bigint(20) DEFAULT NULL,
-  `infection_place_id` bigint(20) DEFAULT NULL,
-  `infection_treatment_id` bigint(20) DEFAULT NULL,
-  `hemorrhage_cause_id` bigint(20) DEFAULT NULL,
-  `hemorrhage_treatment_id` bigint(20) DEFAULT NULL,
-  `right_heart_failure_needs_id` bigint(20) DEFAULT NULL,
-  `right_heart_failure_signals_id` bigint(20) DEFAULT NULL,
-  `arterial_thromboembolism_diagnosis_id` bigint(20) DEFAULT NULL,
-  `venous_thromboembolism_place_id` bigint(20) DEFAULT NULL,
-  `text` varchar(50) DEFAULT NULL,
-  `days_after_surgery` int(11) DEFAULT NULL,
-  `days_with_respiratory_problems` int(11) DEFAULT NULL,
-  `tracheotomy` bit(1) DEFAULT NULL,
-  `flow_blocking` bit(1) DEFAULT NULL,
-  `pericardial_effussion_drain_method_id` bigint(20) DEFAULT NULL,
-  `pericardial_effussion_quantity_id` bigint(20) DEFAULT NULL,
-  `creatinine` double DEFAULT NULL,
-  `recover_renal_functionality` bit(1) DEFAULT NULL,
-  `renal_dysfunction_treatment_id` bigint(20) DEFAULT NULL,
-  `therapy_days` int(11) DEFAULT NULL,
+  `alt` double DEFAULT NULL,
+  `ast` double DEFAULT NULL,
+  `bilirrubin` double DEFAULT NULL,
   `wound_dehiscence_type_id` bigint(20) DEFAULT NULL,
-  `hemoglobin` double DEFAULT NULL,
-  `hemolysis_cause_id` bigint(20) DEFAULT NULL,
-  `ldh` double DEFAULT NULL,
-  `change_assistance_components` bit(1) DEFAULT NULL,
-  `malfunction_device_type_id` bigint(20) DEFAULT NULL,
-  `urgent_surgery_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_cause_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_place_id` bigint(20) DEFAULT NULL,
-  `myocardial_infraction_treatment_id` bigint(20) DEFAULT NULL,
+  `text` varchar(50) DEFAULT NULL,
   `aptt_id` bigint(20) DEFAULT NULL,
   `inr_id` bigint(20) DEFAULT NULL,
   `neurological_dysfunction_cause_id` bigint(20) DEFAULT NULL,
@@ -547,35 +501,41 @@ CREATE TABLE `event` (
   `neurological_dysfunction_type_id` bigint(20) DEFAULT NULL,
   `surgery` bit(1) DEFAULT NULL,
   `treatement_id` bigint(20) DEFAULT NULL,
+  `venous_thromboembolism_place_id` bigint(20) DEFAULT NULL,
+  `infection_place_id` bigint(20) DEFAULT NULL,
+  `infection_treatment_id` bigint(20) DEFAULT NULL,
+  `right_heart_failure_needs_id` bigint(20) DEFAULT NULL,
+  `peripheral_vascular_access_complications_type_id` bigint(20) DEFAULT NULL,
+  `hemorrhage_cause_id` bigint(20) DEFAULT NULL,
+  `hemorrhage_treatment_id` bigint(20) DEFAULT NULL,
+  `change_assistance_components` bit(1) DEFAULT NULL,
+  `malfunction_device_type_id` bigint(20) DEFAULT NULL,
+  `urgent_surgery_id` bigint(20) DEFAULT NULL,
+  `flow_blocking` bit(1) DEFAULT NULL,
+  `pericardial_effussion_drain_method_id` bigint(20) DEFAULT NULL,
+  `pericardial_effussion_quantity_id` bigint(20) DEFAULT NULL,
   `arrhythmia_type_id` bigint(20) DEFAULT NULL,
-  `alt` double DEFAULT NULL,
-  `ast` double DEFAULT NULL,
-  `bilirrubin` double DEFAULT NULL,
+  `creatinine` double DEFAULT NULL,
+  `days_after_surgery` int(11) DEFAULT NULL,
+  `recover_renal_functionality` bit(1) DEFAULT NULL,
+  `renal_dysfunction_treatment_id` bigint(20) DEFAULT NULL,
+  `therapy_days` int(11) DEFAULT NULL,
+  `days_with_respiratory_problems` int(11) DEFAULT NULL,
+  `tracheotomy` bit(1) DEFAULT NULL,
+  `hemoglobin` double DEFAULT NULL,
+  `hemolysis_cause_id` bigint(20) DEFAULT NULL,
+  `ldh` double DEFAULT NULL,
+  `arterial_thromboembolism_diagnosis_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_cause_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_place_id` bigint(20) DEFAULT NULL,
+  `myocardial_infraction_treatment_id` bigint(20) DEFAULT NULL,
   `events_idx` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_9848kbetc6v9qm57d727cvbox` (`patient_id`),
   KEY `FK_66ksb2vk8ogs149a9mrep1vb8` (`patient_health_status_id`),
   KEY `FK_2ncxscv57y5blvnadacsenk48` (`removed_assistance_id`),
   KEY `FK_8q30cov2bng29hr4u0indiacu` (`removed_assistance_death_id`),
-  KEY `FK_kh2o4q6jxaj7x00bsw4u3oyrv` (`peripheral_vascular_access_complications_type_id`),
-  KEY `FK_j35tilxoaduj0cc4gxo2vwni7` (`infection_place_id`),
-  KEY `FK_58gbttxt2pfggwt55sxksxsi2` (`infection_treatment_id`),
-  KEY `FK_ilhak7kawj62m2quav420paym` (`hemorrhage_cause_id`),
-  KEY `FK_otu9ci4qyqkrfhb8pp6mmfwjo` (`hemorrhage_treatment_id`),
-  KEY `FK_33l1mx9lwkvd1b14ygaec0btx` (`right_heart_failure_needs_id`),
-  KEY `FK_kkvw8uytwgorkghibnbo8rhmc` (`right_heart_failure_signals_id`),
-  KEY `FK_21tyujn58itwlqq6yd95w0bfl` (`arterial_thromboembolism_diagnosis_id`),
-  KEY `FK_8kgh0wy5uo4rccajl24g3m2da` (`venous_thromboembolism_place_id`),
-  KEY `FK_40c5m697r51570fjnu221tfcn` (`pericardial_effussion_drain_method_id`),
-  KEY `FK_7vedlb6cgb4qaingoqp8ch446` (`pericardial_effussion_quantity_id`),
-  KEY `FK_s2uc7jdocl9j8quu24md579m2` (`renal_dysfunction_treatment_id`),
   KEY `FK_s50xm5g3d7qewy15xukxw8pfv` (`wound_dehiscence_type_id`),
-  KEY `FK_mqh3e9g9lrucxp6hlo9q9f2i8` (`hemolysis_cause_id`),
-  KEY `FK_t3osnu02c228naglqnqsyrjjf` (`malfunction_device_type_id`),
-  KEY `FK_4r4c6pymfjiyy0a2gid6edrc9` (`urgent_surgery_id`),
-  KEY `FK_hid46nbqou0psojs2raxhotxh` (`myocardial_infraction_cause_id`),
-  KEY `FK_3086fbl3w4grn483yqyrybsro` (`myocardial_infraction_place_id`),
-  KEY `FK_ru913yebw3d9g9s0k4i0geawr` (`myocardial_infraction_treatment_id`),
   KEY `FK_pvt0wyv1gyhkjl1efp28nlpqq` (`aptt_id`),
   KEY `FK_mugw1lk6ar777iqg9pu8cdwuh` (`inr_id`),
   KEY `FK_kkx8r955p0b4c9g82llivxr5a` (`neurological_dysfunction_cause_id`),
@@ -584,7 +544,24 @@ CREATE TABLE `event` (
   KEY `FK_grxr7npfb0phtq6qcged4fkk9` (`neurological_dysfunction_place_id`),
   KEY `FK_ia3c3cq3u9l41cv4fey92cf07` (`neurological_dysfunction_type_id`),
   KEY `FK_2ee009v942w8xotuqlo26pmt9` (`treatement_id`),
+  KEY `FK_8kgh0wy5uo4rccajl24g3m2da` (`venous_thromboembolism_place_id`),
+  KEY `FK_j35tilxoaduj0cc4gxo2vwni7` (`infection_place_id`),
+  KEY `FK_58gbttxt2pfggwt55sxksxsi2` (`infection_treatment_id`),
+  KEY `FK_33l1mx9lwkvd1b14ygaec0btx` (`right_heart_failure_needs_id`),
+  KEY `FK_kh2o4q6jxaj7x00bsw4u3oyrv` (`peripheral_vascular_access_complications_type_id`),
+  KEY `FK_ilhak7kawj62m2quav420paym` (`hemorrhage_cause_id`),
+  KEY `FK_otu9ci4qyqkrfhb8pp6mmfwjo` (`hemorrhage_treatment_id`),
+  KEY `FK_t3osnu02c228naglqnqsyrjjf` (`malfunction_device_type_id`),
+  KEY `FK_4r4c6pymfjiyy0a2gid6edrc9` (`urgent_surgery_id`),
+  KEY `FK_40c5m697r51570fjnu221tfcn` (`pericardial_effussion_drain_method_id`),
+  KEY `FK_7vedlb6cgb4qaingoqp8ch446` (`pericardial_effussion_quantity_id`),
   KEY `FK_s9wkspf2wcb3ggky7wl356o9p` (`arrhythmia_type_id`),
+  KEY `FK_s2uc7jdocl9j8quu24md579m2` (`renal_dysfunction_treatment_id`),
+  KEY `FK_mqh3e9g9lrucxp6hlo9q9f2i8` (`hemolysis_cause_id`),
+  KEY `FK_21tyujn58itwlqq6yd95w0bfl` (`arterial_thromboembolism_diagnosis_id`),
+  KEY `FK_hid46nbqou0psojs2raxhotxh` (`myocardial_infraction_cause_id`),
+  KEY `FK_3086fbl3w4grn483yqyrybsro` (`myocardial_infraction_place_id`),
+  KEY `FK_ru913yebw3d9g9s0k4i0geawr` (`myocardial_infraction_treatment_id`),
   CONSTRAINT `FK_1o3fvyp609qga8plgrt5noow5` FOREIGN KEY (`neurological_dysfunction_effect_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_21tyujn58itwlqq6yd95w0bfl` FOREIGN KEY (`arterial_thromboembolism_diagnosis_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_2ee009v942w8xotuqlo26pmt9` FOREIGN KEY (`treatement_id`) REFERENCES `type_database_enum_type` (`id`),
@@ -606,7 +583,6 @@ CREATE TABLE `event` (
   CONSTRAINT `FK_ilhak7kawj62m2quav420paym` FOREIGN KEY (`hemorrhage_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_j35tilxoaduj0cc4gxo2vwni7` FOREIGN KEY (`infection_place_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_kh2o4q6jxaj7x00bsw4u3oyrv` FOREIGN KEY (`peripheral_vascular_access_complications_type_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_kkvw8uytwgorkghibnbo8rhmc` FOREIGN KEY (`right_heart_failure_signals_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_kkx8r955p0b4c9g82llivxr5a` FOREIGN KEY (`neurological_dysfunction_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_mqh3e9g9lrucxp6hlo9q9f2i8` FOREIGN KEY (`hemolysis_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_mugw1lk6ar777iqg9pu8cdwuh` FOREIGN KEY (`inr_id`) REFERENCES `type_database_enum_type` (`id`),
@@ -617,7 +593,7 @@ CREATE TABLE `event` (
   CONSTRAINT `FK_s50xm5g3d7qewy15xukxw8pfv` FOREIGN KEY (`wound_dehiscence_type_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_s9wkspf2wcb3ggky7wl356o9p` FOREIGN KEY (`arrhythmia_type_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_t3osnu02c228naglqnqsyrjjf` FOREIGN KEY (`malfunction_device_type_id`) REFERENCES `type_database_enum_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -626,7 +602,8 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,0,'',2,'2016-04-25 10:44:43',1,'',354,358,363,'espamacs.event.MalfunctionDevice',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',367,381,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
+INSERT INTO `event` VALUES (1,0,'',2,'2016-04-29 12:03:26',1,'',351,355,360,'espamacs.event.MalfunctionDevice',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',364,378,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),
+(2,0,'\0',NULL,'2016-04-15 00:00:00',1,'\0',351,355,360,'espamacs.event.RightHeartFailure',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,490,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -899,7 +876,42 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,1,NULL,'2016-04-25 10:44:43',11,15,9,1,'INC',NULL,'ExternalId',8,156.3,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,86.2),(2,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-1',NULL,'External-1',7,100,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,10),(3,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-2',NULL,'External-2',7,200,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,20),(4,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-3',NULL,'External-3',7,300,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,30),(5,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-4',NULL,'External-4',7,400,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,40),(6,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-5',NULL,'External-5',7,500,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,50),(7,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-6',NULL,'External-6',7,600,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,60),(8,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-7',NULL,'External-7',7,700,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,70),(9,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-8',NULL,'External-8',7,800,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,80),(10,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-9',NULL,'External-9',7,900,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,90),(11,0,NULL,'2016-04-25 10:44:43',11,15,10,2,'Paz-10',NULL,'External-10',7,1000,NULL,'1956-05-10 10:44:43',NULL,60,4,NULL,NULL,17,100),(12,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-11',NULL,'External-11',7,1100,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,110),(13,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-12',NULL,'External-12',7,1200,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,120),(14,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-13',NULL,'External-13',7,1300,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,130),(15,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-14',NULL,'External-14',7,1400,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,140),(16,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-15',NULL,'External-15',7,1500,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,150),(17,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-16',NULL,'External-16',7,1600,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,160),(18,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-17',NULL,'External-17',7,1700,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,170),(19,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-18',NULL,'External-18',7,1800,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,180),(20,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-19',NULL,'External-19',7,1900,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,190),(21,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-20',NULL,'External-20',7,2000,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,200),(22,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-21',NULL,'External-21',7,2100,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,210),(23,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-22',NULL,'External-22',7,2200,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,220),(24,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-23',NULL,'External-23',7,2300,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,230),(25,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-24',NULL,'External-24',7,2400,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,240),(26,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-25',NULL,'External-25',7,2500,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,250),(27,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-26',NULL,'External-26',7,2600,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,260),(28,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-27',NULL,'External-27',7,2700,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,270),(29,0,NULL,'2016-04-25 10:44:44',11,15,10,2,'Paz-28',NULL,'External-28',7,2800,NULL,'1956-05-10 10:44:44',NULL,60,4,NULL,NULL,17,280),(30,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-29',NULL,'External-29',7,2900,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,290),(31,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-30',NULL,'External-30',7,3000,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,300),(32,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-31',NULL,'External-31',7,3100,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,310),(33,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-32',NULL,'External-32',7,3200,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,320),(34,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-33',NULL,'External-33',7,3300,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,330),(35,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-34',NULL,'External-34',7,3400,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,340),(36,0,NULL,'2016-04-25 10:44:45',11,15,10,2,'Paz-35',NULL,'External-35',7,3500,NULL,'1956-05-10 10:44:45',NULL,60,4,NULL,NULL,17,350);
+INSERT INTO `patient` VALUES (1,2,NULL,'2016-04-29 12:03:25',11,15,9,1,'INC',NULL,'ExternalId',8,156.3,NULL,'1956-05-14 12:03:25',NULL,60,4,NULL,NULL,16,86.2),
+(2,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-1',NULL,'External-1',7,100,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,10),
+(3,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-2',NULL,'External-2',7,200,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,20),
+(4,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-3',NULL,'External-3',7,300,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,30),
+(5,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-4',NULL,'External-4',7,400,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,40),
+(6,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-5',NULL,'External-5',7,500,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,50),
+(7,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-6',NULL,'External-6',7,600,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,60),
+(8,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-7',NULL,'External-7',7,700,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,70),
+(9,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-8',NULL,'External-8',7,800,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,80),
+(10,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-9',NULL,'External-9',7,900,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,90),
+(11,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-10',NULL,'External-10',7,1000,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,100),
+(12,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-11',NULL,'External-11',7,1100,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,110),
+(13,0,NULL,'2016-04-29 12:03:26',11,15,10,2,'Paz-12',NULL,'External-12',7,1200,NULL,'1956-05-14 12:03:26',NULL,60,4,NULL,NULL,16,120),
+(14,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-13',NULL,'External-13',7,1300,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,130),
+(15,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-14',NULL,'External-14',7,1400,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,140),
+(16,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-15',NULL,'External-15',7,1500,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,150),
+(17,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-16',NULL,'External-16',7,1600,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,160),
+(18,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-17',NULL,'External-17',7,1700,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,170),
+(19,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-18',NULL,'External-18',7,1800,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,180),
+(20,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-19',NULL,'External-19',7,1900,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,190),
+(21,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-20',NULL,'External-20',7,2000,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,200),
+(22,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-21',NULL,'External-21',7,2100,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,210),
+(23,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-22',NULL,'External-22',7,2200,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,220),
+(24,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-23',NULL,'External-23',7,2300,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,230),
+(25,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-24',NULL,'External-24',7,2400,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,240),
+(26,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-25',NULL,'External-25',7,2500,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,250),
+(27,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-26',NULL,'External-26',7,2600,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,260),
+(28,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-27',NULL,'External-27',7,2700,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,270),
+(29,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-28',NULL,'External-28',7,2800,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,280),
+(30,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-29',NULL,'External-29',7,2900,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,290),
+(31,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-30',NULL,'External-30',7,3000,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,300),
+(32,0,NULL,'2016-04-29 12:03:27',11,15,10,2,'Paz-31',NULL,'External-31',7,3100,NULL,'1956-05-14 12:03:27',NULL,60,4,NULL,NULL,16,310),
+(33,0,NULL,'2016-04-29 12:03:28',11,15,10,2,'Paz-32',NULL,'External-32',7,3200,NULL,'1956-05-14 12:03:28',NULL,60,4,NULL,NULL,16,320),
+(34,0,NULL,'2016-04-29 12:03:28',11,15,10,2,'Paz-33',NULL,'External-33',7,3300,NULL,'1956-05-14 12:03:28',NULL,60,4,NULL,NULL,16,330),
+(35,0,NULL,'2016-04-29 12:03:28',11,15,10,2,'Paz-34',NULL,'External-34',7,3400,NULL,'1956-05-14 12:03:28',NULL,60,4,NULL,NULL,16,340),
+(36,0,NULL,'2016-04-29 12:03:28',11,15,10,2,'Paz-35',NULL,'External-35',7,3500,NULL,'1956-05-14 12:03:28',NULL,60,4,NULL,NULL,16,350);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -918,8 +930,8 @@ CREATE TABLE `personal_history` (
   `central_nervous_system_stroke_id` bigint(20) NOT NULL,
   `central_nervous_system_transient_ischemic_attack_id` bigint(20) NOT NULL,
   `diabetic_id` bigint(20) NOT NULL,
-  `dyslipidemia_id` bigint(20) NOT NULL,
   `drinker_id` bigint(20) NOT NULL,
+  `dyslipidemia_id` bigint(20) NOT NULL,
   `endocrine_hematologic_system_chronic_anemia_id` bigint(20) NOT NULL,
   `endocrine_hematologic_system_chronic_coagulopathy` bit(1) NOT NULL,
   `endocrine_hematologic_system_heparin_induced_thrombocytopenia` bit(1) NOT NULL,
@@ -953,8 +965,8 @@ CREATE TABLE `personal_history` (
   KEY `FK_qfco0c47sumb4ycy2jk3ufnc` (`central_nervous_system_stroke_id`),
   KEY `FK_e9sh0mnmfkcqcsmpww8oxiql8` (`central_nervous_system_transient_ischemic_attack_id`),
   KEY `FK_xxwtnoomqk9969cx2w3xb39g` (`diabetic_id`),
-  KEY `FK_5ktx38jcojuhlu61clt5om8ew` (`dyslipidemia_id`),
   KEY `FK_s40ke2vghkcalb3dcwu9ebjah` (`drinker_id`),
+  KEY `FK_58p9450eas9jc7dtuqjcj3vq6` (`dyslipidemia_id`),
   KEY `FK_6vyiv7s7tg4ak16s5ag4uqppy` (`endocrine_hematologic_system_chronic_anemia_id`),
   KEY `FK_ptxbx8vkqqn4nbcf9e92gi7vt` (`endocrine_hematologic_system_thyroid_disorders_id`),
   KEY `FK_kf39kmatds69deu6ujq6s8tb5` (`gastric_cirrhosis_id`),
@@ -979,7 +991,7 @@ CREATE TABLE `personal_history` (
   KEY `FK_s8gevjxx576awy6ljb2sso401` (`vascular_aorta_pathology_id`),
   KEY `FK_tmfyvgrr7neqpfg9da07gl2x0` (`vascular_peripheral_vascular_disease_id`),
   CONSTRAINT `FK_3iy18w11kax0ry4pucgqyestf` FOREIGN KEY (`respiratory_primary_pulmonary_hypertension_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_5ktx38jcojuhlu61clt5om8ew` FOREIGN KEY (`dyslipidemia_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_58p9450eas9jc7dtuqjcj3vq6` FOREIGN KEY (`dyslipidemia_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_5vb7odl4bpxd6bdqd7rwvt6kt` FOREIGN KEY (`central_nervous_system_severe_neurological_disease_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_6vyiv7s7tg4ak16s5ag4uqppy` FOREIGN KEY (`endocrine_hematologic_system_chronic_anemia_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_70lduvfyu16p0h9ct40o2idul` FOREIGN KEY (`intravenously_drugs_id`) REFERENCES `type_database_enum_type` (`id`),
@@ -1100,6 +1112,88 @@ LOCK TABLES `preimplant_situation_type_preimplant_event` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `province`
+--
+
+DROP TABLE IF EXISTS `province`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `province` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `version` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `province`
+--
+LOCK TABLES `province` WRITE;
+/*!40000 ALTER TABLE `province` DISABLE KEYS */;
+INSERT INTO `province` (id,version, name) VALUES (5, 0, 'Almeria');
+INSERT INTO `province` (id,version, name) VALUES (6, 0, 'A Coruña');
+INSERT INTO `province` (id,version, name) VALUES (7, 0, 'Albacete');
+INSERT INTO `province` (id,version, name) VALUES (8, 0, 'Alicante');
+INSERT INTO `province` (id,version, name) VALUES (9, 0, 'Asturias');
+INSERT INTO `province` (id,version, name) VALUES (10, 0, 'Badajoz');
+INSERT INTO `province` (id,version, name) VALUES (11, 0, 'Badalona');
+INSERT INTO `province` (id,version, name) VALUES (12, 0, 'Barcelona');
+INSERT INTO `province` (id,version, name) VALUES (13, 0, 'Cádiz');
+INSERT INTO `province` (id,version, name) VALUES (14, 0, 'Cantabria');
+INSERT INTO `province` (id,version, name) VALUES (15, 0, 'Córdoba');
+INSERT INTO `province` (id,version, name) VALUES (16, 0, 'Gran Canaria');
+INSERT INTO `province` (id,version, name) VALUES (17, 0, 'Granada');
+INSERT INTO `province` (id,version, name) VALUES (18, 0, 'Guipúzcoa');
+INSERT INTO `province` (id,version, name) VALUES (19, 0, 'LA CORUÑA');
+INSERT INTO `province` (id,version, name) VALUES (20, 0, 'Las Palmas de G.C.');
+INSERT INTO `province` (id,version, name) VALUES (21, 0, 'León');
+INSERT INTO `province` (id,version, name) VALUES (22, 0, 'Madrid');
+INSERT INTO `province` (id,version, name) VALUES (23, 0, 'Málaga');
+INSERT INTO `province` (id,version, name) VALUES (24, 0, 'Murcia');
+INSERT INTO `province` (id,version, name) VALUES (25, 0, 'Navarra');
+INSERT INTO `province` (id,version, name) VALUES (26, 0, 'Palma de Mallorca');
+INSERT INTO `province` (id,version, name) VALUES (27, 0, 'Pontevedra');
+INSERT INTO `province` (id,version, name) VALUES (28, 0, 'Salamanca');
+INSERT INTO `province` (id,version, name) VALUES (29, 0, 'Sevilla');
+INSERT INTO `province` (id,version, name) VALUES (30, 0, 'Tenerife');
+INSERT INTO `province` (id,version, name) VALUES (31, 0, 'Toledo');
+INSERT INTO `province` (id,version, name) VALUES (32, 0, 'Valencia');
+INSERT INTO `province` (id,version, name) VALUES (33, 0, 'Valladolid');
+INSERT INTO `province` (id,version, name) VALUES (34, 0, 'Vizcaya');
+INSERT INTO `province` (id,version, name) VALUES (35, 0, 'Zaragoza');
+INSERT INTO `province` (id,version, name) VALUES (36, 0, 'Andalucia');
+/*!40000 ALTER TABLE `province` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `right_heart_failure_type_right_heart_failure_signals`
+--
+
+DROP TABLE IF EXISTS `right_heart_failure_type_right_heart_failure_signals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `right_heart_failure_type_right_heart_failure_signals` (
+  `right_heart_failure_right_heart_failure_signals_id` bigint(20) DEFAULT NULL,
+  `right_heart_failure_signals_id` bigint(20) DEFAULT NULL,
+  `right_heart_failure_signals_idx` int(11) DEFAULT NULL,
+  KEY `FK_iav17hnf2xha39k8s7dr9mtdw` (`right_heart_failure_signals_id`),
+  CONSTRAINT `FK_iav17hnf2xha39k8s7dr9mtdw` FOREIGN KEY (`right_heart_failure_signals_id`) REFERENCES `type_database_enum_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `right_heart_failure_type_right_heart_failure_signals`
+--
+
+LOCK TABLES `right_heart_failure_type_right_heart_failure_signals` WRITE;
+/*!40000 ALTER TABLE `right_heart_failure_type_right_heart_failure_signals` DISABLE KEYS */;
+INSERT INTO `right_heart_failure_type_right_heart_failure_signals` VALUES (2,486,0),
+(2,487,1);
+/*!40000 ALTER TABLE `right_heart_failure_type_right_heart_failure_signals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `role`
 --
 
@@ -1121,7 +1215,8 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,0,'ROLE_USER'),(2,0,'ROLE_ADMIN');
+INSERT INTO `role` VALUES (1,0,'ROLE_USER'),
+(2,0,'ROLE_ADMIN');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1138,7 +1233,7 @@ CREATE TABLE `type_database_enum_type` (
   `code` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=499 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1147,504 +1242,501 @@ CREATE TABLE `type_database_enum_type` (
 
 LOCK TABLES `type_database_enum_type` WRITE;
 /*!40000 ALTER TABLE `type_database_enum_type` DISABLE KEYS */;
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (1,0,'UNKNOWN','espamacs.type.BooleanDBType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (2,0,'NO','espamacs.type.BooleanDBType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (3,0,'YES','espamacs.type.BooleanDBType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (4,0,'INCOMPLETE','espamacs.type.PatientStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (5,0,'ACTIVE','espamacs.type.PatientStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (6,0,'INACTIVE','espamacs.type.PatientStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (7,0,'MALE','espamacs.type.Gender');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (8,0,'FEMALE','espamacs.type.Gender');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (9,0,'SHORT','espamacs.type.CardiacCareType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (10,0,'LONG','espamacs.type.CardiacCareType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (11,0,'UNKNOWN','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (12,0,'BLOOD_A','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (13,0,'BLOOD_B','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (14,0,'BLOOD_AB','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (15,0,'BLOOD_0','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (16,0,'UNKNOWN','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (17,0,'RH_POSITIVE','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (18,0,'RH_NEGATIVE','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (19,0,'UNKNOWN','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (20,0,'NO','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (21,0,'YES','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (22,0,'EX-SMOKER','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (23,0,'UNKNOWN','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (24,0,'NO','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (25,0,'TYPE1','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (26,0,'TYPE2','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (27,0,'UNKNOWN','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (28,0,'NO_NEVER','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (29,0,'NO_NOW','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (30,0,'YES','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (31,0,'UNKNOWN','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (32,0,'NO_NEVER','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (33,0,'NO_NOW','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (34,0,'YES','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (35,0,'NO','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (36,0,'CORONARY','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (37,0,'VALVULAR','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (38,0,'VALVULAR_CORONARY','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (39,0,'THORACIC_AORTA','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (40,0,'CONGENITAL','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (41,0,'LVAD','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (42,0,'RVAD','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (43,0,'ECMO','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (44,0,'OTHER','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (45,0,'NO','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (46,0,'PERITONEAL_DIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (47,0,'HEMODIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (48,0,'KIDNEY_TRANSPLANT','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (49,0,'NO','espamacs.type.patientData.PrimaryPulmonaryHypertension');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (51,0,'SOFT','espamacs.type.patientData.PrimaryPulmonaryHypertension');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (52,0,'MODERATE','espamacs.type.patientData.PrimaryPulmonaryHypertension');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (53,0,'SEVERE','espamacs.type.patientData.PrimaryPulmonaryHypertension');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (54,0,'NO','espamacs.type.patientData.PulmonaryEmbolism');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (55,0,'LESS_ONE_YEAR','espamacs.type.patientData.PulmonaryEmbolism');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (56,0,'MORE_ONE_YEAR','espamacs.type.patientData.PulmonaryEmbolism');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (57,0,'NO','espamacs.type.patientData.Hepatitis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (58,0,'VHB-HEALED','espamacs.type.patientData.Hepatitis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (59,0,'VHC-HEALED','espamacs.type.patientData.Hepatitis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (60,0,'VHB-CHRONIC','espamacs.type.patientData.Hepatitis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (61,0,'VHC-CHRONIC','espamacs.type.patientData.Hepatitis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (62,0,'NO','espamacs.type.patientData.AortaPathology');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (63,0,'THORACIC','espamacs.type.patientData.AortaPathology');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (64,0,'ABDOMINAL','espamacs.type.patientData.AortaPathology');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (65,0,'THORACIC_ABDOMINAL','espamacs.type.patientData.AortaPathology');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (66,0,'NO','espamacs.type.patientData.PeripheralVascularDisease');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (67,0,'CAROTID_AXIS','espamacs.type.patientData.PeripheralVascularDisease');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (68,0,'ILIOFEMORAL_AXIS','espamacs.type.patientData.PeripheralVascularDisease');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (69,0,'MULTI_TERRITORY','espamacs.type.patientData.PeripheralVascularDisease');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (70,0,'NO','espamacs.type.patientData.Stroke');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (71,0,'YES_AFTERMATH','espamacs.type.patientData.Stroke');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (72,0,'YES_HEALED','espamacs.type.patientData.Stroke');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (73,0,'NO','espamacs.type.patientData.TransientIschemicAttack');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (74,0,'LESS_ONE_YEAR','espamacs.type.patientData.TransientIschemicAttack');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (75,0,'MORE_ONE_YEAR','espamacs.type.patientData.TransientIschemicAttack');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (76,0,'NO','espamacs.type.patientData.BrainHemorrhage');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (77,0,'LESS_SIX_MONTHS','espamacs.type.patientData.BrainHemorrhage');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (78,0,'MORE_SIX_MONTHS','espamacs.type.patientData.BrainHemorrhage');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (79,0,'NO','espamacs.type.patientData.ThyroidDisorders');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (80,0,'YES_HYPERTHYROIDISM','espamacs.type.patientData.ThyroidDisorders');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (81,0,'YES_HYPOTHYROIDISM','espamacs.type.patientData.ThyroidDisorders');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (82,0,'YES_OTHERS','espamacs.type.patientData.ThyroidDisorders');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (83,0,'NO','espamacs.type.patientData.ChronicAnemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (84,0,'YES_NO_TREATEMENT','espamacs.type.patientData.ChronicAnemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (85,0,'YES_TREATEMENT','espamacs.type.patientData.ChronicAnemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (86,0,'NO','espamacs.type.patientData.MalignantTumor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (87,0,'YES_MORE_5_YEARS','espamacs.type.patientData.MalignantTumor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (88,0,'YES_LESS_5_YEARS','espamacs.type.patientData.MalignantTumor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (89,0,'NO','espamacs.type.patientData.Leukemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (90,0,'YES_MORE_5_YEARS','espamacs.type.patientData.Leukemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (91,0,'YES_LESS_5_YEARS','espamacs.type.patientData.Leukemia');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (92,0,'NO','espamacs.type.baselineConditions.PeripheralEdemaLevel');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (93,0,'MINOR','espamacs.type.baselineConditions.PeripheralEdemaLevel');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (94,0,'MODERATE','espamacs.type.baselineConditions.PeripheralEdemaLevel');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (95,0,'SEVERE','espamacs.type.baselineConditions.PeripheralEdemaLevel');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (96,0,'UNKNOWN','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (97,0,'PLUS_50','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (98,0,'40_50','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (99,0,'30_39','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (100,0,'20_29','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (101,0,'MINUS_20','espamacs.type.baselineConditions.Lvef');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (102,0,'NO','espamacs.type.baselineConditions.RightVentricleStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (103,0,'MINOR','espamacs.type.baselineConditions.RightVentricleStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (104,0,'MODERATE','espamacs.type.baselineConditions.RightVentricleStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (105,0,'SEVERE','espamacs.type.baselineConditions.RightVentricleStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (106,0,'NO','espamacs.type.baselineConditions.RightVentricleDilatation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (107,0,'MINOR','espamacs.type.baselineConditions.RightVentricleDilatation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (108,0,'MODERATE','espamacs.type.baselineConditions.RightVentricleDilatation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (109,0,'SEVERE','espamacs.type.baselineConditions.RightVentricleDilatation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (110,0,'NORMAL','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (111,0,'PREVIOUS_AORTIC_VALVE_REPLACEMENT','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (112,0,'MINOR_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (113,0,'MODERATE_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (114,0,'SEVERE_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (115,0,'MINOR_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (116,0,'MODERATE_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (117,0,'SEVERE_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (118,0,'NORMAL','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (119,0,'PREVIOUS_MITRAL_VALVE_REPLACEMENT','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (120,0,'MINOR_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (121,0,'MODERATE_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (122,0,'SEVERE_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (123,0,'MINOR_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (124,0,'MODERATE_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (125,0,'SEVERE_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (126,0,'NORMAL','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (127,0,'PREVIOUS_TRICUSPID_VALVE_REPLACEMENT','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (128,0,'MINOR_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (129,0,'MODERATE_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (130,0,'SEVERE_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (131,0,'MINOR_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (132,0,'MODERATE_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (133,0,'SEVERE_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (134,0,'ACE_INHIBITORS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (135,0,'ARBS_II','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (136,0,'CALCIUM_BLOCKERS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (137,0,'BETA_BLOCKERS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (138,0,'ALDOSTERONE_BLOCKERS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (139,0,'LOOP_DIURETICS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (140,0,'AMIODARONE','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (141,0,'DIGOXIN','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (142,0,'OTHER_ANTIARRYTHMICS','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (143,0,'WARFARIN','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (144,0,'HEPARIN','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (145,0,'ANTIAGGREGANT','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (146,0,'NITRIC_OXIDE','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (147,0,'SILDENAFIL','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (148,0,'ILOPROST','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (149,0,'BOSENTAN','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (150,0,'NESERITIDE','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (151,0,'OTHER_HYPERTENSION_MEDICINE','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (152,0,'RESYNCHRONIZATION_THERAPIES','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (153,0,'ICD','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (154,0,'OXYGEN_THERAPY','espamacs.type.baselineConditions.Medication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (155,0,'UNKNOWN','espamacs.type.baselineConditions.Nyha');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (156,0,'TYPE_I','espamacs.type.baselineConditions.Nyha');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (157,0,'TYPE_II','espamacs.type.baselineConditions.Nyha');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (158,0,'TYPE_III','espamacs.type.baselineConditions.Nyha');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (159,0,'TYPE_IV','espamacs.type.baselineConditions.Nyha');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (160,0,'IABP','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (161,0,'VAD','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (162,0,'ECMO','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (163,0,'DIALYSIS','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (164,0,'ULTRAFILTRATION','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (165,0,'INVASIVE_MV','espamacs.type.preimplantSituation.PreimplantEvent');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (166,0,'ADRENALINE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (167,0,'DOBUTAMINE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (168,0,'DOPAMINE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (169,0,'ISOPROTERENOL','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (170,0,'LEVOSIMENDAN','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (171,0,'MILRINONE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (172,0,'NORADRENALINE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (173,0,'NITRIC_OXIDE','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (174,0,'OTHERS','espamacs.type.preimplantSituation.IntropicMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (175,0,'INTERMACS_1','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (176,0,'INTERMACS_2','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (177,0,'INTERMACS_3','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (178,0,'INTERMACS_4','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (179,0,'INTERMACS_5','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (180,0,'INTERMACS_6','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (181,0,'INTERMACS_7','espamacs.type.preimplantSituation.IntermacsSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (182,0,'TRANSITION_RECOVERY','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (183,0,'TRANSITION_TRANSPLANT','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (184,0,'POSSIBLE_TRANSITION_TRANSPLANT','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (185,0,'TARGET_THERAPY','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (186,0,'OTHER','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (187,0,'ELECTIVE_IMPLANT','espamacs.type.diagnosis.ImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (188,0,'URGENT_IMPLANT','espamacs.type.diagnosis.ImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (189,0,'EMERGING_IMPLANT','espamacs.type.diagnosis.ImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (190,0,'POSTCARDIOTOMY','espamacs.type.diagnosis.ImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (191,0,'OTHERS','espamacs.type.diagnosis.ImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (192,0,'NONE','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (193,0,'CANCER','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (194,0,'CONGENITAL_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (195,0,'CORONARY_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (196,0,'VALVE_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (197,0,'PATHOLOGY_AORTA','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (198,0,'VALVULAR_HEAR_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (199,0,'FAMILY_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (200,0,'IDIOPATHIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (201,0,'ISCHEMIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (202,0,'MYOCARDITIS_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (203,0,'POSTPARTUM_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (204,0,'VIRAL_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (205,0,'OTHER_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (206,0,'TOXIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (207,0,'HYPERTROPHIC_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (208,0,'AMYLOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (209,0,'FIBROSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (210,0,'SARCOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (211,0,'QUIMIO_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (212,0,'IDIOPATHIC_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (213,0,'OTHER_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (214,0,'OTHER','espamacs.type.diagnosis.MainCardiacImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (215,0,'NONE','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (216,0,'PRIMARY_GRAFT_FAILURE','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (217,0,'MASSIVE_PULMONARY_EMBOLISM','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (218,0,'PNEUMONIA','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (219,0,'ACUTE_RESPIRATORY_DISTRESS_SYNDROME','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (220,0,'PRE_LUNG_TRANSPLANT','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (221,0,'OTHER','espamacs.type.diagnosis.MainLungImplantCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (222,0,'LVAD','espamacs.type.implantData.ImplantType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (223,0,'RVAD','espamacs.type.implantData.ImplantType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (224,0,'LVAD_RVAD','espamacs.type.implantData.ImplantType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (225,0,'TOTAL','espamacs.type.implantData.ImplantType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (226,0,'ECMO','espamacs.type.implantData.ImplantType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (227,0,'AB5000','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (228,0,'THORATEX_PVAD','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (229,0,'LEVITRONIX_CENTRIMAG','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (230,0,'BERLIN_HEART_EXCOR','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (231,0,'BERLIN_HEART_INCOR','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (232,0,'JARVIC_2000','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (233,0,'HEARTWARE_HVAD','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (234,0,'HEARTWARE_MVAD','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (235,0,'TERUMO_DURAHEART','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (236,0,'HEARTASSIST_5','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (237,0,'HEARTMATE_II','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (238,0,'HEARTMATE_III','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (239,0,'IMPELLA','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (240,0,'TANDEM_HEART','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (241,0,'BIOMEDICUS','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (242,0,'BVS_5000','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (243,0,'OTHER','espamacs.type.implantData.LvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (244,0,'AB5000','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (245,0,'THORATEC_PVAD','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (246,0,'LEVITRONIX_CENTRIMAG','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (247,0,'BERLIN_HEART_EXCOR','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (248,0,'HEARTWARE_HVAD','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (249,0,'HEARTWARE_MVAD','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (250,0,'BIOMEDICUS','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (251,0,'BVS5000','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (252,0,'OTHER','espamacs.type.implantData.RvadBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (253,0,'ABIOCOR','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (254,0,'SYNCARDIA','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (255,0,'AKUTSU_III','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (256,0,'BIVACOR','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (257,0,'JARVIC7','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (258,0,'OTHER','espamacs.type.implantData.HeartTotalBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (259,0,'ROTAFLOW_PLS','espamacs.type.implantData.EcmoBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (260,0,'CARDIO_HELP','espamacs.type.implantData.EcmoBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (261,0,'CENTRIFUGAL_OXIGENATOR','espamacs.type.implantData.EcmoBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (262,0,'OTHERS','espamacs.type.implantData.EcmoBrand');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (263,0,'PULSATILE','espamacs.type.implantData.BloodFlowType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (264,0,'CONTINUOUS','espamacs.type.implantData.BloodFlowType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (265,0,'LEFT_ATRIUM','espamacs.type.implantData.ImplantLvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (266,0,'LEFT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantLvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (267,0,'APEX_VI','espamacs.type.implantData.ImplantLvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (268,0,'OTHER','espamacs.type.implantData.ImplantLvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (269,0,'ASCENDING_AORTA','espamacs.type.implantData.ImplantLvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (270,0,'DESCENDING_THORACIC_AORTA','espamacs.type.implantData.ImplantLvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (271,0,'ABDOMINAL_AORTA','espamacs.type.implantData.ImplantLvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (272,0,'OTHER','espamacs.type.implantData.ImplantLvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (273,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantRvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (274,0,'RIGHT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantRvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (275,0,'APEX_VD','espamacs.type.implantData.ImplantRvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (276,0,'OTHER','espamacs.type.implantData.ImplantRvadIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (277,0,'PULMONARY_ARTERY','espamacs.type.implantData.ImplantRvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (278,0,'OTHER','espamacs.type.implantData.ImplantRvadOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (279,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantTotalIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (280,0,'RIGHT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantTotalIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (281,0,'APEX_VD','espamacs.type.implantData.ImplantTotalIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (282,0,'OTHER','espamacs.type.implantData.ImplantTotalIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (283,0,'ASCENDING_AORTA','espamacs.type.implantData.ImplantTotalOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (284,0,'DESCENDING_THORACIC_AORTA','espamacs.type.implantData.ImplantTotalOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (285,0,'ABDOMINAL_AORTA','espamacs.type.implantData.ImplantTotalOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (286,0,'OTHER','espamacs.type.implantData.ImplantTotalOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (287,0,'FEMORAL_VEIN','espamacs.type.implantData.ImplantEcmoIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (288,0,'JUGULAR_VEIN','espamacs.type.implantData.ImplantEcmoIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (289,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantEcmoIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (290,0,'OTHER','espamacs.type.implantData.ImplantEcmoIn');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (291,0,'FEMORAL_VEIN','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (292,0,'JUGULAR_VEIN','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (293,0,'FEMORAL_ARTERY','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (294,0,'SUBCLAVIAN_ARTERY','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (295,0,'CAROTID_ARTERY','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (296,0,'AORTA','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (297,0,'PULMONARY_ARTERY','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (298,0,'OTHER','espamacs.type.implantData.ImplantEcmoOut');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (299,0,'AORTIC_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (300,0,'MITRAL_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (301,0,'TRICUSPID_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (302,0,'PULMONARY_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (303,0,'CABG','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (304,0,'OTHER','espamacs.type.implantData.CollateralSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (305,0,'HOME','espamacs.type.initialData.DischargedDestination');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (306,0,'INTERMEDIATE_CARE_UNIT','espamacs.type.initialData.DischargedDestination');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (307,0,'REHABILIATATION','espamacs.type.initialData.DischargedDestination');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (308,0,'OTHER','espamacs.type.initialData.DischargedDestination');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (309,0,'NONE_PATIENT_DEATH','espamacs.type.initialData.DischargedDestination');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (310,0,'ASSISTED','espamacs.type.initialData.DischargedStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (311,0,'UNASSISTED','espamacs.type.initialData.DischargedStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (312,0,'DURING_ASSISTANCE','espamacs.type.initialData.ExistusStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (313,0,'POST_ASSISTANCE','espamacs.type.initialData.ExistusStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (314,0,'1_7','espamacs.type.initialData.TimeWithoutIntropicIV');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (315,0,'8_13','espamacs.type.initialData.TimeWithoutIntropicIV');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (316,0,'14_27','espamacs.type.initialData.TimeWithoutIntropicIV');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (317,0,'27_MORE','espamacs.type.initialData.TimeWithoutIntropicIV');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (318,0,'BLEEDING_BEFORE_48','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (319,0,'BLEEDING_AFTER_48','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (320,0,'CHEST_DRAINAGE','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (321,0,'REINTUBATE','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (322,0,'HEMOFILTRATIOIN','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (323,0,'HEMODIALYSIS','espamacs.type.initialData.SurgicalProcedureAfterTransplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (324,0,'NONE','espamacs.type.initialData.RightVentricleFailureAfterImplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (325,0,'YES_MEDICAL_TREATMENT','espamacs.type.initialData.RightVentricleFailureAfterImplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (326,0,'YES_IABP','espamacs.type.initialData.RightVentricleFailureAfterImplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (327,0,'YES_RVAD','espamacs.type.initialData.RightVentricleFailureAfterImplant');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (328,0,'ACE_INHIBITORS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (329,0,'AIIRAS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (330,0,'CALCIUM_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (331,0,'BETA_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (332,0,'ALDOSTERONE_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (333,0,'LOOP_DIURETICS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (334,0,'AMIODARONE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (335,0,'DIGOXIN','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (336,0,'OTHER_ANTIARRYTHMICS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (337,0,'NITRIC_OXIDE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (338,0,'SILDENAFIL','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (339,0,'ILOPROST','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (340,0,'BOSENTAN','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (341,0,'NESERITIDE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (342,0,'OTHER','espamacs.type.initialData.CardiologicalTreatmenAtDischarge');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (343,0,'WARFARIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (344,0,'ACETYLSALICYLIC_ACID','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (345,0,'DIPYRIDAMOLE','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (346,0,'CLOPIDOGREL','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (347,0,'TICLOPIDINE','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (348,0,'HEPARIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (349,0,'ENOXAPARIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (350,0,'BIVALIRUDIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (351,0,'ARGOTRAVAN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (352,0,'HIRUDIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (353,0,'LEPIRUDIN','espamacs.type.initialData.BloodMedication');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (354,0,'ICU','espamacs.type.event.PatientHealthStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (355,0,'HOSPITAL_ADMISION','espamacs.type.event.PatientHealthStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (356,0,'OTHER_HOSPITAL_ADMISION','espamacs.type.event.PatientHealthStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (357,0,'DISCHARGED','espamacs.type.event.PatientHealthStatus');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (358,0,'NO','espamacs.type.event.RemovedAssistance');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (359,0,'YES_HEALED','espamacs.type.event.RemovedAssistance');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (360,0,'YES_TRNSPLANT','espamacs.type.event.RemovedAssistance');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (361,0,'YES_CHANGE_ASSISTANCE','espamacs.type.event.RemovedAssistance');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (362,0,'YES_DEAD','espamacs.type.event.RemovedAssistance');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (363,0,'NONE','espamacs.type.event.RemovedAssistanceDeath');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (364,0,'CARDIOVASCULAR_CAUSE','espamacs.type.event.RemovedAssistanceDeath');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (365,0,'NO_CARDIOVASCULAR_CAUSE','espamacs.type.event.RemovedAssistanceDeath');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (366,0,'OTHER','espamacs.type.event.RemovedAssistanceDeath');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (367,0,'PUMP_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (368,0,'CONTROL_DEVICE_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (369,0,'BATERY_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (370,0,'DEVICE_THROMBOSIS','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (371,0,'MISPLACEMENT_INPUT_CANNULA','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (372,0,'MISPLACEMENT_OUTPUT_CANNULA','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (373,0,'THROMBOSIS_INPUT_VALVE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (374,0,'THROMBOSIS_OUTPUT_VALVE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (375,0,'PATIENT_NEGLIGENCE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (376,0,'OTHER','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (377,0,'TRANSFUSION','espamacs.type.event.hemorrhage.HemorrhageCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (378,0,'TRANSFUSION_ICU','espamacs.type.event.hemorrhage.HemorrhageCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (379,0,'TRANSFUSION_ICU_SURGERY','espamacs.type.event.hemorrhage.HemorrhageCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (380,0,'DEAD','espamacs.type.event.hemorrhage.HemorrhageCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (381,0,'YES_URGENT','espamacs.type.event.malfunctionDevice.UrgentSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (382,0,'YES_NO_URGENT','espamacs.type.event.malfunctionDevice.UrgentSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (383,0,'NO','espamacs.type.event.malfunctionDevice.UrgentSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (384,0,'MEDICAL','espamacs.type.event.hemorrhage.HemorrhageTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (385,0,'CARDIAC_SURGERY','espamacs.type.event.hemorrhage.HemorrhageTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (386,0,'NO_CARDIAC_SURGERY','espamacs.type.event.hemorrhage.HemorrhageTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (387,0,'MEDIASINUM','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (388,0,'SUTURES_DEVICE','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (389,0,'CANNULATION_PLACE','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (390,0,'INTRAABDOMINAL','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (391,0,'CHEST_WALL','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (392,0,'GASTROINTESTINAL','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (393,0,'RESPIRATORY','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (394,0,'POCKET_PUMP','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (395,0,'IN_OUT_DUCT','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (396,0,'PLEURAL_SPACE','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (397,0,'RETROPERITONEO','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (398,0,'OTHER','espamacs.type.event.hemorrhage.BleedingPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (399,0,'SEPSIS','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (400,0,'RESPIRATORY','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (401,0,'URINARY','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (402,0,'GASTROINTESTINAL','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (403,0,'PERIPHERAL_WOUND','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (404,0,'CATHETER','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (405,0,'MEDIASTINITIS','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (406,0,'CONTROL_LINE','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (407,0,'CANNULAS_OUT','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (408,0,'PUMP','espamacs.type.event.infection.InfectionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (409,0,'MEDICAL','espamacs.type.event.infection.InfectionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (410,0,'SURGERY','espamacs.type.event.infection.InfectionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (411,0,'MEDICAL_SURGERY','espamacs.type.event.infection.InfectionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (412,0,'ISCHEMIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (413,0,'HEMORRHAGIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (414,0,'ISCHEMIC_HEMORRHAGIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (415,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (416,0,'ISCHEMIC_STROKE_TEMPORAL','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (417,0,'ISCHEMIC_STROKE_NO_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (418,0,'ISCHEMIC_STROKE_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (419,0,'ISCHEMIC_STROKE_DEAD','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (420,0,'HEMORRHAGIC_STROKE_NO_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (421,0,'HEMORRHAGIC_STROKE_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (422,0,'HEMORRHAGIC_STROKE_DEAD','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (423,0,'DEVICE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (424,0,'MEDICATION','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (425,0,'COMPLEX_PATIENT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (426,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (427,0,'UNKNOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (428,0,'INR_UP','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (429,0,'INR_DOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (430,0,'UNKNOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (431,0,'APTT_UP','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (432,0,'APTT_DOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (433,0,'RIGHT_HEMISPHERE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (434,0,'left_HEMISPHERE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (435,0,'OCCIPITAL','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (436,0,'BRAINSTEM','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (437,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (438,0,'TAC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (439,0,'NUCLEAR_MAGNETIC_RESONANCE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (440,0,'ANGIOGRAPHY','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (441,0,'CLINIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (442,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (443,0,'NONE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (444,0,'HEPARINE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (445,0,'FIBRINOLYSIS','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (446,0,'ANTICONVULSANTS','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (447,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (448,0,'VENTRICULAR','espamacs.type.event.arrhythmia.ArrhythmiaType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (449,0,'SUPRAVENTRICULAR','espamacs.type.event.arrhythmia.ArrhythmiaType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (450,0,'HEMODIALYSIS','espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (451,0,'HEMOFILTRATION','espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (452,0,'PULMONARY','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (453,0,'RENAL','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (454,0,'HEPATIC','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (455,0,'SPLEN','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (456,0,'EXTREMITIES','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (457,0,'CLINIC','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (458,0,'INVASIVE_TECHNIQUES','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (459,0,'INTREAOPERATIVE_FINDING','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (460,0,'NECROPSY_FINDING','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (461,0,'WOUND','espamacs.type.event.woundDehiscence.WoundDehiscenceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (462,0,'BREASTBONE','espamacs.type.event.woundDehiscence.WoundDehiscenceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (463,0,'WOUND_BREASTBONE','espamacs.type.event.woundDehiscence.WoundDehiscenceType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (464,0,'VENOUS_DEEP','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (465,0,'PULMONARY','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (466,0,'OTHER','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (467,0,'DA','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (468,0,'CX','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (469,0,'DP','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (470,0,'MULTIPLE','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (471,0,'UNKOWN','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (472,0,'CORONARY_DISEASE','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (473,0,'DEVICE_CAUSE','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (474,0,'OTHER','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (475,0,'MEDICAL','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (476,0,'INTERVENTION','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (477,0,'SURGERY','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (478,0,'SOFT','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (479,0,'MODERATE','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (480,0,'SEVERE','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (481,0,'NONE','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (482,0,'PERCUTANEOUS','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (483,0,'SURGICAL','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (484,0,'OTHER','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (485,0,'UNKNOWN','espamacs.type.event.hemolysis.HemolysisCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (486,0,'DUETO_ASSISTANCE','espamacs.type.event.hemolysis.HemolysisCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (487,0,'HEMATOLOGIC','espamacs.type.event.hemolysis.HemolysisCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (488,0,'OTHER','espamacs.type.event.hemolysis.HemolysisCause');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (489,0,'ASCItES','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (490,0,'EDEMAS','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (491,0,'IC','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (492,0,'PVC','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (493,0,'RIGHT_ASISTANCE','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (494,0,'INOTROPICS','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (495,0,'OTHER','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (496,0,'ISCHEMIC','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (497,0,'LYMPHORRHAGIA','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (498,0,'OTHER','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType');
-
+INSERT INTO `type_database_enum_type` VALUES (1,0,'UNKNOWN','espamacs.type.BooleanDBType'),
+(2,0,'NO','espamacs.type.BooleanDBType'),
+(3,0,'YES','espamacs.type.BooleanDBType'),
+(4,0,'INCOMPLETE','espamacs.type.PatientStatus'),
+(5,0,'ACTIVE','espamacs.type.PatientStatus'),
+(6,0,'INACTIVE','espamacs.type.PatientStatus'),
+(7,0,'MALE','espamacs.type.Gender'),
+(8,0,'FEMALE','espamacs.type.Gender'),
+(9,0,'SHORT','espamacs.type.CardiacCareType'),
+(10,0,'LONG','espamacs.type.CardiacCareType'),
+(11,0,'UNKNOWN','espamacs.type.BloodType'),
+(12,0,'BLOOD_A','espamacs.type.BloodType'),
+(13,0,'BLOOD_B','espamacs.type.BloodType'),
+(14,0,'BLOOD_AB','espamacs.type.BloodType'),
+(15,0,'BLOOD_0','espamacs.type.BloodType'),
+(16,0,'UNKNOWN','espamacs.type.RHFactor'),
+(17,0,'RH_POSITIVE','espamacs.type.RHFactor'),
+(18,0,'RH_NEGATIVE','espamacs.type.RHFactor'),
+(19,0,'UNKNOWN','espamacs.type.patientData.SmokerType'),
+(20,0,'NO','espamacs.type.patientData.SmokerType'),
+(21,0,'YES','espamacs.type.patientData.SmokerType'),
+(22,0,'EX-SMOKER','espamacs.type.patientData.SmokerType'),
+(23,0,'UNKNOWN','espamacs.type.patientData.DiabeticType'),
+(24,0,'NO','espamacs.type.patientData.DiabeticType'),
+(25,0,'TYPE1','espamacs.type.patientData.DiabeticType'),
+(26,0,'TYPE2','espamacs.type.patientData.DiabeticType'),
+(27,0,'UNKNOWN','espamacs.type.patientData.DrinkerType'),
+(28,0,'NO_NEVER','espamacs.type.patientData.DrinkerType'),
+(29,0,'NO_NOW','espamacs.type.patientData.DrinkerType'),
+(30,0,'YES','espamacs.type.patientData.DrinkerType'),
+(31,0,'UNKNOWN','espamacs.type.patientData.IntravenouslyDrugsType'),
+(32,0,'NO_NEVER','espamacs.type.patientData.IntravenouslyDrugsType'),
+(33,0,'NO_NOW','espamacs.type.patientData.IntravenouslyDrugsType'),
+(34,0,'YES','espamacs.type.patientData.IntravenouslyDrugsType'),
+(35,0,'NO','espamacs.type.patientData.PreCardiacSurgery'),
+(36,0,'CORONARY','espamacs.type.patientData.PreCardiacSurgery'),
+(37,0,'VALVULAR','espamacs.type.patientData.PreCardiacSurgery'),
+(38,0,'VALVULAR_CORONARY','espamacs.type.patientData.PreCardiacSurgery'),
+(39,0,'THORACIC_AORTA','espamacs.type.patientData.PreCardiacSurgery'),
+(40,0,'CONGENITAL','espamacs.type.patientData.PreCardiacSurgery'),
+(41,0,'LVAD','espamacs.type.patientData.PreCardiacSurgery'),
+(42,0,'RVAD','espamacs.type.patientData.PreCardiacSurgery'),
+(43,0,'ECMO','espamacs.type.patientData.PreCardiacSurgery'),
+(44,0,'OTHER','espamacs.type.patientData.PreCardiacSurgery'),
+(45,0,'NO','espamacs.type.patientData.RenalReplacementTherapy'),
+(46,0,'PERITONEAL_DIALYSIS','espamacs.type.patientData.RenalReplacementTherapy'),
+(47,0,'HEMODIALYSIS','espamacs.type.patientData.RenalReplacementTherapy'),
+(48,0,'KIDNEY_TRANSPLANT','espamacs.type.patientData.RenalReplacementTherapy'),
+(49,0,'NO','espamacs.type.patientData.PrimaryPulmonaryHypertension'),
+(50,0,'SOFT','espamacs.type.patientData.PrimaryPulmonaryHypertension'),
+(51,0,'MODERATE','espamacs.type.patientData.PrimaryPulmonaryHypertension'),
+(52,0,'SEVERE','espamacs.type.patientData.PrimaryPulmonaryHypertension'),
+(53,0,'NO','espamacs.type.patientData.PulmonaryEmbolism'),
+(54,0,'LESS_ONE_YEAR','espamacs.type.patientData.PulmonaryEmbolism'),
+(55,0,'MORE_ONE_YEAR','espamacs.type.patientData.PulmonaryEmbolism'),
+(56,0,'NO','espamacs.type.patientData.Hepatitis'),
+(57,0,'VHB-HEALED','espamacs.type.patientData.Hepatitis'),
+(58,0,'VHC-HEALED','espamacs.type.patientData.Hepatitis'),
+(59,0,'VHB-CHRONIC','espamacs.type.patientData.Hepatitis'),
+(60,0,'VHC-CHRONIC','espamacs.type.patientData.Hepatitis'),
+(61,0,'NO','espamacs.type.patientData.AortaPathology'),
+(62,0,'THORACIC','espamacs.type.patientData.AortaPathology'),
+(63,0,'ABDOMINAL','espamacs.type.patientData.AortaPathology'),
+(64,0,'THORACIC_ABDOMINAL','espamacs.type.patientData.AortaPathology'),
+(65,0,'NO','espamacs.type.patientData.PeripheralVascularDisease'),
+(66,0,'CAROTID_AXIS','espamacs.type.patientData.PeripheralVascularDisease'),
+(67,0,'ILIOFEMORAL_AXIS','espamacs.type.patientData.PeripheralVascularDisease'),
+(68,0,'MULTI_TERRITORY','espamacs.type.patientData.PeripheralVascularDisease'),
+(69,0,'NO','espamacs.type.patientData.Stroke'),
+(70,0,'YES_AFTERMATH','espamacs.type.patientData.Stroke'),
+(71,0,'YES_HEALED','espamacs.type.patientData.Stroke'),
+(72,0,'NO','espamacs.type.patientData.TransientIschemicAttack'),
+(73,0,'LESS_ONE_YEAR','espamacs.type.patientData.TransientIschemicAttack'),
+(74,0,'MORE_ONE_YEAR','espamacs.type.patientData.TransientIschemicAttack'),
+(75,0,'NO','espamacs.type.patientData.BrainHemorrhage'),
+(76,0,'LESS_SIX_MONTHS','espamacs.type.patientData.BrainHemorrhage'),
+(77,0,'MORE_SIX_MONTHS','espamacs.type.patientData.BrainHemorrhage'),
+(78,0,'NO','espamacs.type.patientData.ThyroidDisorders'),
+(79,0,'YES_HYPERTHYROIDISM','espamacs.type.patientData.ThyroidDisorders'),
+(80,0,'YES_HYPOTHYROIDISM','espamacs.type.patientData.ThyroidDisorders'),
+(81,0,'YES_OTHERS','espamacs.type.patientData.ThyroidDisorders'),
+(82,0,'NO','espamacs.type.patientData.ChronicAnemia'),
+(83,0,'YES_NO_TREATEMENT','espamacs.type.patientData.ChronicAnemia'),
+(84,0,'YES_TREATEMENT','espamacs.type.patientData.ChronicAnemia'),
+(85,0,'NO','espamacs.type.patientData.MalignantTumor'),
+(86,0,'YES_MORE_5_YEARS','espamacs.type.patientData.MalignantTumor'),
+(87,0,'YES_LESS_5_YEARS','espamacs.type.patientData.MalignantTumor'),
+(88,0,'NO','espamacs.type.patientData.Leukemia'),
+(89,0,'YES_MORE_5_YEARS','espamacs.type.patientData.Leukemia'),
+(90,0,'YES_LESS_5_YEARS','espamacs.type.patientData.Leukemia'),
+(91,0,'UNKNOWN','espamacs.type.baselineConditions.Lvef'),
+(92,0,'PLUS_50','espamacs.type.baselineConditions.Lvef'),
+(93,0,'40_50','espamacs.type.baselineConditions.Lvef'),
+(94,0,'30_39','espamacs.type.baselineConditions.Lvef'),
+(95,0,'20_29','espamacs.type.baselineConditions.Lvef'),
+(96,0,'MINUS_20','espamacs.type.baselineConditions.Lvef'),
+(97,0,'NO','espamacs.type.baselineConditions.RightVentricleStatus'),
+(98,0,'MINOR','espamacs.type.baselineConditions.RightVentricleStatus'),
+(99,0,'MODERATE','espamacs.type.baselineConditions.RightVentricleStatus'),
+(100,0,'SEVERE','espamacs.type.baselineConditions.RightVentricleStatus'),
+(101,0,'NO','espamacs.type.baselineConditions.RightVentricleDilatation'),
+(102,0,'MINOR','espamacs.type.baselineConditions.RightVentricleDilatation'),
+(103,0,'MODERATE','espamacs.type.baselineConditions.RightVentricleDilatation'),
+(104,0,'SEVERE','espamacs.type.baselineConditions.RightVentricleDilatation'),
+(105,0,'NORMAL','espamacs.type.baselineConditions.AorticValveStatus'),
+(106,0,'PREVIOUS_AORTIC_VALVE_REPLACEMENT','espamacs.type.baselineConditions.AorticValveStatus'),
+(107,0,'MINOR_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus'),
+(108,0,'MODERATE_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus'),
+(109,0,'SEVERE_AORTIC_INSUFFICIENCY','espamacs.type.baselineConditions.AorticValveStatus'),
+(110,0,'MINOR_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus'),
+(111,0,'MODERATE_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus'),
+(112,0,'SEVERE_AORTIC_STENOSIS','espamacs.type.baselineConditions.AorticValveStatus'),
+(113,0,'NORMAL','espamacs.type.baselineConditions.MitralValveStatus'),
+(114,0,'PREVIOUS_MITRAL_VALVE_REPLACEMENT','espamacs.type.baselineConditions.MitralValveStatus'),
+(115,0,'MINOR_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus'),
+(116,0,'MODERATE_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus'),
+(117,0,'SEVERE_MITRAL_INSUFFICIENCY','espamacs.type.baselineConditions.MitralValveStatus'),
+(118,0,'MINOR_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus'),
+(119,0,'MODERATE_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus'),
+(120,0,'SEVERE_MITRAL_STENOSIS','espamacs.type.baselineConditions.MitralValveStatus'),
+(121,0,'NORMAL','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(122,0,'PREVIOUS_TRICUSPID_VALVE_REPLACEMENT','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(123,0,'MINOR_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(124,0,'MODERATE_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(125,0,'SEVERE_TRICUSPID_INSUFFICIENCY','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(126,0,'MINOR_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(127,0,'MODERATE_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(128,0,'SEVERE_TRICUSPID_STENOSIS','espamacs.type.baselineConditions.TricuspidValveStatus'),
+(129,0,'ACE_INHIBITORS','espamacs.type.baselineConditions.Medication'),
+(130,0,'ARBS_II','espamacs.type.baselineConditions.Medication'),
+(131,0,'CALCIUM_BLOCKERS','espamacs.type.baselineConditions.Medication'),
+(132,0,'BETA_BLOCKERS','espamacs.type.baselineConditions.Medication'),
+(133,0,'ALDOSTERONE_BLOCKERS','espamacs.type.baselineConditions.Medication'),
+(134,0,'LOOP_DIURETICS','espamacs.type.baselineConditions.Medication'),
+(135,0,'AMIODARONE','espamacs.type.baselineConditions.Medication'),
+(136,0,'DIGOXIN','espamacs.type.baselineConditions.Medication'),
+(137,0,'OTHER_ANTIARRYTHMICS','espamacs.type.baselineConditions.Medication'),
+(138,0,'WARFARIN','espamacs.type.baselineConditions.Medication'),
+(139,0,'HEPARIN','espamacs.type.baselineConditions.Medication'),
+(140,0,'ANTIAGGREGANT','espamacs.type.baselineConditions.Medication'),
+(141,0,'NITRIC_OXIDE','espamacs.type.baselineConditions.Medication'),
+(142,0,'SILDENAFIL','espamacs.type.baselineConditions.Medication'),
+(143,0,'ILOPROST','espamacs.type.baselineConditions.Medication'),
+(144,0,'BOSENTAN','espamacs.type.baselineConditions.Medication'),
+(145,0,'NESERITIDE','espamacs.type.baselineConditions.Medication'),
+(146,0,'OTHER_HYPERTENSION_MEDICINE','espamacs.type.baselineConditions.Medication'),
+(147,0,'RESYNCHRONIZATION_THERAPIES','espamacs.type.baselineConditions.Medication'),
+(148,0,'ICD','espamacs.type.baselineConditions.Medication'),
+(149,0,'OXYGEN_THERAPY','espamacs.type.baselineConditions.Medication'),
+(150,0,'UNKNOWN','espamacs.type.baselineConditions.Nyha'),
+(151,0,'TYPE_I','espamacs.type.baselineConditions.Nyha'),
+(152,0,'TYPE_II','espamacs.type.baselineConditions.Nyha'),
+(153,0,'TYPE_III','espamacs.type.baselineConditions.Nyha'),
+(154,0,'TYPE_IV','espamacs.type.baselineConditions.Nyha'),
+(155,0,'IABP','espamacs.type.preimplantSituation.PreimplantEvent'),
+(156,0,'VAD','espamacs.type.preimplantSituation.PreimplantEvent'),
+(157,0,'ECMO','espamacs.type.preimplantSituation.PreimplantEvent'),
+(158,0,'DIALYSIS','espamacs.type.preimplantSituation.PreimplantEvent'),
+(159,0,'ULTRAFILTRATION','espamacs.type.preimplantSituation.PreimplantEvent'),
+(160,0,'INVASIVE_MV','espamacs.type.preimplantSituation.PreimplantEvent'),
+(161,0,'ADRENALINE','espamacs.type.preimplantSituation.IntropicMedication'),
+(162,0,'DOBUTAMINE','espamacs.type.preimplantSituation.IntropicMedication'),
+(163,0,'DOPAMINE','espamacs.type.preimplantSituation.IntropicMedication'),
+(164,0,'ISOPROTERENOL','espamacs.type.preimplantSituation.IntropicMedication'),
+(165,0,'LEVOSIMENDAN','espamacs.type.preimplantSituation.IntropicMedication'),
+(166,0,'MILRINONE','espamacs.type.preimplantSituation.IntropicMedication'),
+(167,0,'NORADRENALINE','espamacs.type.preimplantSituation.IntropicMedication'),
+(168,0,'NITRIC_OXIDE','espamacs.type.preimplantSituation.IntropicMedication'),
+(169,0,'OTHERS','espamacs.type.preimplantSituation.IntropicMedication'),
+(170,0,'INTERMACS_1','espamacs.type.preimplantSituation.IntermacsSituation'),
+(171,0,'INTERMACS_2','espamacs.type.preimplantSituation.IntermacsSituation'),
+(172,0,'INTERMACS_3','espamacs.type.preimplantSituation.IntermacsSituation'),
+(173,0,'INTERMACS_4','espamacs.type.preimplantSituation.IntermacsSituation'),
+(174,0,'INTERMACS_5','espamacs.type.preimplantSituation.IntermacsSituation'),
+(175,0,'INTERMACS_6','espamacs.type.preimplantSituation.IntermacsSituation'),
+(176,0,'INTERMACS_7','espamacs.type.preimplantSituation.IntermacsSituation'),
+(177,0,'TRANSITION_RECOVERY','espamacs.type.diagnosis.ImplantGoal'),
+(178,0,'TRANSITION_TRANSPLANT','espamacs.type.diagnosis.ImplantGoal'),
+(179,0,'POSSIBLE_TRANSITION_TRANSPLANT','espamacs.type.diagnosis.ImplantGoal'),
+(180,0,'TARGET_THERAPY','espamacs.type.diagnosis.ImplantGoal'),
+(181,0,'OTHER','espamacs.type.diagnosis.ImplantGoal'),
+(182,0,'ELECTIVE_IMPLANT','espamacs.type.diagnosis.ImplantCause'),
+(183,0,'URGENT_IMPLANT','espamacs.type.diagnosis.ImplantCause'),
+(184,0,'EMERGING_IMPLANT','espamacs.type.diagnosis.ImplantCause'),
+(185,0,'POSTCARDIOTOMY','espamacs.type.diagnosis.ImplantCause'),
+(186,0,'OTHERS','espamacs.type.diagnosis.ImplantCause'),
+(187,0,'NONE','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(188,0,'CANCER','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(189,0,'CONGENITAL_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(190,0,'CORONARY_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(191,0,'VALVE_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(192,0,'PATHOLOGY_AORTA','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(193,0,'VALVULAR_HEAR_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(194,0,'FAMILY_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(195,0,'IDIOPATHIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(196,0,'ISCHEMIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(197,0,'MYOCARDITIS_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(198,0,'POSTPARTUM_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(199,0,'VIRAL_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(200,0,'OTHER_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(201,0,'TOXIC_DILATED_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(202,0,'HYPERTROPHIC_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(203,0,'AMYLOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(204,0,'FIBROSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(205,0,'SARCOIDOSIS_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(206,0,'QUIMIO_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(207,0,'IDIOPATHIC_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(208,0,'OTHER_RESTRICTIVE_CARDIOMYOPATHY','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(209,0,'OTHER','espamacs.type.diagnosis.MainCardiacImplantCause'),
+(210,0,'NONE','espamacs.type.diagnosis.MainLungImplantCause'),
+(211,0,'PRIMARY_GRAFT_FAILURE','espamacs.type.diagnosis.MainLungImplantCause'),
+(212,0,'MASSIVE_PULMONARY_EMBOLISM','espamacs.type.diagnosis.MainLungImplantCause'),
+(213,0,'PNEUMONIA','espamacs.type.diagnosis.MainLungImplantCause'),
+(214,0,'ACUTE_RESPIRATORY_DISTRESS_SYNDROME','espamacs.type.diagnosis.MainLungImplantCause'),
+(215,0,'PRE_LUNG_TRANSPLANT','espamacs.type.diagnosis.MainLungImplantCause'),
+(216,0,'OTHER','espamacs.type.diagnosis.MainLungImplantCause'),
+(217,0,'LVAD','espamacs.type.implantData.ImplantType'),
+(218,0,'RVAD','espamacs.type.implantData.ImplantType'),
+(219,0,'LVAD_RVAD','espamacs.type.implantData.ImplantType'),
+(220,0,'TOTAL','espamacs.type.implantData.ImplantType'),
+(221,0,'ECMO','espamacs.type.implantData.ImplantType'),
+(222,0,'AB5000','espamacs.type.implantData.LvadBrand'),
+(223,0,'THORATEX_PVAD','espamacs.type.implantData.LvadBrand'),
+(224,0,'LEVITRONIX_CENTRIMAG','espamacs.type.implantData.LvadBrand'),
+(225,0,'BERLIN_HEART_EXCOR','espamacs.type.implantData.LvadBrand'),
+(226,0,'BERLIN_HEART_INCOR','espamacs.type.implantData.LvadBrand'),
+(227,0,'JARVIC_2000','espamacs.type.implantData.LvadBrand'),
+(228,0,'HEARTWARE_HVAD','espamacs.type.implantData.LvadBrand'),
+(229,0,'HEARTWARE_MVAD','espamacs.type.implantData.LvadBrand'),
+(230,0,'TERUMO_DURAHEART','espamacs.type.implantData.LvadBrand'),
+(231,0,'HEARTASSIST_5','espamacs.type.implantData.LvadBrand'),
+(232,0,'HEARTMATE_II','espamacs.type.implantData.LvadBrand'),
+(233,0,'HEARTMATE_III','espamacs.type.implantData.LvadBrand'),
+(234,0,'IMPELLA','espamacs.type.implantData.LvadBrand'),
+(235,0,'TANDEM_HEART','espamacs.type.implantData.LvadBrand'),
+(236,0,'BIOMEDICUS','espamacs.type.implantData.LvadBrand'),
+(237,0,'BVS_5000','espamacs.type.implantData.LvadBrand'),
+(238,0,'OTHER','espamacs.type.implantData.LvadBrand'),
+(239,0,'AB5000','espamacs.type.implantData.RvadBrand'),
+(240,0,'THORATEC_PVAD','espamacs.type.implantData.RvadBrand'),
+(241,0,'LEVITRONIX_CENTRIMAG','espamacs.type.implantData.RvadBrand'),
+(242,0,'BERLIN_HEART_EXCOR','espamacs.type.implantData.RvadBrand'),
+(243,0,'HEARTWARE_HVAD','espamacs.type.implantData.RvadBrand'),
+(244,0,'HEARTWARE_MVAD','espamacs.type.implantData.RvadBrand'),
+(245,0,'BIOMEDICUS','espamacs.type.implantData.RvadBrand'),
+(246,0,'BVS5000','espamacs.type.implantData.RvadBrand'),
+(247,0,'OTHER','espamacs.type.implantData.RvadBrand'),
+(248,0,'ABIOCOR','espamacs.type.implantData.HeartTotalBrand'),
+(249,0,'SYNCARDIA','espamacs.type.implantData.HeartTotalBrand'),
+(250,0,'AKUTSU_III','espamacs.type.implantData.HeartTotalBrand'),
+(251,0,'BIVACOR','espamacs.type.implantData.HeartTotalBrand'),
+(252,0,'JARVIC7','espamacs.type.implantData.HeartTotalBrand'),
+(253,0,'OTHER','espamacs.type.implantData.HeartTotalBrand'),
+(254,0,'ROTAFLOW_PLS','espamacs.type.implantData.EcmoBrand'),
+(255,0,'CARDIO_HELP','espamacs.type.implantData.EcmoBrand'),
+(256,0,'CENTRIFUGAL_OXIGENATOR','espamacs.type.implantData.EcmoBrand'),
+(257,0,'OTHERS','espamacs.type.implantData.EcmoBrand'),
+(258,0,'PULSATILE','espamacs.type.implantData.BloodFlowType'),
+(259,0,'CONTINUOUS','espamacs.type.implantData.BloodFlowType'),
+(260,0,'LEFT_ATRIUM','espamacs.type.implantData.ImplantLvadIn'),
+(261,0,'LEFT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantLvadIn'),
+(262,0,'APEX_VI','espamacs.type.implantData.ImplantLvadIn'),
+(263,0,'OTHER','espamacs.type.implantData.ImplantLvadIn'),
+(264,0,'ASCENDING_AORTA','espamacs.type.implantData.ImplantLvadOut'),
+(265,0,'DESCENDING_THORACIC_AORTA','espamacs.type.implantData.ImplantLvadOut'),
+(266,0,'ABDOMINAL_AORTA','espamacs.type.implantData.ImplantLvadOut'),
+(267,0,'OTHER','espamacs.type.implantData.ImplantLvadOut'),
+(268,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantRvadIn'),
+(269,0,'RIGHT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantRvadIn'),
+(270,0,'APEX_VD','espamacs.type.implantData.ImplantRvadIn'),
+(271,0,'OTHER','espamacs.type.implantData.ImplantRvadIn'),
+(272,0,'PULMONARY_ARTERY','espamacs.type.implantData.ImplantRvadOut'),
+(273,0,'OTHER','espamacs.type.implantData.ImplantRvadOut'),
+(274,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantTotalIn'),
+(275,0,'RIGHT_ATRIAL_APPENDAGE','espamacs.type.implantData.ImplantTotalIn'),
+(276,0,'APEX_VD','espamacs.type.implantData.ImplantTotalIn'),
+(277,0,'OTHER','espamacs.type.implantData.ImplantTotalIn'),
+(278,0,'ASCENDING_AORTA','espamacs.type.implantData.ImplantTotalOut'),
+(279,0,'DESCENDING_THORACIC_AORTA','espamacs.type.implantData.ImplantTotalOut'),
+(280,0,'ABDOMINAL_AORTA','espamacs.type.implantData.ImplantTotalOut'),
+(281,0,'OTHER','espamacs.type.implantData.ImplantTotalOut'),
+(282,0,'FEMORAL_VEIN','espamacs.type.implantData.ImplantEcmoIn'),
+(283,0,'JUGULAR_VEIN','espamacs.type.implantData.ImplantEcmoIn'),
+(284,0,'RIGHT_ATRIUM','espamacs.type.implantData.ImplantEcmoIn'),
+(285,0,'UNIQUE_CANNULA','espamacs.type.implantData.ImplantEcmoIn'),
+(286,0,'OTHER','espamacs.type.implantData.ImplantEcmoIn'),
+(287,0,'FEMORAL_VEIN','espamacs.type.implantData.ImplantEcmoOut'),
+(288,0,'JUGULAR_VEIN','espamacs.type.implantData.ImplantEcmoOut'),
+(289,0,'FEMORAL_ARTERY','espamacs.type.implantData.ImplantEcmoOut'),
+(290,0,'SUBCLAVIAN_ARTERY','espamacs.type.implantData.ImplantEcmoOut'),
+(291,0,'CAROTID_ARTERY','espamacs.type.implantData.ImplantEcmoOut'),
+(292,0,'AORTA','espamacs.type.implantData.ImplantEcmoOut'),
+(293,0,'PULMONARY_ARTERY','espamacs.type.implantData.ImplantEcmoOut'),
+(294,0,'UNIQUE_CANNULA','espamacs.type.implantData.ImplantEcmoOut'),
+(295,0,'OTHER','espamacs.type.implantData.ImplantEcmoOut'),
+(296,0,'AORTIC_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery'),
+(297,0,'MITRAL_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery'),
+(298,0,'TRICUSPID_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery'),
+(299,0,'PULMONARY_VALVE_SURGERY','espamacs.type.implantData.CollateralSurgery'),
+(300,0,'CABG','espamacs.type.implantData.CollateralSurgery'),
+(301,0,'OTHER','espamacs.type.implantData.CollateralSurgery'),
+(302,0,'HOME','espamacs.type.initialData.DischargedDestination'),
+(303,0,'INTERMEDIATE_CARE_UNIT','espamacs.type.initialData.DischargedDestination'),
+(304,0,'REHABILIATATION','espamacs.type.initialData.DischargedDestination'),
+(305,0,'OTHER','espamacs.type.initialData.DischargedDestination'),
+(306,0,'NONE_PATIENT_DEATH','espamacs.type.initialData.DischargedDestination'),
+(307,0,'ASSISTED','espamacs.type.initialData.DischargedStatus'),
+(308,0,'UNASSISTED','espamacs.type.initialData.DischargedStatus'),
+(309,0,'DURING_ASSISTANCE','espamacs.type.initialData.ExistusStatus'),
+(310,0,'POST_ASSISTANCE','espamacs.type.initialData.ExistusStatus'),
+(311,0,'1_7','espamacs.type.initialData.TimeWithoutIntropicIV'),
+(312,0,'8_13','espamacs.type.initialData.TimeWithoutIntropicIV'),
+(313,0,'14_27','espamacs.type.initialData.TimeWithoutIntropicIV'),
+(314,0,'27_MORE','espamacs.type.initialData.TimeWithoutIntropicIV'),
+(315,0,'BLEEDING_BEFORE_48','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(316,0,'BLEEDING_AFTER_48','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(317,0,'CHEST_DRAINAGE','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(318,0,'REINTUBATE','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(319,0,'HEMOFILTRATIOIN','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(320,0,'HEMODIALYSIS','espamacs.type.initialData.SurgicalProcedureAfterTransplant'),
+(321,0,'NONE','espamacs.type.initialData.RightVentricleFailureAfterImplant'),
+(322,0,'YES_MEDICAL_TREATMENT','espamacs.type.initialData.RightVentricleFailureAfterImplant'),
+(323,0,'YES_IABP','espamacs.type.initialData.RightVentricleFailureAfterImplant'),
+(324,0,'YES_RVAD','espamacs.type.initialData.RightVentricleFailureAfterImplant'),
+(325,0,'ACE_INHIBITORS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(326,0,'AIIRAS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(327,0,'CALCIUM_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(328,0,'BETA_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(329,0,'ALDOSTERONE_BLOCKERS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(330,0,'LOOP_DIURETICS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(331,0,'AMIODARONE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(332,0,'DIGOXIN','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(333,0,'OTHER_ANTIARRYTHMICS','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(334,0,'NITRIC_OXIDE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(335,0,'SILDENAFIL','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(336,0,'ILOPROST','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(337,0,'BOSENTAN','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(338,0,'NESERITIDE','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(339,0,'OTHER','espamacs.type.initialData.CardiologicalTreatmenAtDischarge'),
+(340,0,'WARFARIN','espamacs.type.initialData.BloodMedication'),
+(341,0,'ACETYLSALICYLIC_ACID','espamacs.type.initialData.BloodMedication'),
+(342,0,'DIPYRIDAMOLE','espamacs.type.initialData.BloodMedication'),
+(343,0,'CLOPIDOGREL','espamacs.type.initialData.BloodMedication'),
+(344,0,'TICLOPIDINE','espamacs.type.initialData.BloodMedication'),
+(345,0,'HEPARIN','espamacs.type.initialData.BloodMedication'),
+(346,0,'ENOXAPARIN','espamacs.type.initialData.BloodMedication'),
+(347,0,'BIVALIRUDIN','espamacs.type.initialData.BloodMedication'),
+(348,0,'ARGOTRAVAN','espamacs.type.initialData.BloodMedication'),
+(349,0,'HIRUDIN','espamacs.type.initialData.BloodMedication'),
+(350,0,'LEPIRUDIN','espamacs.type.initialData.BloodMedication'),
+(351,0,'ICU','espamacs.type.event.PatientHealthStatus'),
+(352,0,'HOSPITAL_ADMISION','espamacs.type.event.PatientHealthStatus'),
+(353,0,'OTHER_HOSPITAL_ADMISION','espamacs.type.event.PatientHealthStatus'),
+(354,0,'DISCHARGED','espamacs.type.event.PatientHealthStatus'),
+(355,0,'NO','espamacs.type.event.RemovedAssistance'),
+(356,0,'YES_HEALED','espamacs.type.event.RemovedAssistance'),
+(357,0,'YES_TRNSPLANT','espamacs.type.event.RemovedAssistance'),
+(358,0,'YES_CHANGE_ASSISTANCE','espamacs.type.event.RemovedAssistance'),
+(359,0,'YES_DEAD','espamacs.type.event.RemovedAssistance'),
+(360,0,'NONE','espamacs.type.event.RemovedAssistanceDeath'),
+(361,0,'CARDIOVASCULAR_CAUSE','espamacs.type.event.RemovedAssistanceDeath'),
+(362,0,'NO_CARDIOVASCULAR_CAUSE','espamacs.type.event.RemovedAssistanceDeath'),
+(363,0,'OTHER','espamacs.type.event.RemovedAssistanceDeath'),
+(364,0,'PUMP_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(365,0,'CONTROL_DEVICE_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(366,0,'BATERY_ERROR','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(367,0,'DEVICE_THROMBOSIS','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(368,0,'MISPLACEMENT_INPUT_CANNULA','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(369,0,'MISPLACEMENT_OUTPUT_CANNULA','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(370,0,'THROMBOSIS_INPUT_VALVE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(371,0,'THROMBOSIS_OUTPUT_VALVE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(372,0,'PATIENT_NEGLIGENCE','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(373,0,'OTHER','espamacs.type.event.malfunctionDevice.MalfunctionDeviceType'),
+(374,0,'TRANSFUSION','espamacs.type.event.hemorrhage.HemorrhageCause'),
+(375,0,'TRANSFUSION_ICU','espamacs.type.event.hemorrhage.HemorrhageCause'),
+(376,0,'TRANSFUSION_ICU_SURGERY','espamacs.type.event.hemorrhage.HemorrhageCause'),
+(377,0,'DEAD','espamacs.type.event.hemorrhage.HemorrhageCause'),
+(378,0,'YES_URGENT','espamacs.type.event.malfunctionDevice.UrgentSurgery'),
+(379,0,'YES_NO_URGENT','espamacs.type.event.malfunctionDevice.UrgentSurgery'),
+(380,0,'NO','espamacs.type.event.malfunctionDevice.UrgentSurgery'),
+(381,0,'MEDICAL','espamacs.type.event.hemorrhage.HemorrhageTreatment'),
+(382,0,'CARDIAC_SURGERY','espamacs.type.event.hemorrhage.HemorrhageTreatment'),
+(383,0,'NO_CARDIAC_SURGERY','espamacs.type.event.hemorrhage.HemorrhageTreatment'),
+(384,0,'MEDIASINUM','espamacs.type.event.hemorrhage.BleedingPlace'),
+(385,0,'SUTURES_DEVICE','espamacs.type.event.hemorrhage.BleedingPlace'),
+(386,0,'CANNULATION_PLACE','espamacs.type.event.hemorrhage.BleedingPlace'),
+(387,0,'INTRAABDOMINAL','espamacs.type.event.hemorrhage.BleedingPlace'),
+(388,0,'CHEST_WALL','espamacs.type.event.hemorrhage.BleedingPlace'),
+(389,0,'GASTROINTESTINAL','espamacs.type.event.hemorrhage.BleedingPlace'),
+(390,0,'RESPIRATORY','espamacs.type.event.hemorrhage.BleedingPlace'),
+(391,0,'POCKET_PUMP','espamacs.type.event.hemorrhage.BleedingPlace'),
+(392,0,'IN_OUT_DUCT','espamacs.type.event.hemorrhage.BleedingPlace'),
+(393,0,'PLEURAL_SPACE','espamacs.type.event.hemorrhage.BleedingPlace'),
+(394,0,'RETROPERITONEO','espamacs.type.event.hemorrhage.BleedingPlace'),
+(395,0,'OTHER','espamacs.type.event.hemorrhage.BleedingPlace'),
+(396,0,'SEPSIS','espamacs.type.event.infection.InfectionPlace'),
+(397,0,'RESPIRATORY','espamacs.type.event.infection.InfectionPlace'),
+(398,0,'URINARY','espamacs.type.event.infection.InfectionPlace'),
+(399,0,'GASTROINTESTINAL','espamacs.type.event.infection.InfectionPlace'),
+(400,0,'PERIPHERAL_WOUND','espamacs.type.event.infection.InfectionPlace'),
+(401,0,'CATHETER','espamacs.type.event.infection.InfectionPlace'),
+(402,0,'MEDIASTINITIS','espamacs.type.event.infection.InfectionPlace'),
+(403,0,'CONTROL_LINE','espamacs.type.event.infection.InfectionPlace'),
+(404,0,'CANNULAS_OUT','espamacs.type.event.infection.InfectionPlace'),
+(405,0,'PUMP','espamacs.type.event.infection.InfectionPlace'),
+(406,0,'MEDICAL','espamacs.type.event.infection.InfectionTreatment'),
+(407,0,'SURGERY','espamacs.type.event.infection.InfectionTreatment'),
+(408,0,'MEDICAL_SURGERY','espamacs.type.event.infection.InfectionTreatment'),
+(409,0,'ISCHEMIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType'),
+(410,0,'HEMORRHAGIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType'),
+(411,0,'ISCHEMIC_HEMORRHAGIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType'),
+(412,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionType'),
+(413,0,'ISCHEMIC_STROKE_TEMPORAL','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(414,0,'ISCHEMIC_STROKE_NO_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(415,0,'ISCHEMIC_STROKE_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(416,0,'ISCHEMIC_STROKE_DEAD','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(417,0,'HEMORRHAGIC_STROKE_NO_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(418,0,'HEMORRHAGIC_STROKE_EFFECT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(419,0,'HEMORRHAGIC_STROKE_DEAD','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionEffect'),
+(420,0,'DEVICE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause'),
+(421,0,'MEDICATION','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause'),
+(422,0,'COMPLEX_PATIENT','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause'),
+(423,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionCause'),
+(424,0,'UNKNOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR'),
+(425,0,'INR_UP','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR'),
+(426,0,'INR_DOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionINR'),
+(427,0,'UNKNOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT'),
+(428,0,'APTT_UP','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT'),
+(429,0,'APTT_DOWN','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionAPTT'),
+(430,0,'RIGHT_HEMISPHERE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace'),
+(431,0,'LEFT_HEMISPHERE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace'),
+(432,0,'OCCIPITAL','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace'),
+(433,0,'BRAINSTEM','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace'),
+(434,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionPlace'),
+(435,0,'TAC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis'),
+(436,0,'NUCLEAR_MAGNETIC_RESONANCE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis'),
+(437,0,'ANGIOGRAPHY','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis'),
+(438,0,'CLINIC','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis'),
+(439,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionDiagnosis'),
+(440,0,'NONE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement'),
+(441,0,'HEPARINE','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement'),
+(442,0,'FIBRINOLYSIS','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement'),
+(443,0,'ANTICONVULSANTS','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement'),
+(444,0,'OTHER','espamacs.type.event.neurologicalDysfunction.NeurologicalDysfunctionTreatement'),
+(445,0,'VENTRICULAR','espamacs.type.event.arrhythmia.ArrhythmiaType'),
+(446,0,'SUPRAVENTRICULAR','espamacs.type.event.arrhythmia.ArrhythmiaType'),
+(447,0,'HEMODIALYSIS','espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment'),
+(448,0,'HEMOFILTRATION','espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment'),
+(449,0,'PULMONARY','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace'),
+(450,0,'RENAL','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace'),
+(451,0,'HEPATIC','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace'),
+(452,0,'SPLEN','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace'),
+(453,0,'EXTREMITIES','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace'),
+(454,0,'CLINIC','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis'),
+(455,0,'INVASIVE_TECHNIQUES','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis'),
+(456,0,'INTREAOPERATIVE_FINDING','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis'),
+(457,0,'NECROPSY_FINDING','espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis'),
+(458,0,'WOUND','espamacs.type.event.woundDehiscence.WoundDehiscenceType'),
+(459,0,'BREASTBONE','espamacs.type.event.woundDehiscence.WoundDehiscenceType'),
+(460,0,'WOUND_BREASTBONE','espamacs.type.event.woundDehiscence.WoundDehiscenceType'),
+(461,0,'VENOUS_DEEP','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace'),
+(462,0,'PULMONARY','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace'),
+(463,0,'OTHER','espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace'),
+(464,0,'DA','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace'),
+(465,0,'CX','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace'),
+(466,0,'DP','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace'),
+(467,0,'MULTIPLE','espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace'),
+(468,0,'UNKOWN','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause'),
+(469,0,'CORONARY_DISEASE','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause'),
+(470,0,'DEVICE_CAUSE','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause'),
+(471,0,'OTHER','espamacs.type.event.myocardialInfarction.MyocardialInfractionCause'),
+(472,0,'MEDICAL','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment'),
+(473,0,'INTERVENTION','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment'),
+(474,0,'SURGERY','espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment'),
+(475,0,'SOFT','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity'),
+(476,0,'MODERATE','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity'),
+(477,0,'SEVERE','espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity'),
+(478,0,'NONE','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod'),
+(479,0,'PERCUTANEOUS','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod'),
+(480,0,'SURGICAL','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod'),
+(481,0,'OTHER','espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod'),
+(482,0,'UNKNOWN','espamacs.type.event.hemolysis.HemolysisCause'),
+(483,0,'DUETO_ASSISTANCE','espamacs.type.event.hemolysis.HemolysisCause'),
+(484,0,'HEMATOLOGIC','espamacs.type.event.hemolysis.HemolysisCause'),
+(485,0,'OTHER','espamacs.type.event.hemolysis.HemolysisCause'),
+(486,0,'ASCItES','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals'),
+(487,0,'EDEMAS','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals'),
+(488,0,'IC','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals'),
+(489,0,'PVC','espamacs.type.event.rightHeartFailure.RightHeartFailureSignals'),
+(490,0,'RIGHT_ASISTANCE','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds'),
+(491,0,'INOTROPICS','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds'),
+(492,0,'OTHER','espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds'),
+(493,0,'ISCHEMIC','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType'),
+(494,0,'LYMPHORRHAGIA','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType'),
+(495,0,'OTHER','espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType');
 /*!40000 ALTER TABLE `type_database_enum_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1658,4 +1750,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-25 10:45:56
+-- Dump completed on 2016-04-29 12:06:13
