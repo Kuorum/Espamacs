@@ -78,7 +78,7 @@
                     <f:field bean="${baselineCondition}" property="hemoglobin"/>
                     <f:field bean="${baselineCondition}" property="platelets"/>
                     <f:field bean="${baselineCondition}" property="inr"/>
-                    <f:field bean="${baselineCondition}" property="NTproBNP"/>
+                    <f:field bean="${baselineCondition}" property="nTproBNP"/>
                     <f:field bean="${baselineCondition}" property="crp"/>
                     <f:field bean="${baselineCondition}" property="albumin"/>
                     <f:field bean="${baselineCondition}" property="lactate"/>

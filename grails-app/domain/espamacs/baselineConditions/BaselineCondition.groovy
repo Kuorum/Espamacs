@@ -52,7 +52,7 @@ class BaselineCondition {
     Double hemoglobin
     Double platelets
     Double inr // International normalized ratio - Ratio Internacional Normalizado
-    Double NTproBNP // prohormona N-terminal del péptido natriurético cerebral
+    Double nTproBNP // prohormona N-terminal del péptido natriurético cerebral
     Double crp // proteína C reactiva (PCR)
     Double albumin
     Double lactate
@@ -77,11 +77,40 @@ class BaselineCondition {
         tricuspidValveStatuses lazy: false, fetch: 'join'
         medications lazy: false, fetch: 'join'
         nyha lazy: false, fetch: 'join'
+
+        nTproBNP column : 'ntprobnp'
     }
 
     static embedded = ['hemodynamicData']
 
     static constraints = {
+        echocardiogramDate nullable:true
+        tapse nullable:true
+        lvdtdd nullable:true
+        lvesd nullable:true
+        volumeEndSistole nullable:true
+        volumeEndDiastole nullable:true
+        sixMinutesDate nullable:true
+        sixMinutesTestDistanceMetres nullable:true
+        sixMinutesTestDistanceV02 nullable:true
+        analyticDate nullable:true
+        sodium nullable:true
+        potassium nullable:true
+        creatinine nullable:true
+        urea nullable:true
+        alt nullable:true
+        ast nullable:true
+        ldh nullable:true
+        cpk nullable:true
+        bilirubin nullable:true
+        leukocytes nullable:true
+        hemoglobin nullable:true
+        platelets nullable:true
+        inr nullable:true
+        nTproBNP nullable:true
+        crp nullable:true
+        albumin nullable:true
+        lactate nullable:true
     }
 }
 
@@ -109,6 +138,22 @@ class HemodynamicData {
 
 
     static constraints = {
+        catheterizationDate nullable:true
+        systolicArterialPressure nullable:true
+        diastolicArterialPressure nullable:true
+        averageArterialPressure nullable:true
+        hearRate nullable:true
+        systolicArterialPulmonaryPressure nullable:true
+        diastolicArterialPulmonaryPressure nullable:true
+        averageArterialPulmonaryPressure nullable:true
+        pulmonaryCapillaryPressure nullable:true
+        transpulmonaryGradient nullable:true
+        centralVenousPressure nullable:true
+        pulmonaryVascularResistance nullable:true
+        systemicVascularResistance nullable:true
+        systolicEffortIndex nullable:true
+        cardiacOutput nullable:true
+        cardiacIndex nullable:true
     }
 }
 
