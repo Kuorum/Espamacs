@@ -30,7 +30,7 @@ class CentreController {
     }
 
     def show(Centre centre) {
-        render view: "edit", model:[centre:centre]
+        render view: "edit", model:modelShowCentre(centre)
     }
 
     def create() {
@@ -63,7 +63,12 @@ class CentreController {
     }
 
     def edit(Centre centre) {
-        respond centre
+        respond centre, model:modelShowCentre(centre)
+    }
+
+    private def modelShowCentre(Centre centre){
+        List<EspamacsUser> users = EspamacsUser.findAllByCentre(centre, [sort:params.sort, order:params.order])
+        return [centre:centre, users:users]
     }
 
     @Transactional
@@ -76,7 +81,7 @@ class CentreController {
 
         if (centre.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond centre.errors, view:'edit'
+            respond centre.errors, view:'edit', model:modelShowCentre(centre)
             return
         }
 
