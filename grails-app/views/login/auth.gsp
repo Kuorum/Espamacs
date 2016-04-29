@@ -50,7 +50,7 @@
         </section>
     </div>
     <div class="col-md-6" id="login-logo-container">
-        <h1>Registro español de asistencia mecánica circulatoria</h1>
+        <h1><g:message code="espamacs.officialName"/></h1>
         <asset:image src="logo.png"/>
     </div>
 </div>

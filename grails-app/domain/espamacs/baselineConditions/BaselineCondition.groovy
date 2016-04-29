@@ -15,7 +15,7 @@ import espamacs.type.baselineConditions.TricuspidValveStatus
 class BaselineCondition {
 
     Patient patient
-    PeripheralEdemaLevel peripheralEdemaLevel
+    BooleanDBType peripheralEdemaLevel
     BooleanDBType ascites
 
     Date echocardiogramDate

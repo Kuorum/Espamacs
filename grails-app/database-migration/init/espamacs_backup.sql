@@ -402,17 +402,17 @@ CREATE TABLE `diagnosis_and_implant_goals` (
   `version` bigint(20) NOT NULL,
   `cardiac_implant_cause_id` bigint(20) NOT NULL,
   `contraindication_id` bigint(20) NOT NULL,
-  `current_situation_id` bigint(20) NOT NULL,
+  `implant_cause_id` bigint(20) NOT NULL,
   `implant_goal_id` bigint(20) NOT NULL,
   `main_lung_implant_cause_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_kiitlhr18arb0t4fmt5c8n57c` (`cardiac_implant_cause_id`),
   KEY `FK_2b1vr2ypnsjfytow1xd00763` (`contraindication_id`),
-  KEY `FK_2q2t30ipqv9u8pwst8gosvbv` (`current_situation_id`),
+  KEY `FK_2q2t30ipqv9u8pwst8gosvbv` (`implant_cause_id`),
   KEY `FK_eypp4qk7yx0p82t1r3hfuv28x` (`implant_goal_id`),
   KEY `FK_oy03uxy7ijd53rurn6qhxpe50` (`main_lung_implant_cause_id`),
   CONSTRAINT `FK_2b1vr2ypnsjfytow1xd00763` FOREIGN KEY (`contraindication_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_2q2t30ipqv9u8pwst8gosvbv` FOREIGN KEY (`current_situation_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_2q2t30ipqv9u8pwst8gosvbv` FOREIGN KEY (`implant_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_eypp4qk7yx0p82t1r3hfuv28x` FOREIGN KEY (`implant_goal_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_kiitlhr18arb0t4fmt5c8n57c` FOREIGN KEY (`cardiac_implant_cause_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_oy03uxy7ijd53rurn6qhxpe50` FOREIGN KEY (`main_lung_implant_cause_id`) REFERENCES `type_database_enum_type` (`id`)
@@ -918,7 +918,7 @@ CREATE TABLE `personal_history` (
   `central_nervous_system_stroke_id` bigint(20) NOT NULL,
   `central_nervous_system_transient_ischemic_attack_id` bigint(20) NOT NULL,
   `diabetic_id` bigint(20) NOT NULL,
-  `displemia_id` bigint(20) NOT NULL,
+  `dyslipidemia_id` bigint(20) NOT NULL,
   `drinker_id` bigint(20) NOT NULL,
   `endocrine_hematologic_system_chronic_anemia_id` bigint(20) NOT NULL,
   `endocrine_hematologic_system_chronic_coagulopathy` bit(1) NOT NULL,
@@ -953,7 +953,7 @@ CREATE TABLE `personal_history` (
   KEY `FK_qfco0c47sumb4ycy2jk3ufnc` (`central_nervous_system_stroke_id`),
   KEY `FK_e9sh0mnmfkcqcsmpww8oxiql8` (`central_nervous_system_transient_ischemic_attack_id`),
   KEY `FK_xxwtnoomqk9969cx2w3xb39g` (`diabetic_id`),
-  KEY `FK_5ktx38jcojuhlu61clt5om8ew` (`displemia_id`),
+  KEY `FK_5ktx38jcojuhlu61clt5om8ew` (`dyslipidemia_id`),
   KEY `FK_s40ke2vghkcalb3dcwu9ebjah` (`drinker_id`),
   KEY `FK_6vyiv7s7tg4ak16s5ag4uqppy` (`endocrine_hematologic_system_chronic_anemia_id`),
   KEY `FK_ptxbx8vkqqn4nbcf9e92gi7vt` (`endocrine_hematologic_system_thyroid_disorders_id`),
@@ -979,7 +979,7 @@ CREATE TABLE `personal_history` (
   KEY `FK_s8gevjxx576awy6ljb2sso401` (`vascular_aorta_pathology_id`),
   KEY `FK_tmfyvgrr7neqpfg9da07gl2x0` (`vascular_peripheral_vascular_disease_id`),
   CONSTRAINT `FK_3iy18w11kax0ry4pucgqyestf` FOREIGN KEY (`respiratory_primary_pulmonary_hypertension_id`) REFERENCES `type_database_enum_type` (`id`),
-  CONSTRAINT `FK_5ktx38jcojuhlu61clt5om8ew` FOREIGN KEY (`displemia_id`) REFERENCES `type_database_enum_type` (`id`),
+  CONSTRAINT `FK_5ktx38jcojuhlu61clt5om8ew` FOREIGN KEY (`dyslipidemia_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_5vb7odl4bpxd6bdqd7rwvt6kt` FOREIGN KEY (`central_nervous_system_severe_neurological_disease_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_6vyiv7s7tg4ak16s5ag4uqppy` FOREIGN KEY (`endocrine_hematologic_system_chronic_anemia_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_70lduvfyu16p0h9ct40o2idul` FOREIGN KEY (`intravenously_drugs_id`) REFERENCES `type_database_enum_type` (`id`),
@@ -1160,43 +1160,42 @@ INSERT INTO type_database_enum_type (id,version,code,class) VALUES (10,0,'LONG',
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (11,0,'UNKNOWN','espamacs.type.BloodType');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (12,0,'BLOOD_A','espamacs.type.BloodType');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (13,0,'BLOOD_B','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (14,0,'BLOOD_B','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (15,0,'BLOOD_AB','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (16,0,'BLOOD_0','espamacs.type.BloodType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (17,0,'UNKNOWN','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (18,0,'RH_POSITIVE','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (19,0,'RH_NEGATIVE','espamacs.type.RHFactor');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (20,0,'UNKNOWN','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (21,0,'NO','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (22,0,'YES','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (23,0,'EX-SMOKER','espamacs.type.patientData.SmokerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (24,0,'UNKNOWN','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (25,0,'NO','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (26,0,'TYPE1','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (27,0,'TYPE2','espamacs.type.patientData.DiabeticType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (28,0,'UNKNOWN','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (29,0,'NO_NEVER','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (30,0,'NO_NOW','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (31,0,'YES','espamacs.type.patientData.DrinkerType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (32,0,'UNKNOWN','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (33,0,'NO_NEVER','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (34,0,'NO_NOW','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (35,0,'YES','espamacs.type.patientData.IntravenouslyDrugsType');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (36,0,'NO','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (37,0,'CORONARY','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (38,0,'VALVULAR','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (39,0,'VALVULAR_CORONARY','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (40,0,'THORACIC_AORTA','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (41,0,'CONGENITAL','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (42,0,'LVAD','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (43,0,'RVAD','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (44,0,'ECMO','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (45,0,'OTHER','espamacs.type.patientData.PreCardiacSurgery');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (46,0,'NO','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (47,0,'PERITONEAL_DIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (48,0,'HEMODIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (49,0,'KIDNEY_TRANSPLANT','espamacs.type.patientData.RenalReplacementTherapy');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (50,0,'NO','espamacs.type.patientData.PrimaryPulmonaryHypertension');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (14,0,'BLOOD_AB','espamacs.type.BloodType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (15,0,'BLOOD_0','espamacs.type.BloodType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (16,0,'UNKNOWN','espamacs.type.RHFactor');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (17,0,'RH_POSITIVE','espamacs.type.RHFactor');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (18,0,'RH_NEGATIVE','espamacs.type.RHFactor');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (19,0,'UNKNOWN','espamacs.type.patientData.SmokerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (20,0,'NO','espamacs.type.patientData.SmokerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (21,0,'YES','espamacs.type.patientData.SmokerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (22,0,'EX-SMOKER','espamacs.type.patientData.SmokerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (23,0,'UNKNOWN','espamacs.type.patientData.DiabeticType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (24,0,'NO','espamacs.type.patientData.DiabeticType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (25,0,'TYPE1','espamacs.type.patientData.DiabeticType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (26,0,'TYPE2','espamacs.type.patientData.DiabeticType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (27,0,'UNKNOWN','espamacs.type.patientData.DrinkerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (28,0,'NO_NEVER','espamacs.type.patientData.DrinkerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (29,0,'NO_NOW','espamacs.type.patientData.DrinkerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (30,0,'YES','espamacs.type.patientData.DrinkerType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (31,0,'UNKNOWN','espamacs.type.patientData.IntravenouslyDrugsType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (32,0,'NO_NEVER','espamacs.type.patientData.IntravenouslyDrugsType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (33,0,'NO_NOW','espamacs.type.patientData.IntravenouslyDrugsType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (34,0,'YES','espamacs.type.patientData.IntravenouslyDrugsType');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (35,0,'NO','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (36,0,'CORONARY','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (37,0,'VALVULAR','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (38,0,'VALVULAR_CORONARY','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (39,0,'THORACIC_AORTA','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (40,0,'CONGENITAL','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (41,0,'LVAD','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (42,0,'RVAD','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (43,0,'ECMO','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (44,0,'OTHER','espamacs.type.patientData.PreCardiacSurgery');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (45,0,'NO','espamacs.type.patientData.RenalReplacementTherapy');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (46,0,'PERITONEAL_DIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (47,0,'HEMODIALYSIS','espamacs.type.patientData.RenalReplacementTherapy');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (48,0,'KIDNEY_TRANSPLANT','espamacs.type.patientData.RenalReplacementTherapy');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (49,0,'NO','espamacs.type.patientData.PrimaryPulmonaryHypertension');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (51,0,'SOFT','espamacs.type.patientData.PrimaryPulmonaryHypertension');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (52,0,'MODERATE','espamacs.type.patientData.PrimaryPulmonaryHypertension');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (53,0,'SEVERE','espamacs.type.patientData.PrimaryPulmonaryHypertension');
@@ -1333,11 +1332,11 @@ INSERT INTO type_database_enum_type (id,version,code,class) VALUES (183,0,'TRANS
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (184,0,'POSSIBLE_TRANSITION_TRANSPLANT','espamacs.type.diagnosis.ImplantGoal');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (185,0,'TARGET_THERAPY','espamacs.type.diagnosis.ImplantGoal');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (186,0,'OTHER','espamacs.type.diagnosis.ImplantGoal');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (187,0,'ELECTIVE_IMPLANT','espamacs.type.diagnosis.CurrentSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (188,0,'URGENT_IMPLANT','espamacs.type.diagnosis.CurrentSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (189,0,'EMERGING_IMPLANT','espamacs.type.diagnosis.CurrentSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (190,0,'POSTCARDIOTOMY','espamacs.type.diagnosis.CurrentSituation');
-INSERT INTO type_database_enum_type (id,version,code,class) VALUES (191,0,'OTHERS','espamacs.type.diagnosis.CurrentSituation');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (187,0,'ELECTIVE_IMPLANT','espamacs.type.diagnosis.ImplantCause');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (188,0,'URGENT_IMPLANT','espamacs.type.diagnosis.ImplantCause');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (189,0,'EMERGING_IMPLANT','espamacs.type.diagnosis.ImplantCause');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (190,0,'POSTCARDIOTOMY','espamacs.type.diagnosis.ImplantCause');
+INSERT INTO type_database_enum_type (id,version,code,class) VALUES (191,0,'OTHERS','espamacs.type.diagnosis.ImplantCause');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (192,0,'NONE','espamacs.type.diagnosis.MainCardiacImplantCause');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (193,0,'CANCER','espamacs.type.diagnosis.MainCardiacImplantCause');
 INSERT INTO type_database_enum_type (id,version,code,class) VALUES (194,0,'CONGENITAL_DISEASE','espamacs.type.diagnosis.MainCardiacImplantCause');

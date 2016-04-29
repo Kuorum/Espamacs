@@ -12,7 +12,7 @@
                     <f:field bean="${personalHistory}" property="smoker"/>
                     <f:field bean="${personalHistory}" property="hypertensive"/>
                     <f:field bean="${personalHistory}" property="diabetic"/>
-                    <f:field bean="${personalHistory}" property="displemia"/>
+                    <f:field bean="${personalHistory}" property="dyslipidemia"/>
                     <f:field bean="${personalHistory}" property="obeseType"/>
                     <f:field bean="${personalHistory}" property="malnutrition"/>
                     <f:field bean="${personalHistory}" property="drinker"/>

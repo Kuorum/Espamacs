@@ -10,7 +10,7 @@
                 <fieldset class="form-group">
                     <f:field bean="${diagnosisAndImplantGoals}" property="implantGoal"/>
                     <f:field bean="${diagnosisAndImplantGoals}" property="contraindication"/>
-                    <f:field bean="${diagnosisAndImplantGoals}" property="currentSituation"/>
+                    <f:field bean="${diagnosisAndImplantGoals}" property="implantCause"/>
                     <f:field bean="${diagnosisAndImplantGoals}" property="cardiacImplantCause"/>
                     <f:field bean="${diagnosisAndImplantGoals}" property="mainLungImplantCause"/>
                 </fieldset>

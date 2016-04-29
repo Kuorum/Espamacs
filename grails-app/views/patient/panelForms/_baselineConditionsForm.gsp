@@ -55,6 +55,10 @@
                     <f:field bean="${baselineCondition}" property="sixMinutesDate"/>
                     <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceMetres"/>
                     <f:field bean="${baselineCondition}" property="sixMinutesTestDistanceV02"/>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <h4><g:message code="patient.create.step3.baselineCondition.medications.title"/></h4>
                     <f:field bean="${baselineCondition}" property="medications" templates="multiCheck"/>
                 </fieldset>
 

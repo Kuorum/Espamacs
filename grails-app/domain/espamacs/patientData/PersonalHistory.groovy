@@ -10,7 +10,7 @@ class PersonalHistory {
     SmokerType smoker;
     BooleanDBType hypertensive;
     DiabeticType diabetic;
-    BooleanDBType displemia;
+    BooleanDBType dyslipidemia;
     BooleanDBType obeseType;
     BooleanDBType malnutrition;
     DrinkerType drinker;
@@ -35,7 +35,7 @@ class PersonalHistory {
         smoker lazy: false, fetch:'join'
         hypertensive lazy: false, fetch:'join'
         diabetic lazy: false, fetch:'join'
-        displemia lazy: false, fetch:'join'
+        dyslipidemia lazy: false, fetch:'join'
         obeseType lazy: false, fetch:'join'
         malnutrition lazy: false, fetch:'join'
         drinker lazy: false, fetch:'join'

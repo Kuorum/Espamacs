@@ -108,7 +108,8 @@ class PatientController {
 
         if (patient.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond patient.errors, view:'edit'
+            flash.error = message(code: 'patient.data.error')
+            respond patient.errors, view:'edit', model:editPatientModel(patient)
             return
         }
         patientService.checkPermission(patient)

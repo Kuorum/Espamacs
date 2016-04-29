@@ -1,45 +1,3 @@
-import espamacs.*
-import espamacs.event.Event
-import espamacs.event.MalfunctionDevice
-import espamacs.type.*
-import espamacs.type.baselineConditions.*
-import espamacs.type.diagnosis.CurrentSituation
-import espamacs.type.diagnosis.ImplantGoal
-import espamacs.type.diagnosis.MainCardiacImplantCause
-import espamacs.type.diagnosis.MainLungImplantCause
-import espamacs.type.event.PatientHealthStatus
-import espamacs.type.event.RemovedAssistance
-import espamacs.type.event.RemovedAssistanceDeath
-import espamacs.type.event.arrhythmia.ArrhythmiaType
-import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismDiagnosis
-import espamacs.type.event.arterialThromboembolism.ArterialThromboembolismPlace
-import espamacs.type.event.hemolysis.HemolysisCause
-import espamacs.type.event.hemorrhage.BleedingPlace
-import espamacs.type.event.hemorrhage.HemorrhageCause
-import espamacs.type.event.hemorrhage.HemorrhageTreatment
-import espamacs.type.event.infection.InfectionPlace
-import espamacs.type.event.infection.InfectionTreatment
-import espamacs.type.event.malfunctionDevice.MalfunctionDeviceType
-import espamacs.type.event.malfunctionDevice.UrgentSurgery
-import espamacs.type.event.myocardialInfarction.MyocardialInfractionCause
-import espamacs.type.event.myocardialInfarction.MyocardialInfractionPlace
-import espamacs.type.event.myocardialInfarction.MyocardialInfractionTreatment
-import espamacs.type.event.neurologicalDysfunction.*
-import espamacs.type.event.pericardialEffusion.PericardialEffussionDrainMethod
-import espamacs.type.event.pericardialEffusion.PericardialEffussionQuantity
-import espamacs.type.event.peripheralVascularAccessComplications.PeripheralVascularAccessComplicationsType
-import espamacs.type.event.renalDysfunction.RenalDysfunctionTreatment
-import espamacs.type.event.rightHeartFailure.RightHeartFailureNeeds
-import espamacs.type.event.rightHeartFailure.RightHeartFailureSignals
-import espamacs.type.event.venousThromboembolism.VenousThromboembolismPlace
-import espamacs.type.event.woundDehiscence.WoundDehiscenceType
-import espamacs.type.implantData.*
-import espamacs.type.initialData.*
-import espamacs.type.patientData.*
-import espamacs.type.preimplantSituation.IntermacsSituation
-import espamacs.type.preimplantSituation.IntropicMedication
-import espamacs.type.preimplantSituation.PreimplantEvent
-
 class BootStrap {
 
     def init = { servletContext ->
@@ -67,7 +25,6 @@ class BootStrap {
 //
 //        new BloodType(code:"UNKNOWN").save() //Desconocido
 //        new BloodType(code:"BLOOD_A").save() //A
-//        new BloodType(code:"BLOOD_B").save() //B
 //        new BloodType(code:"BLOOD_B").save() //B
 //        new BloodType(code:"BLOOD_AB").save() //AB
 //        new BloodType(code:"BLOOD_0").save() //O
@@ -166,12 +123,6 @@ class BootStrap {
 //        new Leukemia(code: "NO").save()
 //        new Leukemia(code: "YES_MORE_5_YEARS").save()
 //        new Leukemia(code: "YES_LESS_5_YEARS").save()
-//
-//
-//        new PeripheralEdemaLevel(code: "NO").save()
-//        new PeripheralEdemaLevel(code: "MINOR").save()
-//        new PeripheralEdemaLevel(code: "MODERATE").save()
-//        new PeripheralEdemaLevel(code: "SEVERE").save()
 //
 //        new Lvef(code: "UNKNOWN").save()
 //        new Lvef(code: "PLUS_50").save()
@@ -279,11 +230,11 @@ class BootStrap {
 //        new ImplantGoal(code:"TARGET_THERAPY").save()
 //        new ImplantGoal(code:"OTHER").save()
 //
-//        new CurrentSituation(code: "ELECTIVE_IMPLANT").save() // Implante electivo
-//        new CurrentSituation(code: "URGENT_IMPLANT").save() // Implante urgente
-//        new CurrentSituation(code: "EMERGING_IMPLANT").save() // Implante emergente
-//        new CurrentSituation(code: "POSTCARDIOTOMY").save() // Postcardiotomía
-//        new CurrentSituation(code: "OTHERS").save() // Otros
+//        new ImplantCause(code: "ELECTIVE_IMPLANT").save() // Implante electivo
+//        new ImplantCause(code: "URGENT_IMPLANT").save() // Implante urgente
+//        new ImplantCause(code: "EMERGING_IMPLANT").save() // Implante emergente
+//        new ImplantCause(code: "POSTCARDIOTOMY").save() // Postcardiotomía
+//        new ImplantCause(code: "OTHERS").save() // Otros
 //
 //        new MainCardiacImplantCause(code:"NONE").save() //Ninguna
 //		new MainCardiacImplantCause(code:"CANCER").save() //Cáncer
@@ -400,6 +351,7 @@ class BootStrap {
 //        new ImplantEcmoIn(code:"FEMORAL_VEIN").save() //Vena femoral
 //        new ImplantEcmoIn(code:"JUGULAR_VEIN").save() //Vena yugular/subclavia
 //        new ImplantEcmoIn(code:"RIGHT_ATRIUM").save() //Aurícula derecha
+//        new ImplantEcmoIn(code:"UNIQUE_CANNULA").save() //Cánula única (tipo Avalon o similares)
 //        new ImplantEcmoIn(code:"OTHER").save() //Otro
 //
 //
@@ -410,6 +362,7 @@ class BootStrap {
 //        new ImplantEcmoOut(code:"CAROTID_ARTERY").save() //Arteria carótida
 //        new ImplantEcmoOut(code:"AORTA").save() //Aorta
 //        new ImplantEcmoOut(code:"PULMONARY_ARTERY").save() //Arteria pulmonar
+//        new ImplantEcmoOut(code:"UNIQUE_CANNULA").save() //Cánula única (tipo Avalon o similares)
 //        new ImplantEcmoOut(code:"OTHER").save() //Otra
 //
 //        new CollateralSurgery(code:"AORTIC_VALVE_SURGERY").save() // Cirugía sobre la válvula aórtica
