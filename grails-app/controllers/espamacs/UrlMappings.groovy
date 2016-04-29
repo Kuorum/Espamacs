@@ -50,7 +50,7 @@ class UrlMappings {
         name centreShow:                                 "/centros/${id}"   (controller:"centre", action:"show")
         name centreEdit:                                 "/centros/${id}/edit"   (controller:"centre"){action=[GET:'edit', POST:'update']}
 
-        name profile:                                    "/profile"   (controller:"profile", action:"editProfile")
+        name profile:                                    "/profile"   (controller:"profile"){action=[GET:'edit', POST:'update']}
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {

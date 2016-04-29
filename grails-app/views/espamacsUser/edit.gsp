@@ -15,7 +15,7 @@
 
 <content tag="mainContent">
     <h1><g:message code="espamacsUser.navigation.create" /></h1>
-    <g:form mapping="userCreate">
+    <g:form mapping="userEdit" params="${this.espamacsUser.encodeAsLinkProperties()}">
         <g:render template="espamacsUserFields" model="[user:this.espamacsUser]"/>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />

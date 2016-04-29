@@ -1,14 +1,14 @@
 package espamacs
 
 import espamacs.pagination.Pagination
+import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured("ROLE_ADMIN")
 class EspamacsUserController {
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Pagination pagination) {
         def model = searchModel(pagination)
@@ -77,7 +77,7 @@ class EspamacsUserController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'espamacsUser.label', default: 'EspamacsUser'), espamacsUser.id])
+                flash.message = message(code: 'default.updated.message', args: [espamacsUser.username, espamacsUser.id])
                 redirect espamacsUser
             }
             '*'{ respond espamacsUser, [status: OK] }
