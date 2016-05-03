@@ -36,7 +36,7 @@ environments:
         dataSource:
             dbCreate: no-validate
 #            url: jdbc:mysql://195.76.176.81:3306/espamacs
-            url: jdbc:mysql://espamacs-pro.cw0xkbzibi0r.eu-west-1.rds:3306/espamacs
+            url: jdbc:mysql://espamacs-pro.cw0xkbzibi0r.eu-west-1.rds.amazonaws.com:3306/espamacs
             username: espamacs
             password: 3sp4m4cs
             properties:
