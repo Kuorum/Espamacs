@@ -31,7 +31,7 @@ import espamacs.type.event.malfunctionDevice.*
 class BootStrap {
 
     def init = { servletContext ->
-//        initDB()
+        initDB()
 
     }
 
@@ -470,16 +470,10 @@ class BootStrap {
         new PatientHealthStatus(code:"OTHER_HOSPITAL_ADMISION").save() //Ingresado en otro centro hospitalario
         new PatientHealthStatus(code:"DISCHARGED").save() //Alta hospitalaria
 
-        new RemovedAssistance(code:"NO").save() // No
-        new RemovedAssistance(code:"YES_HEALED").save() // Sí, por recuperación
-        new RemovedAssistance(code:"YES_TRNSPLANT").save() // Sí, por trasplante
-        new RemovedAssistance(code:"YES_CHANGE_ASSISTANCE").save() // Sí, por cambio de tipo de asistencia
-        new RemovedAssistance(code:"YES_DEAD").save() // Sí, por fallecimiento
-
-        new RemovedAssistanceDeath(code:"NONE").save() //No aplica
-        new RemovedAssistanceDeath(code:"CARDIOVASCULAR_CAUSE").save() //Causa cardiovascular
-        new RemovedAssistanceDeath(code:"NO_CARDIOVASCULAR_CAUSE").save() //Causa no cardiovascular
-        new RemovedAssistanceDeath(code:"OTHER").save() //Otras
+        new RemovedAssistanceDeathCause(code:"NONE").save() //No aplica
+        new RemovedAssistanceDeathCause(code:"CARDIOVASCULAR_CAUSE").save() //Causa cardiovascular
+        new RemovedAssistanceDeathCause(code:"NO_CARDIOVASCULAR_CAUSE").save() //Causa no cardiovascular
+        new RemovedAssistanceDeathCause(code:"OTHER").save() //Otras
 
         new MalfunctionDeviceType(code:"PUMP_ERROR").save() // Fallo de la bomba
         new MalfunctionDeviceType(code:"CONTROL_DEVICE_ERROR").save() // Fallo de los dispositivos de control
@@ -683,13 +677,9 @@ class BootStrap {
         event.eventDate=new Date()
         event.patientHealthStatus=PatientHealthStatus.findAll().first()
         event.patientDeath= true
-        event.removedAssistance=RemovedAssistance.findAll().first()
         event.malfunctionDeviceType=MalfunctionDeviceType.findAll().first()
         event.urgentSurgery=UrgentSurgery.findAll().first()
         event.changeAssistanceComponents=true
-        event.removedAssistanceDeath = RemovedAssistanceDeath.findAll().first()
-        event.aliveDays = 2
-        event.aliveAfterHospital = true
         patient.events.add(event)
         event.save()
         patient.save()

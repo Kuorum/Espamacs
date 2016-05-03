@@ -1,5 +1,15 @@
+
+
+
 delete from espamacs_user_role;
 delete from espamacs_user;
+delete from role;
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,0,'ROLE_USER'),(2,0,'ROLE_ADMIN');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
 
 INSERT INTO espamacs_user(version,username,centre_id,password,account_expired, account_locked, password_expired, enabled) VALUES (0, 'Centro',5,                       '$2a$10$1EHlXZK8SuJml9aMRdjoiePPPcJCJRxtojNxWU4phvXg53TQJfv.W',0,0,0,1);
 INSERT INTO espamacs_user(version,username,centre_id,password,account_expired, account_locked, password_expired, enabled) VALUES (0, 'puertadelmar01',29,              '$2a$10$1EHlXZK8SuJml9aMRdjoiePPPcJCJRxtojNxWU4phvXg53TQJfv.W',0,0,0,1);

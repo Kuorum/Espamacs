@@ -46,9 +46,13 @@ class UrlMappings {
         name patientEventCreateMalfunctionDevice:        "/patient/${patientId}/add-event/MalfunctionDevice"        (controller:"event"){action=[GET:'createMalfunctionDevice', POST:'saveMalfunctionDevice']}
         name patientEventCreatePeripheralVascularAccessComplications:        "/patient/${patientId}/add-event/PeripheralVascularAccessComplications"        (controller:"event"){action=[GET:'createPeripheralVascularAccessComplications', POST:'savePeripheralVascularAccessComplications']}
 
-        name centreList:                                 "/centros"         (controller:"centre", action:"index")
-        name centreShow:                                 "/centros/${id}"   (controller:"centre", action:"show")
-        name centreEdit:                                 "/centros/${id}/edit"   (controller:"centre"){action=[GET:'edit', POST:'update']}
+        name patientEventCreateRemovedAssistanceHealed:        "/patient/${patientId}/add-event/RemovedAssistanceHealed"       (controller:"event"){action=[GET:'createRemovedAssistanceHealed',     POST:'saveRemovedAssistanceHealed']}
+        name patientEventCreateRemovedAssistanceTransplant:    "/patient/${patientId}/add-event/RemovedAssistanceTransplant"   (controller:"event"){action=[GET:'createRemovedAssistanceTransplant', POST:'saveRemovedAssistanceTransplant']}
+        name patientEventCreateRemovedAssistanceChanged:       "/patient/${patientId}/add-event/RemovedAssistanceChanged"      (controller:"event"){action=[GET:'createRemovedAssistanceChanged',    POST:'saveRemovedAssistanceChanged']}
+
+        name centreList:                                 "/centres"         (controller:"centre", action:"index")
+        name centreShow:                                 "/centres/${id}"   (controller:"centre", action:"show")
+        name centreEdit:                                 "/centres/${id}/edit"   (controller:"centre"){action=[GET:'edit', POST:'update']}
 
         name profile:                                    "/profile"   (controller:"profile"){action=[GET:'edit', POST:'update']}
 

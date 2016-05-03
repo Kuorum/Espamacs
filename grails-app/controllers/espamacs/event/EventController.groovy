@@ -208,6 +208,39 @@ class EventController {
         save(otherEvent, patient, transactionStatus)
     }
 
+    def createRemovedAssistanceHealed(){
+        Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
+        respond patient, view: 'create', model:[patient:patient, event:new RemovedAssistanceHealed(params)]
+    }
+	@Transactional
+	def saveRemovedAssistanceHealed(RemovedAssistanceHealed removedAssistanceHealed){
+        Patient patient = Patient.get(params.patientId)
+        save(removedAssistanceHealed, patient, transactionStatus)
+    }
+
+    def createRemovedAssistanceTransplant(){
+        Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
+        respond patient, view: 'create', model:[patient:patient, event:new RemovedAssistanceTransplant(params)]
+    }
+    @Transactional
+    def saveRemovedAssistanceTransplant(RemovedAssistanceTransplant removedAssistanceTransplant){
+        Patient patient = Patient.get(params.patientId)
+        save(removedAssistanceTransplant, patient, transactionStatus)
+    }
+
+    def createRemovedAssistanceChanged(){
+        Patient patient = Patient.get(params.patientId)
+        patientService.checkPermission(patient)
+        respond patient, view: 'create', model:[patient:patient, event:new RemovedAssistanceChanged(params)]
+    }
+    @Transactional
+    def saveRemovedAssistanceChanged(RemovedAssistanceChanged removedAssistanceChanged){
+        Patient patient = Patient.get(params.patientId)
+        save(removedAssistanceChanged, patient, transactionStatus)
+    }
+
     private save(Event event, Patient patient, def transactionStatus) {
         if (event == null || patient == null) {
             transactionStatus.setRollbackOnly()

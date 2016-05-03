@@ -2,12 +2,10 @@ package espamacs
 
 import espamacs.event.Event
 import espamacs.type.PatientStatus
-import espamacs.type.event.RemovedAssistance
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.transaction.Transactional
 import org.springframework.security.access.AccessDeniedException
-
 
 @Transactional
 class PatientService {
@@ -57,8 +55,7 @@ class PatientService {
 
     private Event findRemovedAssistanceEvent(Patient patient){
         List<Event> events = Event.findAllByPatient(patient)
-        RemovedAssistance noRemovedAssistanceType = RemovedAssistance.findByCode("NO")
-        Event removedAssistanceEvent = events.find{event -> event.removedAssistance != noRemovedAssistanceType}
+        Event removedAssistanceEvent = events.find{event -> event.removeAssistance }
         return removedAssistanceEvent
     }
 

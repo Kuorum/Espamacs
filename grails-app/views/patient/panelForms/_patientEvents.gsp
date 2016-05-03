@@ -3,7 +3,10 @@
 
 <g:applyLayout name="patientPanelLayout" model="[patient:patient, bean:events, fieldName:'events']">
 
-    <content tag="panelTitle"><g:message code="patient.create.step8.events.title"/></content>
+    <content tag="panelTitle">
+        <g:message code="patient.create.step8.events.title"/>
+        <abbr title="${message(code:'patient.create.step8.events.title.help')}"><span class="fa fa-question-circle"></span> </abbr>
+    </content>
     <content tag="panelBody">
         <div class="panel-body">
             <g:if test="${events}">
@@ -23,7 +26,7 @@
                             <td><g:message code="patient.create.step8.events.createEventsButton.${event.class.simpleName}"/> </td>
                             <td><f:display bean="${event}" property="eventDate"/></td>
                             <td><f:display bean="${event}" property="patientHealthStatus"/></td>
-                            <td><f:display bean="${event}" property="removedAssistance"/></td>
+                            <td><f:display bean="${event}" property="removeAssistance"/></td>
                             <td><f:display bean="${event}" property="patientDeath"/></td>
                         </tr>
                     </g:each>
@@ -36,7 +39,18 @@
         </div>
         <div class="panel-footer">
             <fieldset class="buttons">
-                <div class="dropdown dropup">
+                <span class="dropdown dropup">
+                    <a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <g:message code="patient.create.step8.events.createRemoveAssistanceButton"/>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><g:link mapping="patientEventCreateRemovedAssistanceHealed"       params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.RemovedAssistanceHealed"/></g:link></li>
+                        <li><g:link mapping="patientEventCreateRemovedAssistanceTransplant"   params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.RemovedAssistanceTransplant"/></g:link></li>
+                        <li><g:link mapping="patientEventCreateRemovedAssistanceChanged"      params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.RemovedAssistanceChanged"/></g:link></li>
+                    </ul>
+                </span>
+                <span class="dropdown dropup">
                     <a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                         <g:message code="patient.create.step8.events.createEventsButton"/>
                         <span class="caret"></span>
@@ -60,7 +74,7 @@
                         <li><g:link mapping="patientEventCreatePeripheralVascularAccessComplications" params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.PeripheralVascularAccessComplications"/></g:link></li>
                         <li><g:link mapping="patientEventCreateOtherEvent"              params="${patient.encodeAsLinkProperties()}"><g:message code="patient.create.step8.events.createEventsButton.OtherEvent"/></g:link></li>
                     </ul>
-                </div>
+                </span>
             </fieldset>
         </div>
     </content>

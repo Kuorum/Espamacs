@@ -234,6 +234,11 @@ fieldset.form-group{
     background-color: #efefff;
     box-shadow: 0 0 3px 1px #aab;
 }
+
+fieldset.form-group:empty {
+    display: none;
+}
+
 fieldset.form-group > h4{
     width: 100%;
     border-bottom: 1px solid #2D6A78;

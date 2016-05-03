@@ -14,7 +14,7 @@
             <g:message code="head.menu.admin"/><span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            <li><g:link mapping="centros"> <g:message code="head.menu.centers"/></g:link> </li>
+            <li><g:link mapping="centreList"> <g:message code="head.menu.centers"/></g:link> </li>
             <li><g:link mapping="users"> <g:message code="head.menu.users"/></g:link> </li>
         </ul>
     </li>

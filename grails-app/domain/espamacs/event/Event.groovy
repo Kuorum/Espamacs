@@ -2,8 +2,6 @@ package espamacs.event
 
 import espamacs.Patient
 import espamacs.type.event.PatientHealthStatus
-import espamacs.type.event.RemovedAssistance
-import espamacs.type.event.RemovedAssistanceDeath
 
 class Event { // THIS CLASS CAN NOT BE ABSTRACT DUE TO GORM
 
@@ -11,22 +9,15 @@ class Event { // THIS CLASS CAN NOT BE ABSTRACT DUE TO GORM
     Date eventDate
     PatientHealthStatus patientHealthStatus
     Boolean patientDeath
-    RemovedAssistance removedAssistance
 
-    RemovedAssistanceDeath removedAssistanceDeath
-    Integer aliveDays
-    Boolean aliveAfterHospital
+    Boolean removeAssistance = Boolean.FALSE
 
     static belongsTo = [patient:Patient]
 
     static mapping = {
         patientHealthStatus lazy: false, fetch: 'join'
-        removedAssistance lazy: false, fetch: 'join'
     }
 
     static constraints = {
-        removedAssistanceDeath nullable: true
-        aliveDays nullable: true
-        aliveAfterHospital nullable: true
     }
 }
