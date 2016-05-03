@@ -22,7 +22,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/logout',         access: ['permitAll']],
 		[pattern: '/logoff',         access: ['permitAll']],
 		[pattern: '/logout/**',      access: ['permitAll']],
-		[pattern: '/**',             access: ['ROLE_USER']],
+		[pattern: '/**',             access: ['IS_AUTHENTICATED_REMEMBERED']],
 ]
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],
