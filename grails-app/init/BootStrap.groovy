@@ -31,7 +31,7 @@ import espamacs.type.event.malfunctionDevice.*
 class BootStrap {
 
     def init = { servletContext ->
-        initDB()
+//        initDB()
 
     }
 
