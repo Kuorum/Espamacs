@@ -352,7 +352,6 @@ CREATE TABLE `espamacs_user` (
 
 LOCK TABLES `espamacs_user` WRITE;
 /*!40000 ALTER TABLE `espamacs_user` DISABLE KEYS */;
-INSERT INTO `espamacs_user` VALUES (1,0,'\0','\0',1,'','$2a$10$t7Ly/KIf0AHsxSgYjaU3.OryMV76AL4kTIwR1i/1t7cBcZ4QkAFgC','\0','user'),(2,0,'\0','\0',2,'','$2a$10$4wDoosLL2bTWv3ttFDCI/.PyJSEZYSIHlZw9vsTqg9oMv2h/B3e7u','\0','admin');
 /*!40000 ALTER TABLE `espamacs_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +378,6 @@ CREATE TABLE `espamacs_user_role` (
 
 LOCK TABLES `espamacs_user_role` WRITE;
 /*!40000 ALTER TABLE `espamacs_user_role` DISABLE KEYS */;
-INSERT INTO `espamacs_user_role` VALUES (1,1),(2,1),(2,2);
 /*!40000 ALTER TABLE `espamacs_user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
