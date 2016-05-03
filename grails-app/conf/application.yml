@@ -18,10 +18,11 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+#            dbCreate: create-drop
 #            dbCreate: validate
-#            dbCreate: no-validate
-            url: jdbc:mysql://localhost:3306/espamacs
+            dbCreate: no-validate
+#            url: jdbc:mysql://localhost:3306/espamacs
+            url: jdbc:mysql://195.76.176.81:3306/espamacs
             username: espamacs
             password: 3sp4m4cs
             logSql: true
