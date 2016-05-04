@@ -9,7 +9,7 @@
             from="${espamacs.Province.findAll([sort:'name'])}"
             optionKey="id"
             optionValue="name"
-            value="${value.id}"
+            value="${value?.id}"
             name="${property}"/>
 
     <div class="field-errors">
