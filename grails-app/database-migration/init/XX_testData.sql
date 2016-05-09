@@ -7,6 +7,10 @@ INSERT INTO `patient` VALUES (1,4,NULL,'2016-05-03 12:44:15',11,15,9,1,'INC',NUL
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
+LOCK TABLES `centre` WRITE;
+INSERT INTO `centre` (id,version,province_id,name,service, address) VALUES (1,0,7,'Puerta de Hierro - BORRAR','Cirugía Cardiaca','Las Xubias de Arriba,   84\n15006 A CORUÑA');
+INSERT INTO `centre` (id,version,province_id,name,service, address) VALUES (2,0,7,'La Paz - BORRAR','Cirugía Cardiaca','Las Xubias de Arriba,   84\n15006 A CORUÑA');
+UNLOCK TABLES;
 
 
 LOCK TABLES `event` WRITE;
