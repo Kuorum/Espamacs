@@ -19,7 +19,6 @@ import espamacs.type.implantData.RvadBrand
 class ImplantData {
 
     ImplantType implantType
-    Integer lengthMinutes
     Integer lengthBypassMinutes
     CollateralSurgery collateralSurgery
 

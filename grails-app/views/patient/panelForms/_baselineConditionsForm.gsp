@@ -43,6 +43,7 @@
                     <f:field bean="${baselineCondition}" property="hemodynamicData.pulmonaryCapillaryPressure"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.transpulmonaryGradient"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.pulmonaryVascularResistance"/>
+                    <f:field bean="${baselineCondition}" property="hemodynamicData.pulmonaryVascularResistanceWoodUnits"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.centralVenousPressure"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.systemicVascularResistance"/>
                     <f:field bean="${baselineCondition}" property="hemodynamicData.systolicEffortIndex"/>

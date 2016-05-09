@@ -131,6 +131,7 @@ class HemodynamicData {
     Double centralVenousPressure
 
     Double pulmonaryVascularResistance
+    Double pulmonaryVascularResistanceWoodUnits
     Double systemicVascularResistance
     Double systolicEffortIndex
     Double cardiacOutput
@@ -150,6 +151,7 @@ class HemodynamicData {
         transpulmonaryGradient nullable:true
         centralVenousPressure nullable:true
         pulmonaryVascularResistance nullable:true
+        pulmonaryVascularResistanceWoodUnits nullable:true
         systemicVascularResistance nullable:true
         systolicEffortIndex nullable:true
         cardiacOutput nullable:true

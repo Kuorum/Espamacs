@@ -31,7 +31,7 @@
                 <a class="navbar-brand" href="/#">
                     <div id="logos-holder">
                         <asset:image src="logo.png" id="espamacs-logo" class="logo"/>
-                        <span id="espamacs-text" class="hidden-xs">Espamacs</span>
+                        <span id="espamacs-text" class="hidden-xs">ESPAMACS</span>
                     </div>
                     <sec:ifLoggedIn>
                         <span class="hidden-xs">-</span>

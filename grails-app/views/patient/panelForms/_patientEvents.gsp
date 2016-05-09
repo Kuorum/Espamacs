@@ -5,6 +5,7 @@
 
     <content tag="panelTitle">
         <g:message code="patient.create.step8.events.title"/>
+
         <abbr title="${message(code:'patient.create.step8.events.title.help')}"><span class="fa fa-question-circle"></span> </abbr>
     </content>
     <content tag="panelBody">

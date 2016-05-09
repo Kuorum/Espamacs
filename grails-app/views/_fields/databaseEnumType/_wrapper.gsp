@@ -12,7 +12,7 @@
         </g:if>
     </label>
     <g:select
-            from="${persistentProperty.type.list()}"
+            from="${persistentProperty.type.list([sort: "position", order: "asc"])}"
             optionKey="code"
             valueMessagePrefix="${type.name}"
             value="${value?.code}"

@@ -10,7 +10,6 @@
                 <input type="hidden" name="patient.id" value="${patient?.id}"/>
                 <fieldset class="form-group">
                     <f:field bean="${implantData}" property="implantType"/>
-                    <f:field bean="${implantData}" property="lengthMinutes"/>
                     <f:field bean="${implantData}" property="lengthBypassMinutes"/>
                     <f:field bean="${implantData}" property="collateralSurgery"/>
                 </fieldset>
