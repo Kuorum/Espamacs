@@ -47,10 +47,6 @@ UNLOCK TABLES;
 
 LOCK TABLES `centre` WRITE;
 /*!40000 ALTER TABLE `centre` DISABLE KEYS */;
-INSERT INTO `centre` (id,version,province_id,name,service, address) VALUES (1,0,7,'Puerta de Hierro - BORRAR','Cirugía Cardiaca','Las Xubias de Arriba,   84\n15006 A CORUÑA');
-INSERT INTO `centre` (id,version,province_id,name,service, address) VALUES (2,0,7,'La Paz - BORRAR','Cirugía Cardiaca','Las Xubias de Arriba,   84\n15006 A CORUÑA');
-
-
 INSERT INTO `centre` (id,version,province_id,name,service, address) VALUES (5,0,7,'Complejo Hospitalario Universitario A Coruña','Cirugía Cardiaca','Las Xubias de Arriba,   84\n15006 A CORUÑA');
 INSERT INTO `centre` (id,version, province_id,name,service,address) VALUES (6,0,8,'Clínica idc Salud','Cirugía Cardiaca','Plaza del Madroño, 11');
 INSERT INTO `centre` (id,version, province_id,name,service,address) VALUES (8,0,8,'Hospital Universitario del Vinalopó','Cirugía Cardiaca','Tónico Sansano Mora, 14, ');

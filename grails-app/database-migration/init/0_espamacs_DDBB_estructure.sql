@@ -64,6 +64,7 @@ CREATE TABLE `baseline_condition` (
   `hemodynamic_data_hear_rate` double DEFAULT NULL,
   `hemodynamic_data_pulmonary_capillary_pressure` double DEFAULT NULL,
   `hemodynamic_data_pulmonary_vascular_resistance` double DEFAULT NULL,
+  `hemodynamic_data_pulmonary_vascular_resistance_wood_units` double DEFAULT NULL,
   `hemodynamic_data_systemic_vascular_resistance` double DEFAULT NULL,
   `hemodynamic_data_systolic_arterial_pressure` double DEFAULT NULL,
   `hemodynamic_data_systolic_arterial_pulmonary_pressure` double DEFAULT NULL,
@@ -272,7 +273,7 @@ CREATE TABLE `centre` (
   PRIMARY KEY (`id`),
   KEY `FK_m83d7vfwejqwmjv038ncacsv7` (`province_id`),
   CONSTRAINT `FK_m83d7vfwejqwmjv038ncacsv7` FOREIGN KEY (`province_id`) REFERENCES `province` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +344,7 @@ CREATE TABLE `espamacs_user` (
   UNIQUE KEY `UK_cwvsfktuttftk92bx0aatig76` (`username`),
   KEY `FK_8u11rkicba7yunnyxam4ul4a2` (`centre_id`),
   CONSTRAINT `FK_8u11rkicba7yunnyxam4ul4a2` FOREIGN KEY (`centre_id`) REFERENCES `centre` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,7 +505,7 @@ CREATE TABLE `event` (
   CONSTRAINT `FK_s50xm5g3d7qewy15xukxw8pfv` FOREIGN KEY (`wound_dehiscence_type_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_s9wkspf2wcb3ggky7wl356o9p` FOREIGN KEY (`arrhythmia_type_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_t3osnu02c228naglqnqsyrjjf` FOREIGN KEY (`malfunction_device_type_id`) REFERENCES `type_database_enum_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -534,7 +535,6 @@ CREATE TABLE `implant_data` (
   `ecmo_data_initial_flow` double DEFAULT NULL,
   `implant_type_id` bigint(20) NOT NULL,
   `length_bypass_minutes` int(11) NOT NULL,
-  `length_minutes` int(11) NOT NULL,
   `lvad_data_blood_flow_type_id` bigint(20) DEFAULT NULL,
   `lvad_data_brand_id` bigint(20) DEFAULT NULL,
   `lvad_data_implant_in_id` bigint(20) DEFAULT NULL,
@@ -776,7 +776,7 @@ CREATE TABLE `patient` (
   CONSTRAINT `FK_rb90swu1pf5xmbop7r591bc6c` FOREIGN KEY (`diagnosis_and_implant_goals_id`) REFERENCES `diagnosis_and_implant_goals` (`id`),
   CONSTRAINT `FK_rwfrakxsyu5m49ekd1y41e6xo` FOREIGN KEY (`blood_type_id`) REFERENCES `type_database_enum_type` (`id`),
   CONSTRAINT `FK_s8qdmw1sb74dqfty2r2freld5` FOREIGN KEY (`gender_id`) REFERENCES `type_database_enum_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -996,7 +996,7 @@ CREATE TABLE `province` (
   `version` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
