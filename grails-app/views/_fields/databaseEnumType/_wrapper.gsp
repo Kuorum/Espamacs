@@ -11,12 +11,7 @@
             <abbr title="${helpText}"><span class="fa fa-info-circle"></span></abbr>
         </g:if>
     </label>
-    <g:select
-            from="${persistentProperty.type.list([sort: "position", order: "asc"])}"
-            optionKey="code"
-            valueMessagePrefix="${type.name}"
-            value="${value?.code}"
-            name="${property}"/>
+    <f:widget bean="${bean}" property="${property}" required="${required}"/>
     <div class="field-errors">
         <g:hasErrors bean="${bean}" field="${property}">
             <g:renderErrors bean="${bean}" as="list" field="${property}"/>

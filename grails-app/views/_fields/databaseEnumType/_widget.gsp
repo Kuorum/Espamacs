@@ -1,7 +1,6 @@
-
 <g:if test="${required}">
         <g:select
-                from="${type.list()}"
+                from="${type.list([sort: "position", order: "asc"])}"
                 optionKey="code"
                 valueMessagePrefix="${type.name}"
                 value="${value?.code}"
@@ -9,7 +8,7 @@
 </g:if>
 <g:else>
         <g:select
-                from="${type.list()}"
+                from="${type.list([sort: "position", order: "asc"])}"
                 noSelection="${['null':'']}"
                 optionKey="code"
                 valueMessagePrefix="${type.name}"

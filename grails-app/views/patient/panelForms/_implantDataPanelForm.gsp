@@ -16,7 +16,7 @@
 
                 <fieldset class="form-group" id="LVAD">
                     <h4><g:message code="patient.create.step6.implantData.lvad.title"/></h4>
-                    <f:field bean="${implantData}" property="lvadData.brand"/>
+                    <f:field bean="${implantData}" property="lvadData.brand" required="false"/>
                     <f:field bean="${implantData}" property="lvadData.bloodFlowType"/>
                     <f:field bean="${implantData}" property="lvadData.implantIn"/>
                     <f:field bean="${implantData}" property="lvadData.implantOut"/>
@@ -25,7 +25,7 @@
 
                 <fieldset class="form-group" id="RVAD">
                     <h4><g:message code="patient.create.step6.implantData.rvad.title"/></h4>
-                    <f:field bean="${implantData}" property="rvadData.brand"/>
+                    <f:field bean="${implantData}" property="rvadData.brand" required="false"/>
                     <f:field bean="${implantData}" property="rvadData.bloodFlowType"/>
                     <f:field bean="${implantData}" property="rvadData.implantIn"/>
                     <f:field bean="${implantData}" property="rvadData.implantOut"/>
@@ -34,7 +34,7 @@
 
                 <fieldset class="form-group" id="TOTAL">
                     <h4><g:message code="patient.create.step6.implantData.total.title"/></h4>
-                    <f:field bean="${implantData}" property="totalHeartData.brand"/>
+                    <f:field bean="${implantData}" property="totalHeartData.brand" required="false"/>
                     <f:field bean="${implantData}" property="totalHeartData.bloodFlowType"/>
                     <f:field bean="${implantData}" property="totalHeartData.implantIn"/>
                     <f:field bean="${implantData}" property="totalHeartData.implantOut"/>
@@ -43,7 +43,7 @@
 
                 <fieldset class="form-group" id="ECMO">
                     <h4><g:message code="patient.create.step6.implantData.ecmo.title"/></h4>
-                    <f:field bean="${implantData}" property="ecmoData.brand"/>
+                    <f:field bean="${implantData}" property="ecmoData.brand" required="false"/>
                     <f:field bean="${implantData}" property="ecmoData.bloodFlowType"/>
                     <f:field bean="${implantData}" property="ecmoData.implantIn"/>
                     <f:field bean="${implantData}" property="ecmoData.implantOut"/>
