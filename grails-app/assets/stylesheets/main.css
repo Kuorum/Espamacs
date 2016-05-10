@@ -245,6 +245,13 @@ fieldset.form-group > h4{
     padding: 0.5em 0;
 }
 
+.tooltip .tooltip-inner {max-width: 400px;  }
+.tooltip .tooltip-inner h5{ color:#eef;border-bottom: 1px solid}
+.tooltip .tooltip-inner p{text-align: justify; }
+.tooltip .tooltip-inner p + ul{text-align: justify;margin-top: -1em; }
+.tooltip .tooltip-inner ul{text-align: justify; padding-left: 2em;}
+.tooltip .tooltip-inner li{text-align: justify;}
+
 .property-list .fieldcontain {
     list-style: none;
     overflow: hidden;

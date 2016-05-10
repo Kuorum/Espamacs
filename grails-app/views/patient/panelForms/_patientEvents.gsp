@@ -6,7 +6,19 @@
     <content tag="panelTitle">
         <g:message code="patient.create.step8.events.title"/>
 
-        <abbr title="${message(code:'patient.create.step8.events.title.help')}"><span class="fa fa-question-circle"></span> </abbr>
+        <g:set var="tooltipData">
+            <h5><g:message code="patient.create.step8.events.title.help.title"/></h5>
+            <p><g:message code="patient.create.step8.events.title.help.p1"/></p>
+            <p><g:message code="patient.create.step8.events.title.help.p2"/></p>
+            <p><g:message code="patient.create.step8.events.title.help.p3"/></p>
+            <ul>
+                <li><g:message code="patient.create.step8.events.title.help.list.1"/></li>
+                <li><g:message code="patient.create.step8.events.title.help.list.2"/></li>
+            </ul>
+        </g:set>
+        <span class="fa fa-question-circle" rel='tooltip' data-original-title='${tooltipData}'></span>
+
+        %{--<abbr title="${message(code:'patient.create.step8.events.title.help')}"><span class="fa fa-question-circle"></span> </abbr>--}%
     </content>
     <content tag="panelBody">
         <div class="panel-body">

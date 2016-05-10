@@ -37,6 +37,8 @@ $(function(){
         zIndexOffset:10000,
     })
 
+    $("[rel=tooltip]").tooltip({html:true})
+
     $(".ajax-searchable-table-form").on("click","tr.clickable-row", function() {
         window.document.location = $(this).data("href");
     });
