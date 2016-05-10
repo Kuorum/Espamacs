@@ -6,7 +6,7 @@
     <h4>
         <g:message code="${bean.class.name}.${property}" default="${label}"/>
         <g:if test="${helpText}">
-            <abbr title="${helpText}"><span class="fa fa-info-circle"></span></abbr>
+            <span class="fa fa-info-circle" rel='tooltip' data-original-title='${helpText}'></span>
         </g:if>
     </h4>
     <g:each in="${bean.hasMany[property].list()}" var="optionValue">
@@ -14,7 +14,7 @@
         <label for="${property}-${optionValue.id}">
             <g:message code="${optionValue.class.name}.${optionValue.code}" default="${optionValue.code}"/>
             <g:if test="${labelHelpText}">
-                <sup><abbr title="${labelHelpText}"><span class="fa fa-info-circle"></span></abbr></sup>
+                <sup><span class="fa fa-info-circle" rel='tooltip' data-original-title='${labelHelpText}'></span></sup>
             </g:if>
             <input type="checkbox" name="${property}" value="${optionValue.code}" id="${property}" ${value*.code?.contains(optionValue?.code)?'CHECKED':''} />
         </label>

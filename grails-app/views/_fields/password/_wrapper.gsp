@@ -5,7 +5,7 @@
     <label for="${property}">
         <g:message code="${bean.class.name}.${property}" default="${label}"></g:message>
         <g:if test="${helpText}">
-            <abbr title="${helpText}"><span class="fa fa-info-circle"></span></abbr>
+            <span class="fa fa-info-circle" rel='tooltip' data-original-title='${helpText}'></span>
         </g:if>
     </label>
     <input type="password" name="${property}" value="${value}" id="${property}">

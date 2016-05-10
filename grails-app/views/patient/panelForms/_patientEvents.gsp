@@ -16,7 +16,7 @@
                 <li><g:message code="patient.create.step8.events.title.help.list.2"/></li>
             </ul>
         </g:set>
-        <span class="fa fa-question-circle" rel='tooltip' data-original-title='${tooltipData}'></span>
+        <span class="fa fa-info-circle" rel='tooltip' data-original-title='${tooltipData}'></span>
 
         %{--<abbr title="${message(code:'patient.create.step8.events.title.help')}"><span class="fa fa-question-circle"></span> </abbr>--}%
     </content>
