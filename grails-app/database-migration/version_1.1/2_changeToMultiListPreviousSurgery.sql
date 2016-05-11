@@ -22,7 +22,7 @@ CREATE TABLE `personal_history_type_pre_cardiac_surgery` (
 
 insert personal_history_type_pre_cardiac_surgery (personal_history_pre_cardiac_surgery_id, pre_cardiac_surgery_id, pre_cardiac_surgery_idx)(
   select ph.id as pre_cardiac_surgery_idx, ph.pre_cardiac_surgery_id as pre_cardiac_surgery_idx, 0 as pre_cardiac_surgery_idx  from personal_history ph join patient p on ph.id =p.personal_history_id
-)
+);
 
 alter table personal_history drop foreign key FK_ktuli9eh1rynkpsgc0n9411oi;
 ALTER TABLE personal_history DROP COLUMN pre_cardiac_surgery_id;
