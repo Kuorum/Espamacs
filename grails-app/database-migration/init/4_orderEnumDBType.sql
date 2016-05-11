@@ -35,4 +35,7 @@ UPDATE type_database_enum_type set position=4 where code='TRICUSPID_VALVE_SURGER
 UPDATE type_database_enum_type set position=5 where code='PULMONARY_VALVE_SURGERY' and class='espamacs.type.implantData.CollateralSurgery';
 UPDATE type_database_enum_type set position=6 where code='CABG' and class='espamacs.type.implantData.CollateralSurgery';
 
+update type_database_enum_type set position=2 where code='PULSATILE' and class='espamacs.type.implantData.BloodFlowType' and id = 258;
+update type_database_enum_type set position=1 where code='CONTINUOUS' and class='espamacs.type.implantData.BloodFlowType' and id = 259;
+
 delete from type_database_enum_type where class='espamacs.type.diagnosis.ImplantCause' and code='OTHERS' and id= 186;
