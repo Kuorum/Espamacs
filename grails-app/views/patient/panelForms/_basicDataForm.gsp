@@ -7,7 +7,7 @@
 <fieldset class="form-group">
     <h4><g:message code="patient.create.step1.basicData"/></h4>
     <f:field bean="${patient}" property="birthDate"/>
-    <f:field bean="${patient}" property="gender"/>
+    <f:field bean="${patient}" property="gender" required="false"/>
     <f:field bean="${patient}" property="weigh"/>
     <f:field bean="${patient}" property="height"/>
     <f:field bean="${patient}" property="bmi" templates="disabled"/>
