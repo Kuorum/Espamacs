@@ -17,7 +17,7 @@ class PersonalHistory {
     IntravenouslyDrugsType intravenouslyDrugs;
     BooleanDBType severeMentalRetardation;
     BooleanDBType socialCareType;
-    PreCardiacSurgery preCardiacSurgery;
+    List<PreCardiacSurgery> preCardiacSurgery;
 
     Renal renal
     Respiratory respiratory
@@ -28,6 +28,11 @@ class PersonalHistory {
     OncologicInfectious oncologicInfectious
 
     static belongsTo = [patient: Patient]
+
+    static hasMany = [
+            preCardiacSurgery: PreCardiacSurgery
+    ]
+
 
     static embedded = ['renal', 'respiratory','gastric','vascular','centralNervousSystem', 'endocrineHematologicSystem','oncologicInfectious']
 
