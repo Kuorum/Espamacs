@@ -8,6 +8,7 @@ import espamacs.initialData.InitialData
 import espamacs.pagination.PatientPagination
 import espamacs.patientData.PersonalHistory
 import espamacs.preimplantSituation.PreimplantSituation
+import espamacs.type.BooleanDBType
 import espamacs.type.PatientStatus
 import espamacs.type.implantData.ImplantType
 import grails.plugin.springsecurity.SpringSecurityService
@@ -224,7 +225,7 @@ class PatientController {
     }
 
     private def editPatientModel(Patient patient, def section = null){
-        PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory()
+        PersonalHistory personalHistory = patient.personalHistory?:new PersonalHistory(socialCareType:BooleanDBType.findByCode("YES"))
         BaselineCondition baselineCondition = patient.baselineCondition?:new BaselineCondition()
         PreimplantSituation preimplantSituation = patient.preimplantSituation?:new PreimplantSituation()
         DiagnosisAndImplantGoals diagnosisAndImplantGoals = patient.diagnosisAndImplantGoals?:new DiagnosisAndImplantGoals()
