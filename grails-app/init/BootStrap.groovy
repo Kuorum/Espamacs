@@ -75,8 +75,8 @@ class BootStrap {
 
         new DiabeticType(code: "UNKNOWN").save()
         new DiabeticType(code: "NO").save()
-        new DiabeticType(code: "TYPE1").save()
-        new DiabeticType(code: "TYPE2").save()
+        new DiabeticType(code: "TYPE1").save() // Insuline dependiente
+        new DiabeticType(code: "TYPE2").save() // Insuline no dependiente
 
         new DrinkerType(code: "UNKNOWN").save()
         new DrinkerType(code: "NO_NEVER").save()

@@ -4,9 +4,9 @@ import espamacs.type.event.RemovedAssistanceDeathCause
 
 class RemovedAssistanceTransplant extends Event{
 
-    RemovedAssistanceDeathCause removedAssistanceDeathCause
-    Integer aliveDays
     Boolean aliveAfterHospital
+    Integer aliveDays
+    RemovedAssistanceDeathCause removedAssistanceDeathCause
 
     Boolean removeAssistance = Boolean.TRUE
 
@@ -14,5 +14,6 @@ class RemovedAssistanceTransplant extends Event{
     }
 
     static constraints = {
+        aliveDays nullable: true
     }
 }

@@ -11,7 +11,22 @@
     %{--</div>--}%
 </fieldset>
 
-<fieldset class="form-group"><f:all bean="${event}" except="patient,eventDate,patientHealthStatus,patientDeath,removeAssistance"/></fieldset>
+<g:set var="fields"></g:set>
+
+
+    <fieldset class="form-group"><g:if test="${event instanceof espamacs.event.RemovedAssistanceTransplant}">
+        <h4><g:message code="patient.create.step8.events.createEventsButton.${eventCodeName}.customSection.title" default=""/></h4>
+        <f:field bean="${event}" property="aliveAfterHospital"/>
+        <f:field bean="${event}" property="aliveDays"/>
+        <f:field bean="${event}" property="removedAssistanceDeathCause"/>
+    </g:if><g:elseif test="${event instanceof espamacs.event.RemovedAssistanceHealed}">
+        <h4><g:message code="patient.create.step8.events.createEventsButton.${eventCodeName}.customSection.title" default=""/></h4>
+        <f:field bean="${event}" property="aliveAfterHospital"/>
+        <f:field bean="${event}" property="aliveDays"/>
+        <f:field bean="${event}" property="removedAssistanceDeathCause"/>
+    </g:elseif><g:else><f:all bean="${event}" except="patient,eventDate,patientHealthStatus,patientDeath,removeAssistance"/></g:else></fieldset>
+
 <fieldset class="buttons">
+
     <button class="save btn btn-primary" type="submit">${message(code: 'default.button.update.label', default: 'Update')}</button>
 </fieldset>

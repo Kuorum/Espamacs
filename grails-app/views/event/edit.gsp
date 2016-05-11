@@ -21,7 +21,7 @@
     <form action="" method="POST">
         <g:hiddenField name="version" value="${event?.version}" />
         <g:hiddenField name="id" value="${event?.id}" />
-        <g:render template="eventFields" model="[patient:patient, event:event]"/>
+        <g:render template="eventFields" model="[patient:patient, event:event, eventCodeName:eventCodeName]"/>
     </form>
 
 </content>
