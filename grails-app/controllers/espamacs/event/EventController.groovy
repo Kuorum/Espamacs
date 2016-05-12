@@ -294,23 +294,18 @@ class EventController {
     }
 
     @Transactional
-    def delete(Event event) {
-
+    def delete() {
+        Event event = Event.get(params.eventId)
         if (event == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
         patientService.checkPermission(event.patient)
-        event.delete flush:true
+        Patient patient = patientService.deleteEvent(event)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'event.label', default: 'Event'), event.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        flash.message = message(code: 'default.event.updated.message', args: [message(code: "patient.create.step8.events.createEventsButton.${event.class.simpleName}",  default: 'event'), patient.code])
+        redirect mapping:'patientShow', params: patient.encodeAsLinkProperties()
     }
 
     protected void notFound() {

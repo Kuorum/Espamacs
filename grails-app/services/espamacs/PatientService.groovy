@@ -43,6 +43,14 @@ class PatientService {
         patient.save()
     }
 
+    public Patient deleteEvent( Event event){
+        Patient patient = event.patient
+        checkPermission(patient) //ACL Chapu
+        event.delete()
+        patient.patientStatus = calcPatientStatus(patient)
+        patient.save()
+    }
+
     private PatientStatus calcPatientStatus(Patient patient){
         if (findRemovedAssistanceEvent(patient)!=null || isDead(patient)){
             return PatientStatus.findByCode("INACTIVE");

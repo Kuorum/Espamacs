@@ -27,6 +27,7 @@ class UrlMappings {
 
         name patientEvent:        "/patient/$patientId/event/${eventId}" (controller:"event"){action=[GET:"edit", POST:"update"]}
         name patientEventEdit:    "/patient/$patientId/event/${eventId}/edit" (controller:"event"){action=[GET:"edit", POST:"update"]}
+        name patientEventDelete:  "/patient/$patientId/event/${eventId}/delete" (controller:"event", action:"delete")
 
         name patientEventCreateHemorrhage:               "/patient/${patientId}/add-event/Hemorrhage"               (controller:"event"){action=[GET:'createHemorrhage', POST:'saveHemorrhage']}
         name patientEventCreateInfection:                "/patient/${patientId}/add-event/Infection"                (controller:"event"){action=[GET:'createInfection', POST:'saveInfection']}

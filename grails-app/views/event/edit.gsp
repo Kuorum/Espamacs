@@ -15,6 +15,12 @@
     </ul>
 </content>
 
+<content tag="actions">
+    <g:link mapping="patientEventDelete" params="${event.encodeAsLinkProperties()}" class="btn btn-default" type="button">
+        <g:message code="default.button.delete.label"/>
+    </g:link>
+</content>
+
 <content tag="mainContent">
     <h1><g:message code="patient.create.step8.events.createEventsButton.${eventCodeName}"/></h1>
 
