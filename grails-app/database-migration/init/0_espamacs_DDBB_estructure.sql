@@ -517,6 +517,33 @@ LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Table structure for table `hemorrhage_type_bleeding_place`
+--
+
+DROP TABLE IF EXISTS `hemorrhage_type_bleeding_place`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hemorrhage_type_bleeding_place` (
+  `hemorrhage_bleeding_places_id` bigint(20) DEFAULT NULL,
+  `bleeding_place_id` bigint(20) DEFAULT NULL,
+  `bleeding_places_idx` int(11) DEFAULT NULL,
+  KEY `FK_hemorrhage_type_bleeding_place_list` (`bleeding_place_id`),
+  CONSTRAINT `FK_hemorrhage_type_bleeding_place_list` FOREIGN KEY (`bleeding_place_id`) REFERENCES `type_database_enum_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hemorrhage_type_bleeding_place`
+--
+
+LOCK TABLES `hemorrhage_type_bleeding_place` WRITE;
+/*!40000 ALTER TABLE `hemorrhage_type_bleeding_place` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hemorrhage_type_bleeding_place` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 --
 -- Table structure for table `implant_data`
 --
