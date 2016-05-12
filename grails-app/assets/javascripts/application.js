@@ -39,6 +39,12 @@ $(function(){
 
     $("[rel=tooltip]").tooltip({html:true})
 
+    $("input[type=text][subtype=decimals]").on("change", function(e) {
+        var value = $(this).val()
+        var double =  parseNumber(value);
+        $(this).val(double)
+    });
+
     $(".ajax-searchable-table-form").on("click","tr.clickable-row", function() {
         window.document.location = $(this).data("href");
     });
@@ -108,8 +114,8 @@ $(function(){
     /*******************************************/
 
     $("#weigh, #height").on("change", function(e){
-        w = $("#weigh").val();
-        h = $("#height").val();
+        w = parseNumber($("#weigh").val());
+        h = parseNumber($("#height").val());
         if (w != "" && h !=""){
             var bmi = w / (h*h /10000);
             bmi = Math.round(bmi * 100) / 100;
@@ -127,10 +133,10 @@ $(function(){
     });
 
     $("#renal\\.baselineCreatinine,#patientAgeOnImplant,#weigh, #gender ").on("change", function(e){
-        var creatinine = $("#renal\\.baselineCreatinine").val();
-        var age = $("#patientAgeOnImplant").val()
-        var weigh = $("#weigh").val()
-        var gender = $("#gender").val()
+        var creatinine = parseNumber($("#renal\\.baselineCreatinine").val());
+        var age = parseNumber($("#patientAgeOnImplant").val())
+        var weigh = parseNumber($("#weigh").val())
+        var gender = parseNumber($("#gender").val())
         if (creatinine!= "" && age!="" && weigh!="" && gender!=""){
             var genderFactor = gender == "MALE"?1:0.85;
             var creatinineClearance = (140 - age) * weigh * genderFactor / (72*creatinine)
@@ -280,5 +286,38 @@ var display = {
     }
 }
 
+function parseNumber(strValue){
+    var val = strValue.replace(/,/g,".");
+    var parts = val.split(".")
+    var decimals = "";
+    if (parts.length>1){
+        decimals = parts.pop();
+        decimals = decimals.replace(/\D/g,'');
+    }
+    var normalizedValue = "";
+    parts.forEach(function(item,idx){
+        normalizedValue +=item.replace(/\D/g,'');
+    })
 
+    if (decimals !=""){
+        normalizedValue += "."+decimals;
+    }
+    var value = parseFloat(normalizedValue);
+    if (isNaN(value)){
+        return ""
+    }else{
+        return value;
+    }
+}
+
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    var commaCodes = [188,44];
+    var dotCodes= [190,46];
+    if (charCode > 31 && (charCode < 48 || charCode > 57) && commaCodes.indexOf(charCode) <0 && dotCodes.indexOf(charCode) < 0) {
+        return false;
+    }
+    return true;
+}
 

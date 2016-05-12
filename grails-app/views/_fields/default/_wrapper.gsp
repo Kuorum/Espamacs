@@ -17,7 +17,7 @@
             <g:select from="${[false, true]}" value="${value}" name="${property}" valueMessagePrefix="default.boolean"/>
         </g:if>
         <g:elseif test="${type == java.lang.Double || type == double}">
-            <input type="number" step="0.01" name="${property}" value="${value}" id="${property}">
+            <input type="text" subtype="decimals" name="${property}" value="${value}" id="${property}" onkeypress="return isNumber(event)">
         </g:elseif>
         <g:elseif test="${type == java.lang.Integer || type == int}">
             <input type="number" step="1" name="${property}" value="${value}" id="${property}">
