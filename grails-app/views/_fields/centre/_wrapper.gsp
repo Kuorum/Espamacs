@@ -10,7 +10,7 @@
                 from="${espamacs.Centre.findAll([sort:'name'])}"
                 optionKey="id"
                 optionValue="name"
-                value="${value}"
+                value="${value?.id}"
                 name="${property}"/>
         <div class="field-errors">
             <g:hasErrors bean="${bean}" field="${property}">
