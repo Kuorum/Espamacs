@@ -134,9 +134,9 @@ $(function(){
 
     $("#renal\\.baselineCreatinine,#patientAgeOnImplant,#weigh, #gender ").on("change", function(e){
         var creatinine = parseNumber($("#renal\\.baselineCreatinine").val());
-        var age = parseNumber($("#patientAgeOnImplant").val())
-        var weigh = parseNumber($("#weigh").val())
-        var gender = parseNumber($("#gender").val())
+        var age = parseNumber($("#patientAgeOnImplant").val());
+        var weigh = parseNumber($("#weigh").val());
+        var gender = $("#gender").val();
         if (creatinine!= "" && age!="" && weigh!="" && gender!=""){
             var genderFactor = gender == "MALE"?1:0.85;
             var creatinineClearance = (140 - age) * weigh * genderFactor / (72*creatinine)
