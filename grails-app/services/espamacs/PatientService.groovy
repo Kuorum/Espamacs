@@ -44,7 +44,7 @@ class PatientService {
     }
 
     private PatientStatus calcPatientStatus(Patient patient){
-        if (findRemovedAssistanceEvent(patient)!=null){
+        if (findRemovedAssistanceEvent(patient)!=null || isDead(patient)){
             return PatientStatus.findByCode("INACTIVE");
         }else if (isCompleted(patient)){
             return PatientStatus.findByCode("ACTIVE")
@@ -57,6 +57,10 @@ class PatientService {
         List<Event> events = Event.findAllByPatient(patient)
         Event removedAssistanceEvent = events.find{event -> event.removeAssistance }
         return removedAssistanceEvent
+    }
+
+    private boolean isDead(Patient patient){
+        patient.events.find{it.patientDeath}
     }
 
     private boolean isCompleted(Patient patient){
