@@ -1,7 +1,6 @@
 <head>
     <meta name="layout" content="loggedLayout" />
-    <g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
-    <title><g:message code="default.list.label" args="[entityName]" /></title>
+    <title><g:message code="patient.list.title"/></title>
 </head>
 
 <content tag="breadcrumb">
