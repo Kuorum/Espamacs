@@ -1,3 +1,4 @@
+START TRANSACTION;
 
 alter table preimplant_situation add column patient_id BIGINT(19) default null;
 
@@ -1163,3 +1164,5 @@ INSERT INTO preimplant_situation_type_intropic_medication (preimplant_situation_
 
 
 alter table preimplant_situation drop COLUMN patient_id;
+
+COMMIT;

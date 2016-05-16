@@ -1,3 +1,4 @@
+START TRANSACTION;
 
 alter table diagnosis_and_implant_goals add column patient_id BIGINT(19) default null;
 
@@ -323,3 +324,5 @@ INSERT INTO diagnosis_and_implant_goals (patient_id,version,implant_goal_id,cont
 update patient p, diagnosis_and_implant_goals di set p.diagnosis_and_implant_goals_id =di.id where p.id = di.patient_id and p.id < 1000;
 
 alter table diagnosis_and_implant_goals drop COLUMN patient_id;
+
+COMMIT;
