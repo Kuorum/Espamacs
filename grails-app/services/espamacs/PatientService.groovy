@@ -68,7 +68,7 @@ class PatientService {
     }
 
     private boolean isDead(Patient patient){
-        patient.events.find{it.patientDeath}
+        patient.events.find{it?.patientDeath}
     }
 
     private boolean isCompleted(Patient patient){
