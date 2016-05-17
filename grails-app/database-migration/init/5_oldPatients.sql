@@ -316,4 +316,9 @@ INSERT INTO patient (id,version,patient_status_id,code,birth_date,gender_id,weig
 INSERT INTO patient (id,version,patient_status_id,code,birth_date,gender_id,weigh,height,bmi,centre_id,external_id,cardiac_care_type_id,implant_date,blood_type_id,rh_factor_id,patient_age_on_implant) VALUES (336,0,4,'NIR','2009-10-03 00:00:00',7,18.00,130.00,10.6508875739644970414201,52,'040416',10,'2016-04-04 00:00:00',11,16,7);
 INSERT INTO patient (id,version,patient_status_id,code,birth_date,gender_id,weigh,height,bmi,centre_id,external_id,cardiac_care_type_id,implant_date,blood_type_id,rh_factor_id,patient_age_on_implant) VALUES (337,0,4,'JCG','1957-05-28 00:00:00',7,65.00,165.00,23.8751147842056932966023,45,'08/16',9,'2016-04-08 00:00:00',11,16,59);
 INSERT INTO patient (id,version,patient_status_id,code,birth_date,gender_id,weigh,height,bmi,centre_id,external_id,cardiac_care_type_id,implant_date,blood_type_id,rh_factor_id,patient_age_on_implant) VALUES (338,0,4,'CBB','1944-06-15 00:00:00',7,61.00,141.00,30.6825612393742769478396,45,'09/16',9,'2016-04-14 00:00:00',11,16,72);
+
+
+-- All old patients to Rambla Hospital.
+update patient set centre_id = 104 where id < 1000;
+
 COMMIT;
