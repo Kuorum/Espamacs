@@ -13,6 +13,10 @@ class EventController {
 
     def show() {
         Event event = Event.get(params.eventId)
+        if (!event){
+            notFound()
+            return
+        }
         patientService.checkPermission(event.patient)
         respond event
     }
@@ -267,8 +271,16 @@ class EventController {
 
     def edit() {
         Patient patient = Patient.get(params.patientId)
+        if (!patient){
+            notFound()
+            return
+        }
 		patientService.checkPermission(patient)
         Event event = Event.get(params.eventId)
+        if (!event){
+            notFound()
+            return
+        }
         respond patient, view: 'edit', model:[patient:patient, event:event]
     }
 
