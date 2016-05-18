@@ -286,8 +286,8 @@ SET @max = (SELECT count(*) FROM event where patient_id=259);INSERT INTO event (
 SET @max = (SELECT count(*) FROM event where patient_id=78);INSERT INTO event (patient_id,version,remove_assistance,class,events_idx,event_date,patient_health_status_id,patient_death) VALUES (78,0,0,'espamacs.event.RemovedAssistanceChanged',@max,'2015-04-15 00:00:00',351,0);
 SET @max = (SELECT count(*) FROM event where patient_id=329);INSERT INTO event (patient_id,version,remove_assistance,class,events_idx,event_date,patient_health_status_id,patient_death) VALUES (329,0,0,'espamacs.event.RemovedAssistanceChanged',@max,'2016-03-11 00:00:00',351,0);
 
+unlock tables;
 
 update patient p, event e, initial_data id set id.exitus_data_exitus_date=e.event_date where  p.initial_data_id = id.id and p.id < 1000 and e.patient_id=p.id and e.patient_death=1;
 
-unlock tables;
 COMMIT;
