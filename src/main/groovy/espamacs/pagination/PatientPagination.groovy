@@ -16,6 +16,12 @@ public class PatientPagination extends Pagination
     Centre centre
     PatientStatus patientStatus
 
+    {
+        // By default users will be ordered by id descending
+        this.sort = "id"
+        this.order ="desc"
+    }
+
     static constraints = {
         code nullable: true
         cardiacCareType nullable:true
