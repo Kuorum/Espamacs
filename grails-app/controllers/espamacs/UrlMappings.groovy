@@ -57,6 +57,9 @@ class UrlMappings {
 
         name profile:                                    "/profile"   (controller:"profile"){action=[GET:'edit', POST:'update']}
 
+        name export:                                     "/export"(controller: "export", action:"index")
+        name exportAllToCSV:                             "/export/all/csv"(controller: "export", action:"allCSV")
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here

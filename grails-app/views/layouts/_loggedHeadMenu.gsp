@@ -16,6 +16,7 @@
         <ul class="dropdown-menu">
             <li><g:link mapping="centreList"> <g:message code="head.menu.centers"/></g:link> </li>
             <li><g:link mapping="users"> <g:message code="head.menu.users"/></g:link> </li>
+            <li><g:link mapping="export"> <g:message code="head.menu.export"/></g:link> </li>
         </ul>
     </li>
 </sec:ifAllGranted>
